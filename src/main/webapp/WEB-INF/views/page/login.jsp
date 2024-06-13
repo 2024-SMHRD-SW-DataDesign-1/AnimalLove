@@ -15,7 +15,7 @@
 }
 
 .login_form {
-	max-width: 700px;
+	max-width: 800px;
 	margin: 0 auto;
 	box-sizing: border-box;
 	height: 60vh;
@@ -103,8 +103,8 @@ span>a {
 }
 </style>
 
-<jsp:include page="/WEB-INF/views/common/header.jsp" />
 
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
 </head>
 
 <body>
@@ -120,7 +120,6 @@ span>a {
 				<a href="#"><input type="submit" value="회원가입" class="btn"></a>
 			</div>
 
-			<p id="test">TEST</p>
 			<span><a href="#">ID찾기</a></span> <span><a href="#">PW찾기</a></span>
 
 		</form>
@@ -128,10 +127,12 @@ span>a {
 	</div>
 
     <script type="text/javascript">
-		let title = document.getElementById("login");
-		console.log(title);
-        title.style = "border-bottom : 2px solid #3c40c6; border-radius: 2px; color : #3c40c6;";
-	</script>
+    
+		let login = document.getElementById("login");
+        login.style = "border-bottom : 2px solid #3c40c6; border-radius: 2px; color : #3c40c6;";
+        
+    </script>
+    
 </body>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
