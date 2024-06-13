@@ -45,7 +45,6 @@ public class PageController {
 	
 	@RequestMapping(value="/location", method=RequestMethod.GET)
 	public String location() {
-	
 		return "location";
 	}
 	
