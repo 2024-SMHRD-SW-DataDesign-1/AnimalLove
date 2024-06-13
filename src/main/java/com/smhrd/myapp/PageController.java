@@ -53,5 +53,10 @@ public class PageController {
 	public String map() {
 		return "common/map/cookie";
 	}
+	
+	@RequestMapping(value="/information", method=RequestMethod.GET)
+	public String information() {
+		return "page/information";
+	}
 }
 
