@@ -8,15 +8,14 @@
     <title>Document</title>
 
     <style>
+    
         * {
             padding: 0;
-            margin: 0;
-            /* border: 1px solid black; */
-            
+            margin: 0;        
         }
         
         .container {
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto;
             box-sizing: border-box;
             display: flex;
@@ -33,6 +32,7 @@
             padding: 1.2rem 0;
             
         }
+        
         header>p {
             font-size: 1.8rem;
             font-weight: 700;
@@ -51,10 +51,11 @@
 
         header>ul>li {
             list-style-type: none;
-            margin-left: 1.5rem;
-            padding-bottom: 5px;
+            margin-left: 3.2rem;
+            padding-bottom: 2px;
           
         }
+        
         header>ul>li>a {
             color: #333333;
             text-decoration: none;
@@ -66,12 +67,7 @@
         }
        
 
-/*       header>ul>li:first-child>a {
-            color: #3c40c6;
-            border-bottom: 2px solid #3c40c6;
-            border-radius: 2px;
-        }
-*/
+
         header>ul>li>a:hover {
             border-bottom: 2px solid #3c40c6;
             border-radius: 2px;
@@ -90,24 +86,13 @@
   
         }
         
-        #login {
-           color: #333333;
-           border: none;
-        }
-
-      /* #login>li a:hover {
-            border-bottom: 2px solid #3c40c6;
-            border-radius: 2px;
-            color : #3c40c6;
-        }
-        */
-        
-        #login img {
+        img {
             filter: opacity(0.5) drop-shadow(0 0 0 #333333);
             width: 24px;
         }
-
-       
+        
+        
+        
 
     </style>
 
@@ -122,9 +107,9 @@
                 <li><a href="#">마이페이지</a></li>
                 
             </ul>
-            <ul id="login">
+            <ul>
                 <li><a href="#" id="login">로그인</a></li>
-                <a href="#"><img src="resources/img/icon_angle.png"></a>
+                <a href="#"><img src="resources/img/icon_angle.png""></a>
             </ul>
 
         </header>
