@@ -38,5 +38,9 @@ public class PageController {
 	public String chat() {
 		return "chatting";
 	}
+	@RequestMapping(value="/common/header", method=RequestMethod.GET)
+	public String header() {
+		return "common/header";
+	}
 }
 
