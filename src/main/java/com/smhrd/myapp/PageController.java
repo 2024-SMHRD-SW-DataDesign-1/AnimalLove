@@ -21,7 +21,7 @@ public class PageController {
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String login() {
-		return "login";
+		return "page/login";
 	}
 	
 	@RequestMapping(value="/member/update", method=RequestMethod.GET)
@@ -50,7 +50,7 @@ public class PageController {
 	
 	@RequestMapping(value="/map", method=RequestMethod.GET)
 	public String map() {
-		return "common/find/find";
+		return "common/map/cookie";
 	}
 }
 

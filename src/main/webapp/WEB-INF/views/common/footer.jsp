@@ -20,7 +20,6 @@
             max-width: 700px;
             margin: 0 auto;
             box-sizing: border-box;
-            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -33,7 +32,7 @@
             }
         }
         footer {  
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             position: fixed;
             bottom: 0;
         }
@@ -41,7 +40,7 @@
         footer span {
             color: #333333;
             font-family: 'pretendard';
-            font-size: 0.6rem;
+            font-size: 0.8rem;
             margin: 0 20px 0px 20px;
         }
 
