@@ -148,6 +148,8 @@ public class MemberController {
 		
 	}
 	
+
+	
 //	@RequestMapping(value="/member/addchat", method=RequestMethod.POST)
 //	public String chatAdd(@RequestParam("log")String log)
 //	{
