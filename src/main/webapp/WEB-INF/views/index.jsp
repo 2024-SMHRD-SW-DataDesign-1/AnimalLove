@@ -21,5 +21,7 @@
 	<a href="/member/logout"> <button>로그아웃</button></a>
 	<%} %>
 	<a href="chat"> <button>채팅</button></a>
+	
+	<a href="chat"> <button>지도</button></a>
 </body>
 </html>

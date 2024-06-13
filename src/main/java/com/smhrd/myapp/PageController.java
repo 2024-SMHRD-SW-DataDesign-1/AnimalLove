@@ -42,5 +42,10 @@ public class PageController {
 	public String header() {
 		return "common/header";
 	}
+	
+	@RequestMapping(value="/map", method=RequestMethod.GET)
+	public String map() {
+		return "common/find/find";
+	}
 }
 
