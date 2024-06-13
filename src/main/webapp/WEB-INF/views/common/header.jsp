@@ -19,7 +19,6 @@
             max-width: 700px;
             margin: 0 auto;
             box-sizing: border-box;
-            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -35,7 +34,7 @@
             
         }
         header>p {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
            
         }
@@ -59,23 +58,24 @@
         header>ul>li>a {
             color: #333333;
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 1rem;
             font-weight: 800;
             padding-bottom: 1px;
-            font-family: 'pretendard-extralight';
+            font-family: 'pretendard';
          
         }
        
 
-        header>ul>li:first-child>a {
+/*       header>ul>li:first-child>a {
             color: #3c40c6;
             border-bottom: 2px solid #3c40c6;
             border-radius: 2px;
         }
-
+*/
         header>ul>li>a:hover {
             border-bottom: 2px solid #3c40c6;
-            border-radius: 2px
+            border-radius: 2px;
+            color : #3c40c6;
         }
 
         @media screen and (max-width:640px){
@@ -91,14 +91,16 @@
         }
         
         #login {
-            color: #333333;
+           color: #333333;
            border: none;
         }
 
-        #login>li a:hover {
+      /* #login>li a:hover {
             border-bottom: 2px solid #3c40c6;
-            border-radius: 2px
+            border-radius: 2px;
+            color : #3c40c6;
         }
+        */
         
         #login img {
             filter: opacity(0.5) drop-shadow(0 0 0 #333333);
@@ -122,7 +124,7 @@
             </ul>
             <ul id="login">
                 <li><a href="#" id="login">로그인</a></li>
-                <a href="#"><img src="../resources/img/icon_angle.png"></a>
+                <a href="#"><img src="resources/img/icon_angle.png"></a>
             </ul>
 
         </header>

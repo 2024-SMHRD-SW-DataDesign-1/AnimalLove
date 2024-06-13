@@ -21,7 +21,7 @@ public class PageController {
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String login() {
-		return "login";
+		return "page/login";
 	}
 	
 	@RequestMapping(value="/member/update", method=RequestMethod.GET)
