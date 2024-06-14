@@ -15,11 +15,11 @@
 	<a href="login"> <button>로그인</button></a>
 	<%} else{%>
 	<a href="update"> <button>회원정보수정</button></a>
-	<a href="member/delete?id=<%=member.getId()%>"><button>회원탈퇴</button></a>
-	<% if(member.getId().equals("admin")){%>
-		<a href="member/list"><button>회원전체리스트</button></a>
+	<a href="/delete?u_id=<%=member.getU_id()%>"><button>회원탈퇴</button></a>
+	<% if(member.getU_id().equals("admin")){%>
+		<a href="/list"><button>회원전체리스트</button></a>
 	<% } %>
-	<a href="/member/logout"> <button>로그아웃</button></a>
+	<a href="/logout"> <button>로그아웃</button></a>
 	<%} %>
 	<a href="chat"> <button>채팅</button></a>
 	

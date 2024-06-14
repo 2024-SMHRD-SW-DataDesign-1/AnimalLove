@@ -30,7 +30,7 @@ public class MemberService {
 	}
 	
 	// 회원정보수정
-	@Update("update mavenmember set pw=#{pw}, nickname=#{nickname} where id=#{id}")
+	@Update("update mavenmember set pw=#{u_pw}, nickname=#{u_nickname} where id=#{u_id}")
 	public int memberUpdate(MavenMember member)
 	{
 		return mapper.memberUpdate(member);

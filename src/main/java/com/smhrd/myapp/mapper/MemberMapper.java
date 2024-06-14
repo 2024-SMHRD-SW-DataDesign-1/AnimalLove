@@ -18,16 +18,16 @@ public interface MemberMapper {
 	
 	public MavenMember memberLogin(MavenMember member);
 	
-	@Update("update mavenmember set pw=#{pw}, nickname=#{nickname} where id=#{id}")
+	@Update("update USER set u_pw=#{u_pw}, u_nickname=#{u_nickname} where u_id=#{u_id}")
 	public int memberUpdate(MavenMember member);
 	
-	@Delete("delete from mavenmember where id=#{id}")
+	@Delete("delete from USER where u_id=#{u_id}")
 	public int memberDelete(String id);
 	
-	@Select("select * from mavenmember")
+	@Select("select * from USER")
 	public List<MavenMember> memberList();
 	
-	@Insert("insert into mavenmember values (#{id}, #{pw}, #{nickname})")
+	@Insert("insert into USER values (#{u_id}, #{u_pw}, #{u_nickname})")
 	public int chatAdd(String log);
 	
 }

@@ -24,14 +24,9 @@ public class PageController {
 		return "page/login";
 	}
 	
-	@RequestMapping(value="/member/update", method=RequestMethod.GET)
+	@RequestMapping(value="/update", method=RequestMethod.GET)
 	public String update() {
-		return "member/update";
-	}
-	
-	@RequestMapping(value="/list", method=RequestMethod.GET)
-	public String list() {
-		return "member/list";
+		return "/update";
 	}
 	
 	@RequestMapping(value="/chat", method=RequestMethod.GET)

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.smhrd.myapp.model.MavenMember;
 import com.smhrd.myapp.service.MemberService;
@@ -21,10 +20,10 @@ public class MemberController {
 	
 	@Autowired
 	MemberService service;
-	// 회원가입 요청 처리 : localhost:8089/myapp/member/join
+	// 회원가입 요청 처리 : localhost:8089/aniting/join
 	
 	
-	@RequestMapping(value = "/member/join", method = RequestMethod.POST)
+	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String memberJoin(@ModelAttribute MavenMember member) {
 
 		int res = service.memberJoin(member);
@@ -37,9 +36,9 @@ public class MemberController {
 
 	}
 	
-	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String memberLogin(@ModelAttribute MavenMember member, HttpSession session) {
-		System.out.println(member.getId());
+		System.out.println(member.getU_id());
 		MavenMember result = service.memberLogin(member);
 		if (result != null) {
 			System.out.println("로그인 성공");
@@ -52,13 +51,13 @@ public class MemberController {
 	}
 	
 	// 로그아웃 요청 처리 : localhost:8089/myapp/member/logout
-	@RequestMapping(value="/member/logout", method=RequestMethod.GET)
+	@RequestMapping(value="/logout", method=RequestMethod.GET)
 	public String memberLogout(HttpSession session) {
 		session.removeAttribute("member");
 		return "redirect:/index";
 	}
 	
-	@RequestMapping(value="/member/update", method=RequestMethod.POST)
+	@RequestMapping(value="/update", method=RequestMethod.POST)
 	public String memberUpdate(
 				@ModelAttribute MavenMember member,
 				HttpSession session
@@ -68,9 +67,9 @@ public class MemberController {
 		// RequestParam => 파라미터 하나하나 가져오는 방법
 		// ModelAttriibute => 특정한 Model 형태로 파라미터를 묶어서 가져오는 방법
 		// => 사용한 Model Class : 기본 생성자, Setter 생성
-		System.out.println(member.getId());
-		System.out.println(member.getPw());
-		System.out.println(member.getNickname());
+		System.out.println(member.getU_id());
+		System.out.println(member.getU_pw());
+		System.out.println(member.getU_nickname());
 		
 		int res = service.memberUpdate(member);
 		
@@ -90,17 +89,17 @@ public class MemberController {
 		}
 	}
 	
-	@RequestMapping(value="/member/delete/{id}", method=RequestMethod.GET)
-	public String memberDelete(@PathVariable("id")String id)
+	@RequestMapping(value="/delete/{u_id}", method=RequestMethod.GET)
+	public String memberDelete(@PathVariable("u_id")String id)
 	{
 		int res = service.memberDelete(id);
 		System.out.println("딜리트");
 		// list.jsp 삭제 링크를 누르면 해당 회원을 DB에서 삭제해주고
 		// 다시 list.jsp로 이동 (삭제한 회원은 리스트에서 안보여야함)
-		return "redirect:/member/list";
+		return "redirect:/list";
 	}
 	
-	@RequestMapping(value="/member/list", method=RequestMethod.GET)
+	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public String memberList(Model model) {
 		List<MavenMember> list = service.memberList();
 		// 리스트 저장 -> 세션(서버 용량 차지) => 불필요하게 용량을 많이 차지
