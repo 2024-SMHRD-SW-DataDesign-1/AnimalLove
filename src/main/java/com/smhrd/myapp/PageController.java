@@ -21,7 +21,7 @@ public class PageController {
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String login() {
-		return "login";
+		return "page/login";
 	}
 	
 	@RequestMapping(value="/member/update", method=RequestMethod.GET)
@@ -41,6 +41,17 @@ public class PageController {
 	@RequestMapping(value="/common/header", method=RequestMethod.GET)
 	public String header() {
 		return "common/header";
+	}
+	
+	@RequestMapping(value="/location", method=RequestMethod.GET)
+	public String location() {
+	
+		return "location";
+	}
+	
+	@RequestMapping(value="/map", method=RequestMethod.GET)
+	public String map() {
+		return "common/map/cookie";
 	}
 }
 

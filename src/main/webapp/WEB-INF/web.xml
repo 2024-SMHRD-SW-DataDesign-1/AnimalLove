@@ -28,6 +28,7 @@
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
+
 	</servlet-mapping>
 
 <!-- 한글 데이터 인코딩 할 수 있는 필터 추가 -->
