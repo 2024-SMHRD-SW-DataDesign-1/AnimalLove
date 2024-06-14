@@ -8,6 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="map" style="width:500px;height:400px;"></div>
+	<div id="map" style="width:100%;height:100%;"></div>
 </body>
 </html>

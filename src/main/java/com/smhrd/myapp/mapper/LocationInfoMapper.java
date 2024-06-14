@@ -10,7 +10,7 @@ import com.smhrd.myapp.model.LocationInfo;
 @Mapper
 public interface LocationInfoMapper {
 	
-	@Select("select * from location")
+	@Select("select * from campus_24SW_DD_p2_3.LOCATION")
 	public List<LocationInfo> locationList();
 
 }
