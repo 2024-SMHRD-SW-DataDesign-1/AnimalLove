@@ -30,28 +30,35 @@ wtmX = 160082.538257218, // 변환할 WTM X 좌표 입니다
 wtmY = -4680.975749087054; // 변환할 WTM Y 좌표 입니다
 
 let value=null;
-function WtoWGS84(list) {
+function WtoWGS84(list,func) {
     return new Promise((resolve, reject) => {
+    	
         var geocoder = new kakao.maps.services.Geocoder();
         let dataList = []
-		console.log(list.);
+		
 		for(let i = 0; i< list.length; i++){
-			geocoder.transCoord(wtmX, wtmY, function(result, status) {
+			geocoder.transCoord(list[i].l_latitude, list[i].l_longitude, function(result, status) {
         	
-        	
+			
             if (status === kakao.maps.services.Status.OK) {
-                dataList.push({list.l_latitude, list.l_longitude})
+                
+                //dataList.push({x : result[0].x, y : result[0].y})
+                
+                func(result);
+                
             } else {
                 reject(new Error('Failed to convert coordinates'));
             }
-	        }, {
-	            input_coord: kakao.maps.services.Coords.WTM,
-	            output_coord: kakao.maps.services.Coords.WGS84
-	        });
-		}
-	        console.log(dataList);
-        resolve(dataList);
+        }, {
+            input_coord: kakao.maps.services.Coords.WTM,
+            output_coord: kakao.maps.services.Coords.WGS84
+        });
+	}
+	resolve(dataList);
 
+	        
+
+		
     });
 }
 
