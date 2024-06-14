@@ -39,7 +39,7 @@ public class MemberController {
 	
 	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
 	public String memberLogin(@ModelAttribute MavenMember member, HttpSession session) {
-
+		System.out.println(member.getId());
 		MavenMember result = service.memberLogin(member);
 		if (result != null) {
 			System.out.println("로그인 성공");
@@ -115,6 +115,8 @@ public class MemberController {
 		// return "redirect:/list";
 		
 	}
+	
+	
 	
 
 	
