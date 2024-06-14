@@ -24,62 +24,30 @@ public class MemberController {
 	// 회원가입 요청 처리 : localhost:8089/myapp/member/join
 	
 	
-	@RequestMapping(value="/member/join", method=RequestMethod.POST)
-	public String memberJoin(
-			@RequestParam("id")String id,
-			@RequestParam("pw")String pw,
-			@RequestParam("nickname")String nickname
-			) {
-		System.out.println(id + ", "+ pw + " , " + nickname);
-		
-		// controller -> service -> mapper
-		// controller : 요청 파라미터 받고 마지막에 뷰 리턴
-		// service : controller 에 작성되는 코드 외에 로직들 작성
-		// mapper : db 관련 작업
-		
-		MavenMember member = new MavenMember(id,pw,nickname);
+	@RequestMapping(value = "/member/join", method = RequestMethod.POST)
+	public String memberJoin(@ModelAttribute MavenMember member) {
+
 		int res = service.memberJoin(member);
-		System.out.println(res);
-		
-		// 포워딩 
-		if(res>0)
-		{
-			// index.jsp
-			// return 
+
+		if (res > 0) {
 			return "redirect:/index";
-		}
-		else
-		{
+		} else {
 			return "redirect:/join";
 		}
-		
+
 	}
 	
-	@RequestMapping(value="/member/login", method=RequestMethod.POST)
-	public String memberLogin(
-				@RequestParam("id")String id,
-				@RequestParam("pw")String pw,
-				HttpSession session
-			)
-	{
-		System.out.println(id + " , " + pw);
-		MavenMember member = new MavenMember(id, pw);
-		
+	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
+	public String memberLogin(@ModelAttribute MavenMember member, HttpSession session) {
+
 		MavenMember result = service.memberLogin(member);
-		if(result != null)
-		{
+		if (result != null) {
 			System.out.println("로그인 성공");
 			session.setAttribute("member", result);
-			// forwarding 방식 : 최종 페이지의 경로를 확인x(어색), 추후페이지 이동시에 문제발생
-			// return "index";
-			// redirecting 방식 : 클라이언트가 해당 경로로 재 요청하게 만듦
-			// index 를 보여주는 경로로 재 요청
 			return "redirect:/index";
-		}
-		else
-		{
-			 System.out.println("로그인 실패");
-			 return "redirect:/login";
+		} else {
+			System.out.println("로그인 실패");
+			return "redirect:/login";
 		}
 	}
 	
