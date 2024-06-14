@@ -12,10 +12,10 @@
 	<!-- 현재 경로 : localhost:8089/myapp/update -->
 	<!-- 요청 경로 : localhost:8089/myapp/member/update -->
 	   <form action="update" method="post">
-      ID : <input type="text" name="id" value="<% member.getId(); %>"><br>
-      PASSWORD : <input type="password" name="pw"><br>
-      NICKNAME : <input type="text" name="nickname" value="<% member.getNickname(); %>" ><br>
-      <input type="submit" value="회원가입">
+      ID : <input type="text" name="u_id" value="${member.u_id }" readonly><br>
+      PASSWORD : <input type="password" name="u_pw"><br>
+      NICKNAME : <input type="text" name="u_nickname" value="${member.u_nickname }" ><br>
+      <input type="submit" value="회원정보수정">
    </form>
 </body>
 

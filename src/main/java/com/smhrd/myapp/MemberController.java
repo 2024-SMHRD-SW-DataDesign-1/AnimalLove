@@ -50,7 +50,7 @@ public class MemberController {
 		}
 	}
 	
-	// 로그아웃 요청 처리 : localhost:8089/myapp/member/logout
+	// 로그아웃 요청 처리 : localhost:8089/aniting/logout
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
 	public String memberLogout(HttpSession session) {
 		session.removeAttribute("member");

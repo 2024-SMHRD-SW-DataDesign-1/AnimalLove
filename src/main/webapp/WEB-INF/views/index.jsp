@@ -19,7 +19,7 @@
 	<% if(member.getU_id().equals("admin")){%>
 		<a href="/list"><button>회원전체리스트</button></a>
 	<% } %>
-	<a href="/logout"> <button>로그아웃</button></a>
+	<a href="logout"> <button>로그아웃</button></a>
 	<%} %>
 	<a href="chat"> <button>채팅</button></a>
 	
