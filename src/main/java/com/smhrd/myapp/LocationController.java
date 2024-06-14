@@ -19,11 +19,11 @@ public class LocationController {
 	@Autowired
 	LocationService service;
 	
-	@RequestMapping(value = "/data/location", method = RequestMethod.GET, produces = "application/text; charset=UTF-8")
+	@RequestMapping(value="/data/location", method = RequestMethod.GET, produces = "application/text; charset=UTF-8")
 	public @ResponseBody String locationList() throws JsonProcessingException {
-
+		System.out.println(1);
 		List<LocationInfo> list = service.locationList();
-
+		System.out.println(2);
 		System.out.println(list);
 		// ** 게시물 정보를 가지고 있는 list 데이터를 응답 (xml, json** {key:value)
 		// JAVA 객체 -> JSON 형태의 문자열로 변환 => Jackson 라이브러리

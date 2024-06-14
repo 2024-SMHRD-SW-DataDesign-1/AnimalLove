@@ -16,7 +16,7 @@ public class PageController {
 	
 	@RequestMapping(value="/join", method=RequestMethod.GET)
 	public String join() {
-		return "join";
+		return "page/join";
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
@@ -37,6 +37,7 @@ public class PageController {
 	@RequestMapping(value="/chat", method=RequestMethod.GET)
 	public String chat() {
 		return "chatting";
+		// return "chatting" => chatting.jsp (WEB-INF/spring/appServlet/servlet-context.xml 에서 설정)
 	}
 	@RequestMapping(value="/common/header", method=RequestMethod.GET)
 	public String header() {
@@ -51,6 +52,11 @@ public class PageController {
 	@RequestMapping(value="/map", method=RequestMethod.GET)
 	public String map() {
 		return "common/map/cookie";
+	}
+	
+	@RequestMapping(value="/information", method=RequestMethod.GET)
+	public String information() {
+		return "page/information";
 	}
 }
 
