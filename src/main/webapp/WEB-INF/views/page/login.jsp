@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<title>Login here</title>
 <style>
 * {
 	margin: 0px;
@@ -118,7 +118,7 @@ span>a {
 			<input type="password" placeholder="PW" name="u_pw"> <br>
 			<div id="btn_container">
 				<input type="submit" value="로그인" class="btn">
-				<a href="#"><input type="submit" value="회원가입" class="btn"></a>
+				<input type="button" value="회원가입" class="btn" onclick="location.href = 'join'">
 			</div>
 
 			<span><a href="#">ID찾기</a></span> <span><a href="#">PW찾기</a></span>
