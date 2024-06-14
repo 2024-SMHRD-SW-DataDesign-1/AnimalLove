@@ -18,9 +18,4 @@ public class MavenMember {
 	private String u_email;
 	private String u_name;
 	
-	// 채팅관련 변수
-	private String log;
-	
-  
-   
 }
