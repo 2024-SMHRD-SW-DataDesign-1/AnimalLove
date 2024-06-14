@@ -10,6 +10,7 @@
 <body>
 	<% MavenMember member = (MavenMember)session.getAttribute("member");%>
 	<% if (member == null) {%>
+	<!-- href가 join이면 PageController에서 join이라고 하는 곳으로 이동 -->
 	<a href="join"> <button>회원가입</button></a>
 	<a href="login"> <button>로그인</button></a>
 	<%} else{%>
