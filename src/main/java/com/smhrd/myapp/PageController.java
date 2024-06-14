@@ -1,6 +1,8 @@
 package com.smhrd.myapp;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -29,11 +31,11 @@ public class PageController {
 		return "update";
 	}
 	
-	@RequestMapping(value="/chat", method=RequestMethod.GET)
-	public String chat() {
-		return "chatting";
-		// return "chatting" => chatting.jsp (WEB-INF/spring/appServlet/servlet-context.xml 에서 설정)
-	}
+//	@RequestMapping(value="/chat", method=RequestMethod.GET)
+//	public String chat() {
+//		return "chatting";
+//		// return "chatting" => chatting.jsp (WEB-INF/spring/appServlet/servlet-context.xml 에서 설정)
+//	}
 	@RequestMapping(value="/common/header", method=RequestMethod.GET)
 	public String header() {
 		return "common/header";
@@ -53,5 +55,21 @@ public class PageController {
 	public String information() {
 		return "page/information";
 	}
+//	@RequestMapping(value="/list", method=RequestMethod.GET)
+//	public String list() {
+//		return "member/list";
+//	}
+	
+	@RequestMapping(value="/chatting/{chatId}", method=RequestMethod.GET)
+	public String chatting(@PathVariable("chatId") String chatId, Model model) {
+		model.addAttribute("chatId", chatId);
+		return "chatting";
+	}
+	
+	@RequestMapping(value="/chatList", method=RequestMethod.GET)
+	public String chatList() {
+		return "chatList";
+	}
+	
 }
 
