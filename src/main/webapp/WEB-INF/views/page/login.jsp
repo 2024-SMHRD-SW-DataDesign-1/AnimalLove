@@ -96,7 +96,7 @@ input[placeholder="ID"], input[placeholder="PW"] {
 	background-color: #fff;
 }
 
-span>a {
+#search {
 	text-decoration: none;
 	color: #333333;
 	padding: 25px;
@@ -121,7 +121,8 @@ span>a {
 				<input type="button" value="회원가입" class="btn" onclick="location.href = 'join'">
 			</div>
 
-			<span><a href="#">ID찾기</a></span> <span><a href="#">PW찾기</a></span>
+			<span><a href="#" id="search">ID찾기</a></span>
+			<span><a href="#" id="search">PW찾기</a></span>
 
 		</form>
 

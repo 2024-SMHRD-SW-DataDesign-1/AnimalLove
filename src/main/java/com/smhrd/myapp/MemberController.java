@@ -29,7 +29,7 @@ public class MemberController {
 		int res = service.memberJoin(member);
 
 		if (res > 0) {
-			return "redirect:/index";
+			return "redirect:/login";
 		} else {
 			return "redirect:/join";
 		}
