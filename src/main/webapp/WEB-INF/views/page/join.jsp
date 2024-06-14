@@ -111,6 +111,17 @@ p {
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 </head>
 <body>
+<<<<<<< HEAD
+	<!-- 현재 위치 : localhost:8089/aniting/join -->
+   <form action="join" method="post">
+      ID : <input type="text" name="u_id"><br>
+      PASSWORD : <input type="password" name="u_pw"><br>
+      NICKNAME : <input type="text" name="u_nickname"><br>
+      ADDRESS : <input type="text" name="u_address"><br>
+      E_MAIL : <input type="text" name="u_email"><br>
+      <input type="submit" value="회원가입">
+   </form>
+=======
 
 	<div class="join_form">
 		<form action="join" method="POST">
@@ -168,6 +179,7 @@ p {
 	</div>
 
 
+>>>>>>> branch 'main' of https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove.git
 </body>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

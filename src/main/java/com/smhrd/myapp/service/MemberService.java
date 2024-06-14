@@ -30,16 +30,17 @@ public class MemberService {
 	}
 	
 	// 회원정보수정
-	@Update("update mavenmember set pw=#{u_pw}, nickname=#{u_nickname} where id=#{u_id}")
 	public int memberUpdate(MavenMember member)
 	{
 		return mapper.memberUpdate(member);
 	}
 	
+	// 회원탈퇴 처리
 	public int memberDelete(String id)
 	{
 		return mapper.memberDelete(id);
 	}
+	
 	
 	// 회원 전체 리스트 처리
 	public List<MavenMember> memberList()
