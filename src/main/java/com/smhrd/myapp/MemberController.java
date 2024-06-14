@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.smhrd.myapp.model.MavenMember;
 import com.smhrd.myapp.service.MemberService;
@@ -58,11 +58,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/update", method=RequestMethod.POST)
-	public String memberUpdate(
-				@ModelAttribute MavenMember member,
-				HttpSession session
-							)
-	{
+	public String memberUpdate(@ModelAttribute MavenMember member, HttpSession session)	{
 		// id, pw, nickname => 한 회원에 정보 (MavenMember)
 		// RequestParam => 파라미터 하나하나 가져오는 방법
 		// ModelAttriibute => 특정한 Model 형태로 파라미터를 묶어서 가져오는 방법
@@ -89,14 +85,15 @@ public class MemberController {
 		}
 	}
 	
-	@RequestMapping(value="/delete/{u_id}", method=RequestMethod.GET)
-	public String memberDelete(@PathVariable("u_id")String id)
-	{
+	@RequestMapping(value="/delete", method=RequestMethod.GET)
+	public String memberDelete(@RequestParam("u_id")String id, HttpSession session)	{
+		System.out.println(id);
 		int res = service.memberDelete(id);
-		System.out.println("딜리트");
-		// list.jsp 삭제 링크를 누르면 해당 회원을 DB에서 삭제해주고
-		// 다시 list.jsp로 이동 (삭제한 회원은 리스트에서 안보여야함)
-		return "redirect:/list";
+		if (res > 0) {
+			// 성공 - 로그인이 풀리게
+			session.removeAttribute("member");
+		}
+		return "redirect:/index";
 	}
 	
 	@RequestMapping(value="/list", method=RequestMethod.GET)

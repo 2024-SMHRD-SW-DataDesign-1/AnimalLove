@@ -1,6 +1,5 @@
 package com.smhrd.myapp.mapper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
@@ -18,16 +17,16 @@ public interface MemberMapper {
 	
 	public MavenMember memberLogin(MavenMember member);
 	
-	@Update("update USER set u_pw=#{u_pw}, u_nickname=#{u_nickname} where u_id=#{u_id}")
+	@Update("update USERS set u_pw=#{u_pw}, u_nickname=#{u_nickname} where u_id=#{u_id}")
 	public int memberUpdate(MavenMember member);
 	
-	@Delete("delete from USER where u_id=#{u_id}")
+	@Delete("delete from USERS where u_id=#{u_id}")
 	public int memberDelete(String id);
 	
-	@Select("select * from USER")
+	@Select("select * from USERS")
 	public List<MavenMember> memberList();
 	
-	@Insert("insert into USER values (#{u_id}, #{u_pw}, #{u_nickname})")
+	@Insert("insert into USERS values (#{u_id}, #{u_pw}, #{u_nickname})")
 	public int chatAdd(String log);
 	
 }

@@ -8,7 +8,6 @@
 </head>
 <body>
 	<!-- 현재 위치 : localhost:8089/aniting/join -->
-	<!-- 회원가입 : localhost:8089/myapp/member/join -->
    <form action="join" method="post">
       ID : <input type="text" name="u_id"><br>
       PASSWORD : <input type="password" name="u_pw"><br>
