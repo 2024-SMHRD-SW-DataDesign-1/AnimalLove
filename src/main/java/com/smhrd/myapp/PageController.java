@@ -37,6 +37,7 @@ public class PageController {
 	@RequestMapping(value="/chat", method=RequestMethod.GET)
 	public String chat() {
 		return "chatting";
+		// return "chatting" => chatting.jsp (WEB-INF/spring/appServlet/servlet-context.xml 에서 설정)
 	}
 	@RequestMapping(value="/common/header", method=RequestMethod.GET)
 	public String header() {
@@ -45,7 +46,6 @@ public class PageController {
 	
 	@RequestMapping(value="/location", method=RequestMethod.GET)
 	public String location() {
-	
 		return "location";
 	}
 	
