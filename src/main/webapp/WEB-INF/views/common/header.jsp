@@ -37,6 +37,7 @@
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
+	text-decoration: none;
 }
 
 header {
@@ -54,7 +55,7 @@ header>div {
 }
 
 /*애니팅 속성*/
-#title {
+#l_name {
 	font-size: 2rem;
 	font-weight: 700;
 	text-decoration: none;
@@ -62,6 +63,11 @@ header>div {
 	font-family: 'BMJUA';
 	margin-left : 10px;
 }
+
+header>div>ul>li {
+	list-style-type: none;
+}
+
 
 /*로고이미지 속성*/
 #logo {
@@ -79,7 +85,9 @@ header>ul>li {
 	list-style-type: none;
 	margin-left: 4rem;
 	padding-bottom: 10px;
+	text-decoration: none;
 }
+
 
 /*매칭,위치,마이,로그인 속성*/
 header>ul>li>a {
@@ -111,9 +119,9 @@ header>ul>li>a:hover {
 		<header>
 			<div>
 				<a href="#"><img src="resources/img/img_logo.png" id="logo"></a>
-				<p>
-					<a href="#" id="title">애니팅</a>
-				</p>
+				<ul>
+					<li><a href="#" id="l_name">애니팅</a></li>
+				</ul>
 			</div>
 			<ul>
 				<li><a href="#">매칭</a></li>
@@ -122,8 +130,8 @@ header>ul>li>a:hover {
 
 			</ul>
 			<ul>
-				<li><a href="#" id="login">로그인</a></li>
-				<a href="#"><img src="resources/img/icon_angle.png" id="i_angle"></a>
+				<li><a href="login" id="login">로그인</a></li>
+				<a href="login"><img src="resources/img/icon_angle.png" id="i_angle"></a>
 			</ul>
 
 		</header>
