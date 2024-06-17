@@ -64,7 +64,6 @@
                             var map = new kakao.maps.Map(mapContainer, mapOption); 
 
                             setMap(map);
-                            console.log(getMap());
                         },
                     })
                     .then((result) => {
