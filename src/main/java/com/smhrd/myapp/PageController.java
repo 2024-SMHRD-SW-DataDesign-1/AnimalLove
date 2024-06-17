@@ -78,5 +78,13 @@ public class PageController {
 	}
 	
 	
+	//메인 화면
+	@RequestMapping(value="/", method=RequestMethod.GET)
+	public String main() {
+		// view resolver : /WEB-INF/views/index.jsp
+		return "page/main";
+	}
+	
+	
 }
 
