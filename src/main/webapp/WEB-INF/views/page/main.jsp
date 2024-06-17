@@ -15,7 +15,7 @@
 /*배너 스타일*/
 .swiper {
 	max-width: 1000px;
-	height: 600px;
+	height: 550px;
 }
 
 .banner_img {
@@ -114,13 +114,13 @@
 				<!-- Slides -->
 
 				<div class="swiper-slide">
-					<img src="../img/img_main_banner1.jpg" class="banner_img">
+					<img src="resources/img/img_main_banner1.png" class="banner_img">
 				</div>
 				<div class="swiper-slide">
-					<img src="../img/img_main_banner2.png" class="banner_img">
+					<img src="resources/img/img_main_banner2.png" class="banner_img">
 				</div>
 				<div class="swiper-slide">
-					<img src="../igm/img_main_banner3.png" class="banner_img">
+					<img src="resources/img/img_main_banner3.png" class="banner_img">
 				</div>
 
 			</div>
@@ -136,7 +136,7 @@
 	<section class="service">
 		<div class="container">
 			<div class="img">
-				<img src="/img_banner2.jpg" alt="">
+				<img src="#" alt="">
 			</div>
 			<div class="text">
 				<h1>우리 서비스는~!</h1>
@@ -154,17 +154,17 @@
 	<!-- 인트로 영역 -->
 	<section class="intro">
 		<div class="card">
-			<img src="/icon_a.png" class="intro_icon">
+			<img src="resources/img/icon_main_a.png" class="intro_icon">
 			<h1>Location</h1>
 			<p>Django는 2005년부터 시작된 Python의 오픈 소스 웹 프레임워크이당</p>
 		</div>
 		<div class="card">
-			<img src="/icon_b.png" class="intro_icon">
+			<img src="resources/img/icon_main_b.png" class="intro_icon">
 			<h1>Communication</h1>
 			<p>창시자는 귀도 반 로섬. 크리스마스 주에 , 연구실이 닫혀있어서 심심한</p>
 		</div>
 		<div class="card">
-			<img src="/icon_c.png" class="intro_icon">
+			<img src="resources/img/icon_main_c.png" class="intro_icon">
 			<h1>Love</h1>
 			<p>프로그래밍 언어로, 스크립트 언어에 해당된다.</p>
 		</div>

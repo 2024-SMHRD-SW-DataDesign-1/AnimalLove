@@ -14,7 +14,7 @@
 	padding: 0px;
 }
 
-.login_form {
+.l_container {
 	max-width: 800px;
 	margin: 0 auto;
 	box-sizing: border-box;
@@ -67,7 +67,7 @@ input[placeholder="ID"], input[placeholder="PW"] {
 	font-family: 'pretendard';
 }
 
-.btn {
+.l_btn {
 	width: 100px;
 	height: 36px;
 	font-size: 15px;
@@ -78,12 +78,12 @@ input[placeholder="ID"], input[placeholder="PW"] {
 	margin-bottom: 14px;
 }
 
-#btn_container {
+.btn_container {
 	display: flex;
 	justify-content: space-around;
 }
 
-.btn:active {
+.l_btn:active {
 	width: 100px;
 	height: 36px;
 	font-size: 15px;
@@ -96,7 +96,7 @@ input[placeholder="ID"], input[placeholder="PW"] {
 	background-color: #fff;
 }
 
-#search {
+.l_search {
 	text-decoration: none;
 	color: #333333;
 	padding: 25px;
@@ -109,20 +109,23 @@ input[placeholder="ID"], input[placeholder="PW"] {
 
 <body>
 
-	<div class="login_form">
+	<div class="l_container">
+	
 		<form action="member/login" method="POST">
+		
 			<h2 id="l_title">Login</h2>
 			<p id="l_sub">애니팅 서비스에 오신걸 환영합니다🥰</p>
 			<br>
 			<input type="text" placeholder="ID" name="u_id"> <br>
 			<input type="password" placeholder="PW" name="u_pw"> <br>
-			<div id="btn_container">
-				<input type="submit" value="로그인" class="btn">
-				<input type="button" value="회원가입" class="btn" onclick="location.href = 'join'">
+			
+			<div class="btn_container">
+				<input type="submit" value="로그인" class="l_btn">
+				<input type="button" value="회원가입" class="l_btn" onclick="location.href = 'join'">
 			</div>
 
-			<span><a href="#" id="search">ID찾기</a></span>
-			<span><a href="#" id="search">PW찾기</a></span>
+			<span><a href="#" class="l_search">ID찾기</a></span>
+			<span><a href="#" class="l_search">PW찾기</a></span>
 
 		</form>
 
