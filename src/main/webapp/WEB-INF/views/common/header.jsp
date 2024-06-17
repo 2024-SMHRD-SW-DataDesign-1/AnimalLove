@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <title>Document</title>
 
 <style>
@@ -12,6 +13,10 @@
 @media screen and (max-width:640px) {
 	header {
 		flex-direction: column;
+	}
+	
+	#chatList_box{
+		left : 50%;
 	}
 }
 
@@ -111,6 +116,32 @@ header>ul>li>a:hover {
 	width: 24px;
 }
 
+#chat_icon
+{
+	position : fixed;
+	left : 90%;
+	top : 90%;
+	background-color : red;
+	width: 30px;
+	border-radius: 20px;
+	z-index : 100;
+}
+
+#chatList_box
+{
+	
+	position : fixed;
+	left : 75%;
+	top : 57%;
+	border : 2px solid #000000;
+	width : 300px;
+	height : 300px;
+	z-index : 100;
+	overflow-y:auto; 	
+}
+
+
+
 </style>
 
 </head>
@@ -138,5 +169,22 @@ header>ul>li>a:hover {
 
 
 	</div>
+	<div id="chatList_box">
+			<jsp:include page="/WEB-INF/views/common/chat/chatlist.jsp"></jsp:include>
+	</div>
+	<div id="chat_icon" onclick="chatListView()">
+		채팅
+	</div>
+	
+	<script type="text/javascript">
+		function chatListView()
+		{
+			let chatList = document.getElementById("chat_icon");
+			var visibilityStyle = window.getComputedStyle(chatList).getPropertyValue('visibility');
+			console.log(visibilityStyle)
+			
+		}
+		
+	</script>
 </body>
 </html>

@@ -29,7 +29,7 @@
        
         let chatlist =
         "<div style='display:flex; justify-content: space-between;  border-top:1px solid black; border-bottom:1px solid black;'>" + 
-            "<div style='width: 40; border-radius: 150px; background-color: skyblue;'>이미지</div>"+
+            "<div style='width: 48px; height: 50px; border-radius: 150px; background-color: skyblue;'>이미지</div>"+
             "<div>"+
                 "<div>채팅방이름</div>"+
                 "<div>마지막채팅</div>" +
@@ -40,12 +40,16 @@
         div.innerHTML += chatlist;
         let  chatready = 
         "<div style='display:flex; justify-content: space-between;  border-top:1px solid black; border-bottom:1px solid black;'>" + 
-            "<div style='width: 40; border-radius: 150px; background-color: skyblue;'>이미지</div>"+
+            "<div style='width: 48px; height: 50px; border-radius: 150px; background-color: skyblue;'>이미지</div>"+
             "<button>수락</button>" +
             "<button>거부</button>" +
             "<button>정보확인</button>" +
         "</div>";
-
+		
+        for(let i = 0; i< 10; i++)
+        {
+        	ready.innerHTML += chatready;
+        }
         ready.innerHTML += chatready;
     </script>
 </body>
