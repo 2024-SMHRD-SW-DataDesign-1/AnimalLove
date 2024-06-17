@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.myapp.model.MavenMember"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -122,7 +123,9 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 </head>
 <body>
-
+<%
+	MavenMember member = (MavenMember) session.getAttribute("member");
+	%>
 	<div class="j_container">
 		<form action="member/update" method="POST">
 
@@ -131,7 +134,7 @@
 
 			<p class="j_menu">아이디</p>
 			<p class="j_menu">
-				<input type="text" class="j_text" name="u_id" readonly> 
+				<input type="text" class="j_text" name="u_id" value = "<%=member.getU_id()%>"readonly> 
 			</p>
 
 
