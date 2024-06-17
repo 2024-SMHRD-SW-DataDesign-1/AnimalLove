@@ -31,17 +31,18 @@ public class MemberController {
 		int idChkResult = service.idChk(member.getU_id());
 		int nickChkResult = service.nickChk(member.getU_nickname());
 		int emailChkResult = service.emailChk(member.getU_email());
-		 try {
-	            if (emailChkResult == 1 || nickChkResult == 1 || idChkResult == 1) {
-	            	return "page/join";
-	            } else if (emailChkResult == 0 && nickChkResult == 0 && idChkResult == 0) {
-	                service.memberJoin(member);
-	                return "page/login";
-	            }
-	        } catch (Exception e) {
-	            throw new RuntimeException();
-	        }
-	        return "redirect:/index";
+
+		try {
+			if (emailChkResult == 1 || nickChkResult == 1 || idChkResult == 1) {
+				return "page/join";
+			} else if (emailChkResult == 0 && nickChkResult == 0 && idChkResult == 0) {
+				service.memberJoin(member);
+				return "page/login";
+			}
+		} catch (Exception e) {
+			throw new RuntimeException();
+		}
+		return "redirect:/index";
 //		int res = service.memberJoin(member);
 //
 //		if (res > 0) {
@@ -69,15 +70,15 @@ public class MemberController {
 
 		return res;
 	}
-	
+
 	// 이메일 중복체크 처리
-		@RequestMapping(value = "/member/emailChk", method = RequestMethod.POST)
-		public int emailChk(@RequestParam("u_email") String email) {
+	@RequestMapping(value = "/member/emailChk", method = RequestMethod.POST)
+	public int emailChk(@RequestParam("u_email") String email) {
 
-			int res = service.emailChk(email);
+		int res = service.emailChk(email);
 
-			return res;
-		}
+		return res;
+	}
 
 	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
 	public String memberLogin(@ModelAttribute MavenMember member, HttpSession session) {
