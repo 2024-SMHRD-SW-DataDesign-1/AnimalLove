@@ -266,8 +266,8 @@ p {
         $.ajax({
             url : "member/nickChk",
             type : "POST",
-            dataType :"JSON",
             data : {"nickname" : $("#u_nickname").val()},
+            dataType :"JSON",
             success : function (data) {
                 if(data == 1) {
                     alert("중복된 닉네임입니다.");
@@ -281,15 +281,22 @@ p {
     }
 
     function fn_idChk() {
+    	
+    	var senid = {
+    			u_id : $("#u_id").val()
+			};
+    	
         $.ajax({
             url : "member/idChk",
             type : "POST",
-            dataType :"JSON",
-            data : {"id" : $("#u_id").val()},
+            contentType: "application/json; charset=utf-8",
+            data : JSON.stringify(senid),
+            dataType :"json",
             success : function (data) {
-                if(data == 1) {
+            	console.log(data.idCheck)
+                if(data.idCheck == 1) {
                     alert("중복된 아이디입니다.");
-                } else if (data == 0) {
+                } else if (data.idCheck == 0) {
                     $("#idChk").attr("value", "Y");
                     alert("사용 가능한 아이디입니다.")
                 }

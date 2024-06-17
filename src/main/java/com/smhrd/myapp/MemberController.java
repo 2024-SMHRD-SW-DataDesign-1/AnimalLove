@@ -9,12 +9,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mysql.cj.log.Log;
+import com.smhrd.myapp.model.Check;
 import com.smhrd.myapp.model.MavenMember;
 import com.smhrd.myapp.service.MemberService;
 
@@ -53,12 +58,26 @@ public class MemberController {
 	}
 
 	// 아이디 중복체크 처리
-	@RequestMapping(value = "/member/idChk", method = RequestMethod.POST)
-	public int idChk(@RequestParam("u_id") String id) {
+	@RequestMapping(value = "/member/idChk", method = RequestMethod.POST, consumes="application/json;")
+	public @ResponseBody String idChk(@RequestBody String u_id) throws JsonMappingException, JsonProcessingException {
+		// String 형식으로 json 타입 값을 받음
+		// 받은 u_id 를 MavenMemver 타입으로 매칭
+		ObjectMapper mapper = new ObjectMapper();
+        MavenMember tmp = mapper.readValue(u_id, MavenMember.class);
+        // MavenMemver 에서 u_id값 가지고 옴
+        u_id = tmp.getU_id();
+		
+        // service 처리후 int값 받아줄 Check 객체 생성
+		Check tmp2 = new Check();
+		// service 처리후 결과값 Check 객체에 idchenk 변수에 담음
+		tmp2.setIdCheck(service.idChk(u_id));
+		
+		// Check 타입에서 json 타입으로 변환
+		ObjectMapper om = new ObjectMapper();
+		String jsonString = om.writeValueAsString(tmp2);
 
-		int res = service.idChk(id);
-
-		return res;
+		// json 타입 결과갑 리턴
+		return jsonString;
 	}
 
 	// 닉네임 중복체크 처리
