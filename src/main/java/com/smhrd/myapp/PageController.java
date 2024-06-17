@@ -28,7 +28,7 @@ public class PageController {
 	
 	@RequestMapping(value="/update", method=RequestMethod.GET)
 	public String update() {
-		return "update";
+		return "page/update";
 	}
 	
 //	@RequestMapping(value="/chat", method=RequestMethod.GET)

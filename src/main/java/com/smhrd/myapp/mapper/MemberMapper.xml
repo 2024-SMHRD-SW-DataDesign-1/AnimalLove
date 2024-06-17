@@ -6,7 +6,7 @@
   
   <mapper namespace="com.smhrd.myapp.mapper.MemberMapper">
   		<insert id="memberJoin" parameterType="com.smhrd.myapp.model.MavenMember">
-  			insert into USERS (u_id,u_pw,u_nickname,u_address,u_email) values (#{u_id}, #{u_pw}, #{u_nickname}, #{u_address}, #{u_email})
+  			insert into USERS (u_id,u_pw,u_nickname,u_address,u_email,u_name) values (#{u_id}, #{u_pw}, #{u_nickname}, #{u_address}, #{u_email}, #{u_name})
   		</insert>
   		
   		<select id="memberLogin" parameterType="com.smhrd.myapp.model.MavenMember" resultType="com.smhrd.myapp.model.MavenMember">
