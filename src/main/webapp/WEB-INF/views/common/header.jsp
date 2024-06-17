@@ -130,7 +130,7 @@ header>ul>li>a:hover {
 
 #chatList_box
 {
-	
+	display : none;
 	position : fixed;
 	left : 75%;
 	top : 57%;
@@ -180,10 +180,15 @@ header>ul>li>a:hover {
 	<script type="text/javascript">
 		function chatListView()
 		{
-			let chatList = document.getElementById("chat_icon");
-			var visibilityStyle = window.getComputedStyle(chatList).getPropertyValue('visibility');
-			console.log(visibilityStyle)
 			
+			if ( $('#chatList_box').css('display') === 'none' ) {
+				  $('#chatList_box').show();
+
+				} else {
+				  $('#chatList_box').hide();
+
+				}
+				
 		}
 		
 	</script>
