@@ -165,8 +165,9 @@ p {
 
 			<p>주소</p>
 			<p>
-				<input type="text" class="text" name="u_address" id="u_address" readonly>
-				<input type="button" value="찾기" class="sub" id="openModal">
+				<input type="text" class="text" name="u_address" id="u_address"
+					readonly> <input type="button" value="찾기" class="sub"
+					id="openModal">
 			</p>
 
 
@@ -181,7 +182,7 @@ p {
 	</div>
 
 
-<!-- 주소찾기 -->
+	<!-- 주소찾기 -->
 	<script>
 		function SendData(e)
 		{
