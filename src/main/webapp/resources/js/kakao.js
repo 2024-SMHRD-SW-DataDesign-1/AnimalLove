@@ -10,9 +10,9 @@ function setMap(Map)
     map = Map;
 }
 
-function getMap(Map)
+function getMap()
 {
-    return map;
+	return map;
 }
 
 // 장소 검색 객체를 생성합니다
@@ -53,7 +53,7 @@ function placesSearchCB (data, status, pagination) {
 
 // 지도에 마커를 표시하는 함수입니다
     function displayMarker(place) {
-    
+    	
     // 마커를 생성하고 지도에 표시합니다
     var marker = new kakao.maps.Marker({
         map: map,
@@ -68,6 +68,19 @@ function placesSearchCB (data, status, pagination) {
     });
 
 
+}
+
+function MarkerView(places)
+{
+	var markerPosition  = new kakao.maps.LatLng(places[0].y, places[0].x); 
+	
+	// 마커를 생성합니다
+	var marker = new kakao.maps.Marker({
+	    position: markerPosition
+	});
+	
+	// 마커가 지도 위에 표시되도록 설정합니다
+	marker.setMap(map);	
 }
 
     // 검색 결과 목록과 마커를 표출하는 함수입니다

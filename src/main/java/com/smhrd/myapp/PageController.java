@@ -71,5 +71,11 @@ public class PageController {
 		return "chatList";
 	}
 	
+	@RequestMapping(value="/mainchatList", method=RequestMethod.GET)
+	public String mainchatList() {
+		return "common/chat/chatlist";
+	}
+	
+	
 }
 
