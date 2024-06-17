@@ -1,41 +1,52 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .text{
+            color:gray;
+            font-size: 10px;
+        }
+    </style>
 </head>
-<body >
-	<img alt="" src="">
-	<div id="chatList_inner">
-		<script type="text/javascript">
-			function setTag(idx)
-			{
-				//let tag = "<div style='width:100%; background-color: #3c40c6; display=flex;'><img src=""/><div style= 'display:flex; flex-direction: column;'><div>채팅방이름</div><div>마지막채팅대화</div></div></div>";
-				let result = "";
-				for(let i = 0; i< idx; i++)
-				{
-					result += tag;	
-				}
-				return result;	
-			}
-			let tag = 
-			"<div style=\'background-color:red; display=flex;  \'> " +
-				"<img alt=\'nullData\' src=resources/img/img_logo.png style=width:80px;>" +
-				"<div  >" +
-					"<div>채팅방이름</div>" +
-					"<div>마지막채팅대화</div>" +
-				"</div>" +
-			"</div>";
-			$("#chatList_inner").html(tag);
-			
+<body>
+    <div id="chatReady">
+       <span class="text">알림</span> 
+        
+    </div>
+    <div id="chatModal">
+        <span class="text">채팅방목록</span> 
+        
+    </div>
+    
+    <script>
+        let div = document.getElementById("chatModal");
+        let ready = document.getElementById("chatReady");
+       
+        let chatlist =
+        "<div style='display:flex; justify-content: space-between;  border-top:1px solid black; border-bottom:1px solid black;'>" + 
+            "<div style='width: 40; border-radius: 150px; background-color: skyblue;'>이미지</div>"+
+            "<div>"+
+                "<div>채팅방이름</div>"+
+                "<div>마지막채팅</div>" +
+            "</div>" +
+            "<img src='resources/img/deleteBox.png' style='width:40px;' alt='휴지통'>" +
+        "</div>";
 
+        div.innerHTML += chatlist;
+        let  chatready = 
+        "<div style='display:flex; justify-content: space-between;  border-top:1px solid black; border-bottom:1px solid black;'>" + 
+            "<div style='width: 40; border-radius: 150px; background-color: skyblue;'>이미지</div>"+
+            "<button>수락</button>" +
+            "<button>거부</button>" +
+            "<button>정보확인</button>" +
+        "</div>";
 
-		
-			
-		</script> 
-	</div>
+        ready.innerHTML += chatready;
+    </script>
 </body>
 </html>

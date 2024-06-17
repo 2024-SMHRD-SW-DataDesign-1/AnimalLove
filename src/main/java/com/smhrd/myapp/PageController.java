@@ -71,6 +71,7 @@ public class PageController {
 		return "chatList";
 	}
 	
+	// 채팅방리스트 화면
 	@RequestMapping(value="/mainchatList", method=RequestMethod.GET)
 	public String mainchatList() {
 		return "common/chat/chatlist";
