@@ -37,10 +37,10 @@
 	margin: 0 auto;
 	box-sizing: border-box;
 	flex-direction: column;
-	height: 60vh;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+	margin-bottom:100px;
 }
 
 
