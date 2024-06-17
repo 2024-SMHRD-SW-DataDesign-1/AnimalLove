@@ -136,28 +136,22 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/member/update", method = RequestMethod.POST)
-	public String memberUpdate(@ModelAttribute MavenMember member, HttpSession session) {
-		// id, pw, nickname => 한 회원에 정보 (MavenMember)
-		// RequestParam => 파라미터 하나하나 가져오는 방법
-		// ModelAttriibute => 특정한 Model 형태로 파라미터를 묶어서 가져오는 방법
-		// => 사용한 Model Class : 기본 생성자, Setter 생성
-		System.out.println(member.getU_id());
-		System.out.println(member.getU_pw());
-		System.out.println(member.getU_nickname());
+	public String memberUpdate(@ModelAttribute MavenMember member) {
 
-		int res = service.memberUpdate(member);
+		int nickChkResult = service.nickChk(member.getU_nickname());
+		int emailChkResult = service.emailChk(member.getU_email());
 
-		System.out.println(res);
-
-		if (res > 0) {
-			// 수정 성공
-			// member 세션을 수정한 값을 저장하도록 변경(새롭게 생성)
-			session.setAttribute("member", member);
-			return "redirect:/index";
-
-		} else {
-			return "reirect:/update";
+		try {
+			if (emailChkResult == 1 || nickChkResult == 1) {
+				return "page/update";
+			} else if (emailChkResult == 0 && nickChkResult == 0) {
+				service.memberJoin(member);
+				return "page/login";
+			}
+		} catch (Exception e) {
+			throw new RuntimeException();
 		}
+		return "redirect:/index";
 	}
 
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
