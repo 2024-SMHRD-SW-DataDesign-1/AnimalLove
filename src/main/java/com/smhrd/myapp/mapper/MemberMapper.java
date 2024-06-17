@@ -15,6 +15,9 @@ public interface MemberMapper {
 	// 회원가입 처리
 	public int memberJoin(MavenMember member);
 	
+	// 아이디 중복체크
+	public int idChk(MavenMember member);
+	
 	public MavenMember memberLogin(MavenMember member);
 	
 	@Update("update USERS set u_pw=#{u_pw}, u_nickname=#{u_nickname}, u_name=#{u_name} where u_id=#{u_id}")

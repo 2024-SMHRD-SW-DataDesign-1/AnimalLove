@@ -12,6 +12,10 @@
   		<select id="memberLogin" parameterType="com.smhrd.myapp.model.MavenMember" resultType="com.smhrd.myapp.model.MavenMember">
   			select * from USERS where u_id=#{u_id} and u_pw=#{u_pw}
   		</select>
+  		
+  		<select id="idChk" parameterType="com.smhrd.myapp.model.MavenMember" resultType="int">
+  			select COUNT(*) from USERS where u_id=#{u_id}
+  		</select>
   	
 <!--	
 	 	<delete id="memberDelete">

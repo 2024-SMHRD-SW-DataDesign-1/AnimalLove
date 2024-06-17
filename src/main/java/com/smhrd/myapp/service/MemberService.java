@@ -23,6 +23,11 @@ public class MemberService {
 		return mapper.memberJoin(member);
 	}
 	
+	// 아이디 중복체크 처리
+	public int idChk(MavenMember member)
+	{
+		return mapper.idChk(member);
+	}
 	// 로그인 처리
 	public MavenMember memberLogin(MavenMember member)
 	{
