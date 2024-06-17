@@ -21,7 +21,7 @@
 		<a href="/list"><button>회원전체리스트</button></a>
 	<% } %>
 	<form action="member/call" method="post">
-			채팅요청보낼ID <input type="text" name="receiveId">
+			채팅요청보낼ID <input type="text" name="c_recid">
 			<input type="submit" value="요청보내기">
 	</form>
 	<a href="member/chatlist/<%=member.getU_id()%>"><button>채팅목록</button></a>
