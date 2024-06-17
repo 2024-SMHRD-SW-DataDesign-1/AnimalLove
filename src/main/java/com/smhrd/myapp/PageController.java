@@ -60,9 +60,9 @@ public class PageController {
 //		return "member/list";
 //	}
 	
-	@RequestMapping(value="/chatting/{chatId}", method=RequestMethod.GET)
-	public String chatting(@PathVariable("chatId") String chatId, Model model) {
-		model.addAttribute("chatId", chatId);
+	@RequestMapping(value="/chatting/{c_id}", method=RequestMethod.GET)
+	public String chatting(@PathVariable("c_id") String c_id, Model model) {
+		model.addAttribute("c_id", c_id);
 		return "chatting";
 	}
 	
@@ -71,6 +71,7 @@ public class PageController {
 		return "chatList";
 	}
 	
+	// 채팅방리스트 화면
 	@RequestMapping(value="/mainchatList", method=RequestMethod.GET)
 	public String mainchatList() {
 		return "common/chat/chatlist";

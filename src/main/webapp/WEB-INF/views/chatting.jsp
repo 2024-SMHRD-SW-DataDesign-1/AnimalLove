@@ -117,7 +117,7 @@
 	</div>
 </body>
 <script type="text/javascript">
-	var chatId = "${chatId}";
+	var chatId = "${c_id}";
 	console.log(chatId);
 	<% MavenMember member = (MavenMember)session.getAttribute("member");%>
 	
@@ -174,7 +174,7 @@
 		
 		
 		var importLog = {
-				chatId : chatId,
+				cl_c_id : chatId,
 			};
 		
 		$.ajax({
@@ -185,14 +185,14 @@
 	        dataType:"json",
 	        success: function(response) {
 	        	$.each(response, (index,vo)=> { //data : boardlist / vo : Board
-	        		console.log(vo.sendId)
+	        		console.log(vo.cl_senid)
 	        		console.log(userIdFromJSP)
 	        		
-	        		 if (vo.sendId === userIdFromJSP) {
-	                     var $chat = $("<div class='my-chat-box'><div class='chat my-chat'>" + vo.log + "</div></div>");
+	        		 if (vo.cl_senid === userIdFromJSP) {
+	                     var $chat = $("<div class='my-chat-box'><div class='chat my-chat'>" + vo.cl_log + "</div></div>");
 	                     $('#chat-container').append($chat);
 	                 } else {
-	                     var $chat = $("<div class='chat-box'><div class='chat'>" + vo.log + "</div></div>");
+	                     var $chat = $("<div class='chat-box'><div class='chat'>" + vo.cl_log + "</div></div>");
 	                     $('#chat-container').append($chat);
 	                 }
 	    		})	    		
@@ -219,9 +219,9 @@
 		}		
 		
 		var chatLog = {
-			chatId : chatId,
-			sendId : "<%=member.getU_id()%>",
-			log : chatMsg
+			cl_c_id : chatId,
+			cl_senid : "<%=member.getU_id()%>",
+			cl_log : chatMsg
 		};
 		console.log("test");
 		$.ajax({

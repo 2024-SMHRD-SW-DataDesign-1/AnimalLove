@@ -27,15 +27,15 @@ public class ChatService {
 		return mapper.receivelist(u_id);
 	}
 	
-	public int accept(String receiveId) {
-		return mapper.accept(receiveId);
+	public int accept(String c_recid) {
+		return mapper.accept(c_recid);
 	}
 	
 	public int saveLog(Log save) {
 		return mapper.saveLog(save);
 	}
 	
-	public List<Log> loadLog(String chatId) {
-		return mapper.loadLog(chatId);
+	public List<Log> loadLog(String cl_c_id) {
+		return mapper.loadLog(cl_c_id);
 	}
 }
