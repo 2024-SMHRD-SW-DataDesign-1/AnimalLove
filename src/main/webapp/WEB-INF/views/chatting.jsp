@@ -119,7 +119,8 @@
 <script type="text/javascript">
 	var chatId = "${c_id}";
 	console.log(chatId);
-	<% MavenMember member = (MavenMember)session.getAttribute("member");%>
+	<% MavenMember member = (MavenMember)session.getAttribute("member");
+	%>
 	
 	$(document).ready(function(){
 		readLog()

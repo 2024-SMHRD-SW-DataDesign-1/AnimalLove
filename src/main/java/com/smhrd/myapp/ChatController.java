@@ -49,7 +49,7 @@ public class ChatController {
 
 			model.addAttribute("chatlist", sendlist);
 			model.addAttribute("receivelist", receivelist);
-			return "chatList";
+			return "common/chat/chatlist";
 		}
 
 		// 채팅 요청 수락
