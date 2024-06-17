@@ -30,13 +30,13 @@ public class ChatController {
 	
 	// 채팅요청
 		@RequestMapping(value = "/member/call", method = RequestMethod.POST)
-		public String call(@RequestParam("receiveId") String receiveId, HttpSession session) {
+		public String call(@RequestParam("c_recid") String c_recid, HttpSession session) {
 			MavenMember member = (MavenMember) session.getAttribute("member");
 			Chat chat = new Chat();
-			chat.setSendId(member.getU_id());
-			chat.setReceiveId(receiveId);
-			System.out.println(chat.getSendId());
-			System.out.println(chat.getReceiveId());
+			chat.setC_senid(member.getU_id());
+			chat.setC_recid(c_recid);
+			System.out.println(chat.getC_senid());
+			System.out.println(chat.getC_recid());
 			int res = service.chat(chat);
 			return "redirect:/index";
 		}
@@ -53,17 +53,17 @@ public class ChatController {
 		}
 
 		// 채팅 요청 수락
-		@RequestMapping(value = "/member/accept/{receiveId}", method = RequestMethod.GET)
-		public String chatlist(@PathVariable("receiveId") String receiveId) {
-			service.accept(receiveId);
-			return "redirect:/member/chatlist/" + receiveId;
+		@RequestMapping(value = "/member/accept/{c_recid}", method = RequestMethod.GET)
+		public String chatlist(@PathVariable("c_recid") String c_recid) {
+			service.accept(c_recid);
+			return "redirect:/member/chatlist/" + c_recid;
 		}
 
 		// 로그 저장
 		@RequestMapping(value = "/chat/send", method =RequestMethod.POST, consumes="application/json;")
-		public @ResponseBody void saveLog(@RequestBody String chatLog) throws JsonMappingException, JsonProcessingException {
+		public @ResponseBody void saveLog(@RequestBody String cl_log) throws JsonMappingException, JsonProcessingException {
 			ObjectMapper mapper = new ObjectMapper();
-	        Log log = mapper.readValue(chatLog, Log.class);
+	        Log log = mapper.readValue(cl_log, Log.class);
 	        
 			int res = service.saveLog(log);
 			System.out.println(res);
@@ -71,11 +71,11 @@ public class ChatController {
 		
 		// 로그 가져오기
 		@RequestMapping(value = "/chat/roadLog", method =RequestMethod.POST, consumes="application/json;", produces = "application/text; charset=UTF-8")
-		public @ResponseBody String loadLog(@RequestBody String chatId) throws JsonMappingException, JsonProcessingException {
+		public @ResponseBody String loadLog(@RequestBody String cl_c_id) throws JsonMappingException, JsonProcessingException {
 			ObjectMapper mapper = new ObjectMapper();
-	        Log log = mapper.readValue(chatId, Log.class);
+	        Log log = mapper.readValue(cl_c_id, Log.class);
 	        
-			List<Log> returnLog = service.loadLog(log.getChatId());
+			List<Log> returnLog = service.loadLog(log.getCl_c_id());
 			
 			ObjectMapper om = new ObjectMapper();
 			String jsonString = om.writeValueAsString(returnLog);

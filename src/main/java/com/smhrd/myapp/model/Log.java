@@ -12,16 +12,16 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 public class Log {
-	private String chatId;
-	private String sendId;
-	private String log;
-	private Timestamp recodeTime;
-	private int ruread;
+	private String cl_c_id;
+	private String cl_senid;
+	private String cl_log;
+	private Timestamp cl_sentime;
+	private int cl_ruread;
 
-	public Log(String chatId, String sendId, String log) {
-		this.chatId = chatId;
-		this.sendId = sendId;
-		this.log = log;
+	public Log(String cl_c_id, String cl_senid, String cl_log) {
+		this.cl_c_id = cl_c_id;
+		this.cl_senid = cl_senid;
+		this.cl_log = cl_log;
 	}
 	
 }
