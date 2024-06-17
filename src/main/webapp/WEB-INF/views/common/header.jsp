@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <title>Document</title>
 
 <style>
@@ -12,6 +13,10 @@
 @media screen and (max-width:640px) {
 	header {
 		flex-direction: column;
+	}
+	
+	#chatList_box{
+		left : 50%;
 	}
 }
 
@@ -29,7 +34,15 @@
 	margin: 0;
 }
 
-.container {
+header {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	align-items: center;
+	padding: 1.2rem 0;
+}
+
+.h_container {
 	max-width: 800px;
 	margin: 0 auto;
 	box-sizing: border-box;
@@ -40,22 +53,15 @@
 	text-decoration: none;
 }
 
-header {
-	display: flex;
-	justify-content: space-between;
-	width: 100%;
-	align-items: center;
-	padding: 1.2rem 0;
-}
 
 /*애니팅, 로고 이미지*/
-header>div {
+header .h_title {
 	display: flex;
 	align-items: center;
 }
 
 /*애니팅 속성*/
-#l_name {
+#h_name {
 	font-size: 2rem;
 	font-weight: 700;
 	text-decoration: none;
@@ -70,7 +76,7 @@ header>div>ul>li {
 
 
 /*로고이미지 속성*/
-#logo {
+#h_logo {
 	width: 70px;
 	height: 70px;
 }
@@ -81,7 +87,7 @@ header>ul {
 }
 
 /*매칭,위치,마이 속성*/
-header>ul>li {
+.h_list {
 	list-style-type: none;
 	margin-left: 4rem;
 	padding-bottom: 10px;
@@ -90,7 +96,7 @@ header>ul>li {
 
 
 /*매칭,위치,마이,로그인 속성*/
-header>ul>li>a {
+.h_category {
 	color: #333333;
 	text-decoration: none;
 	font-size: 1rem;
@@ -106,37 +112,85 @@ header>ul>li>a:hover {
 }
 
 /*아이콘 속성*/
-#i_angle {
+#h_angle {
 	filter: opacity(0.5) drop-shadow(0 0 0 #333333);
 	width: 24px;
 }
+
+#chat_icon
+{
+	position : fixed;
+	left : 90%;
+	top : 90%;
+	background-color : red;
+	width: 30px;
+	border-radius: 20px;
+	z-index : 100;
+}
+
+#chatList_box
+{
+	display : none;
+	position : fixed;
+	left : 75%;
+	top : 57%;
+	border : 2px solid #000000;
+	width : 300px;
+	height : 300px;
+	z-index : 100;
+	overflow-y:auto; 	
+}
+
+
 
 </style>
 
 </head>
 <body>
-	<div class="container">
+	<div class="h_container">
 		<header>
-			<div>
-				<a href="#"><img src="resources/img/img_logo.png" id="logo"></a>
+			<div class="h_title">
+				<a href="main"><img src="resources/img/img_logo.png" id="h_logo"></a>
 				<ul>
-					<li><a href="#" id="l_name">애니팅</a></li>
+					<li><a href="main" id="h_name">애니팅</a></li>
 				</ul>
 			</div>
 			<ul>
-				<li><a href="#">매칭</a></li>
-				<li><a href="#">위치</a></li>
-				<li><a href="#">마이페이지</a></li>
+				<li class="h_list"><a href="#" class="h_category">매칭</a></li>
+				<li class="h_list"><a href="#" class="h_category">위치</a></li>
+				<li class="h_list"><a href="#" class="h_category">마이페이지</a></li>
 
 			</ul>
 			<ul>
-				<li><a href="login" id="login">로그인</a></li>
-				<a href="login"><img src="resources/img/icon_angle.png" id="i_angle"></a>
+				<li class="h_list"><a href="login" class="h_category">로그인</a></li>
+				<a href="login"><img src="resources/img/icon_angle.png" id="h_angle"></a>
 			</ul>
 
 		</header>
 
 
 	</div>
+	<div id="chatList_box">
+			<jsp:include page="/WEB-INF/views/common/chat/chatlist.jsp"></jsp:include>
+	</div>
+	<div id="chat_icon" onclick="chatListView()">
+		채팅
+	</div>
+	
+	<script type="text/javascript">
+		function chatListView()
+		{
+			
+			if ( $('#chatList_box').css('display') === 'none' ) {
+				  $('#chatList_box').show();
+
+				} else {
+				  $('#chatList_box').hide();
+
+				}
+				
+		}
+		
+	</script>
 </body>
 </html>
