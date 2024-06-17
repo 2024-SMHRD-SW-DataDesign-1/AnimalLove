@@ -83,20 +83,35 @@ public class MemberController {
 
 	// 닉네임 중복체크 처리
 	@RequestMapping(value = "/member/nickChk", method = RequestMethod.POST)
-	public int nickChk(@RequestParam("u_nicknmae") String nickname) {
-
-		int res = service.nickChk(nickname);
-
-		return res;
+	public @ResponseBody String nickChk(@RequestBody String u_nickname) throws JsonMappingException, JsonProcessingException   {
+		ObjectMapper mapper = new ObjectMapper();
+        MavenMember tmp = mapper.readValue(u_nickname, MavenMember.class);
+		
+        u_nickname = tmp.getU_nickname();
+        
+        Check tmp2 = new Check();
+        tmp2.setNickCheck(service.nickChk(u_nickname));
+        ObjectMapper om = new ObjectMapper();
+		String jsonString = om.writeValueAsString(tmp2);
+        
+        return jsonString;
+		
 	}
 
 	// 이메일 중복체크 처리
 	@RequestMapping(value = "/member/emailChk", method = RequestMethod.POST)
-	public int emailChk(@RequestParam("u_email") String email) {
-
-		int res = service.emailChk(email);
-
-		return res;
+	public @ResponseBody String emailChk(@RequestBody String u_email) throws JsonMappingException, JsonProcessingException  {
+		ObjectMapper mapper = new ObjectMapper();
+        MavenMember tmp = mapper.readValue(u_email, MavenMember.class);
+		
+        u_email = tmp.getU_email();
+        
+        Check tmp2 = new Check();
+        tmp2.setEmailCheck(service.emailChk(u_email));
+        ObjectMapper om = new ObjectMapper();
+		String jsonString = om.writeValueAsString(tmp2);
+        
+        return jsonString;
 	}
 
 	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
