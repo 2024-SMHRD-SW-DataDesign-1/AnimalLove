@@ -126,8 +126,8 @@ p {
 
 			<p>아이디</p>
 			<p>
-				<input type="text" class="text" name="u_id" required> <input
-					type="button" value="중복확인" class="sub">
+				<input type="text" class="text" name="u_id" required id="u_id"> 
+				<button class="idChk" type="button" id="idChk" onclick="fn_idChk();" value="N"> 중복확인 </button>
 			</p>
 
 
@@ -150,16 +150,15 @@ p {
 
 			<p>닉네임</p>
 			<p>
-				<input type="text" class="text" name="u_nickname"> <input
-					type="button" value="중복확인" class="sub">
+				<input type="text" class="text" name="u_nickname"  id="u_nickname"> 
+				<button class="nickChk" type="button" id="nickChk" onclick="fn_nickChk();" value="N"> 중복확인 </button>
 			</p>
 
 
 			<p>이메일</p>
 			<p>
-				<input type="email" class="text" placeholder="animal@aniting.com"
-					name="u_email" required> <input type="button" value="중복확인"
-					class="sub">
+				<input type="email" id="u_email" class="text" placeholder="animal@aniting.com" name="u_email" required>
+				<button class="emailChk" type="button" id="emailChk" onclick="fn_emailChk();" value="N"> 중복확인 </button>
 			</p>
 
 
@@ -244,6 +243,61 @@ p {
         });
 
     </script>
+<script>
+    function fn_emailChk() {
+        $.ajax({
+            url : "member/emailChk",
+            type : "POST",
+            dataType :"JSON",
+            data : {"email" : $("#u_email").val()},
+            success : function (data) {
+                if(data == 1) {
+                    alert("중복된 이메일입니다.");
+                } else if (data == 0) {
+                    $("#emailChk").attr("value", "Y");
+                    alert("사용 가능한 이메일입니다.")
+                }
+            }
+
+        })
+    }
+
+    function fn_nickChk() {
+        $.ajax({
+            url : "member/nickChk",
+            type : "POST",
+            dataType :"JSON",
+            data : {"nickname" : $("#u_nickname").val()},
+            success : function (data) {
+                if(data == 1) {
+                    alert("중복된 닉네임입니다.");
+                } else if (data == 0) {
+                    $("#nickChk").attr("value", "Y");
+                    alert("사용 가능한 닉네임입니다.")
+                }
+            }
+
+        })
+    }
+
+    function fn_idChk() {
+        $.ajax({
+            url : "member/idChk",
+            type : "POST",
+            dataType :"JSON",
+            data : {"id" : $("#u_id").val()},
+            success : function (data) {
+                if(data == 1) {
+                    alert("중복된 아이디입니다.");
+                } else if (data == 0) {
+                    $("#idChk").attr("value", "Y");
+                    alert("사용 가능한 아이디입니다.")
+                }
+            }
+
+        })
+    }
+</script>
 
 
 

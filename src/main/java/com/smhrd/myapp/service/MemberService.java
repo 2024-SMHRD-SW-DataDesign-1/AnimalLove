@@ -12,50 +12,52 @@ import com.smhrd.myapp.model.MavenMember;
 
 @Service
 public class MemberService {
-	
-	@Autowired //의존성 주입
+
+	@Autowired // 의존성 주입
 	MemberMapper mapper;
-	
-	
+
 	// 회원가입 처리
-	public int memberJoin(MavenMember member)
-	{
+	public int memberJoin(MavenMember member) {
 		return mapper.memberJoin(member);
 	}
-	
+
 	// 아이디 중복체크 처리
-	public int idChk(MavenMember member)
-	{
-		return mapper.idChk(member);
+	public int idChk(String id) {
+		return mapper.idChk(id);
 	}
+
+	// 이메일 중복체크 처리
+	public int emailChk(String email) {
+		return mapper.emailChk(email);
+	}
+
+	// 닉네임 중복체크 처리
+	public int nickChk(String nickname) {
+		return mapper.nickChk(nickname);
+	}
+
 	// 로그인 처리
-	public MavenMember memberLogin(MavenMember member)
-	{
+	public MavenMember memberLogin(MavenMember member) {
 		return mapper.memberLogin(member);
 	}
-	
+
 	// 회원정보수정
-	public int memberUpdate(MavenMember member)
-	{
+	public int memberUpdate(MavenMember member) {
 		return mapper.memberUpdate(member);
 	}
-	
+
 	// 회원탈퇴 처리
-	public int memberDelete(String id)
-	{
+	public int memberDelete(String id) {
 		return mapper.memberDelete(id);
 	}
-	
-	
+
 	// 회원 전체 리스트 처리
-	public List<MavenMember> memberList()
-	{
+	public List<MavenMember> memberList() {
 		return mapper.memberList();
 	}
-	
+
 	// chat add
-	public int chatAdd(String log)
-	{
+	public int chatAdd(String log) {
 		return mapper.chatAdd(log);
 	}
 }
