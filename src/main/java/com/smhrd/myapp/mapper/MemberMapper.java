@@ -17,7 +17,7 @@ public interface MemberMapper {
 	
 	public MavenMember memberLogin(MavenMember member);
 	
-	@Update("update USERS set u_pw=#{u_pw}, u_nickname=#{u_nickname} where u_id=#{u_id}")
+	@Update("update USERS set u_pw=#{u_pw}, u_nickname=#{u_nickname}, u_name=#{u_name} where u_id=#{u_id}")
 	public int memberUpdate(MavenMember member);
 	
 	@Delete("delete from USERS where u_id=#{u_id}")

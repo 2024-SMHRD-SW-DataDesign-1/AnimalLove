@@ -119,7 +119,7 @@ p {
 <body>
 
 	<div class="join_form">
-		<form action="member/join" method="POST">
+		<form action="member/update" method="POST">
 
 			<h2 id="j_title">Sign in</h2>
 			<br>
@@ -139,7 +139,7 @@ p {
 
 			<p>비밀번호 확인</p>
 			<p>
-				<input type="password" class="text" name="u_pwcheck">
+				<input type="password" class="text" name="u_pw">
 			</p>
 
 

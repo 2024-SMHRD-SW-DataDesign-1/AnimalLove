@@ -17,5 +17,9 @@ public class MavenMember {
 	private String u_address;
 	private String u_email;
 	private String u_name;
+	private String u_mid1;
+	private String u_mid2;
+	private String u_mid3;
+	
 	
 }

@@ -23,7 +23,7 @@ public class MemberController {
 	// 회원가입 요청 처리 : localhost:8089/aniting/join
 	
 	
-	@RequestMapping(value = "/join", method = RequestMethod.POST)
+	@RequestMapping(value = "/member/join", method = RequestMethod.POST)
 	public String memberJoin(@ModelAttribute MavenMember member) {
 
 		int res = service.memberJoin(member);
@@ -36,7 +36,7 @@ public class MemberController {
 
 	}
 	
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
 	public String memberLogin(@ModelAttribute MavenMember member, HttpSession session) {
 		System.out.println(member.getU_id());
 		MavenMember result = service.memberLogin(member);
@@ -57,7 +57,7 @@ public class MemberController {
 		return "redirect:/index";
 	}
 	
-	@RequestMapping(value="/update", method=RequestMethod.POST)
+	@RequestMapping(value="/member/update", method=RequestMethod.POST)
 	public String memberUpdate(@ModelAttribute MavenMember member, HttpSession session)	{
 		// id, pw, nickname => 한 회원에 정보 (MavenMember)
 		// RequestParam => 파라미터 하나하나 가져오는 방법
