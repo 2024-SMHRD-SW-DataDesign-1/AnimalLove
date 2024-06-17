@@ -13,7 +13,11 @@
   			select * from USERS where u_id=#{u_id} and u_pw=#{u_pw}
   		</select>
   		
+<<<<<<< HEAD
   		<select id="idChk" parameterType="com.smhrd.myapp.model.MavenMember"  resultType="int">
+=======
+  		<select id="idChk" resultType="int">
+>>>>>>> branch 'main' of https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove.git
   			select COUNT(*) from USERS where u_id=#{u_id}
   		</select>
   		
