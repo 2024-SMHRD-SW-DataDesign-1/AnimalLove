@@ -250,15 +250,22 @@
     </script>
 <script>
     function fn_emailChk() {
+    	
+    	var senemail = {
+    			u_email : $("#u_email").val()
+			};
+    	
         $.ajax({
             url : "member/emailChk",
             type : "POST",
+            contentType: "application/json; charset=utf-8",
+            data : JSON.stringify(senemail),
             dataType :"JSON",
-            data : {"email" : $("#u_email").val()},
             success : function (data) {
-                if(data == 1) {
+            	console.log(data.emailCheck)
+                if(data.emailCheck == 1) {
                     alert("중복된 이메일입니다.");
-                } else if (data == 0) {
+                } else if (data.emailCheck == 0) {
                     $("#emailChk").attr("value", "Y");
                     alert("사용 가능한 이메일입니다.")
                 }
@@ -268,15 +275,21 @@
     }
 
     function fn_nickChk() {
+    	
+    	var sennick = {
+    			u_nickname : $("#u_nickname").val()
+			};
         $.ajax({
             url : "member/nickChk",
             type : "POST",
-            data : {"nickname" : $("#u_nickname").val()},
+            contentType: "application/json; charset=utf-8",
+            data : JSON.stringify(sennick),
             dataType :"JSON",
             success : function (data) {
-                if(data == 1) {
+            	console.log(data.nickCheck)
+                if(data.nickCheck == 1) {
                     alert("중복된 닉네임입니다.");
-                } else if (data == 0) {
+                } else if (data.nickCheck == 0) {
                     $("#nickChk").attr("value", "Y");
                     alert("사용 가능한 닉네임입니다.")
                 }
