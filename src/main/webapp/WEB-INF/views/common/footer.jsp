@@ -8,6 +8,11 @@
 <title>Document</title>
 
 <style>
+
+*{
+	font-family: 'pretendard';
+}
+
 footer {
 	color: #333333;
 	background: #e9e9e9;
@@ -52,7 +57,7 @@ footer {
 
 .f_list {
 	flex: 1;
-	margin-left: 60px;
+	margin-left: 100px;
 }
 
 .f_list h3 {
@@ -101,10 +106,10 @@ footer .f_copy_right p {
 					<p>http://localhost:8089/aniting/</p>
 
 					<div class="f_sns">
-						<img src="/icon_footer_facebook.png"> <img
-							src="/icon_footer_git.png"> <img
-							src="/icon_footer_twitter.png"> <img
-							src="/icon_footer_youtube.png">
+						<img src="resources/img/icon_footer_facebook.png"> 
+						<img src="resources/img/icon_footer_git.png"> 
+						<img src="resources/img/icon_footer_twitter.png">
+						<img src="resources/img/icon_footer_youtube.png">
 					</div>
 			</div>
 

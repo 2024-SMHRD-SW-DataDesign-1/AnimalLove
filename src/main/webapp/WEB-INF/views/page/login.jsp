@@ -116,8 +116,8 @@ input[placeholder="ID"], input[placeholder="PW"] {
 			<h2 id="l_title">Login</h2>
 			<p id="l_sub">애니팅 서비스에 오신걸 환영합니다🥰</p>
 			<br>
-			<input type="text" placeholder="ID" name="u_id"> <br>
-			<input type="password" placeholder="PW" name="u_pw"> <br>
+			<input type="text" placeholder="ID" name="u_id" required> <br>
+			<input type="password" placeholder="PW" name="u_pw" required> <br>
 			
 			<div class="btn_container">
 				<input type="submit" value="로그인" class="l_btn">
