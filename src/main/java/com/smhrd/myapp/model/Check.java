@@ -12,4 +12,6 @@ import lombok.Setter;
 public class Check {
 
 	private int idCheck;	
+	private int nickCheck;
+	private int emailCheck;
 }
