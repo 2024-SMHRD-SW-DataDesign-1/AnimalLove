@@ -49,72 +49,32 @@ public class MemberController {
 			throw new RuntimeException();
 		}
 		return "redirect:/index";
-//		int res = service.memberJoin(member);
-//
-//		if (res > 0) {
-//			return "redirect:/login";
-//		} else {
-//			return "redirect:/join";
-//		}
 
 	}
 
 	// 아이디 중복체크 처리
-	@RequestMapping(value = "/member/idChk", method = RequestMethod.POST, consumes = "application/json;")
-	public @ResponseBody String idChk(@RequestBody String u_id) throws JsonMappingException, JsonProcessingException {
-		// String 형식으로 json 타입 값을 받음
-		// 받은 u_id 를 MavenMemver 타입으로 매칭
-		ObjectMapper mapper = new ObjectMapper();
-		MavenMember tmp = mapper.readValue(u_id, MavenMember.class);
-		// MavenMemver 에서 u_id값 가지고 옴
-		u_id = tmp.getU_id();
-
-		// service 처리후 int값 받아줄 Check 객체 생성
-		Check tmp2 = new Check();
-		// service 처리후 결과값 Check 객체에 idchenk 변수에 담음
-		tmp2.setIdCheck(service.idChk(u_id));
-
-		// Check 타입에서 json 타입으로 변환
-		ObjectMapper om = new ObjectMapper();
-		String jsonString = om.writeValueAsString(tmp2);
-
-		// json 타입 결과갑 리턴
-		return jsonString;
+	@ResponseBody 
+	@RequestMapping(value = "/member/idChk", method = RequestMethod.POST)
+	public String idChk(MavenMember member) {
+		
+		return service.idChk(member.getU_id()) + "" ;
+		
 	}
 
 	// 닉네임 중복체크 처리
+	@ResponseBody 
 	@RequestMapping(value = "/member/nickChk", method = RequestMethod.POST)
-	public @ResponseBody String nickChk(@RequestBody String u_nickname)
-			throws JsonMappingException, JsonProcessingException {
-		ObjectMapper mapper = new ObjectMapper();
-		MavenMember tmp = mapper.readValue(u_nickname, MavenMember.class);
+	public String nickChk(MavenMember member) {
 
-		u_nickname = tmp.getU_nickname();
-
-		Check tmp2 = new Check();
-		tmp2.setNickCheck(service.nickChk(u_nickname));
-		ObjectMapper om = new ObjectMapper();
-		String jsonString = om.writeValueAsString(tmp2);
-
-		return jsonString;
+		return service.nickChk(member.getU_nickname()) + "" ;
 
 	}
 
 	// 이메일 중복체크 처리
+	@ResponseBody 
 	@RequestMapping(value = "/member/emailChk", method = RequestMethod.POST)
-	public @ResponseBody String emailChk(@RequestBody String u_email)
-			throws JsonMappingException, JsonProcessingException {
-		ObjectMapper mapper = new ObjectMapper();
-		MavenMember tmp = mapper.readValue(u_email, MavenMember.class);
-
-		u_email = tmp.getU_email();
-
-		Check tmp2 = new Check();
-		tmp2.setEmailCheck(service.emailChk(u_email));
-		ObjectMapper om = new ObjectMapper();
-		String jsonString = om.writeValueAsString(tmp2);
-
-		return jsonString;
+	public String emailChk(MavenMember member) {
+		return service.emailChk(member.getU_email())+"";
 	}
 
 	@RequestMapping(value = "/member/login", method = RequestMethod.POST)

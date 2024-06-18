@@ -258,14 +258,12 @@
         $.ajax({
             url : "member/emailChk",
             type : "POST",
-            contentType: "application/json; charset=utf-8",
-            data : JSON.stringify(senemail),
-            dataType :"JSON",
+            data : senemail,
             success : function (data) {
             	console.log(data.emailCheck)
-                if(data.emailCheck == 1) {
+                if(data == '1') {
                     alert("중복된 이메일입니다.");
-                } else if (data.emailCheck == 0) {
+                } else if (data == '0') {
                     $("#emailChk").attr("value", "Y");
                     alert("사용 가능한 이메일입니다.")
                 }
@@ -282,14 +280,12 @@
         $.ajax({
             url : "member/nickChk",
             type : "POST",
-            contentType: "application/json; charset=utf-8",
-            data : JSON.stringify(sennick),
-            dataType :"JSON",
+            data : sennick,
             success : function (data) {
             	console.log(data.nickCheck)
-                if(data.nickCheck == 1) {
+                if(data == '1') {
                     alert("중복된 닉네임입니다.");
-                } else if (data.nickCheck == 0) {
+                } else if (data == '0') {
                     $("#nickChk").attr("value", "Y");
                     alert("사용 가능한 닉네임입니다.")
                 }
@@ -300,21 +296,18 @@
 
     function fn_idChk() {
     	
-    	var senid = {
-    			u_id : $("#u_id").val()
-			};
     	
         $.ajax({
             url : "member/idChk",
             type : "POST",
-            contentType: "application/json; charset=utf-8",
-            data : JSON.stringify(senid),
-            dataType :"json",
+            data : {
+    			u_id : $("#u_id").val()
+			},
             success : function (data) {
-            	console.log(data.idCheck)
-                if(data.idCheck == 1) {
+            	console.log(data)
+                if(data == '1') {
                     alert("중복된 아이디입니다.");
-                } else if (data.idCheck == 0) {
+                } else if (data == '0') {
                     $("#idChk").attr("value", "Y");
                     alert("사용 가능한 아이디입니다.")
                 }
