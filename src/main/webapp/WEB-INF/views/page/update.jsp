@@ -168,10 +168,16 @@
 				<button class="j_btn" type="button" id="emailChk" onclick="fn_emailChk();" value="N"> 중복확인 </button>
 			</p>
 
+<%
+  String address = member.getU_address();
+  String[] parts = address.split(",");
 
+  String part1 = parts[0]; // , 기준 앞 문자열
+  String part2 = parts[1]; // , 기준 뒤 문자열
+%>
 			<p class="j_menu">주소</p>
 			<p class="j_menu">
-				<input type="text" class="j_text" name="u_address" value = "<%=member.getU_address()%>" id="u_address"
+				<input type="text" class="j_text" name="u_address" value = "<%=parts[0]%>" id="u_address"
 					readonly>
 				<input type="button" value="찾기" class="j_btn" id="openModal">
 			</p>
@@ -179,7 +185,7 @@
 
 			<p class="j_menu">상세주소</p>
 			<p class="j_menu">
-				<input type="text" class="j_text" name="u_address">
+				<input type="text" class="j_text" name="u_address" value = "<%=parts[1]%>">
 			</p>
 
 			<input type="submit" value="수정 완료" class="j_import_btn">
@@ -265,9 +271,10 @@
             dataType :"JSON",
             success : function (data) {
             	console.log(data.emailCheck)
+            	console.log($("#u_email").val())
                 if(data.emailCheck == 1) {
                     alert("중복된 이메일입니다.");
-                } else if (data.emailCheck == 0) {
+                } else if (data.emailCheck == 0 ||  data.userEmail == $("#u_email").val() ) {
                     $("#emailChk").attr("value", "Y");
                     alert("사용 가능한 이메일입니다.")
                 }
@@ -291,7 +298,7 @@
             	console.log(data.nickCheck)
                 if(data.nickCheck == 1) {
                     alert("중복된 닉네임입니다.");
-                } else if (data.nickCheck == 0) {
+                } else if (data.nickCheck == 0 ) {
                     $("#nickChk").attr("value", "Y");
                     alert("사용 가능한 닉네임입니다.")
                 }
