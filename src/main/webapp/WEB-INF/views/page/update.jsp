@@ -182,8 +182,8 @@
 			<p class="j_menu">주소</p>
 			<p class="j_menu">
 				<input type="text" class="j_text" name="u_address"
-					value="<%=parts[0]%>" id="u_address"> <input
-					type="button" value="찾기" class="j_btn" id="openModal">
+					value="<%=parts[0]%>" id="u_address"> <input type="button"
+					value="찾기" class="j_btn" id="openModal">
 			</p>
 
 

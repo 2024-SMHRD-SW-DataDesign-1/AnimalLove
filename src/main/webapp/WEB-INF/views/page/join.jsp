@@ -49,6 +49,7 @@
 	text-align: center;
 }
 
+
 .j_btn {
 	margin-left: 5px;
 	width: 68px;
@@ -137,15 +138,30 @@
 			<p class="j_menu">비밀번호</p>
 			<p class="j_menu">
 				<input type="password" class="j_text" name="u_pw" maxlength="20"
-					minlength="6" required>
+					minlength="6" id="pw1" oninput="pwCheck()" required>
 			</p>
 
 
 			<p class="j_menu">비밀번호 확인</p>
 			<p class="j_menu">
-				<input type="password" class="j_text" name="u_pwcheck" required>
+				<input type="password" class="j_text" name="u_pwcheck" maxlength="20"
+					minlength="6" id="pw2" oninput="pwCheck()" required><br>	
+				<sapn id="pwCheck"></span>
+			
 			</p>
+			
+<!-- 비밀번호 체크 스크립트 -->
+<script>
 
+	function pwCheck(){
+	    if($('#pw1').val() == $('#pw2').val()){
+	        $('#pwCheck').text('비밀번호 일치').css('color', 'green')
+	    }else{
+	        $('#pwCheck').text('비밀번호 불일치').css('color', '#ff3f34')
+	    }
+	}
+
+</script>
 
 			<p class="j_menu">이름</p>
 			<p class="j_menu">
@@ -182,11 +198,16 @@
 			<p class="j_menu">
 				<input type="text" class="j_text" name="u_address" required>
 			</p>
-
-			<input type="submit" value="회원가입 완료" class="j_import_btn">
+		
+			<input type="submit" value="회원가입 완료" class="j_import_btn" >
 
 		</form>
 	</div>
+
+
+</body>
+
+<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 
 	<!-- 주소찾기 -->
@@ -251,6 +272,8 @@
         });
 
     </script>
+    
+    <!-- 중복확인 -->
 	<script>
     function fn_emailChk() {
     	
@@ -320,13 +343,5 @@
     }
 </script>
 
-
-
-
-
-
-</body>
-
-<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 </html>
