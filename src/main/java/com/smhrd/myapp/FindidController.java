@@ -13,6 +13,8 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -42,11 +44,14 @@ public class FindidController {
 //    String id = dao.getId(code);
 //    response.sendRedirect("index.jsp?id=" + id);
 		model.addAttribute("id",service.getid(code));
-		return "index";
+		return "redirect:/";
 		
 	}
 	
-	
+	// id 찾기는 일반으로 111**@ㅁㅁㅁ
+	// id 보다는 비밀번호 찾기에 쓰고
+	// 사용자가 url 클릭시 비밀번호를 수정하는 페이지로 이동시키기
+	// 사용자가 비밀번호 찾기 눌렀을 때, cookie 형식으로 랜덤 문자열을 주면된다 $12314@$!@$!%!#%!!
 	@RequestMapping(value="/findidcon", method=RequestMethod.POST)
 	public String findid(@ModelAttribute MavenMember member, HttpSession session) {
 		int res = service.findid(member);
@@ -58,7 +63,7 @@ public class FindidController {
 			String to = member.getU_email();
 			String subject = "아이디 찾기를 위한 이메일 확인 메일입니다. ";
 			String content = "다음 링크에 접속하여 이메일 확인을 진행하세요." + "<a href='" + host + "?code="
-					+to + "'>이메일 인증하기</a>";
+					+to + "&token=" +"'>이메일 인증하기</a>";
 
 			Properties p = new Properties();
 			p.put("mail.smtp.user", from);

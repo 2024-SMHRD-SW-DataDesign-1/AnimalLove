@@ -120,7 +120,7 @@ input[placeholder="ID"], input[placeholder="PW"] {
 				<input type="password" placeholder="PW" name="u_pw" required> <br>
 			
 			<div class="btn_container">
-				<input type="submit" value="로그인" class="l_btn" onclick="saveSession()">
+				<input type="submit" value="로그인" class="l_btn">
 				<input type="button" value="회원가입" class="l_btn" onclick="location.href = 'join'">
 			</div>
 
@@ -136,13 +136,7 @@ input[placeholder="ID"], input[placeholder="PW"] {
 		let login = document.getElementById("h_login");
         login.style = "border-bottom : 2px solid #3c40c6; border-radius: 2px; color : #3c40c6;";
         
-        //폼 태그
-        let user_id = document.getElementById("l_login");
-        
        
-        function saveSession(){
-        	localStorage.setItem('aniting', JSON.stringify(user_id.u_id.value));
-        }
     </script>
     
 </body>
