@@ -39,10 +39,10 @@ public class MemberController {
 
 		try {
 			if (emailChkResult == 1 || nickChkResult == 1 || idChkResult == 1) {
-				return "page/join";
+				return "redirect:/join";
 			} else if (emailChkResult == 0 && nickChkResult == 0 && idChkResult == 0) {
 				service.memberJoin(member);
-				return "page/login";
+				return "redirect:/login";
 			}
 		} catch (Exception e) {
 			throw new RuntimeException();
