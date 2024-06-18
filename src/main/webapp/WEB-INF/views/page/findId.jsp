@@ -120,11 +120,11 @@ input[placeholder="이름"], input[placeholder="이메일"] {
 			<h2 id="id_title">ID Search</h2>
 			<p id="id_sub">ID 찾기</p>
 			<br>
-				<input type="text" placeholder="이름" name="id_name" required > <br>
-				<input type="email" placeholder="이메일" name="id_email" required> <br>
+				<input type="text" placeholder="이름" name="u_name" required > <br>
+				<input type="email" placeholder="이메일" name="u_email" required> <br>
 			
 			<div class="id_btn_container">
-				<input type="submit" value="id찾기" class="id_btn" onclick="alter_action()">
+				<input type="submit" value="id찾기" class="id_btn">
 			</div>
 
 
@@ -140,10 +140,7 @@ input[placeholder="이름"], input[placeholder="이메일"] {
 			  dic
 			);
 	}
-	
-	function alter_action(){
 
-	}
 
 	<% if (message != null) { %>
     	<% if ("success".equals(message)) { %>

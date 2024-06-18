@@ -124,7 +124,7 @@ input[placeholder="ID"], input[placeholder="PW"] {
 				<input type="button" value="회원가입" class="l_btn" onclick="location.href = 'join'">
 			</div>
 
-			<span><a href="#" class="l_search">ID찾기</a></span>
+			<span><a href="findid" class="l_search">ID찾기</a></span>
 			<span><a href="#" class="l_search">PW찾기</a></span>
 
 		</form>
