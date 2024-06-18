@@ -142,13 +142,13 @@ public class MemberController {
 		int emailChkResult = service.emailChk(member.getU_email());
 
 		try {
-			// 중복일 때
-			if (emailChkResult == 1 || nickChkResult == 1) {
-				return "page/update";
-			// 중복 아닐 때
-			} else if (emailChkResult == 0 && nickChkResult == 0) {
+			 // 중복 아닐 때
+			if (emailChkResult == 0 && nickChkResult == 0) {
 				service.memberUpdate(member);
 				return "page/login";
+			}// 중복일 때
+			else if (emailChkResult == 1 || nickChkResult == 1) {
+				return "page/update";
 			}
 		} catch (Exception e) {
 			throw new RuntimeException();

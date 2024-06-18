@@ -15,7 +15,6 @@
 <title>Join here</title>
 
 <style>
-
 * {
 	margin: 0px;
 	padding: 0px;
@@ -32,7 +31,6 @@
 	font-style: normal;
 }
 
-
 .j_container {
 	max-width: 800px;
 	margin: 0 auto;
@@ -41,9 +39,8 @@
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	margin-bottom:100px;
+	margin-bottom: 100px;
 }
-
 
 #j_title {
 	font-family: 'Cafe24Meongi-W-v1.0';
@@ -117,24 +114,24 @@
 	outline-style: solid;
 	outline-width: 1px;
 	background-color: #fff;
-	
 }
 </style>
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 </head>
 <body>
-<%
+	<%
 	MavenMember member = (MavenMember) session.getAttribute("member");
 	%>
 	<div class="j_container">
-		<form action="member/update" method="POST">
+		<form action="member/update" method="POST" id="myinfo">
 
 			<h2 id="j_title">My Info</h2>
 			<br>
 
 			<p class="j_menu">아이디</p>
 			<p class="j_menu">
-				<input type="text" class="j_text" name="u_id" value = "<%=member.getU_id()%>" readonly> 
+				<input type="text" class="j_text" name="u_id"
+					value="<%=member.getU_id()%>" readonly>
 			</p>
 
 
@@ -152,40 +149,47 @@
 
 			<p class="j_menu">이름</p>
 			<p class="j_menu">
-				<input type="text" class="j_text" name="u_name" value = "<%=member.getU_name()%>" readonly>
+				<input type="text" class="j_text" name="u_name"
+					value="<%=member.getU_name()%>" readonly>
 			</p>
 
 			<p class="j_menu">닉네임</p>
 			<p class="j_menu">
-				<input type="text" class="j_text" name="u_nickname" value= "<%=member.getU_nickname()%>" id="u_nickname"> 
-				<button class="j_btn" type="button" id="nickChk" onclick="fn_nickChk();" value="N"> 중복확인 </button>
+				<input type="text" class="j_text" name="u_nickname"
+					value="<%=member.getU_nickname()%>" id="u_nickname">
+				<button class="j_btn" type="button" id="nickChk"
+					onclick="fn_nickChk();" value="N">중복확인</button>
 			</p>
 
 
 			<p class="j_menu">이메일</p>
 			<p class="j_menu">
-				<input type="email" id="u_email" class="j_text" placeholder="animal@aniting.com" value= "<%=member.getU_email()%>" name="u_email" required>
-				<button class="j_btn" type="button" id="emailChk" onclick="fn_emailChk();" value="N"> 중복확인 </button>
+				<input type="email" id="u_email" class="j_text"
+					placeholder="animal@aniting.com" value="<%=member.getU_email()%>"
+					name="u_email" required>
+				<button class="j_btn" type="button" id="emailChk"
+					onclick="fn_emailChk();" value="N">중복확인</button>
 			</p>
 
-<%
-  String address = member.getU_address();
-  String[] parts = address.split(",");
+			<%
+			String address = member.getU_address();
+			String[] parts = address.split(",");
 
-  String part1 = parts[0]; // , 기준 앞 문자열
-  String part2 = parts[1]; // , 기준 뒤 문자열
-%>
+			String part1 = parts[0]; // , 기준 앞 문자열
+			String part2 = parts[1]; // , 기준 뒤 문자열
+			%>
 			<p class="j_menu">주소</p>
 			<p class="j_menu">
-				<input type="text" class="j_text" name="u_address" value = "<%=parts[0]%>" id="u_address"
-					readonly>
-				<input type="button" value="찾기" class="j_btn" id="openModal">
+				<input type="text" class="j_text" name="u_address"
+					value="<%=parts[0]%>" id="u_address" readonly> <input
+					type="button" value="찾기" class="j_btn" id="openModal">
 			</p>
 
 
 			<p class="j_menu">상세주소</p>
 			<p class="j_menu">
-				<input type="text" class="j_text" name="u_address" value = "<%=parts[1]%>">
+				<input type="text" class="j_text" name="u_address"
+					value="<%=parts[1]%>">
 			</p>
 
 			<input type="submit" value="수정 완료" class="j_import_btn">
@@ -256,8 +260,9 @@
         });
 
     </script>
-<script>
+	<script>
     function fn_emailChk() {
+    	let form = document.getElementById("myinfo");
     	
     	var senemail = {
     			u_email : $("#u_email").val()
@@ -271,8 +276,9 @@
             dataType :"JSON",
             success : function (data) {
             	console.log(data.emailCheck)
-            	console.log($("#u_email").val())
-                if (data.emailCheck == 0 ) {
+            	console.log($("#u_email").val());
+            	console.log("<%=member.getU_email()%>")
+                if (data.emailCheck == 0 || "<%=member.getU_email()%>" == $("#u_email").val()) {
                     $("#emailChk").attr("value", "Y");
                     alert("사용 가능한 이메일입니다.")
                 }else if(data.emailCheck == 1) {
@@ -296,12 +302,12 @@
             dataType :"JSON",
             success : function (data) {
             	console.log(data.nickCheck)
-                if(data.nickCheck == 1) {
-                    alert("중복된 닉네임입니다.");
-                } else if (data.nickCheck == 0 ) {
-                    $("#nickChk").attr("value", "Y");
-                    alert("사용 가능한 닉네임입니다.")
-                }
+            	 if (data.nickCheck == 0  || "<%=member.getU_nickname()%>" == $("#u_nickname").val() ) {
+                     $("#nickChk").attr("value", "Y");
+                     alert("사용 가능한 닉네임입니다.")
+                 }else if(data.nickCheck == 1) {
+                     alert("중복된 닉네임입니다.");
+                 } 
             }
 
         })
