@@ -20,7 +20,7 @@ public interface ChatMapper {
 	
 	public List<Chat> receivelist(String u_id);
 	
-	@Update("update CHAT set accept=1 where c_recid=#{c_recid}")
+	@Update("update CHAT set c_accept=1 where c_recid=#{c_recid}")
 	public int accept(String c_recid);
 	
 	@Insert("insert into CHATLOG (cl_c_id,cl_senid,cl_log) value (#{cl_c_id},#{cl_senid},#{cl_log})")
