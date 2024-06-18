@@ -272,11 +272,11 @@
             success : function (data) {
             	console.log(data.emailCheck)
             	console.log($("#u_email").val())
-                if(data.emailCheck == 1) {
-                    alert("중복된 이메일입니다.");
-                } else if (data.emailCheck == 0 ||  data.userEmail == $("#u_email").val() ) {
+                if (data.emailCheck == 0 ) {
                     $("#emailChk").attr("value", "Y");
                     alert("사용 가능한 이메일입니다.")
+                }else if(data.emailCheck == 1) {
+                    alert("중복된 이메일입니다.");
                 }
             }
 
