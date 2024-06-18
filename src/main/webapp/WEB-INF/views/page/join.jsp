@@ -170,7 +170,7 @@
 			<p class="j_menu">주소</p>
 			<p class="j_menu">
 				<input type="text" class="j_text" name="u_address" id="u_address"
-					readonly required>
+					required>
 				<input type="button" value="찾기" class="j_btn" id="openModal">
 			</p>
 
