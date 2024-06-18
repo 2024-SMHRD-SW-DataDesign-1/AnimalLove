@@ -143,11 +143,12 @@ public class MemberController {
 
 		// 세션 가져오기
 		HttpSession session = request.getSession();
-		// 세션에서 값 가져오기
+
+		// 세션에서 값 가져오기 --> 로그인 당시 정보
+	
 		MavenMember member2 = (MavenMember) session.getAttribute("member");
 		int nickChkResult = service.nickChk(member.getU_nickname());
 		int emailChkResult = service.emailChk(member.getU_email());
-
 		try {
 			// 중복 아닐 때(성공)
 			if ((emailChkResult == 0 || member.getU_email() == member2.getU_email())
