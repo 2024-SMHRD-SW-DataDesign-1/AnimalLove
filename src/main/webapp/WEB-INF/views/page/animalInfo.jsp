@@ -153,7 +153,7 @@ p {
 			</select>
 			</p>
 
-			<button  onclick="" class="btn">다음 화면</button>
+			<button  onclick="onSave()" class="btn">다음 화면</button>
 		</form>
 		
 	</div> 
