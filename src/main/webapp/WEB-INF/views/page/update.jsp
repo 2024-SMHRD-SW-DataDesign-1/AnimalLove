@@ -12,7 +12,7 @@
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=45ed770bdfa1cc4cd6cc25dc8ff866b7&libraries=services,clusterer,drawing"></script>
 
-<title>Join here</title>
+<title>개인정보수정</title>
 
 <style>
 * {
@@ -182,8 +182,8 @@
 			<p class="j_menu">주소</p>
 			<p class="j_menu">
 				<input type="text" class="j_text" name="u_address"
-					value="<%=parts[0]%>" id="u_address"> <input
-					type="button" value="찾기" class="j_btn" id="openModal">
+					value="<%=parts[0]%>" id="u_address"> <input type="button"
+					value="찾기" class="j_btn" id="openModal">
 			</p>
 
 

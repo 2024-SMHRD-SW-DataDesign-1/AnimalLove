@@ -20,7 +20,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mysql.cj.log.Log;
-import com.smhrd.myapp.model.Check;
 import com.smhrd.myapp.model.MavenMember;
 import com.smhrd.myapp.service.MemberService;
 
