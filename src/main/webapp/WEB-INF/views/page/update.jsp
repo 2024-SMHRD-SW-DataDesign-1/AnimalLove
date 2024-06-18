@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.myapp.model.MavenMember"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -37,10 +38,10 @@
 	margin: 0 auto;
 	box-sizing: border-box;
 	flex-direction: column;
-	height: 60vh;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+	margin-bottom:100px;
 }
 
 
@@ -122,16 +123,18 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 </head>
 <body>
-
+<%
+	MavenMember member = (MavenMember) session.getAttribute("member");
+	%>
 	<div class="j_container">
 		<form action="member/update" method="POST">
 
-			<h2 id="j_title">My Information</h2>
+			<h2 id="j_title">My Info</h2>
 			<br>
 
 			<p class="j_menu">아이디</p>
 			<p class="j_menu">
-				<input type="text" class="j_text" name="u_id" readonly> 
+				<input type="text" class="j_text" name="u_id" value = "<%=member.getU_id()%>" readonly> 
 			</p>
 
 
@@ -149,26 +152,26 @@
 
 			<p class="j_menu">이름</p>
 			<p class="j_menu">
-				<input type="text" class="j_text" name="u_name" readonly>
+				<input type="text" class="j_text" name="u_name" value = "<%=member.getU_name()%>" readonly>
 			</p>
 
 			<p class="j_menu">닉네임</p>
 			<p class="j_menu">
-				<input type="text" class="j_text" name="u_nickname"  id="u_nickname"> 
+				<input type="text" class="j_text" name="u_nickname" value= "<%=member.getU_nickname()%>" id="u_nickname"> 
 				<button class="j_btn" type="button" id="nickChk" onclick="fn_nickChk();" value="N"> 중복확인 </button>
 			</p>
 
 
 			<p class="j_menu">이메일</p>
 			<p class="j_menu">
-				<input type="email" id="u_email" class="j_text" placeholder="animal@aniting.com" name="u_email" required>
+				<input type="email" id="u_email" class="j_text" placeholder="animal@aniting.com" value= "<%=member.getU_email()%>" name="u_email" required>
 				<button class="j_btn" type="button" id="emailChk" onclick="fn_emailChk();" value="N"> 중복확인 </button>
 			</p>
 
 
 			<p class="j_menu">주소</p>
 			<p class="j_menu">
-				<input type="text" class="j_text" name="u_address" id="u_address"
+				<input type="text" class="j_text" name="u_address" value = "<%=member.getU_address()%>" id="u_address"
 					readonly>
 				<input type="button" value="찾기" class="j_btn" id="openModal">
 			</p>
