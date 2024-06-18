@@ -20,7 +20,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mysql.cj.log.Log;
-import com.smhrd.myapp.model.Check;
 import com.smhrd.myapp.model.MavenMember;
 import com.smhrd.myapp.service.MemberService;
 
@@ -155,10 +154,5 @@ public class MemberController {
 
 	}
 
-//	@RequestMapping(value="/member/addchat", method=RequestMethod.POST)
-//	public String chatAdd(@RequestParam("log")String log)
-//	{
-//		System.out.println(log);
-//		return "redirect:/chat";
-//	}
+
 }

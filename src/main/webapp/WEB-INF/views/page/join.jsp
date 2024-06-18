@@ -11,7 +11,7 @@
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=45ed770bdfa1cc4cd6cc25dc8ff866b7&libraries=services,clusterer,drawing"></script>
 
-<title>Join here</title>
+<title>회원가입</title>
 
 <style>
 * {

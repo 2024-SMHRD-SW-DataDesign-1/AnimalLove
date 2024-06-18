@@ -12,24 +12,25 @@
 		display : flex;
 		justify-content: space-around;
 		align-items: center;
-
+		pointer-events: none;
 	}
 	
 	#profil_body{
 		width : 800px;
 		height : 65vh;
-		flex-direction: column;
-		justify-content: space-around;
+
 		
 		display : flex;
-		align-content: space-around;
-		magin : auto;
+		align-content: space-between;
+		flex-direction: column;
+		justify-content: space-evenly;
+		margin : auto;
 		
 	}
 	
 	.profil_img {
 		width : 200px;
-		height : 400px;	
+		height : 300px;	
 		
 	}
 	
@@ -41,45 +42,93 @@
 		border: 0;
 		border-radius: 17px;
 		background-color: #3c40c6;
-		margin : auto;
+		margin : 0 auto 0 auto;
 	}
 	
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	
 	
-		<form action="" id="profil_body" >
-				<input type="file" style="display: none;" id="img_put">
+		<form action="anmal_info/save" id="profil_body" >
+				<input type="file" accept="image/*" id="img_put" multiple name="a_path1">
 				<div id=profil_imgs>
-					<img class='profil_img' alt='빈사진' src="resources/img/nullPic.png"/>
-					<img class='profil_img' alt='빈사진' src="resources/img/nullPic.png"/>
-					<img class='profil_img' alt='빈사진' src="resources/img/nullPic.png"/>
+					<input type="image"  class='profil_img' alt='빈사진' src="resources/img/nullPic.png" />
+					<input type="image"  class='profil_img' alt='빈사진' src="resources/img/nullPic.png" />
+					<input type="image"  class='profil_img' alt='빈사진' src="resources/img/nullPic.png" />
+					
+					<input type="hidden" name="a_path1" class="imageSrc" value="one">
+        			<input type="hidden" name="a_path2" class="imageSrc" value="one">
+        			<input type="hidden" name="a_path3" class="imageSrc" value="one">
 				</div>
-				<input class="btn" type="submit" value="프로필 등록" >
+				<input class="btn" type="submit" onclick="toSend()" value="프로필 등록" >
+				<div >111</div>
 		</form>
 			
-	
 		
 	<script type="text/javascript">
 		function getValue()
 		{
-			const storedList = JSON.parse(localStorage.getItem('dic'));
+			const storedList = sessionStorage.getItem('key');
 			return storedList;
 		}
-		
+		let defaultImg = "nullPic.png";
 		let dic = getValue();
 		
 		const imageUpload = document.getElementById('img_put');
-		console.log(dic);
-		function open()
+		let imgs = document.getElementsByClassName("profil_img");
+		
+		
+		let imgIdx = 0;
+		
+		imageUpload.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+			if(imgIdx == 3)
+			{
+				return;
+			}
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+               		//imgs[i].src = "resources/img/" + file.name;
+               		imgs[imgIdx].src = e.target.result;
+               		
+               		imgIdx++;           		   		
+               		                    
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+		
+		
+		
+		
+		function toSend()
 		{
-			imageUpload.click();			
+			let dataList = {
+					a_path1 : imgs[0].src,
+					a_path2 : imgs[1].src,
+					a_path3 : imgs[2].src
+			}
+			
+			$.ajax({
+				url:"anmalinfo/save",// 요청경로
+				type : "post",
+				data : dataList,
+				success : function (res) {
+					console.log(res)
+	
+				},
+				error :function(){
+					console.log("통신실패");
+				}
+			
+			})
 		}
 		
 	</script>
-	<button onclick="open()">11	</button>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 	
 </body>

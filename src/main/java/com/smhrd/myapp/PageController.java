@@ -1,10 +1,15 @@
 package com.smhrd.myapp;
 
+import javax.print.attribute.SetOfIntegerSyntax;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.smhrd.myapp.model.Animal;
 
 @Controller
 public class PageController {
@@ -87,15 +92,22 @@ public class PageController {
 	
 	//메인 화면
 	@RequestMapping(value="/matting", method=RequestMethod.GET)
-	public String animalInfo() {
+	public String animalInfo( ) {
+		
+		
+
+		
 		// view resolver : /WEB-INF/views/index.jsp
 		return "page/animalInfo";
 	}
 	
 	//메인 화면
 	@RequestMapping(value="/matting_pic", method=RequestMethod.GET)
-	public String animalInfo2() {
+	public String animalInfo2( Animal animal, HttpSession session) {
 		// view resolver : /WEB-INF/views/index.jsp
+		session.setAttribute("animal", animal);
+		Animal tem =  (Animal)session.getAttribute("animal");
+
 		return "page/animalInfo2";
 	}
 	
@@ -106,6 +118,16 @@ public class PageController {
 			return "page/findId";
 		}
 	
+	// 동물정보 등록
+	@RequestMapping(value="/animal_info/save", method=RequestMethod.GET)
+	public String infoSave(Animal animal) {
+		// view resolver : /WEB-INF/views/index.jsp
+		System.out.println(animal.getA_path1());
+		System.out.println(animal.getA_path2());
+		System.out.println(animal.getA_path3());
+		return "page/findId";
+	}
+		
 	
 	
 }
