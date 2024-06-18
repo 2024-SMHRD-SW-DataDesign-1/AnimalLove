@@ -14,7 +14,7 @@ public class AnimalController {
 	@Autowired
 	ChatService service;	
 	
-	@RequestMapping(value="/anmalinfo/save", method=RequestMethod.POST)
+	@RequestMapping(value="/animalInfo/save", method=RequestMethod.POST)
 	public String addInfo(Animal animal)
 	{
 		// 세션에서 데이터 받아오신후 합치는 작업 필요함

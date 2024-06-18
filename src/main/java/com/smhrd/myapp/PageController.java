@@ -119,7 +119,7 @@ public class PageController {
 		}
 	
 	// 동물정보 등록
-	@RequestMapping(value="/anmal_info/save", method=RequestMethod.GET)
+	@RequestMapping(value="/animal_info/save", method=RequestMethod.GET)
 	public String infoSave(Animal animal) {
 		// view resolver : /WEB-INF/views/index.jsp
 		System.out.println(animal.getA_path1());
