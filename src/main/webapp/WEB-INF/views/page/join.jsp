@@ -14,7 +14,6 @@
 <title>회원가입</title>
 
 <style>
-
 * {
 	margin: 0px;
 	padding: 0px;
@@ -31,7 +30,6 @@
 	font-style: normal;
 }
 
-
 .j_container {
 	max-width: 800px;
 	margin: 0 auto;
@@ -40,9 +38,8 @@
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	margin-bottom:100px;
+	margin-bottom: 100px;
 }
-
 
 #j_title {
 	font-family: 'Cafe24Meongi-W-v1.0';
@@ -116,7 +113,6 @@
 	outline-style: solid;
 	outline-width: 1px;
 	background-color: #fff;
-	
 }
 </style>
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
@@ -131,14 +127,17 @@
 
 			<p class="j_menu">아이디</p>
 			<p class="j_menu">
-				<input type="text" class="j_text" name="u_id" required id="u_id"> 
-				<button class="j_btn" type="button" id="idChk" onclick="fn_idChk();" value="N"> 중복확인 </button>
+				<input type="text" class="j_text" name="u_id" id="u_id"
+					maxlength="8" required>
+				<button class="j_btn" type="button" id="idChk" onclick="fn_idChk();"
+					value="N">중복확인</button>
 			</p>
 
 
 			<p class="j_menu">비밀번호</p>
 			<p class="j_menu">
-				<input type="password" class="j_text" name="u_pw" required>
+				<input type="password" class="j_text" name="u_pw" maxlength="20"
+					minlength="6" required>
 			</p>
 
 
@@ -155,23 +154,27 @@
 
 			<p class="j_menu">닉네임</p>
 			<p class="j_menu">
-				<input type="text" class="j_text" name="u_nickname"  id="u_nickname" required> 
-				<button class="j_btn" type="button" id="nickChk" onclick="fn_nickChk();" value="N"> 중복확인 </button>
+				<input type="text" class="j_text" name="u_nickname" id="u_nickname"
+					maxlength="6" required>
+				<button class="j_btn" type="button" id="nickChk"
+					onclick="fn_nickChk();" value="N">중복확인</button>
 			</p>
 
 
 			<p class="j_menu">이메일</p>
 			<p class="j_menu">
-				<input type="email" id="u_email" class="j_text" placeholder="animal@aniting.com" name="u_email" required>
-				<button class="j_btn" type="button" id="emailChk" onclick="fn_emailChk();" value="N"> 중복확인 </button>
+				<input type="email" id="u_email" class="j_text"
+					placeholder="animal@aniting.com" name="u_email" required>
+				<button class="j_btn" type="button" id="emailChk"
+					onclick="fn_emailChk();" value="N">중복확인</button>
 			</p>
 
 
 			<p class="j_menu">주소</p>
 			<p class="j_menu">
 				<input type="text" class="j_text" name="u_address" id="u_address"
-					required>
-				<input type="button" value="찾기" class="j_btn" id="openModal">
+					required> <input type="button" value="찾기" class="j_btn"
+					id="openModal">
 			</p>
 
 
@@ -248,7 +251,7 @@
         });
 
     </script>
-<script>
+	<script>
     function fn_emailChk() {
     	
     	var senemail = {

@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.myapp.model.MavenMember"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -5,18 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <title>Document</title>
 
 <style>
-
 @media screen and (max-width:640px) {
 	header {
 		flex-direction: column;
 	}
-	
-	#chatList_box{
-		left : 50%;
+	#chatList_box {
+		left: 50%;
 	}
 }
 
@@ -53,7 +53,6 @@ header {
 	text-decoration: none;
 }
 
-
 /*애니팅, 로고 이미지*/
 header .h_title {
 	display: flex;
@@ -67,13 +66,12 @@ header .h_title {
 	text-decoration: none;
 	color: #333333;
 	font-family: 'BMJUA';
-	margin-left : 10px;
+	margin-left: 10px;
 }
 
 header>div>ul>li {
 	list-style-type: none;
 }
-
 
 /*로고이미지 속성*/
 #h_logo {
@@ -93,7 +91,6 @@ header>ul {
 	padding-bottom: 10px;
 	text-decoration: none;
 }
-
 
 /*매칭,위치,마이,로그인 속성*/
 .h_category {
@@ -117,32 +114,32 @@ header>ul {
 	width: 24px;
 }
 
-#chat_icon
-{
-	position : fixed;
-	left : 90%;
-	top : 90%;
-	background-color : red;
+#h_out {
+	width: 24px;
+	margin-left: 5px;
+}
+
+#chat_icon {
+	position: fixed;
+	left: 90%;
+	top: 90%;
+	background-color: red;
 	width: 30px;
 	border-radius: 20px;
-	z-index : 100;
+	z-index: 100;
 }
 
-#chatList_box
-{
-	display : none;
-	position : fixed;
-	left : 75%;
-	top : 57%;
-	border : 2px solid #000000;
-	width : 300px;
-	height : 300px;
-	z-index : 100;
-	overflow-y:auto; 	
+#chatList_box {
+	display: none;
+	position: fixed;
+	left: 75%;
+	top: 57%;
+	border: 2px solid #000000;
+	width: 300px;
+	height: 300px;
+	z-index: 100;
+	overflow-y: auto;
 }
-
-
-
 </style>
 
 </head>
@@ -150,7 +147,8 @@ header>ul {
 	<div class="h_container">
 		<header>
 			<div class="h_title">
-				<a href="/aniting"><img src="resources/img/img_header_logo.png" id="h_logo"></a>
+				<a href="/aniting"><img src="resources/img/img_header_logo.png"
+					id="h_logo"></a>
 				<ul>
 					<li><a href="/aniting" id="h_name">애니팅</a></li>
 				</ul>
@@ -161,36 +159,44 @@ header>ul {
 				<li class="h_list"><a href="#" class="h_category">마이페이지</a></li>
 
 			</ul>
-			<ul>
-				<li class="h_list"><a href="login" class="h_category" id="h_login">로그인</a></li>
-				<a href="login"><img src="resources/img/icon_header_angle.png" id="h_angle"></a>
-			</ul>
 
+			<% MavenMember member = (MavenMember)session.getAttribute("member");%>
+			<% if (member == null) {%>
+			<ul>
+				<li class="h_list"><a href="login" class="h_category"
+					id="h_login">로그인</a></li>
+				<a href="login"><img src="resources/img/icon_header_angle.png"
+					id="h_angle"></a>
+			</ul>
+			<%} else{%>
+			<ul>
+				<li class="h_list"><a href="#" class="h_category" id="h_login"><%=member.getU_nickname()%>님</a></li>
+				<a href="logout"><img src="resources/img/icon_header_logout.png"
+					id="h_out"></a>
+			</ul>
+			
+			<%} %>
 		</header>
 
 
 	</div>
 	<div id="chatList_box">
-			<jsp:include page="/WEB-INF/views/common/chat/chatlist.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/views/common/chat/chatlist.jsp"></jsp:include>
 	</div>
-	<div id="chat_icon" onclick="chatListView()">
-		채팅
-	</div>
-	
+	<div id="chat_icon" onclick="chatListView()">채팅</div>
+
 	<script type="text/javascript">
-		function chatListView()
-		{
-			
-			if ( $('#chatList_box').css('display') === 'none' ) {
-				  $('#chatList_box').show();
+		function chatListView() {
 
-				} else {
-				  $('#chatList_box').hide();
+			if ($('#chatList_box').css('display') === 'none') {
+				$('#chatList_box').show();
 
-				}
-				
+			} else {
+				$('#chatList_box').hide();
+
+			}
+
 		}
-		
 	</script>
 </body>
 </html>
