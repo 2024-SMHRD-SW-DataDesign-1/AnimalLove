@@ -5,4 +5,49 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.smhrd.myapp.mapper.ChatMapper">
+  
+  	<resultMap id="ChatResultMap" type="com.smhrd.myapp.model.Chat">
+        <id property="c_id" column="c_id"/>
+        <result property="c_senid" column="c_senid"/>
+        <result property="c_recid" column="c_recid"/>
+        <result property="c_accept" column="c_accept"/>
+        <association property="lastChatLog" javaType="com.smhrd.myapp.model.Log">
+            <id property="cl_c_id" column="cl_c_id"/>
+            <result property="cl_senid" column="cl_senid"/>
+            <result property="cl_log" column="cl_log"/>
+            <result property="cl_sentime" column="cl_sentime"/>
+            <result property="cl_ruread" column="cl_ruread"/>
+        </association>
+    </resultMap>
+  
+  	<select id="chatlist" resultMap="ChatResultMap">
+  			SELECT 
+			c.c_id, c.c_senid, c.c_recid, c.c_accept,
+			chat_log_sub.cl_id, chat_log_sub.cl_senid, chat_log_sub.cl_log, chat_log_sub.cl_sentime, chat_log_sub.cl_ruread
+			FROM CHAT c
+			JOIN (SELECT cl1.cl_c_id, cl1.cl_id, cl1.cl_senid, cl1.cl_log, cl1.cl_sentime, cl1.cl_ruread
+				FROM CHATLOG cl1
+				JOIN (SELECT cl_c_id, MAX(cl_sentime) AS max_sentime
+					FROM CHATLOG
+					GROUP BY cl_c_id) cl2
+				ON cl1.cl_c_id = cl2.cl_c_id AND cl1.cl_sentime = cl2.max_sentime) chat_log_sub
+			ON c.c_id = chat_log_sub.cl_c_id
+			WHERE c.c_senid = #{u_id}
+  	</select>
+  	
+  	<select id="receivelist" resultMap="ChatResultMap">
+  			SELECT 
+			c.c_id, c.c_senid, c.c_recid, c.c_accept,
+			chat_log_sub.cl_id, chat_log_sub.cl_senid, chat_log_sub.cl_log, chat_log_sub.cl_sentime, chat_log_sub.cl_ruread
+			FROM CHAT c
+			JOIN (SELECT cl1.cl_c_id, cl1.cl_id, cl1.cl_senid, cl1.cl_log, cl1.cl_sentime, cl1.cl_ruread
+				FROM CHATLOG cl1
+				JOIN (SELECT cl_c_id, MAX(cl_sentime) AS max_sentime
+					FROM CHATLOG
+					GROUP BY cl_c_id) cl2
+				ON cl1.cl_c_id = cl2.cl_c_id AND cl1.cl_sentime = cl2.max_sentime) chat_log_sub
+			ON c.c_id = chat_log_sub.cl_c_id
+			WHERE c.c_recid = #{u_id}
+  	</select>
+  
   </mapper>
