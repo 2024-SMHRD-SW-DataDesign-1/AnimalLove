@@ -18,18 +18,19 @@
 	#profil_body{
 		width : 800px;
 		height : 65vh;
-		flex-direction: column;
-		justify-content: space-around;
+
 		
 		display : flex;
-		align-content: space-around;
-		magin : auto;
+		align-content: space-between;
+		flex-direction: column;
+		justify-content: space-evenly;
+		margin : auto;
 		
 	}
 	
 	.profil_img {
 		width : 200px;
-		height : 400px;	
+		height : 300px;	
 		
 	}
 	
@@ -41,7 +42,7 @@
 		border: 0;
 		border-radius: 17px;
 		background-color: #3c40c6;
-		margin : auto;
+		margin : 0 auto 0 auto;
 	}
 	
 </style>
@@ -50,15 +51,15 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	
 	
-		<form action="" id="profil_body" >
-				<input type="file" style="display: none;" id="img_put">
+		<div action="anmal_info/save" id="profil_body" >
+				<input type="file" accept="image/*" id="img_put" >
 				<div id=profil_imgs>
 					<img class='profil_img' alt='빈사진' src="resources/img/nullPic.png"/>
 					<img class='profil_img' alt='빈사진' src="resources/img/nullPic.png"/>
 					<img class='profil_img' alt='빈사진' src="resources/img/nullPic.png"/>
 				</div>
-				<input class="btn" type="submit" value="프로필 등록" >
-		</form>
+				<input class="btn" type="submit" onclick="toSend()" value="프로필 등록" >
+		</div>
 			
 	
 		
@@ -68,18 +69,39 @@
 			const storedList = JSON.parse(localStorage.getItem('dic'));
 			return storedList;
 		}
-		
+		let defaultImg = "nullPic.png";
 		let dic = getValue();
 		
 		const imageUpload = document.getElementById('img_put');
+		let imgs = document.getElementsByClassName("profil_img");
 		
-		function open()
+		let imgIdx = 0;
+		
+		imageUpload.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+			if(imgIdx == 3)
+			{
+				return;
+			}
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+               		//imgs[i].src = "resources/img/" + file.name;
+               		imgs[imgIdx].src = e.target.result;
+               		imgIdx++;           		   		
+               		                    
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+		
+		
+		function toSend()
 		{
-			imageUpload.click();			
+			window.location = "/anithing/like"
 		}
 		
 	</script>
-	<button onclick="open()">11	</button>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 	
 </body>
