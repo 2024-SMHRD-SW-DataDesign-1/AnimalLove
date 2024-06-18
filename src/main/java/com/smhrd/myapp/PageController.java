@@ -77,7 +77,6 @@ public class PageController {
 		return "common/chat/chatlist";
 	}
 	
-	
 	//메인 화면
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String main() {
@@ -85,6 +84,20 @@ public class PageController {
 		return "page/main";
 	}
 	
+	
+	//메인 화면
+	@RequestMapping(value="/matting", method=RequestMethod.GET)
+	public String animalInfo() {
+		// view resolver : /WEB-INF/views/index.jsp
+		return "page/animalInfo";
+	}
+	
+	//메인 화면
+	@RequestMapping(value="/matting_pic", method=RequestMethod.GET)
+	public String animalInfo2() {
+		// view resolver : /WEB-INF/views/index.jsp
+		return "page/animalInfo2";
+	}
 	
 }
 

@@ -41,8 +41,8 @@
 				<c:when test="${b.c_accept==0}">
 					<div style="display:flex; justify-content: space-between;  border-top:1px solid black; border-bottom:1px solid black;">
 					<img src="#" style="width: 48px; height: 50px; border-radius: 150px; background-color: skyblue;"/>
-						<div> ${b.c_recid}님 온 요청</div>
-					   	<button>수락</button>
+						<div> ${b.c_senid}님 온 요청</div>
+					   	<a href="../accept/${b.c_recid}"><button>수락</button></a>
 					   	<button>거부</button>
 					  	<button>정보확인</button>
 					</div>
@@ -62,8 +62,8 @@
 					<div style="display:flex; justify-content: space-between;  border-top:1px solid black; border-bottom:1px solid black;"> 
                 		<img src="#" style="width: 48px; height: 50px; border-radius: 150px; background-color: skyblue;">
                 		<div>
-                			<div> ${b.c_recid}님 채팅방</div>
-	                    	<div> 마지막문구 </div>
+                			<a href="/aniting/chatting/${b.c_id}"><div> ${b.c_recid}님 채팅방</div></a>
+	                    	<div> ${b.lastChatLog.cl_log} </div>
                 		</div>
                 		<img src="../../resources/img/deleteBox.png" style="width:40px;" alt='휴지통'/>
             		</div>
@@ -78,8 +78,8 @@
 					<div style="display:flex; justify-content: space-between;  border-top:1px solid black; border-bottom:1px solid black;"> 
                 		<img src="#" style="width: 48px; height: 50px; border-radius: 150px; background-color: skyblue;">
                 		<div>
-                			<div> ${b.c_recid}님 채팅방</div>
-	                    	<div> 마지막문구 </div>
+                			<a href="/aniting/chatting/${b.c_id}"><div> ${b.c_senid}님 채팅방</div></a>
+	                    	<div> ${b.lastChatLog.cl_log} </div>
                 		</div>
                 		<image src="../../resources/img/deleteBox.png" style="width:40px;" alt='휴지통'/>
             		</div>

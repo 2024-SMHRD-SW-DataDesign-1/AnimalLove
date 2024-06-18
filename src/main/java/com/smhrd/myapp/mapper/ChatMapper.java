@@ -16,10 +16,8 @@ public interface ChatMapper {
 	@Insert("insert into CHAT (c_senid,c_recid) value (#{c_senid},#{c_recid})")
 	public int chat(Chat chat);
 	
-	@Select("select * from CHAT where c_senid=#{u_id}")
 	public List<Chat> chatlist(String u_id);
 	
-	@Select("select * from CHAT where c_recid=#{u_id}")
 	public List<Chat> receivelist(String u_id);
 	
 	@Update("update CHAT set accept=1 where c_recid=#{c_recid}")

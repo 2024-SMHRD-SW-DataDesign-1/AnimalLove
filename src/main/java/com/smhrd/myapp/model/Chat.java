@@ -16,5 +16,6 @@ public class Chat {
 	private int c_id;
 	private String c_senid;
 	private String c_recid;
-	private int c_accept; 
+	private int c_accept;
+	private Log lastChatLog;
 }
