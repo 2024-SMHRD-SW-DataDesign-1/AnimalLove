@@ -114,7 +114,7 @@
 			}
 			
 			$.ajax({
-				url:"anmalinfo/save",// 요청경로
+				url:"animalInfo/save",// 요청경로
 				type : "post",
 				data : dataList,
 				success : function (res) {
