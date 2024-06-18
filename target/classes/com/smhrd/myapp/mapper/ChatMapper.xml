@@ -25,7 +25,7 @@
 			c.c_id, c.c_senid, c.c_recid, c.c_accept,
 			chat_log_sub.cl_id, chat_log_sub.cl_senid, chat_log_sub.cl_log, chat_log_sub.cl_sentime, chat_log_sub.cl_ruread
 			FROM CHAT c
-			JOIN (SELECT cl1.cl_c_id, cl1.cl_id, cl1.cl_senid, cl1.cl_log, cl1.cl_sentime, cl1.cl_ruread
+			LEFT JOIN (SELECT cl1.cl_c_id, cl1.cl_id, cl1.cl_senid, cl1.cl_log, cl1.cl_sentime, cl1.cl_ruread
 				FROM CHATLOG cl1
 				JOIN (SELECT cl_c_id, MAX(cl_sentime) AS max_sentime
 					FROM CHATLOG
@@ -40,7 +40,7 @@
 			c.c_id, c.c_senid, c.c_recid, c.c_accept,
 			chat_log_sub.cl_id, chat_log_sub.cl_senid, chat_log_sub.cl_log, chat_log_sub.cl_sentime, chat_log_sub.cl_ruread
 			FROM CHAT c
-			JOIN (SELECT cl1.cl_c_id, cl1.cl_id, cl1.cl_senid, cl1.cl_log, cl1.cl_sentime, cl1.cl_ruread
+			LEFT JOIN (SELECT cl1.cl_c_id, cl1.cl_id, cl1.cl_senid, cl1.cl_log, cl1.cl_sentime, cl1.cl_ruread
 				FROM CHATLOG cl1
 				JOIN (SELECT cl_c_id, MAX(cl_sentime) AS max_sentime
 					FROM CHATLOG
