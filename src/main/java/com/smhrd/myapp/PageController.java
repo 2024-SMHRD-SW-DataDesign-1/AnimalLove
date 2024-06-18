@@ -99,5 +99,14 @@ public class PageController {
 		return "page/animalInfo2";
 	}
 	
+	//ID찾기
+		@RequestMapping(value="/findid", method=RequestMethod.GET)
+		public String findId() {
+			// view resolver : /WEB-INF/views/index.jsp
+			return "page/findId";
+		}
+	
+	
+	
 }
 

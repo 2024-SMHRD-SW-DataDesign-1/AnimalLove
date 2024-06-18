@@ -29,10 +29,10 @@ public class FindidController {
 	@Autowired
 	FindidService service;
 	
-	@RequestMapping(value="/findid", method=RequestMethod.GET)
-	public String findid() {
-		return "findid";
-	}
+//	@RequestMapping(value="/findid", method=RequestMethod.GET)
+//	public String findid() {
+//		return "findid";
+//	}
 	
 	@RequestMapping(value="/finddbid", method=RequestMethod.GET)
 	public String recieveid(@RequestParam("code") String code,Model model) {
