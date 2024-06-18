@@ -105,7 +105,7 @@ header>ul {
 }
 
 /*매칭,위치,마이,로그인 hover 속성*/
-header>ul>li>a:hover {
+.h_category:hover {
 	border-bottom: 2px solid #3c40c6;
 	border-radius: 2px;
 	color: #3c40c6;
@@ -150,9 +150,9 @@ header>ul>li>a:hover {
 	<div class="h_container">
 		<header>
 			<div class="h_title">
-				<a href="main"><img src="resources/img/img_logo.png" id="h_logo"></a>
+				<a href="/aniting"><img src="resources/img/img_header_logo.png" id="h_logo"></a>
 				<ul>
-					<li><a href="main" id="h_name">애니팅</a></li>
+					<li><a href="/aniting" id="h_name">애니팅</a></li>
 				</ul>
 			</div>
 			<ul>
@@ -162,8 +162,8 @@ header>ul>li>a:hover {
 
 			</ul>
 			<ul>
-				<li class="h_list"><a href="login" class="h_category">로그인</a></li>
-				<a href="login"><img src="resources/img/icon_angle.png" id="h_angle"></a>
+				<li class="h_list"><a href="login" class="h_category" id="h_login">로그인</a></li>
+				<a href="login"><img src="resources/img/icon_header_angle.png" id="h_angle"></a>
 			</ul>
 
 		</header>

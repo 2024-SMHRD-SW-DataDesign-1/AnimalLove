@@ -11,26 +11,17 @@
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=45ed770bdfa1cc4cd6cc25dc8ff866b7&libraries=services,clusterer,drawing"></script>
 
-<title>Insert title here</title>
+<title>Join here</title>
 
 <style>
+
 * {
 	margin: 0px;
 	padding: 0px;
 	font-family: 'pretendard';
 }
 
-.join_form {
-	max-width: 800px;
-	margin: 0 auto;
-	box-sizing: border-box;
-	flex-direction: column;
-	height: 60vh;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-}
-
+/*타이틀 폰트*/
 @font-face {
 	font-family: 'Cafe24Meongi-W-v1.0';
 	src:
@@ -40,6 +31,19 @@
 	font-style: normal;
 }
 
+
+.j_container {
+	max-width: 800px;
+	margin: 0 auto;
+	box-sizing: border-box;
+	flex-direction: column;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin-bottom:100px;
+}
+
+
 #j_title {
 	font-family: 'Cafe24Meongi-W-v1.0';
 	color: #333333;
@@ -48,7 +52,7 @@
 	text-align: center;
 }
 
-.sub {
+.j_btn {
 	margin-left: 5px;
 	width: 68px;
 	height: 28px;
@@ -59,7 +63,7 @@
 	letter-spacing: 0.1em;
 }
 
-.sub:active {
+.j_btn:active {
 	margin-left: 5px;
 	width: 68px;
 	height: 28px;
@@ -73,12 +77,12 @@
 	letter-spacing: 0.1em;
 }
 
-p {
+.j_menu {
 	margin-bottom: 8px;
 	margin-left: 30px;
 }
 
-.text {
+.j_text {
 	width: 250px;
 	height: 36px;
 	font-size: 15px;
@@ -89,7 +93,7 @@ p {
 	background-color: rgb(233, 233, 233);
 }
 
-.btn {
+.j_import_btn {
 	width: 262px;
 	height: 36px;
 	font-size: 15px;
@@ -101,7 +105,7 @@ p {
 	margin-left: 30px;
 }
 
-.btn:active {
+.j_import_btn:active {
 	width: 262px;
 	height: 36px;
 	font-size: 15px;
@@ -112,70 +116,71 @@ p {
 	outline-style: solid;
 	outline-width: 1px;
 	background-color: #fff;
+	
 }
 </style>
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 </head>
 <body>
 
-	<div class="join_form">
+	<div class="j_container">
 		<form action="member/join" method="POST">
 
 			<h2 id="j_title">Sign in</h2>
 			<br>
 
-			<p>아이디</p>
-			<p>
-				<input type="text" class="text" name="u_id" required id="u_id"> 
-				<button class="idChk" type="button" id="idChk" onclick="fn_idChk();" value="N"> 중복확인 </button>
+			<p class="j_menu">아이디</p>
+			<p class="j_menu">
+				<input type="text" class="j_text" name="u_id" required id="u_id"> 
+				<button class="j_btn" type="button" id="idChk" onclick="fn_idChk();" value="N"> 중복확인 </button>
 			</p>
 
 
-			<p>비밀번호</p>
-			<p>
-				<input type="password" class="text" name="u_pw">
+			<p class="j_menu">비밀번호</p>
+			<p class="j_menu">
+				<input type="password" class="j_text" name="u_pw">
 			</p>
 
 
-			<p>비밀번호 확인</p>
-			<p>
-				<input type="password" class="text" name="u_pwcheck">
+			<p class="j_menu">비밀번호 확인</p>
+			<p class="j_menu">
+				<input type="password" class="j_text" name="u_pwcheck">
 			</p>
 
 
-			<p>이름</p>
-			<p>
-				<input type="text" class="text" name="u_name">
+			<p class="j_menu">이름</p>
+			<p class="j_menu">
+				<input type="text" class="j_text" name="u_name">
 			</p>
 
-			<p>닉네임</p>
-			<p>
-				<input type="text" class="text" name="u_nickname"  id="u_nickname"> 
-				<button class="nickChk" type="button" id="nickChk" onclick="fn_nickChk();" value="N"> 중복확인 </button>
-			</p>
-
-
-			<p>이메일</p>
-			<p>
-				<input type="email" id="u_email" class="text" placeholder="animal@aniting.com" name="u_email" required>
-				<button class="emailChk" type="button" id="emailChk" onclick="fn_emailChk();" value="N"> 중복확인 </button>
+			<p class="j_menu">닉네임</p>
+			<p class="j_menu">
+				<input type="text" class="j_text" name="u_nickname"  id="u_nickname"> 
+				<button class="j_btn" type="button" id="nickChk" onclick="fn_nickChk();" value="N"> 중복확인 </button>
 			</p>
 
 
-			<p>주소</p>
-			<p>
-				<input type="text" class="text" name="u_address" id="u_address"
-					readonly> <input type="button" value="찾기" class="sub"
-					id="openModal">
+			<p class="j_menu">이메일</p>
+			<p class="j_menu">
+				<input type="email" id="u_email" class="j_text" placeholder="animal@aniting.com" name="u_email" required>
+				<button class="j_btn" type="button" id="emailChk" onclick="fn_emailChk();" value="N"> 중복확인 </button>
 			</p>
 
 
-			<p>상세주소</p>
-			<p>
-				<input type="text" class="text" name="u_address">
+			<p class="j_menu">주소</p>
+			<p class="j_menu">
+				<input type="text" class="j_text" name="u_address" id="u_address"
+					readonly>
+				<input type="button" value="찾기" class="j_btn" id="openModal">
 			</p>
 
-			<input type="submit" value="회원가입 완료" class="btn">
+
+			<p class="j_menu">상세주소</p>
+			<p class="j_menu">
+				<input type="text" class="j_text" name="u_address">
+			</p>
+
+			<input type="submit" value="회원가입 완료" class="j_import_btn">
 
 		</form>
 	</div>
@@ -245,15 +250,22 @@ p {
     </script>
 <script>
     function fn_emailChk() {
+    	
+    	var senemail = {
+    			u_email : $("#u_email").val()
+			};
+    	
         $.ajax({
             url : "member/emailChk",
             type : "POST",
+            contentType: "application/json; charset=utf-8",
+            data : JSON.stringify(senemail),
             dataType :"JSON",
-            data : {"email" : $("#u_email").val()},
             success : function (data) {
-                if(data == 1) {
+            	console.log(data.emailCheck)
+                if(data.emailCheck == 1) {
                     alert("중복된 이메일입니다.");
-                } else if (data == 0) {
+                } else if (data.emailCheck == 0) {
                     $("#emailChk").attr("value", "Y");
                     alert("사용 가능한 이메일입니다.")
                 }
@@ -263,15 +275,21 @@ p {
     }
 
     function fn_nickChk() {
+    	
+    	var sennick = {
+    			u_nickname : $("#u_nickname").val()
+			};
         $.ajax({
             url : "member/nickChk",
             type : "POST",
-            data : {"nickname" : $("#u_nickname").val()},
+            contentType: "application/json; charset=utf-8",
+            data : JSON.stringify(sennick),
             dataType :"JSON",
             success : function (data) {
-                if(data == 1) {
+            	console.log(data.nickCheck)
+                if(data.nickCheck == 1) {
                     alert("중복된 닉네임입니다.");
-                } else if (data == 0) {
+                } else if (data.nickCheck == 0) {
                     $("#nickChk").attr("value", "Y");
                     alert("사용 가능한 닉네임입니다.")
                 }
@@ -314,4 +332,5 @@ p {
 </body>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
 </html>
