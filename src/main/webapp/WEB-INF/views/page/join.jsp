@@ -138,24 +138,24 @@
 
 			<p class="j_menu">비밀번호</p>
 			<p class="j_menu">
-				<input type="password" class="j_text" name="u_pw">
+				<input type="password" class="j_text" name="u_pw" required>
 			</p>
 
 
 			<p class="j_menu">비밀번호 확인</p>
 			<p class="j_menu">
-				<input type="password" class="j_text" name="u_pwcheck">
+				<input type="password" class="j_text" name="u_pwcheck" required>
 			</p>
 
 
 			<p class="j_menu">이름</p>
 			<p class="j_menu">
-				<input type="text" class="j_text" name="u_name">
+				<input type="text" class="j_text" name="u_name" required>
 			</p>
 
 			<p class="j_menu">닉네임</p>
 			<p class="j_menu">
-				<input type="text" class="j_text" name="u_nickname"  id="u_nickname"> 
+				<input type="text" class="j_text" name="u_nickname"  id="u_nickname" required> 
 				<button class="j_btn" type="button" id="nickChk" onclick="fn_nickChk();" value="N"> 중복확인 </button>
 			</p>
 
@@ -170,14 +170,14 @@
 			<p class="j_menu">주소</p>
 			<p class="j_menu">
 				<input type="text" class="j_text" name="u_address" id="u_address"
-					readonly>
+					readonly required>
 				<input type="button" value="찾기" class="j_btn" id="openModal">
 			</p>
 
 
 			<p class="j_menu">상세주소</p>
 			<p class="j_menu">
-				<input type="text" class="j_text" name="u_address">
+				<input type="text" class="j_text" name="u_address" required>
 			</p>
 
 			<input type="submit" value="회원가입 완료" class="j_import_btn">

@@ -116,11 +116,11 @@ input[placeholder="ID"], input[placeholder="PW"] {
 			<h2 id="l_title">Login</h2>
 			<p id="l_sub">애니팅 서비스에 오신걸 환영합니다🥰</p>
 			<br>
-				<input type="text" placeholder="ID" name="u_id" required> <br>
+				<input type="text" placeholder="ID" name="u_id" required > <br>
 				<input type="password" placeholder="PW" name="u_pw" required> <br>
 			
 			<div class="btn_container">
-				<input type="submit" value="로그인" class="l_btn">
+				<input type="submit" value="로그인" class="l_btn" onclick="saveSession()">
 				<input type="button" value="회원가입" class="l_btn" onclick="location.href = 'join'">
 			</div>
 
@@ -139,8 +139,9 @@ input[placeholder="ID"], input[placeholder="PW"] {
         //폼 태그
         let user_id = document.getElementById("l_login");
         
+       
         function saveSession(){
-        	localStorage.setItem('aniting', JSON.stringify());
+        	localStorage.setItem('aniting', JSON.stringify(user_id.u_id.value));
         }
     </script>
     
