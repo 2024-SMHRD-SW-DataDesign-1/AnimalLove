@@ -12,7 +12,7 @@
 		display : flex;
 		justify-content: space-around;
 		align-items: center;
-
+		pointer-events: none;
 	}
 	
 	#profil_body{
@@ -46,27 +46,32 @@
 	}
 	
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	
 	
-		<div action="anmal_info/save" id="profil_body" >
-				<input type="file" accept="image/*" id="img_put" >
+		<form action="anmal_info/save" id="profil_body" >
+				<input type="file" accept="image/*" id="img_put" multiple name="a_path1">
 				<div id=profil_imgs>
-					<img class='profil_img' alt='빈사진' src="resources/img/nullPic.png"/>
-					<img class='profil_img' alt='빈사진' src="resources/img/nullPic.png"/>
-					<img class='profil_img' alt='빈사진' src="resources/img/nullPic.png"/>
+					<input type="image"  class='profil_img' alt='빈사진' src="resources/img/nullPic.png" />
+					<input type="image"  class='profil_img' alt='빈사진' src="resources/img/nullPic.png" />
+					<input type="image"  class='profil_img' alt='빈사진' src="resources/img/nullPic.png" />
+					
+					<input type="hidden" name="a_path1" class="imageSrc" value="one">
+        			<input type="hidden" name="a_path2" class="imageSrc" value="one">
+        			<input type="hidden" name="a_path3" class="imageSrc" value="one">
 				</div>
 				<input class="btn" type="submit" onclick="toSend()" value="프로필 등록" >
-		</div>
+				<div >111</div>
+		</form>
 			
-	
 		
 	<script type="text/javascript">
 		function getValue()
 		{
-			const storedList = JSON.parse(localStorage.getItem('dic'));
+			const storedList = sessionStorage.getItem('key');
 			return storedList;
 		}
 		let defaultImg = "nullPic.png";
@@ -74,6 +79,7 @@
 		
 		const imageUpload = document.getElementById('img_put');
 		let imgs = document.getElementsByClassName("profil_img");
+		
 		
 		let imgIdx = 0;
 		
@@ -88,6 +94,7 @@
                 reader.onload = function(e) {
                		//imgs[i].src = "resources/img/" + file.name;
                		imgs[imgIdx].src = e.target.result;
+               		
                		imgIdx++;           		   		
                		                    
                 };
@@ -96,9 +103,29 @@
         });
 		
 		
+		
+		
 		function toSend()
 		{
-			window.location = "/anithing/like"
+			let dataList = {
+					a_path1 : imgs[0].src,
+					a_path2 : imgs[1].src,
+					a_path3 : imgs[2].src
+			}
+			
+			$.ajax({
+				url:"anmalinfo/save",// 요청경로
+				type : "post",
+				data : dataList,
+				success : function (res) {
+					console.log(res)
+	
+				},
+				error :function(){
+					console.log("통신실패");
+				}
+			
+			})
 		}
 		
 	</script>

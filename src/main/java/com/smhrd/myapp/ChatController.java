@@ -42,11 +42,11 @@ public class ChatController {
 		}
 
 		// 채팅목록 출력
-		@RequestMapping(value = "/member/chatlist/{id}", method = RequestMethod.GET)
-		public String chatlist(@PathVariable("id") String id, Model model) {
-			List<Chat> sendlist = service.chatlist(id);
-			List<Chat> receivelist = service.receivelist(id);
-
+		@RequestMapping(value = "/member/chatlist/{u_id}", method = RequestMethod.GET)
+		public String chatlist(@PathVariable("u_id") String u_id, Model model) {
+			List<Chat> sendlist = service.chatlist(u_id);
+			List<Chat> receivelist = service.receivelist(u_id);
+						
 			model.addAttribute("chatlist", sendlist);
 			model.addAttribute("receivelist", receivelist);
 			return "common/chat/chatlist";

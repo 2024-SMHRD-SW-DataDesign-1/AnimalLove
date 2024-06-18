@@ -111,20 +111,20 @@ input[placeholder="ID"], input[placeholder="PW"] {
 
 	<div class="l_container">
 	
-		<form action="member/login" method="POST">
+		<form action="member/login" method="POST" id="l_login">
 		
 			<h2 id="l_title">Login</h2>
 			<p id="l_sub">애니팅 서비스에 오신걸 환영합니다🥰</p>
 			<br>
-			<input type="text" placeholder="ID" name="u_id" required> <br>
-			<input type="password" placeholder="PW" name="u_pw" required> <br>
+				<input type="text" placeholder="ID" name="u_id" required > <br>
+				<input type="password" placeholder="PW" name="u_pw" required> <br>
 			
 			<div class="btn_container">
-				<input type="submit" value="로그인" class="l_btn">
+				<input type="submit" value="로그인" class="l_btn" onclick="saveSession()">
 				<input type="button" value="회원가입" class="l_btn" onclick="location.href = 'join'">
 			</div>
 
-			<span><a href="#" class="l_search">ID찾기</a></span>
+			<span><a href="findid" class="l_search">ID찾기</a></span>
 			<span><a href="#" class="l_search">PW찾기</a></span>
 
 		</form>
@@ -136,6 +136,13 @@ input[placeholder="ID"], input[placeholder="PW"] {
 		let login = document.getElementById("h_login");
         login.style = "border-bottom : 2px solid #3c40c6; border-radius: 2px; color : #3c40c6;";
         
+        //폼 태그
+        let user_id = document.getElementById("l_login");
+        
+       
+        function saveSession(){
+        	localStorage.setItem('aniting', JSON.stringify(user_id.u_id.value));
+        }
     </script>
     
 </body>

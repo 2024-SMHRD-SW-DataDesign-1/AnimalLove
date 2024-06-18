@@ -118,43 +118,43 @@ p {
 
 			<p>동물이름</p>
 			<p>
-				<input type="text" class="text" name="u_id" required id="u_id"> 
+				<input type="text" class="text" name="a_name" required id="u_id"> 
 			</p>
 
 			<p>나이</p>
 			<p>
-				<input type="number" class="text" name="u_pw">
+				<input type="number" class="text" name="a_age">
 			</p>
 
 
 			<p>몸무게</p>
 			<p>
-				<input type="number" class="text" name="u_kg">
+				<input type="number" class="text" name="a_weight">
 			</p>
 
 
 			<p>성 별</p>
 			<p>
-				<input type="radio" name="gender" value="male" > Male   
+				<input type="radio" name="a_gender" value="male" > Male   
 				            
-				<input type="radio" name="gender" value="female"> Female
+				<input type="radio" name="a_gender" value="female"> Female
 			</p>
 
 			<p>품종</p>
 			<p>
-				<input onclick="onClickEvent()" id="dog" type="radio" name="breed" value="dog" > Dog
-				<input onclick="onClickEvent()" id="cat" type="radio" name="breed" value="cat"> Cat
+				<input onclick="onClickEvent()" id="dog" type="radio" value="dog" > Dog
+				<input onclick="onClickEvent()" id="cat" type="radio" value="cat"> Cat
 			</p>
 
 
 			<p>상세품종</p>
 			<p>
-			<select name="breedList" id="breed">
+			<select name="a_breed" id="a_breed">
 
 			</select>
 			</p>
 
-			<button  onclick="" class="btn">다음 화면</button>
+			<button  onclick="onSave()" class="btn">다음 화면</button>
 		</form>
 		
 	</div> 
@@ -180,7 +180,7 @@ p {
 		    }
 			
 		    
-			var selectElement = document.getElementById('breed');
+			var selectElement = document.getElementById('a_breed');
 
 			selectElement.innerHTML = "";
 			for(let i = 0; i < list.length; i++)
@@ -201,14 +201,15 @@ p {
 			let form = document.getElementById('infoadd');
 			
 			let dic  = {
-				u_id : form.u_id.value,
-				u_pw : form.u_pw.value,
-				u_kg : form.u_kg.value,
-				gender : form.gender.value,
-				breedList : form.breedList.value,
+				a_u_id : form.a_u_id.value,
+				a_name : form.a_name.value,
+				a_weight : form.a_weight.value,
+				a_gender : form.a_gender.value,
+				a_breed : form.breedList.value,
 			};
 			
-			localStorage.setItem('dic', JSON.stringify(dic));
+			
+			sessionStorage.setItem('key', dic);
 		}
 
 	</script>

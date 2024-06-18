@@ -2,6 +2,7 @@ package com.smhrd.myapp;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,10 +40,10 @@ public class MemberController {
 
 		try {
 			if (emailChkResult == 1 || nickChkResult == 1 || idChkResult == 1) {
-				return "page/join";
+				return "redirect:/join";
 			} else if (emailChkResult == 0 && nickChkResult == 0 && idChkResult == 0) {
 				service.memberJoin(member);
-				return "page/login";
+				return "redirect:/login";
 			}
 		} catch (Exception e) {
 			throw new RuntimeException();
@@ -59,20 +60,20 @@ public class MemberController {
 	}
 
 	// 아이디 중복체크 처리
-	@RequestMapping(value = "/member/idChk", method = RequestMethod.POST, consumes="application/json;")
+	@RequestMapping(value = "/member/idChk", method = RequestMethod.POST, consumes = "application/json;")
 	public @ResponseBody String idChk(@RequestBody String u_id) throws JsonMappingException, JsonProcessingException {
 		// String 형식으로 json 타입 값을 받음
 		// 받은 u_id 를 MavenMemver 타입으로 매칭
 		ObjectMapper mapper = new ObjectMapper();
-        MavenMember tmp = mapper.readValue(u_id, MavenMember.class);
-        // MavenMemver 에서 u_id값 가지고 옴
-        u_id = tmp.getU_id();
-		
-        // service 처리후 int값 받아줄 Check 객체 생성
+		MavenMember tmp = mapper.readValue(u_id, MavenMember.class);
+		// MavenMemver 에서 u_id값 가지고 옴
+		u_id = tmp.getU_id();
+
+		// service 처리후 int값 받아줄 Check 객체 생성
 		Check tmp2 = new Check();
 		// service 처리후 결과값 Check 객체에 idchenk 변수에 담음
 		tmp2.setIdCheck(service.idChk(u_id));
-		
+
 		// Check 타입에서 json 타입으로 변환
 		ObjectMapper om = new ObjectMapper();
 		String jsonString = om.writeValueAsString(tmp2);
@@ -83,35 +84,37 @@ public class MemberController {
 
 	// 닉네임 중복체크 처리
 	@RequestMapping(value = "/member/nickChk", method = RequestMethod.POST)
-	public @ResponseBody String nickChk(@RequestBody String u_nickname) throws JsonMappingException, JsonProcessingException   {
+	public @ResponseBody String nickChk(@RequestBody String u_nickname)
+			throws JsonMappingException, JsonProcessingException {
 		ObjectMapper mapper = new ObjectMapper();
-        MavenMember tmp = mapper.readValue(u_nickname, MavenMember.class);
-		
-        u_nickname = tmp.getU_nickname();
-        
-        Check tmp2 = new Check();
-        tmp2.setNickCheck(service.nickChk(u_nickname));
-        ObjectMapper om = new ObjectMapper();
+		MavenMember tmp = mapper.readValue(u_nickname, MavenMember.class);
+
+		u_nickname = tmp.getU_nickname();
+
+		Check tmp2 = new Check();
+		tmp2.setNickCheck(service.nickChk(u_nickname));
+		ObjectMapper om = new ObjectMapper();
 		String jsonString = om.writeValueAsString(tmp2);
-        
-        return jsonString;
-		
+
+		return jsonString;
+
 	}
 
 	// 이메일 중복체크 처리
 	@RequestMapping(value = "/member/emailChk", method = RequestMethod.POST)
-	public @ResponseBody String emailChk(@RequestBody String u_email) throws JsonMappingException, JsonProcessingException  {
+	public @ResponseBody String emailChk(@RequestBody String u_email)
+			throws JsonMappingException, JsonProcessingException {
 		ObjectMapper mapper = new ObjectMapper();
-        MavenMember tmp = mapper.readValue(u_email, MavenMember.class);
-		
-        u_email = tmp.getU_email();
-        
-        Check tmp2 = new Check();
-        tmp2.setEmailCheck(service.emailChk(u_email));
-        ObjectMapper om = new ObjectMapper();
+		MavenMember tmp = mapper.readValue(u_email, MavenMember.class);
+
+		u_email = tmp.getU_email();
+
+		Check tmp2 = new Check();
+		tmp2.setEmailCheck(service.emailChk(u_email));
+		ObjectMapper om = new ObjectMapper();
 		String jsonString = om.writeValueAsString(tmp2);
-        
-        return jsonString;
+
+		return jsonString;
 	}
 
 	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
@@ -136,19 +139,25 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/member/update", method = RequestMethod.POST)
-	public String memberUpdate(@ModelAttribute MavenMember member) {
+	public String memberUpdate(@ModelAttribute MavenMember member, HttpServletRequest request) {
 
+		// 세션 가져오기
+		HttpSession session = request.getSession();
+
+		// 세션에서 값 가져오기 --> 로그인 당시 정보
+	
+		MavenMember member2 = (MavenMember) session.getAttribute("member");
 		int nickChkResult = service.nickChk(member.getU_nickname());
 		int emailChkResult = service.emailChk(member.getU_email());
-
 		try {
-			// 중복일 때
-			if (emailChkResult == 1 || nickChkResult == 1) {
-				return "page/update";
-			// 중복 아닐 때
-			} else if (emailChkResult == 0 && nickChkResult == 0) {
+			// 중복 아닐 때(성공)
+			if ((emailChkResult == 0 || member.getU_email() == member2.getU_email())
+					&& (nickChkResult == 0 || member.getU_nickname() == member2.getU_nickname())) {
 				service.memberUpdate(member);
-				return "page/login";
+				return "redirect:/login";
+			} // 중복일 때(실패)
+			else if (emailChkResult == 1 || nickChkResult == 1) {
+				return "redirect:/update";
 			}
 		} catch (Exception e) {
 			throw new RuntimeException();
@@ -183,10 +192,5 @@ public class MemberController {
 
 	}
 
-//	@RequestMapping(value="/member/addchat", method=RequestMethod.POST)
-//	public String chatAdd(@RequestParam("log")String log)
-//	{
-//		System.out.println(log);
-//		return "redirect:/chat";
-//	}
+
 }
