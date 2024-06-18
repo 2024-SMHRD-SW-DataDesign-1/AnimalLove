@@ -137,13 +137,13 @@
 
 			<p class="j_menu">비밀번호</p>
 			<p class="j_menu">
-				<input type="password" class="j_text" name="u_pw">
+				<input type="password" class="j_text" name="u_pw" required>
 			</p>
 
 
 			<p class="j_menu">비밀번호 확인</p>
 			<p class="j_menu">
-				<input type="password" class="j_text" name="u_pwcheck">
+				<input type="password" class="j_text" name="u_pwcheck" required>
 			</p>
 
 
@@ -156,7 +156,7 @@
 			<p class="j_menu">닉네임</p>
 			<p class="j_menu">
 				<input type="text" class="j_text" name="u_nickname"
-					value="<%=member.getU_nickname()%>" id="u_nickname">
+					value="<%=member.getU_nickname()%>" id="u_nickname" required>
 				<button class="j_btn" type="button" id="nickChk"
 					onclick="fn_nickChk();" value="N">중복확인</button>
 			</p>
@@ -175,9 +175,10 @@
 			String address = member.getU_address();
 			String[] parts = address.split(",");
 
-			String part1 = parts[0]; // , 기준 앞 문자열
-			String part2 = parts[1]; // , 기준 뒤 문자열
+			String part1 = parts[0]; // , 기준 앞 주소
+			String part2 = parts[1]; // , 기준 뒤 주소
 			%>
+
 			<p class="j_menu">주소</p>
 			<p class="j_menu">
 				<input type="text" class="j_text" name="u_address"
@@ -276,8 +277,6 @@
             dataType :"JSON",
             success : function (data) {
             	console.log(data.emailCheck)
-            	console.log($("#u_email").val());
-            	console.log("<%=member.getU_email()%>")
                 if (data.emailCheck == 0 || "<%=member.getU_email()%>" == $("#u_email").val()) {
                     $("#emailChk").attr("value", "Y");
                     alert("사용 가능한 이메일입니다.")
