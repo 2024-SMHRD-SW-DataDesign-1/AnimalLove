@@ -72,7 +72,7 @@
 		let dic = getValue();
 		
 		const imageUpload = document.getElementById('img_put');
-		
+		console.log(dic);
 		function open()
 		{
 			imageUpload.click();			
