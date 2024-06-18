@@ -53,28 +53,28 @@ public class MemberController {
 	}
 
 	// 아이디 중복체크 처리
-	@ResponseBody 
+	@ResponseBody
 	@RequestMapping(value = "/member/idChk", method = RequestMethod.POST)
 	public String idChk(MavenMember member) {
-		
-		return service.idChk(member.getU_id()) + "" ;
-		
+
+		return service.idChk(member.getU_id()) + "";
+
 	}
 
 	// 닉네임 중복체크 처리
-	@ResponseBody 
+	@ResponseBody
 	@RequestMapping(value = "/member/nickChk", method = RequestMethod.POST)
 	public String nickChk(MavenMember member) {
 
-		return service.nickChk(member.getU_nickname()) + "" ;
+		return service.nickChk(member.getU_nickname()) + "";
 
 	}
 
 	// 이메일 중복체크 처리
-	@ResponseBody 
+	@ResponseBody
 	@RequestMapping(value = "/member/emailChk", method = RequestMethod.POST)
 	public String emailChk(MavenMember member) {
-		return service.emailChk(member.getU_email())+"";
+		return service.emailChk(member.getU_email()) + "";
 	}
 
 	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
@@ -91,13 +91,7 @@ public class MemberController {
 		}
 	}
 
-	// 로그아웃 요청 처리 : localhost:8089/aniting/logout
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public String memberLogout(HttpSession session) {
-		session.removeAttribute("member");
-		return "redirect:/index";
-	}
-
+	// 업데이트 요청 처리 : localhost:8089/aniting/update
 	@RequestMapping(value = "/member/update", method = RequestMethod.POST)
 	public String memberUpdate(@ModelAttribute MavenMember member, HttpServletRequest request) {
 
@@ -105,17 +99,18 @@ public class MemberController {
 		HttpSession session = request.getSession();
 
 		// 세션에서 값 가져오기 --> 로그인 당시 정보
-	
 		MavenMember member2 = (MavenMember) session.getAttribute("member");
 		int nickChkResult = service.nickChk(member.getU_nickname());
 		int emailChkResult = service.emailChk(member.getU_email());
+		System.out.println(member.getU_email());
+		System.out.println(member2.getU_email());
 		try {
-			// 중복 아닐 때(성공)
-			if ((emailChkResult == 0 || member.getU_email() == member2.getU_email())
-					&& (nickChkResult == 0 || member.getU_nickname() == member2.getU_nickname())) {
+			// (성공)
+			if ((emailChkResult == 0 || member.getU_email().equals(member2.getU_email()))
+					&& (nickChkResult == 0 || member.getU_nickname().equals(member2.getU_nickname()))) {
 				service.memberUpdate(member);
 				return "redirect:/login";
-			} // 중복일 때(실패)
+			} // (실패)
 			else if (emailChkResult == 1 || nickChkResult == 1) {
 				return "redirect:/update";
 			}
@@ -125,6 +120,14 @@ public class MemberController {
 		return "redirect:/index";
 	}
 
+	// 로그아웃 요청 처리 : localhost:8089/aniting/logout
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String memberLogout(HttpSession session) {
+		session.removeAttribute("member");
+		return "redirect:/";
+	}
+
+	// 탈퇴 처리
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public String memberDelete(@RequestParam("u_id") String id, HttpSession session) {
 		System.out.println(id);

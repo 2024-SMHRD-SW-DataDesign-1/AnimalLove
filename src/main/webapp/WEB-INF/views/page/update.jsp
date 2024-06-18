@@ -182,7 +182,7 @@
 			<p class="j_menu">주소</p>
 			<p class="j_menu">
 				<input type="text" class="j_text" name="u_address"
-					value="<%=parts[0]%>" id="u_address" readonly> <input
+					value="<%=parts[0]%>" id="u_address"> <input
 					type="button" value="찾기" class="j_btn" id="openModal">
 			</p>
 
@@ -263,7 +263,6 @@
     </script>
 	<script>
     function fn_emailChk() {
-    	let form = document.getElementById("myinfo");
     	
     	var senemail = {
     			u_email : $("#u_email").val()
@@ -272,15 +271,13 @@
         $.ajax({
             url : "member/emailChk",
             type : "POST",
-            contentType: "application/json; charset=utf-8",
-            data : JSON.stringify(senemail),
-            dataType :"JSON",
+            data : senemail,
             success : function (data) {
             	console.log(data.emailCheck)
-                if (data.emailCheck == 0 || "<%=member.getU_email()%>" == $("#u_email").val()) {
+                if (data == '0' || "<%=member.getU_email()%>" == $("#u_email").val()) {
                     $("#emailChk").attr("value", "Y");
                     alert("사용 가능한 이메일입니다.")
-                }else if(data.emailCheck == 1) {
+                }else if(data == '1') {
                     alert("중복된 이메일입니다.");
                 }
             }
@@ -296,15 +293,13 @@
         $.ajax({
             url : "member/nickChk",
             type : "POST",
-            contentType: "application/json; charset=utf-8",
-            data : JSON.stringify(sennick),
-            dataType :"JSON",
+            data : sennick,
             success : function (data) {
             	console.log(data.nickCheck)
-            	 if (data.nickCheck == 0  || "<%=member.getU_nickname()%>" == $("#u_nickname").val() ) {
+            	 if (data == '0'  || "<%=member.getU_nickname()%>" == $("#u_nickname").val() ) {
                      $("#nickChk").attr("value", "Y");
                      alert("사용 가능한 닉네임입니다.")
-                 }else if(data.nickCheck == 1) {
+                 }else if(data == '1') {
                      alert("중복된 닉네임입니다.");
                  } 
             }
