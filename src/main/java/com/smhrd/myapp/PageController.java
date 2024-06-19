@@ -133,12 +133,4 @@ public class PageController {
 		return "page/findId";
 	}
 
-	// 동물정보 등록
-	@RequestMapping(value = "/animal_info/save", method = RequestMethod.GET)
-	public String infoSave(Animal animal) {
-		// view resolver : /WEB-INF/views/index.jsp
-
-		return "page/main";
-	}
-
 }
