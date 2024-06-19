@@ -156,7 +156,7 @@ header>ul {
 			</div>
 			<ul>
 				<li class="h_list"><a href="matching" class="h_category" id="h_mat">매칭</a></li>
-				<li class="h_list"><a href="#" class="h_category" id="h_laca">위치</a></li>
+				<li class="h_list"><a href="information" class="h_category" id="h_laca">위치</a></li>
 				<li class="h_list"><a href="update" class="h_category" id="h_my">마이페이지</a></li>
 			</ul>
 

@@ -7,6 +7,24 @@
 <title>Animal info here</title>
 <style type="text/css">
 
+
+@font-face {
+	font-family: 'Cafe24Meongi-W-v1.0';
+	src:
+		url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Meongi-W-v1.0.woff2')
+		format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+	#ani_title {
+	font-family: 'Cafe24Meongi-W-v1.0';
+	color: #333333;
+	font-size: 50px;
+	text-align: center;
+}
+	
 	
 	#profil_imgs{
 		display : flex;
@@ -45,6 +63,9 @@
 		margin : 0 auto 0 auto;
 	}
 	
+	
+
+	
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
@@ -52,7 +73,9 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	
 	
-		<form action="/aniting/animal_info/save" id="profil_body" >
+
+		<form action="animal_info/save" id="profil_body" method=POST >
+		<h2 id="ani_title">My Animal<br>photo</h2>
 				<input type="file" accept="image/*" id="img_put" multiple name="a_path1">
 				<div id=profil_imgs>
 					<input type="image"  class='profil_img' alt='빈사진' src="resources/img/nullPic.png" />
