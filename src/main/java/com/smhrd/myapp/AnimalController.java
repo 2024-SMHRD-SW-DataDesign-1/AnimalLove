@@ -19,8 +19,8 @@ public class AnimalController {
 	@Autowired
 	AnimalService service;
 
-	@RequestMapping(value = "/animal_Info/save", method = RequestMethod.POST)
-	public String AnimalJoin(@ModelAttribute Animal animal, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	@RequestMapping(value = "/animal_info/save", method = RequestMethod.POST)
+	public void AnimalJoin(@ModelAttribute Animal animal, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		// 세션에서 저장된 데이터 가져오기
 		Animal savedAnimal = (Animal) session.getAttribute("animal");
 	
@@ -38,14 +38,14 @@ public class AnimalController {
 		System.out.println(savedAnimal.getA_breed());
 		
 		// AnimalService를 통해 데이터베이스에 저장
-		int res = service.animalJoin(animal);
-		System.out.println(res);
-
-		// 포워딩
-		if (res > 0) { // 성공
-			return "redirect:/";
-		} else { // 실패
-			return "redirect:/matching_pic";
-		}
+//		int res = service.animalJoin(animal);
+//		System.out.println(res);
+//
+//		// 포워딩
+//		if (res > 0) { // 성공
+//			return "redirect:/";
+//		} else { // 실패
+//			return "redirect:/matching_pic";
+//		}
 	}
 }
