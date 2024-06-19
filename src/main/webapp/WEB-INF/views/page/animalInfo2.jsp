@@ -63,89 +63,6 @@
 </head>
 <body>
 
-<<<<<<< HEAD
-		<form action="animal_info/save" id="profil_body" enctype="multipart/form-data" method=POST >
-		<h2 id="ani_title">My Animal<br>photo</h2>
-				<input type="file" accept="image/*" id="img_put" multiple name="a_path1">
-				<div id=profil_imgs>
-					<input type="image"  class='profil_img' alt='빈사진' src="resources/img/nullPic.png" />
-					<input type="image"  class='profil_img' alt='빈사진' src="resources/img/nullPic.png" />
-					<input type="image"  class='profil_img' alt='빈사진' src="resources/img/nullPic.png" />
-					
-					<input type="hidden" name="a_path1" class="imageSrc" value="one">
-        			<input type="hidden" name="a_path2" class="imageSrc" value="one">
-        			<input type="hidden" name="a_path3" class="imageSrc" value="one">
-				</div>
-				<input class="btn" type="submit" onclick="toSend()" value="프로필 등록" >
-		</form>
-			
-		
-	<script type="text/javascript">
-		function getValue()
-		{
-			const storedList = sessionStorage.getItem('key');
-			return storedList;
-		}
-		let defaultImg = "nullPic.png";
-		let dic = getValue();
-		
-		const imageUpload = document.getElementById('img_put');
-		let imgs = document.getElementsByClassName("profil_img");
-		
-		
-		let imgIdx = 0;
-		
-		imageUpload.addEventListener('change', function(event) {
-            const file = event.target.files[0];
-			if(imgIdx == 3)
-			{
-				return;
-			}
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-               		//imgs[i].src = "resources/img/" + file.name;
-               		imgs[imgIdx].src = e.target.result;
-               		
-               		imgIdx++;           		   		
-               		                    
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-		
-		
-		
-		
-		function toSend()
-		{
-			let dataList = {
-					a_path1 : imgs[0].src,
-					a_path2 : imgs[1].src,
-					a_path3 : imgs[2].src
-			}
-			
-			$.ajax({
-				url:"animalInfo/save",// 요청경로
-				type : "post",
-				data : dataList,
-				success : function (res) {
-					console.log(res)
-	
-				},
-				error :function(){
-					console.log("통신실패");
-				}
-			
-			})
-		}
-		
-		// 헤더에 매칭 강조
-		let login = document.getElementById("h_mat");
-	    login.style = "border-bottom : 2px solid #3c40c6; border-radius: 2px; color : #3c40c6;";
-		
-	</script>
-=======
 	<!-- 헤더 -->
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
@@ -172,7 +89,6 @@
 
 
 	<!-- 푸터 -->
->>>>>>> branch 'main' of https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove.git
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
 </body>
