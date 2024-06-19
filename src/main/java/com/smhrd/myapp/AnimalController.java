@@ -22,7 +22,7 @@ public class AnimalController {
 	@RequestMapping(value = "/animal_Info/save", method = RequestMethod.POST)
 	public String AnimalJoin(@ModelAttribute Animal animal, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		// 세션에서 저장된 데이터 가져오기
-		Animal savedAnimal = (Animal) session.getAttribute("key");
+		Animal savedAnimal = (Animal) session.getAttribute("animal");
 	
 		// 세션에서 받아온 데이터로 Animal 객체 설정
 		animal.setA_u_id(savedAnimal.getA_u_id());
