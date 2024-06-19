@@ -106,10 +106,28 @@ p {
 	outline-width: 1px;
 	background-color: #fff;
 }
+
+
+select {
+  margin-bottom: 10px;
+  outline: 0;
+  color: black;
+  border: 1.5px solid #3c40c6;
+  padding: 4px;
+  border-radius: 9px;
+}
+
+
+
+
 </style>
 </head>
 <body>
+
+
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
+	
+	
 	<div class="join_form">
 		
 		<form action="matching_pic" id="infoadd">
@@ -129,7 +147,7 @@ p {
 
 			<p>몸무게</p>
 			<p>
-				<input type="number" class="text" name="a_weight">
+				<input type="number" class="text" name="a_weight" placeholder="kg" min="1">
 			</p>
 
 
@@ -142,8 +160,8 @@ p {
 
 			<p>품종</p>
 			<p>
-				<input onclick="onClickEvent()" id="dog" type="radio" value="dog" > Dog
-				<input onclick="onClickEvent()" id="cat" type="radio" value="cat"> Cat
+				<input onclick="onClickEvent()" name="a_animal" id="dog" type="radio" value="dog" > Dog
+				<input onclick="onClickEvent()" name="a_animal" id="cat" type="radio" value="cat"> Cat
 			</p>
 
 
@@ -160,8 +178,8 @@ p {
 	</div> 
 	<script type="text/javascript">
 		
-		let dogs = ["몰티즈", "푸들", "믹스견","포메라니안", "진돗개", "시추", "비숑프리제"];
-		let cats = ["코리안숏헤어", "페르시안", "러시안블루", "샴", "터키쉬앙고라", "스코티쉬폴드", "믹스묘"];
+		let dogs = ["몰티즈", "푸들", "포메라니안", "치와와","스피츠" , "시바이누", "웰시코기", "닥스훈트", "비숑프리제","골든 리트리버","사모예드","허스키", "믹스견", "그 외"];
+		let cats = ["코리안숏헤어", "먼치킨", "페르시안", "뱅갈", "러시안블루", "아비시니안", "샴", "터키시앙고라", "스코티시폴드", "스핑크스", "믹스묘", "그 외"];
 		
 		let dogTag = document.getElementById('dog'); 
 		let catTag = document.getElementById('cat');
