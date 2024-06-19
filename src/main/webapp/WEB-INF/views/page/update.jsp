@@ -12,7 +12,7 @@
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=45ed770bdfa1cc4cd6cc25dc8ff866b7&libraries=services,clusterer,drawing"></script>
 
-<title>개인정보수정</title>
+<title>Update here</title>
 
 <style>
 * {
@@ -77,7 +77,7 @@
 
 .m_menu {
 	margin-bottom: 8px;
-	margin-left: 30px;
+	margin-left: 50px;
 }
 
 .m_u_text {
@@ -100,7 +100,7 @@
 	border-radius: 17px;
 	background-color: #3c40c6;
 	margin-top: 10px;
-	margin-left: 30px;
+	margin-left: 50px;
 }
 
 .m_import_btn:active {
@@ -115,6 +115,59 @@
 	outline-width: 1px;
 	background-color: #fff;
 }
+
+
+#m_nav{
+	margin: 2.5em 0 0 0;
+}
+
+#m_nav > ul {
+	margin : 0;
+}
+
+#m_nav > ul > li {
+				display: inline-block;
+				font-style: italic;
+				margin: 0 0.35em 0 0.35em;
+			}
+
+				#nav > ul > li > ul {
+					display: none;
+				}
+
+				#nav > ul > li > a {
+					border-radius: 5px;
+					color: #5d5d5d;
+					text-decoration: none;
+					padding: 0.6em 1.2em 0.6em 1.2em;
+					-moz-transition: background-color .25s ease-in-out;
+					-webkit-transition: background-color .25s ease-in-out;
+					-ms-transition: background-color .25s ease-in-out;
+					transition: background-color .25s ease-in-out;
+					outline: 0;
+				}
+
+				#nav > ul > li:hover > a, #nav > ul > li.active > a {
+					background: #f3f3f3;
+				}
+
+#m_nav > ul > li.current > a{
+	background: #d52349;
+	color: #fff !important;
+	font-weight: 700;
+}
+
+#m_nav > ul > li:hover > a{
+	background: #f3f3f3;
+}
+
+a {
+text-decoration : none;
+}
+
+
+
+
 </style>
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 </head>
@@ -124,6 +177,17 @@
 	%>
 	<div class="m_u_container">
 		<form action="member/update" method="POST" id="myinfo">
+			
+			
+			<nav id="m_nav">
+				<ul>
+					<li><a href="#">회원정보수정</a></li>
+					<li><a href="#">찜 목록</a></li>
+					<li><a href="#">선호도 변경</a></li>
+				</ul>
+			</nav>
+		
+		
 
 			<h2 id="m_u_title">My Info</h2>
 			<br>

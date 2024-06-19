@@ -158,18 +158,19 @@ header>ul {
 				<li class="h_list"><a href="matching" class="h_category" id="h_mat">매칭</a></li>
 				<li class="h_list"><a href="#" class="h_category" id="h_laca">위치</a></li>
 				<li class="h_list"><a href="update" class="h_category" id="h_my">마이페이지</a></li>
-
 			</ul>
 
 			<% MavenMember member = (MavenMember)session.getAttribute("member");%>
 			<% if (member == null) {%>
-			<ul>
+			<!-- 비로그인 시 -->
+			<ul>	
 				<li class="h_list"><a href="login" class="h_category"
 					id="h_login">로그인</a></li>
 				<a href="login"><img src="resources/img/icon_header_angle.png"
 					id="h_angle"></a>
 			</ul>
-			<%} else{%>
+			<%} else{%> 
+			<!-- 로그인 시 -->
 			<ul>
 				<li class="h_list"><a href="update" class="h_category" id="h_login"><%=member.getU_nickname()%>님</a></li>
 				<a href="logout"><img src="resources/img/icon_header_logout.png"

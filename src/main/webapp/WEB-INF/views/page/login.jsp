@@ -78,7 +78,7 @@ input[placeholder="ID"], input[placeholder="PW"] {
 	margin-bottom: 30px;
 }
 
-.btn_container {
+.l_btn_container {
 	display: flex;
 	justify-content: space-around;
 }
@@ -119,7 +119,7 @@ input[placeholder="ID"], input[placeholder="PW"] {
 				<input type="text" placeholder="ID" name="u_id" required > <br>
 				<input type="password" placeholder="PW" name="u_pw" required> <br>
 			
-			<div class="btn_container">
+			<div class="l_btn_container">
 				<input type="submit" value="로그인" class="l_btn">
 				<input type="button" value="회원가입" class="l_btn" onclick="location.href = 'join'">
 			</div>

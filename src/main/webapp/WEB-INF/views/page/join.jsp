@@ -80,7 +80,7 @@
 
 .j_menu {
 	margin-bottom: 8px;
-	margin-left: 30px;
+	margin-left: 50px;
 }
 
 .j_text {
@@ -103,7 +103,7 @@
 	border-radius: 17px;
 	background-color: #3c40c6;
 	margin-top: 10px;
-	margin-left: 30px;
+	margin-left: 50px;
 }
 
 .j_import_btn:active {
