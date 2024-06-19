@@ -90,7 +90,7 @@ public class PageController {
 	}
 	
 	
-	//메인 화면
+	// 매칭화면
 	@RequestMapping(value="/matting", method=RequestMethod.GET)
 	public String animalInfo( ) {
 		
@@ -122,9 +122,7 @@ public class PageController {
 	@RequestMapping(value="/animal_info/save", method=RequestMethod.GET)
 	public String infoSave(Animal animal) {
 		// view resolver : /WEB-INF/views/index.jsp
-		System.out.println(animal.getA_path1());
-		System.out.println(animal.getA_path2());
-		System.out.println(animal.getA_path3());
+
 		return "page/findId";
 	}
 		
