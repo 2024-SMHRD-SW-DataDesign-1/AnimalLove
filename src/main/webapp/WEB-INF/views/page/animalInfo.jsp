@@ -117,7 +117,23 @@ select {
   border-radius: 9px;
 }
 
+input[type='radio'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+}
 
+input[type='radio']:checked {
+  background-color: #3c40c6;
+  border: 2px solid white;
+  box-shadow: 0 0 0 1.6px #3c40c6;
+}
 
 
 </style>
