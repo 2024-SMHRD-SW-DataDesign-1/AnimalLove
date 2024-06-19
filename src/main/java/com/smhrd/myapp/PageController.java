@@ -34,8 +34,17 @@ public class PageController {
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
-	public String update() {
-		return "page/update";
+	public String update(HttpServletRequest request) {
+		// 로그인 세션 가져오기
+		HttpSession session = request.getSession();
+		// 로그인 세션에서 값 가져오기 --> 로그인 당시 정보
+		MavenMember member2 = (MavenMember) session.getAttribute("member");
+		if (member2 != null) { // 로그인 상태
+			return "page/update";
+		} else { // 로그인 안한상태
+			return "page/login";
+		}
+		
 	}
 
 //	@RequestMapping(value="/chat", method=RequestMethod.GET)
