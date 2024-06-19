@@ -171,7 +171,7 @@
 			<p class="j_menu">
 				<input type="email" id="u_email" class="j_text"
 					placeholder="animal@aniting.com" name="u_email" required>
-				<button class="j_btn" type="button" id="emailChk"
+				<button class="j_btn" id="emailChk"
 					onclick="fn_emailChk();" value="N">중복확인</button>
 			</p>
 

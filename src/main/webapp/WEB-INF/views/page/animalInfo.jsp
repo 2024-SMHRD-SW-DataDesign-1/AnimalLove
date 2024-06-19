@@ -245,6 +245,11 @@ input[type='radio']:checked {
 			sessionStorage.setItem('key', dic);
 		}
 
+		
+		// 헤더에 매칭 강조
+		let login = document.getElementById("h_mat");
+	    login.style = "border-bottom : 2px solid #3c40c6; border-radius: 2px; color : #3c40c6;";
+		
 	</script>
 	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
