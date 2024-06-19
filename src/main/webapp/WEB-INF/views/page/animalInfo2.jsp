@@ -73,17 +73,9 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	
 	
-<<<<<<< HEAD
-<<<<<<< HEAD
-		<form action="animal_info/save" id="profil_body" >
-				<h2 id="ani_title">My Animal<br>photo</h2>
 
-=======
-		<form action="/aniting/animal_info/save" id="profil_body" >
->>>>>>> branch 'main' of https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove.git
-=======
 		<form action="animal_info/save" id="profil_body" method=POST >
->>>>>>> branch 'main' of https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove.git
+		<h2 id="ani_title">My Animal<br>photo</h2>
 				<input type="file" accept="image/*" id="img_put" multiple name="a_path1">
 				<div id=profil_imgs>
 					<input type="image"  class='profil_img' alt='빈사진' src="resources/img/nullPic.png" />
