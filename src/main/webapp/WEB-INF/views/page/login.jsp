@@ -131,11 +131,11 @@ input[placeholder="ID"], input[placeholder="PW"] {
 
 	</div>
 
+	<!-- 헤더에 로그인 강조 -->
     <script type="text/javascript">
     
 		let login = document.getElementById("h_login");
         login.style = "border-bottom : 2px solid #3c40c6; border-radius: 2px; color : #3c40c6;";
-        
        
     </script>
     

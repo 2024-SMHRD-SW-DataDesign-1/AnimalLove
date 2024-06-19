@@ -155,9 +155,9 @@ header>ul {
 				</ul>
 			</div>
 			<ul>
-				<li class="h_list"><a href="matching" class="h_category">매칭</a></li>
-				<li class="h_list"><a href="#" class="h_category">위치</a></li>
-				<li class="h_list"><a href="#" class="h_category">마이페이지</a></li>
+				<li class="h_list"><a href="matching" class="h_category" id="h_mat">매칭</a></li>
+				<li class="h_list"><a href="#" class="h_category" id="h_laca">위치</a></li>
+				<li class="h_list"><a href="update" class="h_category" id="h_my">마이페이지</a></li>
 
 			</ul>
 
@@ -171,7 +171,7 @@ header>ul {
 			</ul>
 			<%} else{%>
 			<ul>
-				<li class="h_list"><a href="#" class="h_category" id="h_login"><%=member.getU_nickname()%>님</a></li>
+				<li class="h_list"><a href="update" class="h_category" id="h_login"><%=member.getU_nickname()%>님</a></li>
 				<a href="logout"><img src="resources/img/icon_header_logout.png"
 					id="h_out"></a>
 			</ul>
