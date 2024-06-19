@@ -91,7 +91,7 @@ public class PageController {
 	
 	
 	// 매칭화면
-	@RequestMapping(value="/matting", method=RequestMethod.GET)
+	@RequestMapping(value="/matching", method=RequestMethod.GET)
 	public String animalInfo( ) {
 		
 		
@@ -102,7 +102,7 @@ public class PageController {
 	}
 	
 	//메인 화면
-	@RequestMapping(value="/matting_pic", method=RequestMethod.GET)
+	@RequestMapping(value="/matching_pic", method=RequestMethod.GET)
 	public String animalInfo2( Animal animal, HttpSession session) {
 		// view resolver : /WEB-INF/views/index.jsp
 		session.setAttribute("animal", animal);

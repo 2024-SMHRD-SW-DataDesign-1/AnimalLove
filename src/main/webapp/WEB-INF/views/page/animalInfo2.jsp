@@ -64,7 +64,6 @@
         			<input type="hidden" name="a_path3" class="imageSrc" value="one">
 				</div>
 				<input class="btn" type="submit" onclick="toSend()" value="프로필 등록" >
-				<div >111</div>
 		</form>
 			
 		
