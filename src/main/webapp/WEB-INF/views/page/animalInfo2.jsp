@@ -67,20 +67,20 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
 
-	<form action="animal_info/save" id="profil_body" method=POST>
+	<form action="animal_info/save" id="profil_body" method=POST> 
 		<h2 id="ani_title">
 			My Animal<br>photo
 		</h2>
-		<input type="file" accept="image/*" id="img_put" multiple name="a_path1">
+		<input type="file" accept="image/*" id="img_put" multiple name="photo">
 		<div id=profil_imgs>
-			<input type="image" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
-			<input type="image"	class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
-			<input type="image" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
-			<input type="hidden" name="a_path1" class="imageSrc" value="one">
-			<input type="hidden" name="a_path2" class="imageSrc" value="one"> 
-			<input type="hidden" name="a_path3" class="imageSrc" value="one">
+			<input type="image" name="photo1" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
+			<input type="image"	name="photo2" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
+			<input type="image" name="photo3" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
+			<input type="hidden" name="a_path1" class="imageSrc" value="">
+			<input type="hidden" name="a_path2" class="imageSrc" value=""> 
+			<input type="hidden" name="a_path3" class="imageSrc" value="">
 		</div>
-		<input class="btn" type="submit" onclick="toSend()" value="프로필 등록">
+		<input class="btn" type="submit"  value="프로필 등록">
 	</form>
 		
 
@@ -101,7 +101,8 @@
 	//
 	const imageUpload = document.getElementById('img_put');
 	let imgs = document.getElementsByClassName("profil_img");
-
+	let list = document.getElementsByClassName("imageSrc");
+	
 	let imgIdx = 0;
 
 	imageUpload.addEventListener('change', function(event) {
@@ -114,7 +115,7 @@
 			reader.onload = function(e) {
 				//imgs[i].src = "resources/img/" + file.name;
 				imgs[imgIdx].src = e.target.result;
-				imgs[imgIdx].value = e.target.result;
+				list[imgIdx].value = e.target.result;
 				imgIdx++;
 				
 			};
@@ -128,19 +129,19 @@
 			a_path2 : imgs[1].value,
 			a_path3 : imgs[2].value
 		}
-		/* $.ajax({
-			url : "animalInfo/save",// 요청경로
+/* 		 $.ajax({
+			url : "animal_info/save",// 요청경로
 			type : "post",
 			data : dataList,
 			success : function(res) {
 				console.log(res)
 
 			},
-			error : function() {
+			error : function(error) {
 				console.log("통신실패");
 			}
 
-		}) */
+		})  */
 
 	}
 	

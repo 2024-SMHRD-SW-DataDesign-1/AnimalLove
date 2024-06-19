@@ -28,7 +28,9 @@ public class AnimalController {
 	@RequestMapping(value = "/animal_info/save", method = RequestMethod.POST)
 	public void AnimalJoin(@ModelAttribute Animal animal, HttpSession session) throws IllegalStateException, IOException {
 		// 세션에서 저장된 데이터 가져오기
+		
 		Animal savedAnimal = (Animal) session.getAttribute("animal");
+		
 //		animal.setA_id(savedAnimal.getA_id());
 //		animal.setA_id(savedAnimal.getA_id());
 //		animal.setA_id(savedAnimal.getA_id());
