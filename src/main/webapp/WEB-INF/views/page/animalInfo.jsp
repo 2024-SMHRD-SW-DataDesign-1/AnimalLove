@@ -149,7 +149,6 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 		<form action="matching_pic" id="infoadd">
 			<h2 id="ani_title">My Animal Info</h2>
 			<br>
-	
 			<p>동물 이름</p>
 			<p>
 				<input type="text" class="ani_text" name="a_name" required id="u_id">

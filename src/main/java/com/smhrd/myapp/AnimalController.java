@@ -20,23 +20,24 @@ public class AnimalController {
 	AnimalService service;
 
 	@RequestMapping(value = "/animal_info/save", method = RequestMethod.POST)
-	public void AnimalJoin(@ModelAttribute Animal animal, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	public void AnimalJoin(@ModelAttribute Animal animal, HttpServletRequest request, HttpServletResponse response,
+			HttpSession session) {
 		// 세션에서 저장된 데이터 가져오기
 		Animal savedAnimal = (Animal) session.getAttribute("animal");
-	
+
 		// 세션에서 받아온 데이터로 Animal 객체 설정
 		animal.setA_u_id(savedAnimal.getA_u_id());
 		animal.setA_name(savedAnimal.getA_name());
 		animal.setA_weight(savedAnimal.getA_weight());
 		animal.setA_gender(savedAnimal.getA_gender());
 		animal.setA_breed(savedAnimal.getA_breed());
-		
+
 		System.out.println(savedAnimal.getA_u_id());
 		System.out.println(savedAnimal.getA_name());
 		System.out.println(savedAnimal.getA_weight());
 		System.out.println(savedAnimal.getA_gender());
 		System.out.println(savedAnimal.getA_breed());
-		
+
 		// AnimalService를 통해 데이터베이스에 저장
 //		int res = service.animalJoin(animal);
 //		System.out.println(res);
