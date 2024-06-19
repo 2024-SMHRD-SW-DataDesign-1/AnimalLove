@@ -93,12 +93,8 @@ public class PageController {
 	//메인 화면
 	@RequestMapping(value="/matting", method=RequestMethod.GET)
 	public String animalInfo( ) {
-		
-		
-
-		
-		// view resolver : /WEB-INF/views/index.jsp
-		return "page/animalInfo";
+	// view resolver : /WEB-INF/views/index.jsp
+	return "page/animalInfo";
 	}
 	
 	//메인 화면
