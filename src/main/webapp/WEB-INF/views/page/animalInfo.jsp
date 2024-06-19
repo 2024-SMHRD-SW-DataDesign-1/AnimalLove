@@ -142,12 +142,15 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 <body>
 
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
-
+<%
+	MavenMember member = (MavenMember) session.getAttribute("member");
+	%>
 
 	<div class="animal_form">
 
 		<form action="matching_pic" id="infoadd">
 			<h2 id="ani_title">My Animal Info</h2>
+			<input type="hidden" name = "a_u_id" value="<%=member.getU_id()%>">
 			<br>
 			<p>동물 이름</p>
 			<p>
