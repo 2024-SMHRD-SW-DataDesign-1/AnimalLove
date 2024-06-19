@@ -132,5 +132,13 @@ public class PageController {
 		// view resolver : /WEB-INF/views/index.jsp
 		return "page/findId";
 	}
+	
+	// 선호도
+	@RequestMapping(value = "/prfInfo", method = RequestMethod.GET)
+	public String prfInfo() {
+		// view resolver : /WEB-INF/views/index.jsp
+		return "page/prfInfo";
+	}
+
 
 }
