@@ -30,6 +30,7 @@ footer {
 	align-items: center;
 }
 
+/* 타이틀 문구 */
 .f_left h2 {
 	margin: 0;
 }
@@ -39,6 +40,7 @@ footer {
 	font-size: 12px;
 }
 
+/* sns 표기 */
 .f_left .f_sns {
 	margin-top: 30px;
 }
@@ -49,6 +51,8 @@ footer {
 	margin-right: 20px;
 }
 
+
+/* 오른쪽 리스트 */
 .f_right {
 	flex: 3;
 	padding-left: 50px;
@@ -85,6 +89,8 @@ footer {
 	background: #b2b2b2;
 }
 
+
+/* 저작권 표기 */
 footer .f_copy_right {
 	text-align: center;
 }
@@ -115,8 +121,6 @@ footer .f_copy_right p {
 					</div>
 			</div>
 
-
-
 			<div class="f_right">
 
 				<div class="f_list">
@@ -140,13 +144,5 @@ footer .f_copy_right p {
 	</footer>
 
 
-	<!-- <div id="f_container">
-    <div id="f_wrap">
-        <footer id="footer"><span>애니팅 소개</span><span>이용안내</span><span>가맹점 개점문의</span><span>사이버 감사실</span><span>고객센터</span></footer>
-
-    </div>
- </div>
- 
-  -->
 </body>
 </html>
