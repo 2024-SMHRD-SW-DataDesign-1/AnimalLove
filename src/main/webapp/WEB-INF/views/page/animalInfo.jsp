@@ -130,7 +130,7 @@ select {
 	
 	<div class="join_form">
 		
-		<form action="matting_pic" id="infoadd">
+		<form action="matching_pic" id="infoadd">
 			<h2 id="j_title">Animal Info</h2>
 			<br>
 

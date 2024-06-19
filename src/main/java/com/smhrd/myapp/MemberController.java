@@ -93,7 +93,7 @@ public class MemberController {
 	// 업데이트 요청 처리 : localhost:8089/aniting/update
 	@RequestMapping(value = "/member/update", method = RequestMethod.POST)
 	public String memberUpdate(@ModelAttribute MavenMember member, HttpServletRequest request) {
-
+		
 		// 세션 가져오기
 		HttpSession session = request.getSession();
 
@@ -108,7 +108,11 @@ public class MemberController {
 			if ((emailChkResult == 0 || member.getU_email().equals(member2.getU_email()))
 					&& (nickChkResult == 0 || member.getU_nickname().equals(member2.getU_nickname()))) {
 				service.memberUpdate(member);
-				return "redirect:/login";
+				
+				MavenMember result = service.memberLogin(member);
+				session.setAttribute("member", result);
+				
+				return "redirect:/";
 			} // (실패)
 			else if (emailChkResult == 1 || nickChkResult == 1) {
 				return "redirect:/update";

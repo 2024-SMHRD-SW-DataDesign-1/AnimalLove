@@ -154,7 +154,7 @@ header>ul {
 				</ul>
 			</div>
 			<ul>
-				<li class="h_list"><a href="matting" class="h_category">매칭</a></li>
+				<li class="h_list"><a href="matching" class="h_category">매칭</a></li>
 				<li class="h_list"><a href="#" class="h_category">위치</a></li>
 				<li class="h_list"><a href="#" class="h_category">마이페이지</a></li>
 
