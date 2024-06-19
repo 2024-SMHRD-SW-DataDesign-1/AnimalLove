@@ -45,7 +45,7 @@ public class AnimalController {
 		System.out.println(animal.getA_path2());
 		System.out.println(animal.getA_path3());
 
-//		String uploadFolder = "C://img";
+//		String uploadFolder = "../img";
 //		// UUID : 랜덤 문자열 생성 (겹치지 않도록)
 //				String fileName = UUID.randomUUID().toString() + file.getOriginalFilename();
 //				file.transferTo(new File(uploadFolder, fileName));
