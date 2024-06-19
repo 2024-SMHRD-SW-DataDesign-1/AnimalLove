@@ -18,6 +18,6 @@ public class AnimalController {
 	public String addInfo(Animal animal)
 	{
 		// 세션에서 데이터 받아오신후 합치는 작업 필요함
-		return "page/animalInfo2";
+		return "page/prfInfo";
 	}
 }

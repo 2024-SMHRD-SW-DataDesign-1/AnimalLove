@@ -5,22 +5,28 @@
 
 
 // 주소를 좌표로 변환
-function StoWGS84(list)
+function StoWGS84(str, MainMap)
 {
+
     let geocoder = new kakao.maps.services.Geocoder();
     let array = [];
-    geocoder.addressSearch('제주특별자치도 제주시 첨단로 242', function(result, status) {
+    geocoder.addressSearch(str, function(result, status) {
     
         // 정상적으로 검색이 완료됐으면 
          if (status === kakao.maps.services.Status.OK) {
     
             //var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-    
-            array.push(result);
+    		let moveLatLon = new kakao.maps.LatLng(result[0].y, result[0].x);
+		    // 지도 중심을 부드럽게 이동시킵니다
+		    
+		    // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
+		    map1.panTo(moveLatLon); 
+			
         }
         
     }); 
-    return array;
+    return null;
+
 }
 
 ///////////////////////////////////////////////////////////////
