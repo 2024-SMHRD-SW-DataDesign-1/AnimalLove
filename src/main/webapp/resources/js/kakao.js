@@ -177,12 +177,28 @@ function MarkerView(places)
     
         return marker;
     }
+	function change_btn(e) {
+		var btns = document.querySelectorAll(".info");
+		
+		let input = document.getElementById("mapValue");
+	  	btns.forEach(function (btn, i) {
+	  		
+		    if (e.currentTarget == btn) {
+		      btn.className += " select";
+		      input.value = btn.children[1].innerText;
+		      
+		    } else {
+		      btn.classList.remove("select");
+		    }
+	  	});
+	  	
+	}
 
     function getListItem(index, places) {
 
         var el = document.createElement('li'),
         itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
-                    '<div class="info">' +
+                    '<div class="info" onclick="change_btn(event)">' +
                     '   <h5>' + places.place_name + '</h5>';
     
         if (places.road_address_name) {
