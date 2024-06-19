@@ -115,6 +115,7 @@ header>ul {
 }
 
 #h_out {
+	filter: opacity(0.5) drop-shadow(0 0 0 #333333);
 	width: 24px;
 	margin-left: 5px;
 }

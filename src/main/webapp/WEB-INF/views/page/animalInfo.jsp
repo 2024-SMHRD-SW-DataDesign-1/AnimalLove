@@ -119,10 +119,9 @@ select {
 
 input[type='radio'] {
   -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
-  width: 18px;
-  height: 18px;
+  width: 15px;
+  height: 15px;
   border: 2px solid #ccc;
   border-radius: 50%;
   outline: none;
@@ -131,8 +130,8 @@ input[type='radio'] {
 
 input[type='radio']:checked {
   background-color: #3c40c6;
-  border: 2px solid white;
-  box-shadow: 0 0 0 1.6px #3c40c6;
+  border: 3.5px solid white;
+  box-shadow: 0 0 0 1px #3c40c6;
 }
 
 
@@ -167,7 +166,7 @@ input[type='radio']:checked {
 			</p>
 
 
-			<p>성 별</p>
+			<p>성별</p>
 			<p>
 				<input type="radio" name="a_gender" value="male" > Male   
 				            

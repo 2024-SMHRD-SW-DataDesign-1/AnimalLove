@@ -75,7 +75,7 @@ input[placeholder="ID"], input[placeholder="PW"] {
 	border: 0;
 	border-radius: 17px;
 	background-color: #3c40c6;
-	margin-bottom: 14px;
+	margin-bottom: 30px;
 }
 
 .btn_container {
