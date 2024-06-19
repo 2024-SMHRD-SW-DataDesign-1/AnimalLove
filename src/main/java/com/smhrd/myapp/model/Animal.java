@@ -14,10 +14,10 @@ public class Animal {
 	private int a_id;
 	private String a_u_id;
 	private String a_name;
-	private String a_breed;
-	private String a_gender;
 	private int a_age;
 	private int a_weight;
+	private String a_gender;
+	private String a_breed;
 	private String a_intro;
 	private String a_path1;
 	private String a_path2;
