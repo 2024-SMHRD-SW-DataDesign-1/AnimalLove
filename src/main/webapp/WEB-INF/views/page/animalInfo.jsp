@@ -10,7 +10,7 @@
 * {
 	margin: 0px;
 	padding: 0px;
-	font-family: 'pretendard';
+	
 }
 
 .animal_form {
@@ -37,38 +37,15 @@
 	font-family: 'Cafe24Meongi-W-v1.0';
 	color: #333333;
 	font-size: 50px;
-	padding-top: 10px;
 	text-align: center;
 }
 
-.sub {
-	margin-left: 5px;
-	width: 68px;
-	height: 28px;
-	color: #fff;
-	border: 0;
-	border-radius: 8px;
-	background-color: #3c40c6;
-	letter-spacing: 0.1em;
-}
 
-.sub:active {
-	margin-left: 5px;
-	width: 68px;
-	height: 28px;
-	color: #3c40c6;
-	border: 0;
-	border-radius: 8px;
-	outline: none;
-	outline-style: solid;
-	outline-width: 1px;
-	background-color: #fff;
-	letter-spacing: 0.1em;
-}
 
 p {
 	margin-bottom: 8px;
 	margin-left: 50px;
+	font-family: 'pretendard';
 }
 
 .ani_text {
