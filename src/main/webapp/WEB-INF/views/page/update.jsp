@@ -42,80 +42,7 @@
 	margin-bottom: 100px;
 }
 
-#m_u_title {
-	font-family: 'Cafe24Meongi-W-v1.0';
-	color: #333333;
-	font-size: 50px;
-	padding-top: 10px;
-	text-align: center;
-}
-
-.m_u_btn {
-	margin-left: 5px;
-	width: 68px;
-	height: 28px;
-	color: #fff;
-	border: 0;
-	border-radius: 8px;
-	background-color: #3c40c6;
-	letter-spacing: 0.1em;
-}
-
-.m_u_btn:active {
-	margin-left: 5px;
-	width: 68px;
-	height: 28px;
-	color: #3c40c6;
-	border: 0;
-	border-radius: 8px;
-	outline: none;
-	outline-style: solid;
-	outline-width: 1px;
-	background-color: #fff;
-	letter-spacing: 0.1em;
-}
-
-.m_menu {
-	margin-bottom: 8px;
-	margin-left: 50px;
-}
-
-.m_u_text {
-	width: 250px;
-	height: 36px;
-	font-size: 15px;
-	border: 0;
-	border-radius: 15px;
-	outline: none;
-	padding-left: 10px;
-	background-color: rgb(233, 233, 233);
-}
-
-.m_import_btn {
-	width: 262px;
-	height: 36px;
-	font-size: 15px;
-	color: #fff;
-	border: 0;
-	border-radius: 17px;
-	background-color: #3c40c6;
-	margin-top: 10px;
-	margin-left: 50px;
-}
-
-.m_import_btn:active {
-	width: 262px;
-	height: 36px;
-	font-size: 15px;
-	color: #3c40c6;
-	border: 0;
-	border-radius: 17px;
-	outline: none;
-	outline-style: solid;
-	outline-width: 1px;
-	background-color: #fff;
-}
-
+/*네비게이션*/
 #m_nav {
 	margin: -1em 0 4em 0;
 }
@@ -150,13 +77,97 @@
 }
 
 
+/* 타이틀 */
+#m_u_title {
+	font-family: 'Cafe24Meongi-W-v1.0';
+	color: #333333;
+	font-size: 50px;
+	padding-top: 10px;
+	text-align: center;
+}
+
+
+/* 중복검사 버튼 */
+.m_u_btn {
+	margin-left: 5px;
+	width: 68px;
+	height: 28px;
+	color: #fff;
+	border: 0;
+	border-radius: 8px;
+	background-color: #3c40c6;
+	letter-spacing: 0.1em;
+}
+
+.m_u_btn:active {
+	margin-left: 5px;
+	width: 68px;
+	height: 28px;
+	color: #3c40c6;
+	border: 0;
+	border-radius: 8px;
+	outline: none;
+	outline-style: solid;
+	outline-width: 1px;
+	background-color: #fff;
+	letter-spacing: 0.1em;
+}
+
+
+/* 본문 */
+.m_menu {
+	margin-bottom: 8px;
+	margin-left: 50px;
+}
+
+.m_u_text {
+	width: 250px;
+	height: 36px;
+	font-size: 15px;
+	border: 0;
+	border-radius: 15px;
+	outline: none;
+	padding-left: 10px;
+	background-color: rgb(233, 233, 233);
+}
+
+
+/* 수정완료 버튼 */
+.m_import_btn {
+	width: 262px;
+	height: 36px;
+	font-size: 15px;
+	color: #fff;
+	border: 0;
+	border-radius: 17px;
+	background-color: #3c40c6;
+	margin-top: 10px;
+	margin-left: 50px;
+}
+
+.m_import_btn:active {
+	width: 262px;
+	height: 36px;
+	font-size: 15px;
+	color: #3c40c6;
+	border: 0;
+	border-radius: 17px;
+	outline: none;
+	outline-style: solid;
+	outline-width: 1px;
+	background-color: #fff;
+}
 
 
 </style>
 
-<jsp:include page="/WEB-INF/views/common/header.jsp" />
+
 </head>
 <body>
+
+<!-- 헤더 -->
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
+
 	<%
 	MavenMember member = (MavenMember) session.getAttribute("member");
 	%>
@@ -255,7 +266,7 @@
 
 
 </body>
-
+<!-- 푸터 -->
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 <!-- 모달 스크립트 -->

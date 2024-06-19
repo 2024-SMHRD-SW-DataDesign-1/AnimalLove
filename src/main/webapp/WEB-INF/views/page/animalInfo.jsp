@@ -118,6 +118,7 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 </head>
 <body>
 
+	<!-- 헤더 -->
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 <%
 	MavenMember member = (MavenMember) session.getAttribute("member");
@@ -173,6 +174,11 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 		</form>
 
 	</div>
+
+	<!-- 푸터 -->
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+</body>
+
 	<script type="text/javascript">
 		
 		let dogs = ["몰티즈", "푸들", "포메라니안", "치와와","스피츠" , "시바이누", "웰시코기", "닥스훈트", "비숑프리제","골든 리트리버","사모예드","허스키", "믹스견", "그 외"];
@@ -233,7 +239,4 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 	    login.style = "border-bottom : 2px solid #3c40c6; border-radius: 2px; color : #3c40c6;";
 		
 	</script>
-
-	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-</body>
 </html>

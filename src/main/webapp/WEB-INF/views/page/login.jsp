@@ -9,11 +9,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login here</title>
 <style>
+
 * {
 	margin: 0px;
 	padding: 0px;
 }
 
+/* 타이틀 폰트 */
+@font-face {
+	font-family: 'Cafe24Meongi-W-v1.0';
+	src:
+		url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Meongi-W-v1.0.woff2')
+		format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* 타이틀 */
 .l_container {
 	max-width: 800px;
 	margin: 0 auto;
@@ -27,16 +39,6 @@
 	text-align: center;
 }
 
-@font-face {
-	font-family: 'Cafe24Meongi-W-v1.0';
-	src:
-		url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Meongi-W-v1.0.woff2')
-		format('woff2');
-	font-weight: normal;
-	font-style: normal;
-}
-
-/* login title */
 #l_title {
 	font-family: 'Cafe24Meongi-W-v1.0';
 	color: #333333;
@@ -44,7 +46,6 @@
 	padding-top: 10px;
 }
 
-/* login 밑 글자 */
 #l_sub {
 	font-size: 15px;
 	padding: 14px;
@@ -67,6 +68,8 @@ input[placeholder="ID"], input[placeholder="PW"] {
 	font-family: 'pretendard';
 }
 
+
+/* 버튼 */
 .l_btn {
 	width: 100px;
 	height: 36px;
@@ -96,6 +99,8 @@ input[placeholder="ID"], input[placeholder="PW"] {
 	background-color: #fff;
 }
 
+
+/* id,pw 찾기 */
 .l_search {
 	text-decoration: none;
 	color: #333333;
@@ -104,10 +109,12 @@ input[placeholder="ID"], input[placeholder="PW"] {
 </style>
 
 
-<jsp:include page="/WEB-INF/views/common/header.jsp" />
 </head>
 
 <body>
+
+<!-- 헤더 -->
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 	<div class="l_container">
 	
@@ -131,7 +138,12 @@ input[placeholder="ID"], input[placeholder="PW"] {
 
 	</div>
 
-	<!-- 헤더에 로그인 강조 -->
+<!-- 푸터 -->
+<jsp:include page="/WEB-INF/views/common/footer.jsp" />	
+    
+</body>
+
+<!-- 헤더에 로그인 강조 -->
     <script type="text/javascript">
     
 		let login = document.getElementById("h_login");
@@ -139,7 +151,4 @@ input[placeholder="ID"], input[placeholder="PW"] {
        
     </script>
     
-</body>
-
-<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </html>

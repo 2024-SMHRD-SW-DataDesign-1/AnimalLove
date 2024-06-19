@@ -104,11 +104,12 @@
 }
 </style>
 
-<jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 </head>
 <body>
 
+<!-- 헤더 -->
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 	<section>
 		<div class="swiper">
@@ -152,8 +153,6 @@
 	</section>
 
 
-
-
 	<!-- 인트로 영역 -->
 	<section class="m_intro">
 		<div class="m_card">
@@ -174,7 +173,8 @@
 
 	</section>
 
-
+<!-- 푸터 -->
+<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 </body>
 
@@ -198,6 +198,4 @@
 	});
 </script>
 
-
-<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </html>
