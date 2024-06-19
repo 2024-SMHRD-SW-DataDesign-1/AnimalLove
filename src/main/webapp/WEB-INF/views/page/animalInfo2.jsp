@@ -74,7 +74,7 @@
 	
 	
 
-		<form action="animal_info/save" id="profil_body" method=POST >
+		<form action="animal_info/save" id="profil_body" enctype="multipart/form-data" method=POST >
 		<h2 id="ani_title">My Animal<br>photo</h2>
 				<input type="file" accept="image/*" id="img_put" multiple name="a_path1">
 				<div id=profil_imgs>
