@@ -116,59 +116,44 @@
 	background-color: #fff;
 }
 
-
-#m_nav{
-	margin: 2.5em 0 0 0;
+#m_nav {
+	margin: -1em 0 4em 0;
 }
 
-#m_nav > ul {
-	margin : 0;
+
+#m_nav>ul>li {
+	display: inline-block;
+	margin: 0 0.35em 0 0.35em;
 }
 
-#m_nav > ul > li {
-				display: inline-block;
-				font-style: italic;
-				margin: 0 0.35em 0 0.35em;
-			}
-
-				#nav > ul > li > ul {
-					display: none;
-				}
-
-				#nav > ul > li > a {
-					border-radius: 5px;
-					color: #5d5d5d;
-					text-decoration: none;
-					padding: 0.6em 1.2em 0.6em 1.2em;
-					-moz-transition: background-color .25s ease-in-out;
-					-webkit-transition: background-color .25s ease-in-out;
-					-ms-transition: background-color .25s ease-in-out;
-					transition: background-color .25s ease-in-out;
-					outline: 0;
-				}
-
-				#nav > ul > li:hover > a, #nav > ul > li.active > a {
-					background: #f3f3f3;
-				}
-
-#m_nav > ul > li.current > a{
-	background: #d52349;
-	color: #fff !important;
-	font-weight: 700;
+#m_nav>ul>li>ul {
+	display: none;
 }
 
-#m_nav > ul > li:hover > a{
+#m_nav>ul>li>a {
+	border-radius: 5px;
+	color: #5d5d5d;
+	text-decoration: none;
+	padding: 0.6em 1.2em 0.6em 1.2em;
+	transition: background-color .25s ease-in-out;
+	outline: 0;
+}
+
+#m_nav>ul>li:hover>a, #nav>ul>li.active>a {
 	background: #f3f3f3;
 }
 
-a {
-text-decoration : none;
+#m_nav>ul>li #user_info {
+	background: #ebecff;
+	color: #5d5d5d !important;
+	font-weight: 460;
 }
 
 
 
 
 </style>
+
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 </head>
 <body>
@@ -177,17 +162,16 @@ text-decoration : none;
 	%>
 	<div class="m_u_container">
 		<form action="member/update" method="POST" id="myinfo">
-			
-			
+
+
 			<nav id="m_nav">
 				<ul>
-					<li><a href="#">회원정보수정</a></li>
-					<li><a href="#">찜 목록</a></li>
+					<li><a href="update" id="user_info">회원정보수정</a></li>
+					<li><a href="#" id="user_zzim">찜 목록</a></li>
 					<li><a href="#">선호도 변경</a></li>
 				</ul>
 			</nav>
-		
-		
+
 
 			<h2 id="m_u_title">My Info</h2>
 			<br>
@@ -201,15 +185,15 @@ text-decoration : none;
 
 			<p class="m_menu">비밀번호</p>
 			<p class="m_menu">
-				<input type="password" class="m_u_text" name="u_pw" maxlength="20" 
-				 minlength="6" id="pw1" oninput="pwCheck()" required>
+				<input type="password" class="m_u_text" name="u_pw" maxlength="20"
+					minlength="6" id="pw1" oninput="pwCheck()" required>
 			</p>
 
 
 			<p class="m_menu">비밀번호 확인</p>
 			<p class="m_menu">
-				<input type="password" class="m_u_text" name="u_pwcheck" 
-				maxlength="20" minlength="6" id="pw2" oninput="pwCheck()" required><br>
+				<input type="password" class="m_u_text" name="u_pwcheck"
+					maxlength="20" minlength="6" id="pw2" oninput="pwCheck()" required><br>
 				<sapn id="pwCheck"> </span>
 			</p>
 
@@ -224,8 +208,8 @@ text-decoration : none;
 			<p class="m_menu">
 				<input type="text" class="m_u_text" name="u_nickname"
 					value="<%=member.getU_nickname()%>" id="u_nickname" required>
-				<button class="m_u_btn" id="nickChk"
-					onclick="fn_nickChk();" value="N">중복확인</button>
+				<button class="m_u_btn" id="nickChk" onclick="fn_nickChk();"
+					value="N">중복확인</button>
 			</p>
 
 
@@ -234,8 +218,8 @@ text-decoration : none;
 				<input type="email" id="u_email" class="m_u_text"
 					placeholder="animal@aniting.com" value="<%=member.getU_email()%>"
 					name="u_email" required>
-				<button class="m_u_btn" id="emailChk"
-					onclick="fn_emailChk();" value="N">중복확인</button>
+				<button class="m_u_btn" id="emailChk" onclick="fn_emailChk();"
+					value="N">중복확인</button>
 			</p>
 
 
@@ -252,8 +236,8 @@ text-decoration : none;
 			<p class="m_menu">주소</p>
 			<p class="m_menu">
 				<input type="text" class="m_u_text" name="u_address"
-					value="<%=parts[0]%>" id="u_address">
-					<input type="button" value="찾기" class="m_u_btn" id="openModal">
+					value="<%=parts[0]%>" id="u_address"> <input type="button"
+					value="찾기" class="m_u_btn" id="openModal">
 			</p>
 
 
@@ -268,7 +252,7 @@ text-decoration : none;
 		</form>
 	</div>
 
-	
+
 
 </body>
 
