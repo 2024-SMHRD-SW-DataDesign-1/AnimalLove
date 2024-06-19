@@ -82,6 +82,7 @@
 		</div>
 		<input class="btn" type="submit" onclick="toSend()" value="프로필 등록">
 	</form>
+		
 
 
 
@@ -97,7 +98,7 @@
 	}
 	let defaultImg = "nullPic.png";
 	let dic = getValue();
-
+	//
 	const imageUpload = document.getElementById('img_put');
 	let imgs = document.getElementsByClassName("profil_img");
 
@@ -113,9 +114,9 @@
 			reader.onload = function(e) {
 				//imgs[i].src = "resources/img/" + file.name;
 				imgs[imgIdx].src = e.target.result;
-
+				imgs[imgIdx].value = e.target.result;
 				imgIdx++;
-
+				
 			};
 			reader.readAsDataURL(file);
 		}
@@ -123,11 +124,10 @@
 
 	function toSend() {
 		let dataList = {
-			a_path1 : imgs[0].src,
-			a_path2 : imgs[1].src,
-			a_path3 : imgs[2].src
+			a_path1 : imgs[0].value,
+			a_path2 : imgs[1].value,
+			a_path3 : imgs[2].value
 		}
-
 		$.ajax({
 			url : "animalInfo/save",// 요청경로
 			type : "post",
@@ -141,7 +141,9 @@
 			}
 
 		})
+
 	}
+	
 
 	// 헤더에 매칭 강조
 	let login = document.getElementById("h_mat");
