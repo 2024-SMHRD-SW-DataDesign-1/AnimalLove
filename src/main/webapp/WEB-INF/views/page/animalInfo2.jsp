@@ -128,7 +128,7 @@
 			a_path2 : imgs[1].value,
 			a_path3 : imgs[2].value
 		}
-		$.ajax({
+		/* $.ajax({
 			url : "animalInfo/save",// 요청경로
 			type : "post",
 			data : dataList,
@@ -140,7 +140,7 @@
 				console.log("통신실패");
 			}
 
-		})
+		}) */
 
 	}
 	
