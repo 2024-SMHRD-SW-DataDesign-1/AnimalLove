@@ -1,5 +1,7 @@
 package com.smhrd.myapp;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.smhrd.myapp.model.Animal;
-import com.smhrd.myapp.model.MavenMember;
 import com.smhrd.myapp.service.AnimalService;
-import com.smhrd.myapp.service.ChatService;
 
 @Controller
 public class AnimalController {
@@ -20,7 +20,7 @@ public class AnimalController {
 	AnimalService service;
 
 	@RequestMapping(value = "/animal_Info/save", method = RequestMethod.POST)
-	public String AnimalJoin(@ModelAttribute Animal animal, HttpSession session) {
+	public String AnimalJoin(@ModelAttribute Animal animal, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		// 세션에서 저장된 데이터 가져오기
 		Animal savedAnimal = (Animal) session.getAttribute("key");
 	
