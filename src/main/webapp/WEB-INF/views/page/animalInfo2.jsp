@@ -71,17 +71,14 @@
 		<h2 id="ani_title">
 			My Animal<br>photo
 		</h2>
-		<input type="file" accept="image/*" id="img_put" multiple
-			name="a_path1">
+		<input type="file" accept="image/*" id="img_put" multiple name="a_path1">
 		<div id=profil_imgs>
-			<input type="image" class='profil_img' alt='빈사진'
-				src="resources/img/nullPic.png" /> <input type="image"
-				class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> <input
-				type="image" class='profil_img' alt='빈사진'
-				src="resources/img/nullPic.png" /> <input type="hidden"
-				name="a_path1" class="imageSrc" value="one"> <input
-				type="hidden" name="a_path2" class="imageSrc" value="one"> <input
-				type="hidden" name="a_path3" class="imageSrc" value="one">
+			<input type="image" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
+			<input type="image"	class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
+			<input type="image" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
+			<input type="hidden" name="a_path1" class="imageSrc" value="one">
+			<input type="hidden" name="a_path2" class="imageSrc" value="one"> 
+			<input type="hidden" name="a_path3" class="imageSrc" value="one">
 		</div>
 		<input class="btn" type="submit" onclick="toSend()" value="프로필 등록">
 	</form>

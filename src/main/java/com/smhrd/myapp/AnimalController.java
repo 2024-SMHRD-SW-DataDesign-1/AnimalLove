@@ -26,18 +26,24 @@ public class AnimalController {
 	AnimalService service;
 
 	@RequestMapping(value = "/animal_info/save", method = RequestMethod.POST)
-	public void AnimalJoin(@ModelAttribute Animal animal, HttpSession session, @RequestPart("photo") MultipartFile file) throws IllegalStateException, IOException {
+	public void AnimalJoin(@ModelAttribute Animal animal, HttpSession session) throws IllegalStateException, IOException {
 		// 세션에서 저장된 데이터 가져오기
 		Animal savedAnimal = (Animal) session.getAttribute("animal");
-
+//		animal.setA_id(savedAnimal.getA_id());
+//		animal.setA_id(savedAnimal.getA_id());
+//		animal.setA_id(savedAnimal.getA_id());
+//		animal.setA_id(savedAnimal.getA_id());
+//		animal.setA_id(savedAnimal.getA_id());
+		
 		System.out.println(savedAnimal.getA_u_id());
 		System.out.println(savedAnimal.getA_name());
 		System.out.println(savedAnimal.getA_weight());
 		System.out.println(savedAnimal.getA_gender());
 		System.out.println(savedAnimal.getA_breed());
-		System.out.println(savedAnimal.getA_path1());
-		System.out.println(savedAnimal.getA_path2());
-		System.out.println(savedAnimal.getA_path3());
+		
+		System.out.println(animal.getA_path1());
+		System.out.println(animal.getA_path2());
+		System.out.println(animal.getA_path3());
 
 //		String uploadFolder = "C://img";
 //		// UUID : 랜덤 문자열 생성 (겹치지 않도록)
