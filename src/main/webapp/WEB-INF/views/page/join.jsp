@@ -10,13 +10,11 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=45ed770bdfa1cc4cd6cc25dc8ff866b7&libraries=services,clusterer,drawing"></script>
-<<<<<<< HEAD
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<title>Join here</title>
-=======
 
-<title>회원가입</title>
->>>>>>> 1aa4ff4aeef66b49b2ff58b6dac389e5f67cf503
+
+<title>Join here</title>
+
 
 <style>
 * {
