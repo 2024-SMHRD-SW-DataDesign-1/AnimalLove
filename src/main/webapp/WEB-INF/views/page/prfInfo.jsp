@@ -104,7 +104,7 @@
 		<div id="prf_inner">
 		<h2 id="m_u_title">Preference Pick</h2>
 		<h4 style="text-align : left; color:#666">추천될 프로필 카드의 정보를 입력해주세요!</h4>
-		<form action="#" style='width:100%'>
+		<form action="#" style='width:100%' method="post">
 		
 			<p class="prf_menu">나이</p>
 			<div id="ageContainer" class="prf_menu container">

@@ -129,6 +129,12 @@ public class PageController {
 		// view resolver : /WEB-INF/views/index.jsp
 		return "page/prfInfo";
 	}
-
+	
+	//프로필 약식 화면
+	@RequestMapping(value = "/matProfile", method = RequestMethod.GET)
+	public String matProfile() {
+		// view resolver : /WEB-INF/views/index.jsp
+		return "page/matProfile";
+	}
 
 }
