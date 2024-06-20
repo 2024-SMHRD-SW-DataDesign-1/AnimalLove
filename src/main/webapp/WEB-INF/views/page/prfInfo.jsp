@@ -16,16 +16,17 @@
 	}
 	
 	#prf_main{
+	
 		height : 70vh;
+		display : flex;
+		justify-content: center;
+		align-items: center;
 	}
-	
-	
 	
 	.prf_menu{
-		margin-bottom : 20px;
+		margin-bottom : 40px;
 	}
-	
-	
+		
 	.prf_text {
 		width: 250px;
 		height: 36px;
@@ -73,7 +74,7 @@
 		<form action="#" >
 			<p class="prf_menu">나이</p>
 
-			<input type="text" class="prf_text" name="a_prfage" id="A_prfage"
+			<input type="text" class="prf_text" name="a_prfage" id="a_prfage"
 				maxlength="8" oninput="idCheck()" required>
 
 			
@@ -86,8 +87,8 @@
 			
 			<p class="prf_menu">상세품좀</p>
 			<p class="prf_menu">
-				<select type="text" class="prf_text" name="a_prfbreed" id="a_prfbreed"
-					maxlength="8" oninput="idCheck()" required>
+				<select class="prf_text" name="a_prfbreed" id="a_prfbreed"
+					 oninput="idCheck()" required>
 				</select>
 				
 			</p>
