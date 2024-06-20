@@ -23,6 +23,7 @@
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+	overflow-y:auto
 }
 
 @font-face {
@@ -114,6 +115,11 @@ input[type='radio']:checked {
 input[type="text"], input[type="number"], input[placeholder="kg"] {
 	font-size: 14px;
 }
+
+.center{
+	margin-left: 50px;
+}
+
 </style>
 </head>
 <body>
@@ -169,10 +175,13 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 
 				</select>
 			</p>
+			
+			<p>소개글</p>
+			<textarea class="center" name="a_intro" id="" cols="40" rows="8" ></textarea><br>
 
-			<button onclick="onSave()" class="btn">다음 화면</button>
+			<button  class="btn" >다음 화면</button>
 		</form>
-
+	<button onclick="onSave()">111</button>
 	</div>
 
 	<!-- 푸터 -->
@@ -221,16 +230,17 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 			<!-- 주소, 상세주소 분리 로직 -->
 			let form = document.getElementById('infoadd');
 			
-			let dic  = {
-				a_u_id : form.a_u_id.value,
-				a_name : form.a_name.value,
-				a_weight : form.a_weight.value,
-				a_gender : form.a_gender.value,
-				a_breed : form.breedList.value,
+			let dicList  = {
+				'a_u_id' : form.a_u_id.value,
+				'a_name' : form.a_name.value,
+				'a_weight' : form.a_weight.value,
+				'a_gender' : form.a_gender.value,
+				'a_breed' : form.a_breed.value,
+				'a_intro' : form.a_intro
 			};
 			
 			
-			sessionStorage.setItem('key', dic);
+			//sessionStorage.setItem('key', dicList);
 		}
 
 		

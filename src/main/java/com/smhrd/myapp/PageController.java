@@ -47,11 +47,6 @@ public class PageController {
 		
 	}
 
-//	@RequestMapping(value="/chat", method=RequestMethod.GET)
-//	public String chat() {
-//		return "chatting";
-//		// return "chatting" => chatting.jsp (WEB-INF/spring/appServlet/servlet-context.xml 에서 설정)
-//	}
 	@RequestMapping(value = "/common/header", method = RequestMethod.GET)
 	public String header() {
 		return "common/header";
@@ -71,10 +66,6 @@ public class PageController {
 	public String information() {
 		return "page/information";
 	}
-//	@RequestMapping(value="/list", method=RequestMethod.GET)
-//	public String list() {
-//		return "member/list";
-//	}
 
 	@RequestMapping(value = "/chatting/{c_id}", method = RequestMethod.GET)
 	public String chatting(@PathVariable("c_id") String c_id, Model model) {
@@ -82,10 +73,10 @@ public class PageController {
 		return "chatting";
 	}
 
-	@RequestMapping(value = "/chatList", method = RequestMethod.GET)
-	public String chatList() {
-		return "chatList";
-	}
+//	@RequestMapping(value = "/chatList", method = RequestMethod.GET)
+//	public String chatList() {
+//		return "chatList";
+//	}
 
 	// 채팅방리스트 화면
 	@RequestMapping(value = "/mainchatList", method = RequestMethod.GET)
@@ -122,7 +113,6 @@ public class PageController {
 		// view resolver : /WEB-INF/views/index.jsp
 		session.setAttribute("animal", animal);
 		Animal tem = (Animal) session.getAttribute("animal");
-
 		return "page/animalInfo2";
 	}
 
@@ -139,6 +129,12 @@ public class PageController {
 		// view resolver : /WEB-INF/views/index.jsp
 		return "page/prfInfo";
 	}
-
+	
+	//프로필 약식 화면
+	@RequestMapping(value = "/matProfile", method = RequestMethod.GET)
+	public String matProfile() {
+		// view resolver : /WEB-INF/views/index.jsp
+		return "page/matProfile";
+	}
 
 }

@@ -122,7 +122,7 @@ header>ul {
 
 #chat_icon {
 	position: fixed;
-	left: 90%;
+	left: 89%;
 	top: 90%;
 	background-color: red;
 	width: 30px;
@@ -141,6 +141,16 @@ header>ul {
 	z-index: 100;
 	overflow-y: auto;
 }
+
+#mainnoread
+{
+	color: blue;
+	font-weight:bold;
+	position: fixed;
+	left: 92%;
+	top: 90%;
+}
+
 </style>
 
 </head>
@@ -182,10 +192,13 @@ header>ul {
 
 
 	</div>
+	<%if(member!=null){ %>
 	<div id="chatList_box">
 		<jsp:include page="/WEB-INF/views/common/chat/chatlist.jsp"></jsp:include>
 	</div>
-	<div id="chat_icon" onclick="chatListView()">채팅</div>
+	<div id="chat_icon" onclick="chatListView()">채팅	</div>
+	<div id="mainnoread"></div>
+	
 
 	<script type="text/javascript">
 		function chatListView() {
@@ -199,6 +212,8 @@ header>ul {
 			}
 
 		}
+		
 	</script>
+	<%} %>
 </body>
 </html>

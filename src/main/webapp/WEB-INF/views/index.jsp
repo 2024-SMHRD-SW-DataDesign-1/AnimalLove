@@ -24,7 +24,7 @@
 			채팅요청보낼ID <input type="text" name="c_recid">
 			<input type="submit" value="요청보내기">
 	</form>
-	<a href="member/chatlist/<%=member.getU_id()%>"><button>채팅목록</button></a>
+	<a href="chatlist"><button>채팅목록</button></a>
 	
 	<a href="chat"> <button>지도</button></a>
 	<a href="logout"> <button>로그아웃</button></a>

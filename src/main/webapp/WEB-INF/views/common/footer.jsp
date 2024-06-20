@@ -8,18 +8,22 @@
 <title>Footer here</title>
 
 <style>
-
-*{
+* {
 	font-family: 'pretendard';
 }
 
-footer {	
-	width:100%;
+@media screen and (max-width:640px) {
+	footer {
+		flex-direction: column;
+	}
+}
+
+footer {
+	width: 100%;
 	color: #333333;
 	background: #e9e9e9;
 	padding-top: 30px;
 	padding-bottom: 20px;
-
 }
 
 .f_container {
@@ -51,7 +55,6 @@ footer {
 	margin-right: 20px;
 }
 
-
 /* 오른쪽 리스트 */
 .f_right {
 	flex: 3;
@@ -80,7 +83,8 @@ footer {
 }
 
 .f_list ul li {
-	font-size: 14px; padding : 6px 6px;
+	font-size: 14px;
+	padding: 6px 6px;
 	color: #666666;
 	padding: 6px 6px;
 }
@@ -88,7 +92,6 @@ footer {
 .f_list ul li:hover {
 	background: #b2b2b2;
 }
-
 
 /* 저작권 표기 */
 footer .f_copy_right {
@@ -99,8 +102,6 @@ footer .f_copy_right p {
 	font-size: 12px;
 	margin: 0;
 }
-
-
 </style>
 </head>
 <body>
@@ -108,30 +109,26 @@ footer .f_copy_right p {
 	<footer>
 		<div class="f_container">
 			<div class="f_left">
-				<h2>
-					ANIMAL X ANITING
-					</h2>
-					<p>http://localhost:8089/aniting/</p>
+				<h2>ANIMAL X ANITING</h2>
+				<p>http://localhost:8089/aniting/</p>
 
-					<div class="f_sns">
-						<img src="resources/img/icon_footer_facebook.png"> 
-						<img src="resources/img/icon_footer_git.png"> 
-						<img src="resources/img/icon_footer_twitter.png">
-						<img src="resources/img/icon_footer_youtube.png">
-					</div>
+				<div class="f_sns">
+					<img src="resources/img/icon_footer_facebook.png"> <img
+						src="resources/img/icon_footer_git.png"> <img
+						src="resources/img/icon_footer_twitter.png"> <img
+						src="resources/img/icon_footer_youtube.png">
+				</div>
 			</div>
 
 			<div class="f_right">
 
 				<div class="f_list">
-					<h3>
-						ABOUT
-						</h3>
-						<ul>
-							<li>이용약관</li>
-							<li>개인정보처리방침</li>
-							<li>고객센터</li>
-						</ul>
+					<h3>ABOUT</h3>
+					<ul>
+						<li>이용약관</li>
+						<li>개인정보처리방침</li>
+						<li>고객센터</li>
+					</ul>
 				</div>
 
 			</div>
