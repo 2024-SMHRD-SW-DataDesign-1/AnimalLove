@@ -80,7 +80,7 @@
 			<input type="hidden" name="a_path2" class="imageSrc" value=""> 
 			<input type="hidden" name="a_path3" class="imageSrc" value="">
 		</div>
-		<input class="btn" type="submit"  value="프로필 등록">
+		<input class="btn" type="submit" onclick="toSend()" value="프로필 등록">
 	</form>
 		
 
@@ -129,7 +129,7 @@
 			a_path2 : imgs[1].value,
 			a_path3 : imgs[2].value
 		}
-/* 		 $.ajax({
+ 		 $.ajax({
 			url : "animal_info/save",// 요청경로
 			type : "post",
 			data : dataList,
@@ -141,7 +141,7 @@
 				console.log("통신실패");
 			}
 
-		})  */
+		}) 
 
 	}
 	
