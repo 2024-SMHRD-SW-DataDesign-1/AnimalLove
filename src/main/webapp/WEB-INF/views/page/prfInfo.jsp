@@ -72,7 +72,7 @@
 	<div id="prf_main">
 		<div id="prf_inner">
 		
-		<form action="#" >
+		<form action="prf_info/save" >
 			<p class="prf_menu">나이</p>
 
 			<input type="text" class="prf_text" name="a_prfage" id="a_prfage"
