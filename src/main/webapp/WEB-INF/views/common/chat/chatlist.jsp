@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.myapp.model.MavenMember"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="java.util.List"%>
 <%@page import="com.smhrd.myapp.model.Chat"%>
@@ -8,6 +9,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 <style>
@@ -15,87 +18,191 @@
 	color: gray;
 	font-size: 10px;
 }
+
+.list-container {
+	display: flex;
+	justify-content: space-between;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+.imgcontainer {
+	style ="width: 48px;
+	height: 50px;
+	border-radius: 150px;
+	background-color: skyblue;
+}
+.list-content{
+	display: flex;
+	align-items: center;
+}
+
+.noread{
+	margin-left : 20px;
+}
 </style>
 </head>
 <body>
+
+
 	<div id="chatReady">
 		<span class="text">알림</span>
-		<!-- 보낸요청 -->
-		<c:forEach var="b" items="${chatlist}">
-			<c:choose>
-				<c:when test="${b.c_accept==0}">
-					<div
-						style="display: flex; justify-content: space-between; border-top: 1px solid black; border-bottom: 1px solid black;">
-						<img src="#"
-							style="width: 48px; height: 50px; border-radius: 150px; background-color: skyblue;" />
-						<div>${b.c_recid}님께 요청중입니다 .</div>
-						<button>수락</button>
-						<button>거부</button>
-						<button>정보확인</button>
-					</div>
-				</c:when>
-			</c:choose>
-		</c:forEach>
-
-		<c:forEach var="b" items="${receivelist}">
-			<c:choose>
-				<c:when test="${b.c_accept==0}">
-					<div
-						style="display: flex; justify-content: space-between; border-top: 1px solid black; border-bottom: 1px solid black;">
-						<img src="#"
-							style="width: 48px; height: 50px; border-radius: 150px; background-color: skyblue;" />
-						<div>${b.c_senid}님 온 요청</div>
-						<a href="../accept/${b.c_recid}"><button>수락</button></a>
-						<button>거부</button>
-						<button>정보확인</button>
-					</div>
-				</c:when>
-			</c:choose>
-		</c:forEach>
 	</div>
 	<div id="chatModal">
 		<span class="text">채팅방목록</span>
-
+	</div>
+	
+	<div id="lastlog">
 	</div>
 
-	<c:forEach var="b" items="${chatlist}">
-
-		<c:choose>
-			<c:when test="${b.c_accept==1}">
-				<div
-					style="display: flex; justify-content: space-between; border-top: 1px solid black; border-bottom: 1px solid black;">
-					<img src="#"
-						style="width: 48px; height: 50px; border-radius: 150px; background-color: skyblue;">
-					<div>
-						<a href="/aniting/chatting/${b.c_id}"><div>
-								${b.c_recid}님 채팅방</div></a>
-						<div>${b.lastChatLog.cl_log}</div>
-					</div>
-					<img src="../../resources/img/deleteBox.png" style="width: 40px;"
-						alt='휴지통' />
-				</div>
-			</c:when>
-		</c:choose>
-	</c:forEach>
-
-	<c:forEach var="b" items="${receivelist}">
-
-		<c:choose>
-			<c:when test="${b.c_accept==1}">
-				<div
-					style="display: flex; justify-content: space-between; border-top: 1px solid black; border-bottom: 1px solid black;">
-					<img src="#"
-						style="width: 48px; height: 50px; border-radius: 150px; background-color: skyblue;">
-					<div>
-						<a href="/aniting/chatting/${b.c_id}"><div>
-								${b.c_senid}님 채팅방</div></a>
-						<div>${b.lastChatLog.cl_log}</div>
-					</div>
-					<image src="../../resources/img/deleteBox.png" style="width:40px;"
-						alt='휴지통' />
-				</div>
-			</c:when>
-		</c:choose>
-	</c:forEach>
 </body>
+
+<script type="text/javascript">
+	<%MavenMember member = (MavenMember) session.getAttribute("member");%>
+	let userid = "<%=member.getU_id()%>";
+	let session = [];
+	let sum =0; 
+	
+	$(document).ready(function(){
+		$.ajax({
+			url: "roadchatlist",
+			type: "POST",
+			data: { u_id: userid },
+			dataType:"json",
+			success: function(chatList){
+				load(chatList);
+				
+				noread(chatList);
+				
+				for(let i = 0; i < chatList.length; i++){
+					var url = "ws://" + document.location.host + "/aniting/chat/" + chatList[i].c_id;
+		            var ws =  new WebSocket(url);
+					session.push(ws);
+		            ws.onmessage = onMessage;
+		        }
+				
+				
+			},
+			error: function(err) {
+				console.error("Error:", err); // 에러 핸들링
+			}
+		});
+	});
+	
+function load(chatList){
+	$.each(chatList, (index,chat)=> {
+		console.log(chat)
+		if (chat.c_accept === 0 && chat.c_senid === userid) { // 조건 1: 요청 중인 채팅방
+			$('#chatReady').append(
+				'<div class="request-container">' +
+					'<img src="#" class="image-container"/>' +
+					'<div>' + chat.c_recid + '님께 요청중입니다.</div>' +
+				'</div>'
+			);
+		} else if (chat.c_accept === 0 && chat.c_recid === userid) { // 조건 2: 내가 받은 요청
+			$('#chatReady').append(
+				'<div class="request-container">' +
+					'<img src="#" class="image-container"/>' +
+					'<div>' + chat.c_senid + '님 온 요청</div>' +
+					'<a href="../accept/' + chat.c_recid + '"><button>수락</button></a>' +
+					'<button>거부</button>' +
+					'<button>정보확인</button>' +
+				'</div>'
+			);
+		} else if (chat.c_accept === 1 && chat.c_senid === userid) { // 조건 3: 다른사람이 보낸 요청을 수락한 채팅방
+			$('#chatModal').append(
+				'<div class="list-container">' +
+					'<img src="#" class="image-container">' +
+					'<div class="list-content">' +
+						'<div>' +
+							'<a href="/aniting/chatting/' + chat.c_id + '"><div>' + chat.c_recid + '님과의 채팅방</div></a>' +
+							'<div id="lastLog'+chat.c_id+'">' + (chat.lastChatLog ? chat.lastChatLog.cl_log : '최근 대화가 없습니다.') + '</div>' +
+						'</div>' +
+						'<div id="noread'+chat.c_id+'" class="noread"></div>'+
+					'</div>'+
+					'<img src="resources/img/deleteBox.png" style="width: 40px;" alt="휴지통" />' +
+				'</div>'
+			);
+		} else if (chat.c_accept === 1 && chat.c_recid === userid) { // 조건 4: 내가 보낸 요청이 수락된 경우
+			$('#chatModal').append(
+				'<div class="list-container">' +
+					'<img src="#" class="image-container">' +
+					'<div class="list-content">' +
+						'<div>' +
+							'<a href="/aniting/chatting/' + chat.c_id + '"><div>' + chat.c_senid + '님과의 채팅방</div></a>' +
+							'<div id="lastLog'+chat.c_id+'">' + (chat.lastChatLog ? chat.lastChatLog.cl_log : '최근 대화가 없습니다.') + '</div>' +
+						'</div>' +
+						'<div id="noread'+chat.c_id+'" class="noread"></div>'+
+					'</div>'+
+					'<img src="resources/img/deleteBox.png" style="width: 40px;" alt="휴지통" />' +
+				'</div>'
+			);
+		}
+	});	
+}
+
+function noread(chatList){
+	
+	$.each(chatList, (index,chat)=> {
+		$.ajax({
+			url: "noread",
+			type: "POST",
+			data: { c_id : chat.c_id,
+					u_id : userid },
+			success: function(data){ console.log(data);
+			sum= sum+parseInt(data);
+				if(data !==0){
+					$('#noread'+ chat.c_id).text(data);
+					$('#mainnoread').text(sum);
+				}
+			
+				
+				
+			},
+			error: function(err) {
+				console.error("Error:", err); // 에러 핸들링
+			} 
+		});
+		
+	});
+	
+	
+} 
+
+function onMessage(event){
+	var msg = event.data; // WebSocket으로부터 받은 원시 데이터
+	var json = JSON.parse(msg); // 수신된 메시지를 JSON 객체로 파싱
+    var chatId = json.chatId;
+    var message = json.message;
+	
+    // 해당 채팅방의 마지막 로그 업데이트
+    var lastLogElement = $('#lastLog'+ chatId); // ID를 이용하여 해당 요소 선택
+     if (lastLogElement.length > 0) { 
+        lastLogElement.text(message); // 최근 대화 내용 업데이트
+    } else {
+        console.error('Element for last log not found.');
+    }
+    var noreadElement = $('#noread'+ chatId);
+    if (noreadElement.text() === "") {
+        // 요소가 존재하지 않을 때
+        $('#noread' + chatId).text("1");
+    } else {
+        // 요소가 존재할 때
+        var currentCount = parseInt(noreadElement.text(), 10); // 문자열을 정수로 변환
+        $('#noread' + chatId).text(currentCount + 1);
+    }
+    
+    if ($('#mainnoread').text() ===""){
+    	$('#mainnoread').text("1");
+    }else{
+    	var currentCount = parseInt($('#mainnoread').text(), 10); // 문자열을 정수로 변환
+    	$('#mainnoread').text(currentCount + 1);
+    }
+
+    
+}
+
+</script>
+
 </html>
+

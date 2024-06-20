@@ -24,6 +24,7 @@ import javax.websocket.server.ServerEndpoint;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.smhrd.myapp.model.Log;
 import com.smhrd.myapp.model.MavenMember;
 
@@ -43,7 +44,7 @@ public class WebChatServer extends HttpServlet {
 		MavenMember member = (MavenMember) httpSession.getAttribute("member");
 		String userId = member.getU_id();
 		
-		System.out.println(chatId);
+//		System.out.println(chatId);
 		
 		users.put(session, userId);
 		sessionChatIdMap.put(session, chatId);
@@ -59,12 +60,19 @@ public class WebChatServer extends HttpServlet {
 		String userName = users.get(session);
 		String chatId = sessionChatIdMap.get(session);
 		
+		Map<String, Object> data = new HashMap<>();
+	    data.put("chatId", chatId);
+	    data.put("message", message);
+	    
+	    ObjectMapper objectMapper = new ObjectMapper();
+	    String jsonMessage = objectMapper.writeValueAsString(data);
+		
 		synchronized (users) {
 			for (Session currentSession : users.keySet()) {
 	            String sessionChatId = sessionChatIdMap.get(currentSession);
 	            if (!currentSession.equals(session)) {
 	            	if (sessionChatId != null && sessionChatId.equals(chatId)) {
-	            		currentSession.getBasicRemote().sendText(message);
+	            		currentSession.getBasicRemote().sendText(jsonMessage);
 	            		
 	            	}
 	            }

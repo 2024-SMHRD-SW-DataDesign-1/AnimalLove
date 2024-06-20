@@ -39,33 +39,35 @@ public class AnimalController {
 		
 
 		// 다운 위치 지정
-		String path = session.getServletContext().getRealPath("/resources/img/animalImg/");
-		System.out.println(path);
-		File f = new File(path + "chu.gif");
-		System.out.println(f.getAbsolutePath());
-		System.out.println("test");
+		String path = session.getServletContext().getRealPath("resources/img/animalImg/");
 
-		System.out.println();
+	
 		String uploadFolder = path;
 
 		for (int i = 0; i < file.size(); i++) {
+			// 중복파이명 감지를 위해 고유문자를 삽입하는 코드
 			String fileName = UUID.randomUUID().toString() + file.get(i).getOriginalFilename();
 			try {
+				// uploadFolder 경로에 이미지 복사
 				file.get(i).transferTo(new File(uploadFolder, fileName));
-				
+				switch(i)
+				{
+				case 0:
+					animal.setA_path1(uploadFolder+path);
+					break;
+				case 1:
+					animal.setA_path2(uploadFolder+path);
+					break;
+				case 2:
+					animal.setA_path3(uploadFolder+path);
+					break;
+				}
 			} catch (IllegalStateException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		};
 		
-		
-//      Animal savedAnimal = (Animal) session.getAttribute("animal");
-//      animal.setA_id(savedAnimal.getA_id());
-//      animal.setA_id(savedAnimal.getA_id());
-//      animal.setA_id(savedAnimal.getA_id());
-//      animal.setA_id(savedAnimal.getA_id());
-//      animal.setA_id(savedAnimal.getA_id());
 
 	}
 }

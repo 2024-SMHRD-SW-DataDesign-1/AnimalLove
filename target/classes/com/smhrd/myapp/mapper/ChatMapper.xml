@@ -32,7 +32,7 @@
 					GROUP BY cl_c_id) cl2
 				ON cl1.cl_c_id = cl2.cl_c_id AND cl1.cl_sentime = cl2.max_sentime) chat_log_sub
 			ON c.c_id = chat_log_sub.cl_c_id
-			WHERE c.c_senid = #{u_id}
+			WHERE c.c_senid = #{u_id} OR c.c_recid = #{u_id}
   	</select>
   	
   	<select id="receivelist" resultMap="ChatResultMap">

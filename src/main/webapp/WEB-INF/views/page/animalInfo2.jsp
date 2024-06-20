@@ -136,11 +136,10 @@
 			type : "post",
 			data : dataList,
 			success : function(res) {
-				console.log(res)
 
 			},
 			error : function(error) {
-				console.log("통신실패");
+
 			}
 
 		}) 
