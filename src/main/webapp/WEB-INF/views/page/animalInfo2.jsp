@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Animal info here</title>
 <style type="text/css">
 
 	
@@ -52,7 +52,7 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	
 	
-		<form action="anmal_info/save" id="profil_body" >
+		<form action="animal_info/save" id="profil_body" >
 				<input type="file" accept="image/*" id="img_put" multiple name="a_path1">
 				<div id=profil_imgs>
 					<input type="image"  class='profil_img' alt='빈사진' src="resources/img/nullPic.png" />
@@ -64,7 +64,6 @@
         			<input type="hidden" name="a_path3" class="imageSrc" value="one">
 				</div>
 				<input class="btn" type="submit" onclick="toSend()" value="프로필 등록" >
-				<div >111</div>
 		</form>
 			
 		
@@ -127,6 +126,10 @@
 			
 			})
 		}
+		
+		// 헤더에 매칭 강조
+		let login = document.getElementById("h_mat");
+	    login.style = "border-bottom : 2px solid #3c40c6; border-radius: 2px; color : #3c40c6;";
 		
 	</script>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

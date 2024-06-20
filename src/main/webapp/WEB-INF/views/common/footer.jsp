@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<title>Footer here</title>
 
 <style>
 
@@ -17,8 +17,8 @@ footer {
 	width:100%;
 	color: #333333;
 	background: #e9e9e9;
-	padding-top: 40px;
-	padding-bottom: 40px;
+	padding-top: 30px;
+	padding-bottom: 30px;
 }
 
 .f_container {

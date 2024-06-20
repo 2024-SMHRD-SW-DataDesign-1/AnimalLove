@@ -13,7 +13,11 @@ public class AnimalService {
 	AnimalMapper mapper;
 
 	// 동물등록 처리
-	public int AnimalJoin(Animal animal) {
-		return mapper.AnimalJoin(animal);
+	public int animalJoin(Animal animal) {
+		return mapper.animalJoin(animal);
+	}
+	// 동물정보수정 처리
+	public int animalUpdate(Animal animal) {
+		return mapper.animalUpdate(animal);
 	}
 }
