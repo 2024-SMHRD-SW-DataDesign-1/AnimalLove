@@ -15,6 +15,10 @@
 	<a href="login"> <button>로그인</button></a>
 	<a href="findid"> <button>id찾기</button></a>
 	<%} else{%>
+	<form action="animalte" method="post">
+		<input type="hidden" name="a_u_id" value="<%=member.getU_id()%>">
+		<input type="submit" value="동물 확인 테스트">
+	</form>
 	<a href="update"> <button>회원정보수정</button></a>
 	<a href="delete?u_id=<%=member.getU_id()%>"><button>회원탈퇴</button></a>
 	<% if(member.getU_id().equals("admin")){%>
@@ -37,6 +41,9 @@
         alert('인증에 성공했습니다. ID는 <%= id %>입니다.');
     </script>
 	<%} %>
+	
+	
+	
 	
 </body>
 </html>
