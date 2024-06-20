@@ -6,6 +6,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+
+	/* 타이틀 폰트 */
+	@font-face {
+		font-family: 'Cafe24Meongi-W-v1.0';
+		src:
+			url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Meongi-W-v1.0.woff2')
+			format('woff2');
+		font-weight: normal;
+		font-style: normal;
+	}
+	
 	#prf_inner
 	{	
 		width : 500px;
@@ -36,6 +47,7 @@
 		margin :auto;
 		padding-left: 10px;
 		background-color: rgb(233, 233, 233);
+		margin-left : 25%;
 	}
 	
 	.container {
@@ -43,15 +55,26 @@
 		justify-content: space-around;
 	}
 	
-	.prf_radio{
+	.prf_wradio{
 		width : 80px;
+		height : 30px;
 		border-radius : 20px;
-		border : 2px solid black;
+		border : 1px solid #5d5d5d;;
 		text-align: center;
+		line-height : 30px;
+	}
+	
+	.prf_aradio{
+		width : 80px;
+		height : 30px;
+		border-radius : 20px;
+		border : 1px solid #5d5d5d;;
+		text-align: center;
+		line-height : 30px;
 	}
 	
 	.select{
-		background-color : skyblue;
+		background-color : #ebecff;
 	}
 	
 	#prf_btn{
@@ -62,8 +85,16 @@
 		border: 0;
 		border-radius: 17px;
 		background-color: #3c40c6;
-		margin : 0 auto 0 auto;
+		margin-left : 25%;
 	}
+	
+	#m_u_title {
+		font-family: 'Cafe24Meongi-W-v1.0';
+		color: #333333;
+		font-size: 50px;
+		padding-top: 10px;
+	}
+	
 	
 </style>
 </head>
@@ -71,16 +102,19 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	<div id="prf_main">
 		<div id="prf_inner">
-		<form action="#" >
+		<h2 id="m_u_title">Preference Pick</h2>
+		<h4 style="text-align : left; color:#666">추천될 프로필 카드의 정보를 입력해주세요!</h4>
+		<form action="#" style='width:100%'>
 			<p class="prf_menu">나이</p>
+			<div id="ageContainer" class="prf_menu container">
+				<input type="hidden" id="a_prfage" class="prf_text" name="a_prfage" value="" required>			
+			</div>
 
-			<input type="text" class="prf_text" name="a_prfage" id="a_prfage"
-				maxlength="8" oninput="idCheck()" required>
 
 			
 			<p class="prf_menu">몸무게</p>
 			<div id="weightContainer" class="prf_menu container">
-				<input type="hidden" id="prf_text" class="prf_text" name="a_prfweight" value="" required>
+				<input type="hidden" id="a_prfweight" class="prf_text" name="a_prfweight" value="" required>
 				
 				
 			</div>
@@ -101,12 +135,27 @@
 	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 	<script type="text/javascript">
-		function setRadio(menu1, menu2, menu3)
+		function setWRadio(menu1, menu2, menu3)
 		{
+			// 몸무게 선택 박스 생성
 			let container = document.getElementById("weightContainer");
-			let value = "<div class='prf_radio' onclick='change_btn(event)'>" + menu1 + "</div>" +
-						"<div class='prf_radio' onclick='change_btn(event)'>" + menu2 + "</div>" +
-						"<div class='prf_radio' onclick='change_btn(event)'>" + menu3 + "</div>";
+			let value = "<div class='prf_wradio' onclick='change_btn1(event)'>" + menu1 + "</div>" +
+						"<div class='prf_wradio' onclick='change_btn1(event)'>" + menu2 + "</div>" +
+						"<div class='prf_wradio' onclick='change_btn1(event)'>" + menu3 + "</div>";
+						
+			container.innerHTML += value;
+		}	
+		
+		function setARadio(menu1, menu2, menu3)
+		{	
+			// 나이 선택 박스 생성
+			let container = document.getElementById("ageContainer");
+			
+			let value = "<div class='prf_aradio' onclick='change_btn2(event)'> 1년 이하</div>" +
+						"<div class='prf_aradio' onclick='change_btn2(event)'>" + menu1 + "</div>" +
+						"<div class='prf_aradio' onclick='change_btn2(event)'>" + menu2 + "</div>" +
+						"<div class='prf_aradio' onclick='change_btn2(event)'>" + menu3 + "</div>" +
+						"<div class='prf_aradio' onclick='change_btn2(event)'> 10년 이상</div>"  ;
 						
 			container.innerHTML += value;
 		}	
@@ -117,12 +166,15 @@
 			
 			if(true)
 			{
-				setRadio("1 ~ 40", "40 ~ 70", "70 ~");				
+				setWRadio("1 ~ 40", "40 ~ 70", "70 ~");		
+						
 			}
 			else
 			{
-				setRadio("3 ~ 4", "4 ~ 6", "6 ~");				
+				setWRadio("3 ~ 4", "4 ~ 6", "6 ~");
+				
 			}
+			setARadio("1 ~ 3", "3 ~ 6", "6 ~ 9");
 			
 			// 여기에 강아지인지 고양이인지 체크하는 로직 넣어야됨
 			let list = dogs;
@@ -145,9 +197,24 @@
 		})
 		
 		
-   		function change_btn(e) {
-	      	let btns = document.querySelectorAll(".prf_radio");
-	      	let basket = document.querySelector("#prf_text");
+   		function change_btn1(e) {
+	      	let btns = document.querySelectorAll(".prf_wradio");
+	      	let basket = document.querySelector("#a_prfweight");
+	      
+	      	btns.forEach(function (btn, i) {
+	        	if (e.currentTarget == btn) {
+	            	btn.className += " select";
+	            	basket.value=btn.innerText;
+	            	
+	          	} else {
+	            	btn.classList.remove("select");
+	       		}
+	       });
+	   }
+		
+   		function change_btn2(e) {
+	      	let btns = document.querySelectorAll(".prf_aradio");
+	      	let basket = document.querySelector("#a_prfage");
 	      
 	      	btns.forEach(function (btn, i) {
 	        	if (e.currentTarget == btn) {
