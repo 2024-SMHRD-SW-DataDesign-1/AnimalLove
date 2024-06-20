@@ -110,168 +110,154 @@
 	<div id="main-container">
 		<div id="chat-container"></div>
 		<div id="bottom-container">
-			<input id="inputMessage" type="text" name=log> 
+			<input id="inputMessage" type="text" name="log"> 
 			<input id="btn-submit" type="submit" value="전송">
 		</div>
-
 	</div>
-</body>
-<script type="text/javascript">
-	var chatId = "${c_id}";
-	console.log(chatId);
-	<% MavenMember member = (MavenMember)session.getAttribute("member");
-	%>
-	
-	$(document).ready(function(){
-		readLog()
-	})
 
-	var textarea = document.getElementById("messageWindow");
-	//	var webSocket = new WebSocket('ws://ec2-13-125-250-66.ap-northeast-2.compute.amazonaws.com:8080/DevEricServers/webChatServer');
-
-	// 로컬에서 테스트할 때 사용하는 URL입니다.
-	var webSocket = new WebSocket("ws://" + document.location.host
-			+ "/aniting/chat/" + chatId);
-	//var webSocket = new WebSocket('ws://http://localhost:8089/myapp/member/addchat');
-	var inputMessage = document.getElementById('inputMessage');
-
-	webSocket.onerror = function(e) {
-		onError(e);
-	};
-	webSocket.onopen = function(e) {
-		console.log("열림")
-		onOpen(e);
-	};
-	webSocket.onmessage = function(e) {
-		onMessage(e);
-	};
-
-	function onMessage(e) {
-		var chatMsg = event.data;
-		var date = new Date();
-		var dateInfo = date.getHours() + ":" + date.getMinutes() + ":"
-				+ date.getSeconds();
-		if (chatMsg.substring(0, 6) == 'server') {
-			var $chat = $("<div class='chat notice'>" + chatMsg + "</div>");
-			$('#chat-container').append($chat);
-		} else {
-			var $chat = $("<div class='chat-box'><div class='chat'>" + chatMsg
-					+ "</div><div class='chat-info chat-box'>" + dateInfo
-					+ "</div></div>");
-			$('#chat-container').append($chat);
-		}
-
-		$('#chat-container').scrollTop(
-				$('#chat-container')[0].scrollHeight + 20);
-	}
-	
-	function onOpen(e) {
+	<script type="text/javascript">
+		<% MavenMember member = (MavenMember) session.getAttribute("member"); %>
+		var chatId = "${c_id}";
+		var userIdFromJSP = "<%= member.getU_id() %>";
 		
-	}
-	
-	function readLog() {
-		
-		var userIdFromJSP = "<%=member.getU_id()%>";
-		
-		
-		var importLog = {
-				cl_c_id : chatId,
-			};
-		
-		$.ajax({
-	        type: "POST",
-	        url: "/aniting/chat/roadLog",
-	        data: JSON.stringify(importLog),
-	        contentType: "application/json; charset=utf-8",
-	        dataType:"json",
-	        success: function(response) {
-	        	$.each(response, (index,vo)=> { //data : boardlist / vo : Board
-	        		console.log(vo.cl_senid)
-	        		console.log(userIdFromJSP)
-	        		
-	        		 if (vo.cl_senid === userIdFromJSP) {
-	                     var $chat = $("<div class='my-chat-box'><div class='chat my-chat'>" + vo.cl_log + "</div></div>");
-	                     $('#chat-container').append($chat);
-	                 } else {
-	                     var $chat = $("<div class='chat-box'><div class='chat'>" + vo.cl_log + "</div></div>");
-	                     $('#chat-container').append($chat);
-	                 }
-	    		})	    		
-	    		
-	            inputMessage.value = "";
-	            $('#chat-container').scrollTop($('#chat-container')[0].scrollHeight + 20);
-	        },
-	        error: function(xhr, status, error) {
-	            console.error("Error sending message: ", status, error);
-	        }
-		 });
-	
-	}
+		console.log(chatId);
+		console.log(userIdFromJSP);
 
-	function onError(e) {
-		//alert(e.data);
-	}
+		$(document).ready(function(){
+			readLog();
+		});
 
-	function send() {
-		var chatMsg = inputMessage.value;
+		var inputMessage = document.getElementById('inputMessage');
+		var webSocket = new WebSocket("ws://" + document.location.host + "/aniting/chat/" + chatId);
 
-		if (chatMsg == '') {
-			return;
-		}		
-		
-		var chatLog = {
-			cl_c_id : chatId,
-			cl_senid : "<%=member.getU_id()%>",
-			cl_log : chatMsg
+		webSocket.onerror = function(e) {
+			onError(e);
 		};
-		console.log("test");
-		$.ajax({
-	        type: "POST",
-	        url: "/aniting/chat/send",
-	        data: JSON.stringify(chatLog),
-	        contentType: "application/json; charset=utf-8",
-	        success: function(response) {
-	            var $chat = $("<div class='my-chat-box'><div class='chat my-chat'>" + chatMsg + "</div></div>");
-	            $('#chat-container').append($chat);
-	            webSocket.send(chatMsg);
-	            inputMessage.value = "";
-	            $('#chat-container').scrollTop($('#chat-container')[0].scrollHeight + 20);
-	        },
-	        error: function(xhr, status, error) {
-	            console.error("Error sending message: ", status, error);
-	        }
-	    });
-		
-		
-		/* if (chatMsg == '') {
-			return;
-		}
-		var $chat = $("<div class='my-chat-box'>1<div class='chat my-chat'>"
-				+ chatMsg + "</div></div>");
-		$('#chat-container').append($chat);
-		webSocket.send(chatMsg);
+		webSocket.onopen = function(e) {
+			console.log("WebSocket 연결이 열렸습니다.");
+			 $.ajax({
+				type: "POST",
+				url: "/aniting/chat/ruread",
+				data: { c_id: chatId, c_senid: userIdFromJSP },
+				success: function(response) {
+					console.log(response);
+				},
+				error: function(xhr, status, error) {
+					console.error("Error updating read status: ", status, error);
+				}
+			}); 
+		};
+		webSocket.onmessage = function(e) {
+			onMessage(e);
+		};
 
-		inputMessage.value = "";
-		$('#chat-container').scrollTop(
-				$('#chat-container')[0].scrollHeight + 20); */
-	}
-	
-</script>
-
-
-
-<script type="text/javascript">
-	$(function() {
-		$('#inputMessage').keydown(function(key) {
-			if (key.keyCode == 13) {
-				$('#inputMessage').focus();
-				send();
+		function onMessage(e) {
+			var chatM = e.data;
+			var json = JSON.parse(chatM);
+			var chatMsg = json.message;
+			var date = new Date();
+			var dateInfo = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+			
+			$.ajax({
+				type: "POST",
+				url: "/aniting/chat/ruread",
+				data: { c_id: chatId, c_senid: userIdFromJSP },
+				success: function(response) {
+					console.log(response);
+				},
+				error: function(xhr, status, error) {
+					console.error("Error updating read status: ", status, error);
+				}
+			});			
+			
+			if (chatMsg.substring(0, 6) == 'server') {
+				var $chat = $("<div class='chat notice'>" + chatMsg + "</div>");
+				$('#chat-container').append($chat);
+			} else {
+				var $chat = $("<div class='chat-box'><div class='chat'>" + chatMsg + "</div><div class='chat-info chat-box'>" + dateInfo + "</div></div>");
+				$('#chat-container').append($chat);
 			}
-		});
-		$('#btn-submit').click(function() {
-			send();
-		});
 
-	})
-</script>
+			$('#chat-container').scrollTop($('#chat-container')[0].scrollHeight + 20);
+		}
+
+		function readLog() {
+			var importLog = { cl_c_id: chatId };
+
+			$.ajax({
+				type: "POST",
+				url: "/aniting/chat/roadLog",
+				data: JSON.stringify(importLog),
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				success: function(response) {
+					$.each(response, function(index, vo) {
+						console.log(vo.cl_senid);
+						console.log(userIdFromJSP);
+
+						if (vo.cl_senid === userIdFromJSP) {
+							var $chat = $("<div class='my-chat-box'><div class='chat my-chat'>" + vo.cl_log + "</div></div>");
+							$('#chat-container').append($chat);
+						} else {
+							var $chat = $("<div class='chat-box'><div class='chat'>" + vo.cl_log + "</div></div>");
+							$('#chat-container').append($chat);
+						}
+					});
+
+					inputMessage.value = "";
+					$('#chat-container').scrollTop($('#chat-container')[0].scrollHeight + 20);
+				},
+				error: function(xhr, status, error) {
+					console.error("Error loading chat log: ", status, error);
+				}
+			});
+		}
+
+		function send() {
+			var chatMsg = inputMessage.value;
+
+			if (chatMsg === '') {
+				return;
+			}
+
+			var chatLog = {
+				cl_c_id: chatId,
+				cl_senid: userIdFromJSP,
+				cl_log: chatMsg
+			};
+
+			$.ajax({
+				type: "POST",
+				url: "/aniting/chat/send",
+				data: JSON.stringify(chatLog),
+				contentType: "application/json; charset=utf-8",
+				success: function(response) {
+					var $chat = $("<div class='my-chat-box'><div class='chat my-chat'>" + chatMsg + "</div></div>");
+					$('#chat-container').append($chat);
+					webSocket.send(chatMsg);
+					inputMessage.value = "";
+					$('#chat-container').scrollTop($('#chat-container')[0].scrollHeight + 20);
+				},
+				error: function(xhr, status, error) {
+					console.error("Error sending message: ", status, error);
+				}
+			});
+		}
+
+		function onError(e) {
+			console.error("WebSocket error: ", e);
+		}
+
+		$(function() {
+			$('#inputMessage').keydown(function(key) {
+				if (key.keyCode === 13) {
+					send();
+				}
+			});
+			$('#btn-submit').click(function() {
+				send();
+			});
+		});
+	</script>
+</body>
 </html>

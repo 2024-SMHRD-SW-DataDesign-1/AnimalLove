@@ -34,6 +34,8 @@
 	font-style: normal;
 }
 
+
+/* 회원가입 타이틀 */
 .j_container {
 	max-width: 800px;
 	margin: 0 auto;
@@ -53,6 +55,8 @@
 	text-align: center;
 }
 
+
+/* 중복확인 버튼 */
 .j_btn {
 	margin-left: 5px;
 	width: 68px;
@@ -78,6 +82,7 @@
 	letter-spacing: 0.1em;
 }
 
+/* 본문 */
 .j_menu {
 	margin-bottom: 8px;
 	margin-left: 50px;
@@ -94,6 +99,7 @@
 	background-color: rgb(233, 233, 233);
 }
 
+/* 가입완료 버튼 */
 .j_import_btn {
 	width: 262px;
 	height: 36px;
@@ -119,9 +125,11 @@
 	background-color: #fff;
 }
 </style>
-<jsp:include page="/WEB-INF/views/common/header.jsp" />
+
 </head>
 <body>
+<!-- 헤더 -->
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 	<div class="j_container">
 		<form action="member/join" method="POST">
@@ -150,7 +158,7 @@
 			<p class="j_menu">
 				<input type="password" class="j_text" name="u_pwcheck"
 					maxlength="20" minlength="6" id="pw2" oninput="pwCheck()" required><br>
-				<sapn id="pwCheck"> </span>
+				<span id="pwCheck"> </span>
 			</p>
 
 			<p class="j_menu">이름</p>
@@ -195,9 +203,10 @@
 	</div>
 
 
+<!-- 푸터 -->
+<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
 
-<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 <!-- 모달 스크립트 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

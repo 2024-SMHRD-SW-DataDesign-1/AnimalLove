@@ -8,17 +8,22 @@
 <title>Footer here</title>
 
 <style>
-
-*{
+* {
 	font-family: 'pretendard';
 }
 
-footer {	
-	width:100%;
+@media screen and (max-width:640px) {
+	footer {
+		flex-direction: column;
+	}
+}
+
+footer {
+	width: 100%;
 	color: #333333;
 	background: #e9e9e9;
 	padding-top: 30px;
-	padding-bottom: 30px;
+	padding-bottom: 20px;
 }
 
 .f_container {
@@ -29,6 +34,7 @@ footer {
 	align-items: center;
 }
 
+/* 타이틀 문구 */
 .f_left h2 {
 	margin: 0;
 }
@@ -38,6 +44,7 @@ footer {
 	font-size: 12px;
 }
 
+/* sns 표기 */
 .f_left .f_sns {
 	margin-top: 30px;
 }
@@ -48,6 +55,7 @@ footer {
 	margin-right: 20px;
 }
 
+/* 오른쪽 리스트 */
 .f_right {
 	flex: 3;
 	padding-left: 50px;
@@ -75,7 +83,8 @@ footer {
 }
 
 .f_list ul li {
-	font-size: 14px; padding : 6px 6px;
+	font-size: 14px;
+	padding: 6px 6px;
 	color: #666666;
 	padding: 6px 6px;
 }
@@ -84,6 +93,7 @@ footer {
 	background: #b2b2b2;
 }
 
+/* 저작권 표기 */
 footer .f_copy_right {
 	text-align: center;
 }
@@ -92,8 +102,6 @@ footer .f_copy_right p {
 	font-size: 12px;
 	margin: 0;
 }
-
-
 </style>
 </head>
 <body>
@@ -101,32 +109,26 @@ footer .f_copy_right p {
 	<footer>
 		<div class="f_container">
 			<div class="f_left">
-				<h2>
-					ANIMAL X ANITING
-					</h2>
-					<p>http://localhost:8089/aniting/</p>
+				<h2>ANIMAL X ANITING</h2>
+				<p>http://localhost:8089/aniting/</p>
 
-					<div class="f_sns">
-						<img src="resources/img/icon_footer_facebook.png"> 
-						<img src="resources/img/icon_footer_git.png"> 
-						<img src="resources/img/icon_footer_twitter.png">
-						<img src="resources/img/icon_footer_youtube.png">
-					</div>
+				<div class="f_sns">
+					<img src="resources/img/icon_footer_facebook.png"> <img
+						src="resources/img/icon_footer_git.png"> <img
+						src="resources/img/icon_footer_twitter.png"> <img
+						src="resources/img/icon_footer_youtube.png">
+				</div>
 			</div>
-
-
 
 			<div class="f_right">
 
 				<div class="f_list">
-					<h3>
-						ABOUT
-						</h3>
-						<ul>
-							<li>이용약관</li>
-							<li>개인정보처리방침</li>
-							<li>고객센터</li>
-						</ul>
+					<h3>ABOUT</h3>
+					<ul>
+						<li>이용약관</li>
+						<li>개인정보처리방침</li>
+						<li>고객센터</li>
+					</ul>
 				</div>
 
 			</div>
@@ -139,13 +141,5 @@ footer .f_copy_right p {
 	</footer>
 
 
-	<!-- <div id="f_container">
-    <div id="f_wrap">
-        <footer id="footer"><span>애니팅 소개</span><span>이용안내</span><span>가맹점 개점문의</span><span>사이버 감사실</span><span>고객센터</span></footer>
-
-    </div>
- </div>
- 
-  -->
 </body>
 </html>

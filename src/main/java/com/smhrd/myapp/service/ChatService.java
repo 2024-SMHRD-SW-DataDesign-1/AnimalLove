@@ -1,6 +1,7 @@
 package com.smhrd.myapp.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,5 +38,13 @@ public class ChatService {
 	
 	public List<Log> loadLog(String cl_c_id) {
 		return mapper.loadLog(cl_c_id);
+	}
+	
+	public int ruread(Chat chat) {
+        return mapper.updateReadStatus(chat);
+    }
+	
+	public int noread(Map<String, String> data) {
+		return mapper.noread(data);
 	}
 }
