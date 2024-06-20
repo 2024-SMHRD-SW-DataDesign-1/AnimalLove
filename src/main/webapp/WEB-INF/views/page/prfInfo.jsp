@@ -70,6 +70,7 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	<div id="prf_main">
 		<div id="prf_inner">
+		
 		<form action="#" >
 			<p class="prf_menu">나이</p>
 
