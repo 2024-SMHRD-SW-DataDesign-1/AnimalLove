@@ -71,11 +71,9 @@
 		<h2 id="ani_title">
 			My Animal<br>photo
 		</h2>
-<<<<<<< HEAD
 		<input type="file" id="photo" multiple name="photo">
-=======
-		<input type="file" accept="image/*" id="img_put" name="photo" multiple>
->>>>>>> 5154bee65940994e4ac468bbc85a17f59c49d1c9
+
+
 		<div id=profil_imgs>
 			<input type="image" name="photo1" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
 			<input type="image"	name="photo2" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
@@ -140,11 +138,10 @@
 			type : "post",
 			data : dataList,
 			success : function(res) {
-				console.log(res)
 
 			},
 			error : function(error) {
-				console.log("통신실패");
+
 			}
 
 		}) 

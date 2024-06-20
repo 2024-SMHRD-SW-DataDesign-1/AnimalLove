@@ -122,7 +122,6 @@ public class PageController {
 		// view resolver : /WEB-INF/views/index.jsp
 		session.setAttribute("animal", animal);
 		Animal tem = (Animal) session.getAttribute("animal");
-
 		return "page/animalInfo2";
 	}
 
