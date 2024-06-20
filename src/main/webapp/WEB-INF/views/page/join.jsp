@@ -158,7 +158,7 @@
 			<p class="j_menu">
 				<input type="password" class="j_text" name="u_pwcheck"
 					maxlength="20" minlength="6" id="pw2" oninput="pwCheck()" required><br>
-				<sapn id="pwCheck"> </span>
+				<span id="pwCheck"> </span>
 			</p>
 
 			<p class="j_menu">이름</p>

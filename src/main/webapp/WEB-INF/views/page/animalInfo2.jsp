@@ -72,8 +72,6 @@
 			My Animal<br>photo
 		</h2>
 		<input type="file" id="photo" multiple name="photo">
-
-
 		<div id=profil_imgs>
 			<input type="image" name="photo1" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
 			<input type="image"	name="photo2" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
@@ -82,7 +80,7 @@
 			<input type="hidden" name="a_path2" class="imageSrc" value=""> 
 			<input type="hidden" name="a_path3" class="imageSrc" value="">
 		</div>
-		<input class="btn" type="submit"  value="프로필 등록">
+		<input class="btn" type="submit" value="프로필 등록">
 	</form>
 		
 

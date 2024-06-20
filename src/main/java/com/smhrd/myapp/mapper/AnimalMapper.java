@@ -9,7 +9,7 @@ import com.smhrd.myapp.model.Animal;
 public interface AnimalMapper {
 	
 	// 동물등록 처리
-	@Insert("INSERT INTO ANIMAL VALUES (#{a_name}, #{a_age}, #{a_weight}), #{a_gender}, #{a_breed}")
+	@Insert("INSERT INTO ANIMAL VALUES (#{a_name}, #{a_age}, #{a_weight}), #{a_gender}, #{a_breed}, #{a_path1}, #{a_path2}, #{a_path3}")
 	public int animalJoin(Animal animal);
 	
 	// 동물정보수정 처리

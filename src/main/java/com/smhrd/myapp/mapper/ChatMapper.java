@@ -1,6 +1,7 @@
 package com.smhrd.myapp.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -28,4 +29,10 @@ public interface ChatMapper {
 	
 	@Select("select * from CHATLOG where cl_c_id=#{cl_c_id}")
 	public List<Log> loadLog(String cl_c_id);
+	
+	@Update("UPDATE CHATLOG SET cl_ruread = 1 WHERE cl_c_id = #{c_id} AND cl_senid != #{c_senid}")
+    public int updateReadStatus(Chat chat);
+	
+	@Select("select count(*) from CHATLOG where cl_c_id=#{c_id} and cl_senid !=#{u_id} and cl_ruread=0")
+	public int noread(Map<String, String> data);
 }
