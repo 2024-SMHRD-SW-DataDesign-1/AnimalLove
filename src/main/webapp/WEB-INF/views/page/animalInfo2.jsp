@@ -71,7 +71,7 @@
 		<h2 id="ani_title">
 			My Animal<br>photo
 		</h2>
-		<input type="file" accept="image/*" id="img_put" multiple name="photo">
+		<input type="file" accept="image/*" id="img_put" name="photo" multiple>
 		<div id=profil_imgs>
 			<input type="image" name="photo1" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
 			<input type="image"	name="photo2" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
