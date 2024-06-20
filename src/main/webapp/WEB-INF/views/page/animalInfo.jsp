@@ -1,19 +1,20 @@
+<%@page import="com.smhrd.myapp.model.MavenMember"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Animal info here</title>
 
 <style>
 * {
 	margin: 0px;
 	padding: 0px;
-	font-family: 'pretendard';
+	
 }
 
-.join_form {
+.animal_form {
 	max-width: 800px;
 	margin: 0 auto;
 	box-sizing: border-box;
@@ -33,45 +34,22 @@
 	font-style: normal;
 }
 
-#j_title {
+#ani_title {
 	font-family: 'Cafe24Meongi-W-v1.0';
 	color: #333333;
 	font-size: 50px;
-	padding-top: 10px;
 	text-align: center;
 }
 
-.sub {
-	margin-left: 5px;
-	width: 68px;
-	height: 28px;
-	color: #fff;
-	border: 0;
-	border-radius: 8px;
-	background-color: #3c40c6;
-	letter-spacing: 0.1em;
-}
 
-.sub:active {
-	margin-left: 5px;
-	width: 68px;
-	height: 28px;
-	color: #3c40c6;
-	border: 0;
-	border-radius: 8px;
-	outline: none;
-	outline-style: solid;
-	outline-width: 1px;
-	background-color: #fff;
-	letter-spacing: 0.1em;
-}
 
 p {
 	margin-bottom: 8px;
-	margin-left: 30px;
+	margin-left: 50px;
+	font-family: 'pretendard';
 }
 
-.text {
+.ani_text {
 	width: 250px;
 	height: 36px;
 	font-size: 15px;
@@ -91,7 +69,7 @@ p {
 	border-radius: 17px;
 	background-color: #3c40c6;
 	margin-top: 10px;
-	margin-left: 30px;
+	margin-left: 50px;
 }
 
 .btn:active {
@@ -106,62 +84,105 @@ p {
 	outline-width: 1px;
 	background-color: #fff;
 }
+
+select {
+	margin-bottom: 10px;
+	outline: 0;
+	color: black;
+	border: 1.5px solid #3c40c6;
+	padding: 4px;
+	border-radius: 9px;
+}
+
+input[type='radio'] {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 15px;
+	height: 15px;
+	border: 2px solid #ccc;
+	border-radius: 50%;
+	outline: none;
+	cursor: pointer;
+}
+
+input[type='radio']:checked {
+	background-color: #3c40c6;
+	border: 3.5px solid white;
+	box-shadow: 0 0 0 1px #3c40c6;
+}
+
+input[type="text"], input[type="number"], input[placeholder="kg"] {
+	font-size: 14px;
+}
 </style>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
-	<div class="join_form">
-		
-		<form action="matting_pic" id="infoadd">
-			<h2 id="j_title">Animal Info</h2>
-			<br>
 
-			<p>동물이름</p>
+	<!-- 헤더 -->
+	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
+<%
+	MavenMember member = (MavenMember) session.getAttribute("member");
+	%>
+
+	<div class="animal_form">
+
+		<form action="matching_pic" id="infoadd">
+			<h2 id="ani_title">My Animal Info</h2>
+			<input type="hidden" name = "a_u_id" value="<%=member.getU_id()%>">
+			<br>
+			<p>동물 이름</p>
 			<p>
-				<input type="text" class="text" name="a_name" required id="u_id"> 
+				<input type="text" class="ani_text" name="a_name" required id="u_id">
 			</p>
 
 			<p>나이</p>
 			<p>
-				<input type="number" class="text" name="a_age">
+				<input type="number" class="ani_text" name="a_age">
 			</p>
 
 
 			<p>몸무게</p>
 			<p>
-				<input type="number" class="text" name="a_weight">
+				<input type="number" class="ani_text" name="a_weight"
+					placeholder="kg" min="1">
 			</p>
 
 
-			<p>성 별</p>
+			<p>동물 성별</p>
 			<p>
-				<input type="radio" name="a_gender" value="male" > Male   
-				            
-				<input type="radio" name="a_gender" value="female"> Female
+				<input type="radio" name="a_gender" value="male"> Male <input
+					type="radio" name="a_gender" value="female"> Female
 			</p>
 
 			<p>품종</p>
 			<p>
-				<input onclick="onClickEvent()" id="dog" type="radio" value="dog" > Dog
-				<input onclick="onClickEvent()" id="cat" type="radio" value="cat"> Cat
+				<input onclick="onClickEvent()" name="a_animal" id="dog"
+					type="radio" value="dog"> Dog <input
+					onclick="onClickEvent()" name="a_animal" id="cat" type="radio"
+					value="cat"> Cat
 			</p>
 
 
 			<p>상세품종</p>
 			<p>
-			<select name="a_breed" id="a_breed">
+				<select name="a_breed" id="a_breed">
 
-			</select>
+				</select>
 			</p>
 
-			<button  onclick="onSave()" class="btn">다음 화면</button>
+			<button onclick="onSave()" class="btn">다음 화면</button>
 		</form>
-		
-	</div> 
+
+	</div>
+
+	<!-- 푸터 -->
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+</body>
+
 	<script type="text/javascript">
 		
-		let dogs = ["몰티즈", "푸들", "믹스견","포메라니안", "진돗개", "시추", "비숑프리제"];
-		let cats = ["코리안숏헤어", "페르시안", "러시안블루", "샴", "터키쉬앙고라", "스코티쉬폴드", "믹스묘"];
+		let dogs = ["몰티즈", "푸들", "포메라니안", "치와와","스피츠" , "시바이누", "웰시코기", "닥스훈트", "비숑프리제","골든 리트리버","사모예드","허스키", "믹스견", "그 외"];
+		let cats = ["코리안숏헤어", "먼치킨", "페르시안", "뱅갈", "러시안블루", "아비시니안", "샴", "터키시앙고라", "스코티시폴드", "스핑크스", "믹스묘", "그 외"];
 		
 		let dogTag = document.getElementById('dog'); 
 		let catTag = document.getElementById('cat');
@@ -197,7 +218,7 @@ p {
 		
 		function onSave()
 		{
-
+			<!-- 주소, 상세주소 분리 로직 -->
 			let form = document.getElementById('infoadd');
 			
 			let dic  = {
@@ -212,8 +233,10 @@ p {
 			sessionStorage.setItem('key', dic);
 		}
 
+		
+		// 헤더에 매칭 강조
+		let login = document.getElementById("h_mat");
+	    login.style = "border-bottom : 2px solid #3c40c6; border-radius: 2px; color : #3c40c6;";
+		
 	</script>
-	
-	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-</body>
 </html>

@@ -9,11 +9,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login here</title>
 <style>
+
 * {
 	margin: 0px;
 	padding: 0px;
 }
 
+/* 타이틀 폰트 */
+@font-face {
+	font-family: 'Cafe24Meongi-W-v1.0';
+	src:
+		url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Meongi-W-v1.0.woff2')
+		format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* 타이틀 */
 .l_container {
 	max-width: 800px;
 	margin: 0 auto;
@@ -27,16 +39,6 @@
 	text-align: center;
 }
 
-@font-face {
-	font-family: 'Cafe24Meongi-W-v1.0';
-	src:
-		url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Meongi-W-v1.0.woff2')
-		format('woff2');
-	font-weight: normal;
-	font-style: normal;
-}
-
-/* login title */
 #l_title {
 	font-family: 'Cafe24Meongi-W-v1.0';
 	color: #333333;
@@ -44,7 +46,6 @@
 	padding-top: 10px;
 }
 
-/* login 밑 글자 */
 #l_sub {
 	font-size: 15px;
 	padding: 14px;
@@ -67,6 +68,8 @@ input[placeholder="ID"], input[placeholder="PW"] {
 	font-family: 'pretendard';
 }
 
+
+/* 버튼 */
 .l_btn {
 	width: 100px;
 	height: 36px;
@@ -75,10 +78,10 @@ input[placeholder="ID"], input[placeholder="PW"] {
 	border: 0;
 	border-radius: 17px;
 	background-color: #3c40c6;
-	margin-bottom: 14px;
+	margin-bottom: 30px;
 }
 
-.btn_container {
+.l_btn_container {
 	display: flex;
 	justify-content: space-around;
 }
@@ -96,6 +99,8 @@ input[placeholder="ID"], input[placeholder="PW"] {
 	background-color: #fff;
 }
 
+
+/* id,pw 찾기 */
 .l_search {
 	text-decoration: none;
 	color: #333333;
@@ -104,10 +109,12 @@ input[placeholder="ID"], input[placeholder="PW"] {
 </style>
 
 
-<jsp:include page="/WEB-INF/views/common/header.jsp" />
 </head>
 
 <body>
+
+<!-- 헤더 -->
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 	<div class="l_container">
 	
@@ -119,7 +126,7 @@ input[placeholder="ID"], input[placeholder="PW"] {
 				<input type="text" placeholder="ID" name="u_id" required > <br>
 				<input type="password" placeholder="PW" name="u_pw" required> <br>
 			
-			<div class="btn_container">
+			<div class="l_btn_container">
 				<input type="submit" value="로그인" class="l_btn">
 				<input type="button" value="회원가입" class="l_btn" onclick="location.href = 'join'">
 			</div>
@@ -131,15 +138,17 @@ input[placeholder="ID"], input[placeholder="PW"] {
 
 	</div>
 
+<!-- 푸터 -->
+<jsp:include page="/WEB-INF/views/common/footer.jsp" />	
+    
+</body>
+
+<!-- 헤더에 로그인 강조 -->
     <script type="text/javascript">
     
 		let login = document.getElementById("h_login");
         login.style = "border-bottom : 2px solid #3c40c6; border-radius: 2px; color : #3c40c6;";
-        
        
     </script>
     
-</body>
-
-<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </html>

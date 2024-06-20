@@ -70,8 +70,29 @@ function placesSearchCB (data, status, pagination) {
 
 }
 
+// 부산지역 범위내에 있는 마커인지 확인
+function checkMarker(x, y)
+{
+	let result = false;
+	if(
+		y <= 35.440948 &&
+        y >= 34.976658 &&
+        x >= 128.654937 &&
+        x <= 129.345224
+        )
+	{
+		
+		result = true;	
+	}
+	return result;
+}
 function MarkerView(places)
 {
+
+	if(!checkMarker(places[0].x, places[0].y))
+	{
+		return null;
+	}
 	var markerPosition  = new kakao.maps.LatLng(places[0].y, places[0].x); 
 	
 	// 마커를 생성합니다
@@ -130,6 +151,7 @@ function MarkerView(places)
                 };
 
  
+				//change_btn(event); 
             })(marker, places[i].place_name);
 
             fragment.appendChild(itemEl);
@@ -178,12 +200,14 @@ function MarkerView(places)
         return marker;
     }
 	function change_btn(e) {
+		
 		var btns = document.querySelectorAll(".info");
 		
 		let input = document.getElementById("mapValue");
 	  	btns.forEach(function (btn, i) {
 	  		
 		    if (e.currentTarget == btn) {
+		      
 		      btn.className += " select";
 		      input.value = btn.children[1].innerText;
 		      
@@ -195,7 +219,7 @@ function MarkerView(places)
 	}
 
     function getListItem(index, places) {
-
+				
         var el = document.createElement('li'),
         itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
                     '<div class="info" onclick="change_btn(event)">' +
@@ -242,11 +266,14 @@ function MarkerView(places)
                 let list = divList[i].children;
                 
                 curAdress = list[1].innerText;
+                
             })
         }
+        
     }
 
     function getValue()
     {
+
         return curAdress;
     }

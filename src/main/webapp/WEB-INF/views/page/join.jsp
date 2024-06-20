@@ -10,13 +10,12 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=45ed770bdfa1cc4cd6cc25dc8ff866b7&libraries=services,clusterer,drawing"></script>
-<<<<<<< HEAD
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<title>Join here</title>
-=======
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-<title>회원가입</title>
->>>>>>> 1aa4ff4aeef66b49b2ff58b6dac389e5f67cf503
+
+<title>Join here</title>
+
 
 <style>
 * {
@@ -35,6 +34,8 @@
 	font-style: normal;
 }
 
+
+/* 회원가입 타이틀 */
 .j_container {
 	max-width: 800px;
 	margin: 0 auto;
@@ -55,6 +56,7 @@
 }
 
 
+/* 중복확인 버튼 */
 .j_btn {
 	margin-left: 5px;
 	width: 68px;
@@ -80,9 +82,10 @@
 	letter-spacing: 0.1em;
 }
 
+/* 본문 */
 .j_menu {
 	margin-bottom: 8px;
-	margin-left: 30px;
+	margin-left: 50px;
 }
 
 .j_text {
@@ -96,6 +99,7 @@
 	background-color: rgb(233, 233, 233);
 }
 
+/* 가입완료 버튼 */
 .j_import_btn {
 	width: 262px;
 	height: 36px;
@@ -105,7 +109,7 @@
 	border-radius: 17px;
 	background-color: #3c40c6;
 	margin-top: 10px;
-	margin-left: 30px;
+	margin-left: 50px;
 }
 
 .j_import_btn:active {
@@ -121,9 +125,11 @@
 	background-color: #fff;
 }
 </style>
-<jsp:include page="/WEB-INF/views/common/header.jsp" />
+
 </head>
 <body>
+<!-- 헤더 -->
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 	<div class="j_container">
 		<form action="member/join" method="POST">
@@ -134,9 +140,10 @@
 			<p class="j_menu">아이디</p>
 			<p class="j_menu">
 				<input type="text" class="j_text" name="u_id" id="u_id"
-					maxlength="8" required>
+					maxlength="8" oninput="idCheck()" required>
 				<button class="j_btn" type="button" id="idChk" onclick="fn_idChk();"
 					value="N">중복확인</button>
+				<br> <span id="idCheck"></span>
 			</p>
 
 
@@ -149,24 +156,10 @@
 
 			<p class="j_menu">비밀번호 확인</p>
 			<p class="j_menu">
-				<input type="password" class="j_text" name="u_pwcheck" maxlength="20"
-					minlength="6" id="pw2" oninput="pwCheck()" required><br>	
-				<sapn id="pwCheck"></span>
-			
+				<input type="password" class="j_text" name="u_pwcheck"
+					maxlength="20" minlength="6" id="pw2" oninput="pwCheck()" required><br>
+				<sapn id="pwCheck"> </span>
 			</p>
-			
-<!-- 비밀번호 체크 스크립트 -->
-<script>
-
-	function pwCheck(){
-	    if($('#pw1').val() == $('#pw2').val()){
-	        $('#pwCheck').text('비밀번호 일치').css('color', 'green')
-	    }else{
-	        $('#pwCheck').text('비밀번호 불일치').css('color', '#ff3f34')
-	    }
-	}
-
-</script>
 
 			<p class="j_menu">이름</p>
 			<p class="j_menu">
@@ -186,7 +179,7 @@
 			<p class="j_menu">
 				<input type="email" id="u_email" class="j_text"
 					placeholder="animal@aniting.com" name="u_email" required>
-				<button class="j_btn" type="button" id="emailChk"
+				<button class="j_btn" id="emailChk"
 					onclick="fn_emailChk();" value="N">중복확인</button>
 			</p>
 
@@ -203,20 +196,53 @@
 			<p class="j_menu">
 				<input type="text" class="j_text" name="u_address" required>
 			</p>
-		
-			<input type="submit" value="회원가입 완료" class="j_import_btn" >
+
+			<input type="submit" value="회원가입 완료" class="j_import_btn">
 
 		</form>
 	</div>
 
 
+<!-- 푸터 -->
+<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
 
-<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
+<!-- 모달 스크립트 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-	<!-- 주소찾기 -->
-	<script>
+<script>
+
+		<!-- 아이디 글자수 제한 -->
+		function idCheck(){
+			var id1 = document.getElementById('u_id').value;
+			
+			if(id1.length >= 8){
+				$('#idCheck').text('6~8자까지 입력해주세요.').css('color', '#ff3f34')		
+			}else{
+				$('#idCheck').text('')
+			}
+		}
+
+		
+		<!-- 비밀번호 체크 스크립트 -->
+		function pwCheck(){
+		    if($('#pw1').val() == $('#pw2').val()){
+		        $('#pwCheck').text('비밀번호 일치').css('color', 'green')
+		    }else{
+		        $('#pwCheck').text('비밀번호 불일치').css('color', '#ff3f34')
+		    }
+		}
+
+		
+		
+</script>
+
+<script type="text/javascript" src="resources/js/kakao.js"></script>
+
+<script>
+
+		<!-- 주소찾기 -->
 		function SendData(e)
 		{
 			if(e.keyCode ==13)
@@ -224,12 +250,7 @@
 				search();
 			}
 		}
-	</script>
-
-	<script type="text/javascript" src="resources/js/kakao.js"></script>
-
-	<script>
-        
+		
         document.getElementById('openModal').addEventListener('click', function () {
             fetch('resources/html/kakao.html')
                 .then(response => response.text())
@@ -277,75 +298,95 @@
         });
 
     </script>
-    
-    <!-- 중복확인 -->
-	<script>
-    function fn_emailChk() {
-    	
-    	var senemail = {
-    			u_email : $("#u_email").val()
-			};
-    	
-        $.ajax({
-            url : "member/emailChk",
-            type : "POST",
-            data : senemail,
-            success : function (data) {
-            	console.log(data.emailCheck)
-                if(data == '1') {
-                    alert("중복된 이메일입니다.");
-                } else if (data == '0') {
-                    $("#emailChk").attr("value", "Y");
-                    alert("사용 가능한 이메일입니다.")
-                }
-            }
 
-        })
-    }
-
-    function fn_nickChk() {
-    	
-    	var sennick = {
-    			u_nickname : $("#u_nickname").val()
-			};
-        $.ajax({
-            url : "member/nickChk",
-            type : "POST",
-            data : sennick,
-            success : function (data) {
-            	console.log(data.nickCheck)
-                if(data == '1') {
-                    alert("중복된 닉네임입니다.");
-                } else if (data == '0') {
-                    $("#nickChk").attr("value", "Y");
-                    alert("사용 가능한 닉네임입니다.")
-                }
-            }
-
-        })
-    }	
-
-    function fn_idChk() {
-    	
-    	
-        $.ajax({
-            url : "member/idChk",
-            type : "POST",
-            data : {
-    			u_id : $("#u_id").val()
-			},
-            success : function (data) {
-            	console.log(data)
-                if(data == '1') {
-                    alert("중복된 아이디입니다.");
-                } else if (data == '0') {
-                    $("#idChk").attr("value", "Y");
-                    alert("사용 가능한 아이디입니다.")
-                }
-            }
-
-        })
-    }
+<script>
+	
+		<!-- 중복확인 -->
+		// 모달 디자인 함수
+		function showmodal(dic){
+			Swal.fire(
+				  dic
+				);
+		}
+		
+		// 아이디 중복체크	
+		  function fn_idChk() {
+		    	
+		        $.ajax({
+		            url : "member/idChk",
+		            type : "POST",
+		            data : {
+		    			u_id : $("#u_id").val()
+					},
+		            success : function (data) {
+		            	console.log(data)
+		                if(data == '1') {
+		                	showmodal({text: "중복된 닉네임입니다.",
+		            			icon: "warning"   });
+		                } else if (data == '0') {
+		                    $("#idChk").attr("value", "Y");
+		                    showmodal({text: "사용 가능합니다.",
+		            			icon: "success"   });
+		                }
+		            }
+	
+		        })
+		    }
+		
+		// 닉네임 중복체크
+		  function fn_nickChk() {
+		    	
+		    	var sennick = {
+		    			u_nickname : $("#u_nickname").val()
+					};
+		        $.ajax({
+		            url : "member/nickChk",
+		            type : "POST",
+		            data : sennick,
+		            success : function (data) {
+		            	console.log(data.nickCheck)
+		                if(data == '1') {
+		                	showmodal({text: "중복된 닉네임입니다.",
+		            			icon: "warning"   });
+	
+		                } else if (data == '0') {
+		                    $("#nickChk").attr("value", "Y");
+		                    showmodal({text: "사용 가능합니다.",
+		            			icon: "success"   });
+		                }
+		            }
+	
+		        })
+		    }	
+		
+		// 이메일 중복체크
+	    function fn_emailChk() {
+	    	
+	    	var senemail = {
+	    			u_email : $("#u_email").val()
+				};
+	    	
+	        $.ajax({
+	            url : "member/emailChk",
+	            type : "POST",
+	            data : senemail,
+	            success : function (data) {
+	            	console.log(data.emailCheck)
+	                if(data == '1') {
+	                	showmodal({text: "중복된 이메일입니다.",
+	                    			icon: "warning"   });
+	                	
+	                } else if (data == '0') {
+	                    $("#emailChk").attr("value", "Y");
+	                    
+	                    showmodal({text: "사용 가능합니다.",
+	            			icon: "success"   });
+	                } 
+	            }
+	
+	        })
+	    }
+  
 </script>
 
 
