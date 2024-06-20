@@ -102,9 +102,14 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	<div id="prf_main">
 		<div id="prf_inner">
+<<<<<<< HEAD
 		<h2 id="m_u_title">Preference Pick</h2>
 		<h4 style="text-align : left; color:#666">추천될 프로필 카드의 정보를 입력해주세요!</h4>
 		<form action="#" style='width:100%'>
+=======
+		
+		<form action="#" >
+>>>>>>> 5154bee65940994e4ac468bbc85a17f59c49d1c9
 			<p class="prf_menu">나이</p>
 			<div id="ageContainer" class="prf_menu container">
 				<input type="hidden" id="a_prfage" class="prf_text" name="a_prfage" value="" required>			
