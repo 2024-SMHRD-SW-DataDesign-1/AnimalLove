@@ -16,5 +16,12 @@ public interface AnimalMapper {
 	@Update("UPDATE ANIMAL SET a_name=#{a_name}, a_age=#{a_age}, a_weight=#{a_weight}, a_gender=#{a_gender}, a_breed=#{a_breed}")
 	public int animalUpdate(Animal animal);
 	
+	// 동물 선호도등록 처리
+	@Insert("INSERT INTO ANIMAL VALUES (#{a_prfbreed}, #{a_prfage}, #{a_prfweight}")
+	public int animalPrefer(Animal animal);
+	
+	// 동물 선호도수정 처리
+	@Update("UPDATE ANIMAL SET a_prfBreed=#{a_prfbreed}, a_prfage=#{a_prfage}, a_prfweight=#{a_prfweight}")
+	public int animalPreup(Animal animal);
 	 
 }
