@@ -140,8 +140,10 @@
             cursor: pointer;
         }
 
-    </style>
-
+	</style>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 
 </head>
 <body>
@@ -162,7 +164,7 @@
                         <p class="t_age">2살</p>
                         <p class="t_text">비숑프리제</p>
                     </div>
-                    <button class="m_p_btn">Pick Me</button>
+                    <button class="m_p_btn" onclick="showModal()">Pick Me</button>
                 </div>
 
                 <div class="p_card">
@@ -175,7 +177,7 @@
                         <p class="t_age">3살</p>
                         <p class="t_text">포메라니안</p>
                     </div>
-                    <button class="m_p_btn">Pick Me</button>
+                    <button class="m_p_btn" onclick="showModal()">Pick Me</button>
                 </div>
 
                 <div class="p_card">
@@ -188,7 +190,7 @@
                         <p class="t_age">2살</p>
                         <p class="t_text">스피치</p>
                     </div>
-                    <button class="m_p_btn">Pick Me</button>
+                    <button class="m_p_btn" onclick="showModal()">Pick Me</button>
                 </div>
             </div>
         <button class="m_btn">Reset</button>
@@ -203,11 +205,29 @@
 
 
 <script>
-
 	//헤더에 매칭 강조
 	let login = document.getElementById("h_mat");
 	login.style = "border-bottom : 2px solid #3c40c6; border-radius: 2px; color : #3c40c6;";
-
+	
+	
+	function showModal()
+	{
+		Swal.fire({
+			  title: "Custom width, padding, color, background.",
+			  width: 600,
+			  padding: "3em",
+			  color: "#716add",
+			  background: "#fff url(resources/img/cutecat.gif)",
+			  backdrop: `
+			    rgba(0,0,123,0.4)
+			    url(resources/img/cutecat.gif")
+			    left top
+			    no-repeat
+			  `
+			});
+	}
+	
+	
 </script>
 
 
