@@ -178,7 +178,7 @@
 			<nav id="m_nav">
 				<ul>
 					<li><a href="update" id="user_info">회원정보수정</a></li>
-					<li><a href="#">동물정보 수정</a></li>
+					<li><a href="animalupdate">동물정보 수정</a></li>
 					<li><a href="#" id="user_zzim">찜 목록</a></li>
 					<li><a href="#">선호도 변경</a></li>
 				</ul>
