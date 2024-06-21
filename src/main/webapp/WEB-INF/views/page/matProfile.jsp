@@ -144,9 +144,11 @@
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 </head>
 <body>
+
 	<!-- 헤더 -->
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
@@ -200,9 +202,6 @@
 	<!-- 푸터 -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
-</body>
-
-
 
 <script>
 	//헤더에 매칭 강조
@@ -212,23 +211,61 @@
 	
 	function showModal()
 	{
-		Swal.fire({
-			  title: "Custom width, padding, color, background.",
-			  width: 600,
-			  padding: "3em",
-			  color: "#716add",
-			  background: "#fff url(resources/img/cutecat.gif)",
-			  backdrop: `
-			    rgba(0,0,123,0.4)
-			    url(resources/img/cutecat.gif")
-			    left top
-			    no-repeat
-			  `
-			});
+		
+        fetch('resources/html/bigprofile.html')
+            .then(response => response.text())
+            .then(data => {
+        		Swal.fire({
+      			  title: "Custom width, padding, color, background.",
+      			  width : 1000,
+      			  html : data,
+      			  padding: "3em",
+      			  color: "#000",
+      			  background: "#fff",
+      			  backdrop: `
+      			    rgba(0,0,123,0.4)
+      			    url(resources/img/cutecat1.gif)
+      			    left top
+      			    no-repeat
+      			  `,
+                  didOpen: () => {
+
+                      // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
+                      
+					console.log(diction);
+                  },
+      			});
+            })
+            .catch(error => {
+                console.error('Error fetching the HTML file:', error);
+            });
+
 	}
 	
+	// 화면이 시작될때 필요한 사진정보들을 구함
 	
+	$( document ).ready(function() {
+		
+		 $.ajax({
+				url : "animal_info/save",// 요청경로
+				type : "get",
+				
+				success : function(res) {
+
+				},
+				error : function(error) {
+
+				}
+
+			}) 
+		
+	});
 </script>
+</body>
+
+
+
+
 
 
 </html>
