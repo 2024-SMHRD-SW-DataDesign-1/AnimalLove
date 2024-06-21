@@ -23,7 +23,7 @@ public class Animal {
 	private String a_path2;
 	private String a_path3;
 	private String a_prfbreed;
-	private int a_prfage;
-	private int a_prfweight;
+	private String a_prfage;
+	private String a_prfweight;
 	
 }

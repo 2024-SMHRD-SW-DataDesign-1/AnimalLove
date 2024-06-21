@@ -96,5 +96,18 @@ public class AnimalController {
 		return "animaltest";
 	}
 	
+	// 선호도 저장
+	@RequestMapping(value = "/prfinforsave", method = RequestMethod.POST)
+	public String animalPrefer(@ModelAttribute Animal animal) {
+		int res = service.animalPrefer(animal);
+		
+		
+		if(res>0) {
+			return "page/matProfile";
+		}else {
+			return "page/prfinfo";
+		}
+	}
+	
 	
 }
