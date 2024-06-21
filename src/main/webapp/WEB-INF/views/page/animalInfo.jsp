@@ -181,7 +181,6 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 
 			<button  class="btn" >다음 화면</button>
 		</form>
-	<button onclick="onSave()">111</button>
 	</div>
 
 	<!-- 푸터 -->
