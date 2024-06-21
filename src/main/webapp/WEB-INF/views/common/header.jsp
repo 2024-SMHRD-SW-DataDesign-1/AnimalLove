@@ -6,9 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>header here</title>
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<title>Document</title>
+<script src="https://kit.fontawesome.com/b145cfedc2.js" crossorigin="anonymous"></script>
 
 <style>
 @media screen and (max-width:640px) {
@@ -120,14 +122,39 @@ header>ul {
 	margin-left: 5px;
 }
 
-#chat_icon {
+
+
+/* 채팅알림 */
+#mainnoread
+{
+	color:#ff3f34;;
+	font-family: 'BMJUA';
+    position: fixed;
+    left: 89%;
+    top: 84%;
+    border-radius: 100%;
+    width: 26px;
+    height: 26px;
+    text-align: center;
+}
+
+
+/*채팅*/
+#chat_box {
 	position: fixed;
 	left: 89%;
-	top: 90%;
-	background-color: red;
-	width: 30px;
-	border-radius: 20px;
+	top: 86%;
+	background-color: #3c40c6;
+	width: 64px;
+	height: 64px;
+	border-radius: 100%;
 	z-index: 100;
+	color : #fff;
+	text-align: center;
+}
+
+#chat_icon {
+	margin-top:14px;
 }
 
 #chatList_box {
@@ -142,14 +169,9 @@ header>ul {
 	overflow-y: auto;
 }
 
-#mainnoread
-{
-	color: blue;
-	font-weight:bold;
-	position: fixed;
-	left: 92%;
-	top: 90%;
-}
+
+
+
 
 </style>
 
@@ -196,7 +218,9 @@ header>ul {
 	<div id="chatList_box">
 		<jsp:include page="/WEB-INF/views/common/chat/chatlist.jsp"></jsp:include>
 	</div>
-	<div id="chat_icon" onclick="chatListView()">채팅	</div>
+	<div id="chat_box" onclick="chatListView()">
+		<i class="fa-regular fa-comment fa-2x" id="chat_icon"></i>
+	</div>
 	<div id="mainnoread"></div>
 	
 

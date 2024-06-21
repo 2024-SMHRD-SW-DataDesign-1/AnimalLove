@@ -32,7 +32,6 @@
 }
 
 .m_u_container {
-	max-width: 800px;
 	margin: 0 auto;
 	box-sizing: border-box;
 	flex-direction: column;
