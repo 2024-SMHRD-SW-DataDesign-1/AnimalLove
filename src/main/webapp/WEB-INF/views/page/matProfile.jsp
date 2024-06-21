@@ -27,9 +27,11 @@
         font-style: normal;
         }
 
-
         .p_container{
             text-align: center;
+            
+            
+            
         }
 
 
@@ -43,7 +45,7 @@
         }
 
         /* 프로필 카드 박스 */
-        .p_c_container{
+        #p_c_container{
             text-align: center;
             display: flex;
             justify-content: space-evenly;
@@ -139,12 +141,16 @@
             transition: all 200ms linear;
             cursor: pointer;
         }
+        
 
 	</style>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+	<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
 </head>
 <body>
@@ -155,45 +161,7 @@
 	
 	<div class="p_container">
         <h2 id="p_title">Profile</h2>
-            <div class="p_c_container">
-                <div class="p_card">
-                    <div class="p_like">
-                        <i class="fa-regular fa-heart fa-2xl"></i>
-                    </div>
-                    <img src="resources/img/img_pro1.jpg" alt="" class="p_img">
-                    <div class="p_body">
-                        <h1 class="t_name">구름이</h1>
-                        <p class="t_age">2살</p>
-                        <p class="t_text">비숑프리제</p>
-                    </div>
-                    <button class="m_p_btn" onclick="showModal()">Pick Me</button>
-                </div>
-
-                <div class="p_card">
-                    <div class="p_like">
-                        <i class="fa-regular fa-heart fa-2xl"></i>
-                    </div>
-                    <img src="resources/img/img_pro2.jpg" alt="" class="p_img">
-                    <div class="p_body">
-                        <h1 class="t_name">뽀미</h1>
-                        <p class="t_age">3살</p>
-                        <p class="t_text">포메라니안</p>
-                    </div>
-                    <button class="m_p_btn" onclick="showModal()">Pick Me</button>
-                </div>
-
-                <div class="p_card">
-                    <div class="p_like">
-                        <i class="fa-regular fa-heart fa-2xl"></i>
-                    </div>
-                    <img src="resources/img/img_pro3.jpg" alt="" class="p_img">
-                    <div class="p_body">
-                        <h1 class="t_name">순이</h1>
-                        <p class="t_age">2살</p>
-                        <p class="t_text">스피치</p>
-                    </div>
-                    <button class="m_p_btn" onclick="showModal()">Pick Me</button>
-                </div>
+            <div id="p_c_container">
             </div>
         <button class="m_btn">Reset</button>
     </div>
@@ -208,59 +176,233 @@
 	let login = document.getElementById("h_mat");
 	login.style = "border-bottom : 2px solid #3c40c6; border-radius: 2px; color : #3c40c6;";
 	
+
 	
-	function showModal()
-	{
-		
-        fetch('resources/html/bigprofile.html')
-            .then(response => response.text())
-            .then(data => {
-        		Swal.fire({
-      			  title: "Custom width, padding, color, background.",
-      			  width : 1000,
-      			  html : data,
-      			  padding: "3em",
-      			  color: "#000",
-      			  background: "#fff",
-      			  backdrop: `
-      			    rgba(0,0,123,0.4)
-      			    url(resources/img/cutecat1.gif)
-      			    left top
-      			    no-repeat
-      			  `,
-                  didOpen: () => {
-
-                      // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
-                      
-					console.log(diction);
-                  },
-      			});
-            })
-            .catch(error => {
-                console.error('Error fetching the HTML file:', error);
-            });
-
-	}
+	// 추천된 카드의 정보를 받아와서 담을 변수
+	let opponentInfo = null;
 	
 	// 화면이 시작될때 필요한 사진정보들을 구함
+	$( document ).ready(function() {	
+/* 		$.ajax({
+			url:"animalte",// 요청경로
+			type : "post",
+			dataType : "json",// 서버에서 반환받는 데이터 형식
+			success : function (data) {
+				// data가 넘오는 타입확인해야됨 promise로 넘어오면 변경되야됨
+				opponentInfo = data;
+			},
+			error :function(){
+				alert("통신실패");
+			}
+		
+		}) 
+		
+		if(data == 0)
+		{
+			return;
+		}
+	*/	
+			
+		let container = document.getElementById("p_c_container");
+		container.innerHTML = "";
+		// 밑 변수들 재관이형님 수정시에 지우세요!!!! 테스트용변수
+		let name = "상현1";
+		let age = "상현2";
+		let breed = "상현3";
+		opponentInfo = [
+		{
+			name : "이름1",
+			age : "나이1",
+			breed : "품종1",
+			gender : "성별1",
+			weight : "몸무게1",
+			intro : "소개글111111111111111111111111111111111111111",
+			img1 : "resources/img/img_pro1.jpg",
+			img2 : "resources/img/img_pro2.jpg",
+			img3 : "",
+			
+			
+		},
+		{
+			name : "이름2",
+			age : "나이2",
+			breed : "품종2",
+			gender : "성별2",
+			weight : "몸무게2",
+			intro : "소개글22222222222222222222222222222222222222",
+			img1 : "resources/img/img_pro1.jpg",
+			img2 : "resources/img/img_pro2.jpg",
+			img3 : "resources/img/img_pro3.jpg",
+		}
+		]
+			
+		for(let i = 0; i< opponentInfo.length; i++)
+		{
+			// 프로필 카드 등록하는 함수 각자리에 맞는 변수를 설정해야됨
+			// 이미지 경로도 수정해야됨!!!!
+			let tag = 
+		        '<div class="p_card">' +
+		        	'<div class="p_like">' +
+		        		'<i class="fa-regular fa-heart fa-2xl"></i>' +
+		        	'</div>' +
+		        	'<img src="resources/img/img_pro1.jpg" alt="" class="p_img">' +
+		        	'<div class="p_body">' +
+		        	'<h1 class="t_name">'+ name +'</h1>' +
+		        	'<p class="t_age">' + age + '살</p>' +
+		        	'<p class="t_text">' + breed + '</p>' +
+		        	'</div>' + 
+		        	'<button class="m_p_btn" onclick="showModal('+ i +')">Pick Me</button>' +
+		     	'</div>';
+		     	
+			container.innerHTML += tag;     
+		}
 	
-	$( document ).ready(function() {
-		
-		 $.ajax({
-				url : "animal_info/save",// 요청경로
-				type : "get",
-				
-				success : function(res) {
+	
+	
+	
+	
 
-				},
-				error : function(error) {
-
-				}
-
-			}) 
-		
 	});
 </script>
+
+<script type="text/javascript">
+	// 모달창 띄우기
+	function showModal(idx)
+	{
+		
+	    fetch('resources/html/bigprofile.html')
+	        .then(response => response.text())
+	        .then(data => {
+	    		Swal.fire({
+	  			  width : 1000,
+	  			  html : data,
+	  			  padding: "3em",
+	  			  color: "#000",
+	  			  background: "#fff",
+	  			  backdrop: `
+	  			    rgba(0,0,123,0.4)
+	  			    url(resources/img/cutecat.gif)
+	  			    left top
+	  			    no-repeat
+	  			  `,
+	              didOpen: () => {
+	                  // 텍스트 태그
+	                  let bigname = document.getElementById("big_name");
+	                  let biggender = document.getElementById("big_gender");
+	                  let bigage = document.getElementById("big_age");
+	                  let bigbreed = document.getElementById("big_breed");
+	                  let bigweight= document.getElementById("big_weight");
+	                  let bigintro = document.getElementById("big_intro");
+	                  
+	                  // 이미지 태그
+	                  let bigimg = document.getElementById("big_img");	                  
+
+	                  
+	                  bigname.innerText = opponentInfo[idx].name;
+	                  biggender.innerText = opponentInfo[idx].gender;
+	                  bigage.innerText = opponentInfo[idx].age;
+	                  bigbreed.innerText = opponentInfo[idx].breed;
+	                  bigweight.innerText = opponentInfo[idx].weight;
+	                  bigintro.innerText = opponentInfo[idx].intro;
+						
+	                  let bigswiper = document.getElementById("bigswiper");
+	                  bigswiper = "";
+
+
+	  					
+					
+	                  
+	          		  let swiper1 = document.getElementById("bigSlide");
+						console.log(swiper1)	          		
+	                  swiper1.innerHTML = ""; 
+		          	  if(opponentInfo[idx].img1 != "")
+		        	  {
+		          		  setImgs(swiper1, opponentInfo[idx].img1); 	
+		        	  }
+		        		
+		        	  if(opponentInfo[idx].img2 != "")
+		        	  {
+		        		  setImgs(swiper1, opponentInfo[idx].img2);	
+		        	  }
+		        		
+		        	  if(opponentInfo[idx].img3 != "")
+		        	  {
+		        		  setImgs(swiper1, opponentInfo[idx].img3);	
+		        	  }
+	                  
+/* 		        	  bigswiper += '<div class="swiper-button-next"></div>';
+		        	  bigswiper += '<div class="swiper-button-prev"></div>';
+		        	  bigswiper += '<div class="swiper-pagination"></div>'; 
+		        	  */
+			
+		        	  
+
+		        		const swiper2 = new Swiper('.swiper', {
+		        			// Optional parameters
+		        			loop : true,
+		        			slidesPerView : 1,
+		        			// If we need pagination
+		        			pagination : {
+		        				el : '.swiper-pagination',
+		        			},
+
+		        			// Navigation arrows
+		        			navigation : {
+		        				nextEl : '.swiper-button-next',
+		        				prevEl : '.swiper-button-prev',
+		        			}
+
+		        		});
+	              }		
+	            });
+	        })
+	        .catch(error => {
+	            console.error('Error fetching the HTML file:', error);
+	        });
+	    
+
+	
+	}
+	
+	// 이미지 추가하는 함수
+	function setImgs(tag,str)
+	{
+		let img =
+			'<div class="swiper-slide">' +
+				'<img src="'+ str +'" class="big_img" style="width :800px; height : 500px; ">' +
+			'</div>';
+
+		tag.innerHTML += img;
+	}
+</script>
+<script>
+
+	const swiper2 = new Swiper('.swiper', {
+		// Optional parameters
+		loop : true,
+		slidesPerView : 1,
+		// If we need pagination
+		pagination : {
+			el : '.swiper-pagination',
+		},
+
+		// Navigation arrows
+		navigation : {
+			nextEl : '.swiper-button-next',
+			prevEl : '.swiper-button-prev',
+		}
+
+	});
+	
+	
+	function toSendHeart()
+	{
+		
+	}
+	
+</script>
+
+
 </body>
 
 
