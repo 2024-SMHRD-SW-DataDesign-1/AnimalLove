@@ -15,12 +15,22 @@
 	
 }
 
+.profil_img {
+	width: 200px;
+	height: 300px;
+}
+
+#profil_imgs {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	pointer-events: none;
+}
 .animal_form {
 	max-width: 800px;
 	margin: 0 auto;
 	box-sizing: border-box;
 	flex-direction: column;
-	height: 60vh;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -130,11 +140,11 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 <%
 	MavenMember member = (MavenMember) session.getAttribute("member");
 	%>
-	<%Animal animal = (Animal) session.getAttribute("animal"); %>
+	<%Animal animal = (Animal) request.getAttribute("animal"); %>
 
 	<div class="animal_form">
 
-		<form action="matching_pic" id="infoadd">
+		<form action="#" id="infoadd">
 			<h2 id="ani_title">My Animal Info Update</h2>
 			<input type="hidden" name = "a_u_id" value="<%=member.getU_id()%>">
 			<br>
@@ -158,8 +168,8 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 
 			<p>동물 성별</p>
 			<p>
-				<input type="radio" name="a_gender" value="male"> Male <input
-					type="radio" name="a_gender" value="female"> Female
+				<input type="radio" name="a_gender" id="male" value="male"> Male <input
+					type="radio" name="a_gender" id="female" value="female"> Female
 			</p>
 
 			<p>품종</p>
@@ -179,9 +189,17 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 			</p>
 			
 			<p>소개글</p>
-			<textarea class="center" name="a_intro" id="" cols="40" rows="8" value="<%=animal.getA_intro()%>>"></textarea><br>
-
-			<button  class="btn" >다음 화면</button>
+			<textarea class="center" name="a_intro" id="" cols="40" rows="8" ><%=animal.getA_intro()%></textarea><br>
+			<input type="file" id="photo" multiple name="photo">
+		<div id=profil_imgs>
+			<input type="image" name="photo1" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
+			<input type="image"	name="photo2" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
+			<input type="image" name="photo3" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
+			<input type="hidden" name="a_path1" class="imageSrc" value="">
+			<input type="hidden" name="a_path2" class="imageSrc" value=""> 
+			<input type="hidden" name="a_path3" class="imageSrc" value="">
+		</div>
+			<button  class="btn" >수정 완료</button>
 		</form>
 	</div>
 
@@ -191,6 +209,7 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 
 	<script type="text/javascript">
 		
+	
 		let dogs = ["몰티즈", "푸들", "포메라니안", "치와와","스피츠" , "시바이누", "웰시코기", "닥스훈트", "비숑프리제","골든 리트리버","사모예드","허스키", "믹스견", "그 외"];
 		let cats = ["코리안숏헤어", "먼치킨", "페르시안", "뱅갈", "러시안블루", "아비시니안", "샴", "터키시앙고라", "스코티시폴드", "스핑크스", "믹스묘", "그 외"];
 		
@@ -246,8 +265,85 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 
 		
 		// 헤더에 매칭 강조
-		let login = document.getElementById("h_mat");
+		let login = document.getElementById("h_my");
 	    login.style = "border-bottom : 2px solid #3c40c6; border-radius: 2px; color : #3c40c6;";
 		
+	</script>
+	
+	
+	<script>
+	// 암컷 수컷 불러오기
+				if($("animal.getA_gender")==="male"){
+					$("#male").prop("checked", true);
+				}else{
+					$("#female").prop("checked", true);
+				}
+				
+	</script>
+	
+	<script>
+	// 강아지 고양이 불러오기
+				if($("animal.getA_breed")=== dogs){
+					$("#dog").prop("checked", true);
+				}else{
+					$("#cat").prop("checked", true);
+				}
+				onClickEvent();
+	</script>
+	
+	<script type="text/javascript">
+	function getValue() {
+		const storedList = sessionStorage.getItem('key');
+		return storedList;
+	}
+	let defaultImg = "nullPic.png";
+	let dic = getValue();
+	//
+	const imageUpload = document.getElementById('photo');
+	let imgs = document.getElementsByClassName("profil_img");
+	let list2 = document.getElementsByClassName("imageSrc");
+	
+	let imgIdx = 0;
+
+	imageUpload.addEventListener('change', function(event) {
+		const file = event.target.files[0];
+		
+		console.log(file);
+		if (imgIdx == 3) {
+			return;
+		}
+		if (file) {
+			const reader = new FileReader();
+			reader.onload = function(e) {
+				//imgs[i].src = "resources/img/" + file.name;
+				imgs[imgIdx].src = e.target.result;
+				list2[imgIdx].value = file.name;
+				imgIdx++;
+				
+			};
+			reader.readAsDataURL(file);
+		}
+	});
+
+	function toSend() {
+		let dataList = {
+			a_path1 : imgs[0].value,
+			a_path2 : imgs[1].value,
+			a_path3 : imgs[2].value
+		}
+ 		 $.ajax({
+			url : "#",// 요청경로
+			type : "post",
+			data : dataList,
+			success : function(res) {
+
+			},
+			error : function(error) {
+
+			}
+
+		}) 
+
+	}
 	</script>
 </html>
