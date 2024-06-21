@@ -18,7 +18,7 @@ public interface AnimalMapper {
 	public int animalUpdate(Animal animal);
 	
 	// 동물 선호도등록 처리
-	@Insert("INSERT INTO ANIMAL VALUES (#{a_prfbreed}, #{a_prfage}, #{a_prfweight}")
+	@Insert("UPDATE ANIMAL SET a_prfbreed=#{a_prfbreed}, a_prfage=#{a_prfage}, a_prfweight=#{a_prfweight} WHERE a_u_id=#{a_u_id}")
 	public int animalPrefer(Animal animal);
 	
 	// 동물 선호도수정 처리
