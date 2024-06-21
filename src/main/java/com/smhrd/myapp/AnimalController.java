@@ -103,9 +103,9 @@ public class AnimalController {
 		
 		
 		if(res>0) {
-			return "matProfile";
+			return "page/matProfile";
 		}else {
-			return "prfinfo";
+			return "page/prfinfo";
 		}
 	}
 	
