@@ -15,12 +15,22 @@
 	
 }
 
+.profil_img {
+	width: 200px;
+	height: 300px;
+}
+
+#profil_imgs {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	pointer-events: none;
+}
 .animal_form {
 	max-width: 800px;
 	margin: 0 auto;
 	box-sizing: border-box;
 	flex-direction: column;
-	height: 60vh;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -180,8 +190,16 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 			
 			<p>소개글</p>
 			<textarea class="center" name="a_intro" id="" cols="40" rows="8" ><%=animal.getA_intro()%></textarea><br>
-			
-			<button  class="btn" >다음 화면</button>
+			<input type="file" id="photo" multiple name="photo">
+		<div id=profil_imgs>
+			<input type="image" name="photo1" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
+			<input type="image"	name="photo2" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
+			<input type="image" name="photo3" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
+			<input type="hidden" name="a_path1" class="imageSrc" value="">
+			<input type="hidden" name="a_path2" class="imageSrc" value=""> 
+			<input type="hidden" name="a_path3" class="imageSrc" value="">
+		</div>
+			<button  class="btn" >수정 완료</button>
 		</form>
 	</div>
 
@@ -247,7 +265,7 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 
 		
 		// 헤더에 매칭 강조
-		let login = document.getElementById("h_mat");
+		let login = document.getElementById("h_my");
 	    login.style = "border-bottom : 2px solid #3c40c6; border-radius: 2px; color : #3c40c6;";
 		
 	</script>
@@ -271,5 +289,61 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 					$("#cat").prop("checked", true);
 				}
 				onClickEvent();
-			</script>
+	</script>
+	
+	<script type="text/javascript">
+	function getValue() {
+		const storedList = sessionStorage.getItem('key');
+		return storedList;
+	}
+	let defaultImg = "nullPic.png";
+	let dic = getValue();
+	//
+	const imageUpload = document.getElementById('photo');
+	let imgs = document.getElementsByClassName("profil_img");
+	let list2 = document.getElementsByClassName("imageSrc");
+	
+	let imgIdx = 0;
+
+	imageUpload.addEventListener('change', function(event) {
+		const file = event.target.files[0];
+		
+		console.log(file);
+		if (imgIdx == 3) {
+			return;
+		}
+		if (file) {
+			const reader = new FileReader();
+			reader.onload = function(e) {
+				//imgs[i].src = "resources/img/" + file.name;
+				imgs[imgIdx].src = e.target.result;
+				list2[imgIdx].value = file.name;
+				imgIdx++;
+				
+			};
+			reader.readAsDataURL(file);
+		}
+	});
+
+	function toSend() {
+		let dataList = {
+			a_path1 : imgs[0].value,
+			a_path2 : imgs[1].value,
+			a_path3 : imgs[2].value
+		}
+ 		 $.ajax({
+			url : "#",// 요청경로
+			type : "post",
+			data : dataList,
+			success : function(res) {
+
+			},
+			error : function(error) {
+
+			}
+
+		}) 
+
+	}
+	</script>
 </html>
