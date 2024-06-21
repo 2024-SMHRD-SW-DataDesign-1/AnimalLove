@@ -38,7 +38,6 @@
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	margin-bottom: 100px;
 }
 
 /*네비게이션*/
@@ -141,7 +140,9 @@
 	border-radius: 17px;
 	background-color: #3c40c6;
 	margin-top: 10px;
-	margin-left: 8em;
+	margin-left: 8.4em;
+	margin-bottom: 5em;
+}
 }
 
 .m_import_btn:active {

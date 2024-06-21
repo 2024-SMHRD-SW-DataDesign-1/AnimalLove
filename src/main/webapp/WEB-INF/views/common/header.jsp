@@ -129,6 +129,7 @@ header>ul {
 {
 	color:#ff3f34;;
 	font-family: 'BMJUA';
+	font-size: 18px;
     position: fixed;
     left: 89%;
     top: 84%;
@@ -160,11 +161,13 @@ header>ul {
 #chatList_box {
 	display: none;
 	position: fixed;
-	left: 75%;
-	top: 57%;
-	border: 2px solid #000000;
-	width: 300px;
-	height: 300px;
+	left: 73.5%;
+	top: 54%;
+	border: 2px solid #3c40c6;
+	border-radius: 20px;
+	background-color:#fff;
+	width: 320px;
+	height: 320px;
 	z-index: 100;
 	overflow-y: auto;
 }

@@ -22,34 +22,70 @@
 .list-container {
 	display: flex;
 	justify-content: space-between;
-	border-top: 1px solid black;
-	border-bottom: 1px solid black;
+	border-top: 1.2px solid #b5b5b5;
+	border-bottom: 1.2px solid #b5b5b5;
+	padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+    padding-right: 10px;
 }
+
 
 .imgcontainer {
 	style ="width: 48px;
 	height: 50px;
 	border-radius: 150px;
 	background-color: skyblue;
-}
+}p
 .list-content{
 	display: flex;
 	align-items: center;
 }
 
 .noread{
-	margin-left : 20px;
+    margin-top: 0.6em;
+	margin-left : 3.2em;
 }
+
+#chat_text{
+	text-decoration : none;
+	color:#3c40c6;
+	font-weight: bold;
+}
+
+#chatReady {
+	display: flex;
+	justify-content: space-between;
+	margin: 14px 16px;
+}
+
+.ch_r_btn{
+	background: #fff;
+    border: 0;
+    outline: 1.2px solid #3c40c6;
+    border-radius: 3px;
+    width: 50px;
+    height: 20px;
+    margin-left: 8px;
+}
+
+.ch_r_btn:hover{
+	background: #e2e1e0;
+    transition: all 100ms linear;
+    cursor: pointer;
+}
+
+
 </style>
 </head>
 <body>
 
 
 	<div id="chatReady">
-		<span class="text">알림</span>
+		<span class="ch_text">알림</span>
 	</div>
 	<div id="chatModal">
-		<span class="text">채팅방목록</span>
+		
 	</div>
 	
 	<div id="lastlog">
@@ -95,46 +131,42 @@ function load(chatList){
 		if (chat.c_accept === 0 && chat.c_senid === userid) { // 조건 1: 요청 중인 채팅방
 			$('#chatReady').append(
 				'<div class="request-container">' +
-					'<img src="#" class="image-container"/>' +
 					'<div>' + chat.c_recid + '님께 요청중입니다.</div>' +
 				'</div>'
 			);
 		} else if (chat.c_accept === 0 && chat.c_recid === userid) { // 조건 2: 내가 받은 요청
 			$('#chatReady').append(
 				'<div class="request-container">' +
-					'<img src="#" class="image-container"/>' +
-					'<div>' + chat.c_senid + '님 온 요청</div>' +
-					'<a href="../accept/' + chat.c_recid + '"><button>수락</button></a>' +
-					'<button>거부</button>' +
-					'<button>정보확인</button>' +
+					'<div style="margin-bottom: 5px; margin-left: 5px;" >' + chat.c_senid + '님 온 요청</div>' +
+					'<a href="../accept/' + chat.c_recid + '"><button class="ch_r_btn">수락</button></a>' +
+					'<button class="ch_r_btn">거부</button>' +
+					'<button class="ch_r_btn">정보확인</button>' +
 				'</div>'
 			);
 		} else if (chat.c_accept === 1 && chat.c_senid === userid) { // 조건 3: 다른사람이 보낸 요청을 수락한 채팅방
 			$('#chatModal').append(
 				'<div class="list-container">' +
-					'<img src="#" class="image-container">' +
-					'<div class="list-content">' +
+					'<div class="list-content" style="display: flex;">' +
 						'<div>' +
-							'<a href="/aniting/chatting/' + chat.c_id + '"><div>' + chat.c_recid + '님과의 채팅방</div></a>' +
+							'<a href="/aniting/chatting/' + chat.c_id + '" id="chat_text"><div>' + chat.c_recid + '님과의 채팅방</div></a>' +
 							'<div id="lastLog'+chat.c_id+'">' + (chat.lastChatLog ? chat.lastChatLog.cl_log : '최근 대화가 없습니다.') + '</div>' +
 						'</div>' +
 						'<div id="noread'+chat.c_id+'" class="noread"></div>'+
 					'</div>'+
-					'<img src="resources/img/deleteBox.png" style="width: 40px;" alt="휴지통" />' +
+					'<img src="resources/img/deleteBox1.png" style="width: 40px;height: 40px;" alt="휴지통" />' +
 				'</div>'
 			);
 		} else if (chat.c_accept === 1 && chat.c_recid === userid) { // 조건 4: 내가 보낸 요청이 수락된 경우
 			$('#chatModal').append(
 				'<div class="list-container">' +
-					'<img src="#" class="image-container">' +
-					'<div class="list-content">' +
+					'<div class="list-content" style="display: flex;">' +
 						'<div>' +
-							'<a href="/aniting/chatting/' + chat.c_id + '"><div>' + chat.c_senid + '님과의 채팅방</div></a>' +
+							'<a href="/aniting/chatting/' + chat.c_id + '" id="chat_text"><div>' + chat.c_senid + '님과의 채팅방</div></a>' +
 							'<div id="lastLog'+chat.c_id+'">' + (chat.lastChatLog ? chat.lastChatLog.cl_log : '최근 대화가 없습니다.') + '</div>' +
 						'</div>' +
 						'<div id="noread'+chat.c_id+'" class="noread"></div>'+
 					'</div>'+
-					'<img src="resources/img/deleteBox.png" style="width: 40px;" alt="휴지통" />' +
+					'<img src="resources/img/deleteBox1.png" style="width: 40px;height: 40px;" alt="휴지통" />' +
 				'</div>'
 			);
 		}
