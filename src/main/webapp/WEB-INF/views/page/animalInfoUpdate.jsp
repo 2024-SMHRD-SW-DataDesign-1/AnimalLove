@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.myapp.model.Animal"%>
 <%@page import="com.smhrd.myapp.model.MavenMember"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -129,27 +130,28 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 <%
 	MavenMember member = (MavenMember) session.getAttribute("member");
 	%>
+	<%Animal animal = (Animal) session.getAttribute("animal"); %>
 
 	<div class="animal_form">
 
-		<form action="matching_pic" id="infoadd" method="post">
-			<h2 id="ani_title">My Animal Info</h2>
+		<form action="matching_pic" id="infoadd">
+			<h2 id="ani_title">My Animal Info Update</h2>
 			<input type="hidden" name = "a_u_id" value="<%=member.getU_id()%>">
 			<br>
-			<p>동물 이름</p>
+			<p>동물 이름 </p>
 			<p>
-				<input type="text" class="ani_text" name="a_name" required id="u_id">
+				<input type="text" class="ani_text" name="a_name" value="<%=animal.getA_name()%>" required id="u_id">
 			</p>
 
 			<p>나이</p>
 			<p>
-				<input type="number" class="ani_text" name="a_age">
+				<input type="number" class="ani_text" name="a_age" value="<%=animal.getA_age()%>">
 			</p>
 
 
 			<p>몸무게</p>
 			<p>
-				<input type="number" class="ani_text" name="a_weight"
+				<input type="number" class="ani_text" name="a_weight" value="<%=animal.getA_weight()%>"
 					placeholder="kg" min="1">
 			</p>
 
@@ -171,13 +173,13 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 
 			<p>상세품종</p>
 			<p>
-				<select name="a_breed" id="a_breed">
+				<select name="a_breed" id="a_breed" value="<%=animal.getA_breed()%>">
 
 				</select>
 			</p>
 			
 			<p>소개글</p>
-			<textarea class="center" name="a_intro" id="" cols="40" rows="8" ></textarea><br>
+			<textarea class="center" name="a_intro" id="" cols="40" rows="8" value="<%=animal.getA_intro()%>>"></textarea><br>
 
 			<button  class="btn" >다음 화면</button>
 		</form>
