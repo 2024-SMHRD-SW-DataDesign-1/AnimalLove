@@ -25,5 +25,7 @@ public class Animal {
 	private String a_prfbreed;
 	private String a_prfage;
 	private String a_prfweight;
+	private String a_filterage;
+	private String a_filterweight;
 	
 }

@@ -1,5 +1,7 @@
 package com.smhrd.myapp.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -62,6 +64,10 @@ public class AnimalService {
 		return mapper.animalRoad(a_u_id);
 	}
 	
-	
+	// 선호도에 따라서 3마리 동물 정보 가져오기 
+	public List<Animal> matching(String a_u_id){
+		Animal animal = animalinfo(a_u_id);
+		return mapper.matching(animal);
+	}
 }
 
