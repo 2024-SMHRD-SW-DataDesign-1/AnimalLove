@@ -129,6 +129,7 @@ header>ul {
 {
 	color:#ff3f34;;
 	font-family: 'BMJUA';
+	font-size: 18px;
     position: fixed;
     left: 89%;
     top: 84%;

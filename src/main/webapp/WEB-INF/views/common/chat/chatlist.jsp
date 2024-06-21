@@ -21,12 +21,15 @@
 
 .list-container {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	border-top: 1.2px solid #b5b5b5;
 	border-bottom: 1.2px solid #b5b5b5;
 	padding-top: 8px;
     padding-bottom: 8px;
+    padding-left: 16px;
+    padding-right: 10px;
 }
+
 
 .imgcontainer {
 	style ="width: 48px;
@@ -134,7 +137,7 @@ function load(chatList){
 		} else if (chat.c_accept === 0 && chat.c_recid === userid) { // 조건 2: 내가 받은 요청
 			$('#chatReady').append(
 				'<div class="request-container">' +
-					'<div style="margin-bottom: 5px; margin-left: 5px;">' + chat.c_senid + '님 온 요청</div>' +
+					'<div style="margin-bottom: 5px; margin-left: 5px;" >' + chat.c_senid + '님 온 요청</div>' +
 					'<a href="../accept/' + chat.c_recid + '"><button class="ch_r_btn">수락</button></a>' +
 					'<button class="ch_r_btn">거부</button>' +
 					'<button class="ch_r_btn">정보확인</button>' +
@@ -145,7 +148,7 @@ function load(chatList){
 				'<div class="list-container">' +
 					'<div class="list-content" style="display: flex;">' +
 						'<div>' +
-							'<a href="/aniting/chatting/' + chat.c_id + '"><div>' + chat.c_recid + '님과의 채팅방</div></a>' +
+							'<a href="/aniting/chatting/' + chat.c_id + '" id="chat_text"><div>' + chat.c_recid + '님과의 채팅방</div></a>' +
 							'<div id="lastLog'+chat.c_id+'">' + (chat.lastChatLog ? chat.lastChatLog.cl_log : '최근 대화가 없습니다.') + '</div>' +
 						'</div>' +
 						'<div id="noread'+chat.c_id+'" class="noread"></div>'+
