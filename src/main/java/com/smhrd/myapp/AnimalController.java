@@ -44,8 +44,10 @@ public class AnimalController {
 		animal.setA_intro(tem.getA_intro());
 		
 		// 다운 위치 지정
-		String path = session.getServletContext().getRealPath("resources/img/animalImg/");
-
+		//String path = session.getServletContext().getRealPath("resources/img/animalImg/");
+		String path = "C:\\Users\\smhrd\\Desktop\\Spring\\Anything\\src\\main\\webapp\\resources\\img\\animalImg\\";
+		
+		
 		for (int i = 0; i < file.size(); i++) {
 			// 중복파이명 감지를 위해 고유문자를 삽입하는 코드
 			String fileName = UUID.randomUUID().toString() + file.get(i).getOriginalFilename();
