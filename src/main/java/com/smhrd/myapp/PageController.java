@@ -4,6 +4,7 @@ import javax.print.attribute.SetOfIntegerSyntax;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,10 +13,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.smhrd.myapp.model.Animal;
 import com.smhrd.myapp.model.MavenMember;
+import com.smhrd.myapp.service.AnimalService;
 
 @Controller
 public class PageController {
 	// index 페이지를 리턴해주는 메서드
+	@Autowired
+	AnimalService service;
+	
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index() {
@@ -98,17 +103,23 @@ public class PageController {
 		HttpSession session = request.getSession();
 		// 로그인 세션에서 값 가져오기 --> 로그인 당시 정보
 		MavenMember member2 = (MavenMember) session.getAttribute("member");
-		if (member2 != null) { // 로그인 상태
-			return "page/animalInfo";
-		} else { // 로그인 안한상태
+		// DB에 동물정보 존재하면 선호도 페이지로 이동
+		if (member2 == null) {
 			return "page/login";
-		}
+		}else { // 로그인 상태
+			int res = service.selectanimal(member2.getU_id());
+			if(res==1) {
+				return "redirect:/prfInfo";
+			}else {
+				return "page/animalInfo";				
+			}
+		} 
 		// view resolver : /WEB-INF/views/index.jsp
 
 	}
 
 	// 매칭화면2
-	@RequestMapping(value = "/matching_pic", method = RequestMethod.GET)
+	@RequestMapping(value = "/matching_pic", method = RequestMethod.POST)
 	public String animalInfo2(Animal animal, HttpSession session) {
 		// view resolver : /WEB-INF/views/index.jsp
 		session.setAttribute("animal", animal);
@@ -125,9 +136,16 @@ public class PageController {
 	
 	// 선호도
 	@RequestMapping(value = "/prfInfo", method = RequestMethod.GET)
-	public String prfInfo() {
-		// view resolver : /WEB-INF/views/index.jsp
-		return "page/prfInfo";
+	public String prfInfo(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MavenMember member = (MavenMember) session.getAttribute("member");
+		int res = service.prfSelect(member.getU_id());
+		System.out.println(res);
+		if (res == 0){
+			return "page/prfInfo";			
+		}else {
+			return "page/matProfile";
+		}
 	}
 	
 	//프로필 약식 화면
