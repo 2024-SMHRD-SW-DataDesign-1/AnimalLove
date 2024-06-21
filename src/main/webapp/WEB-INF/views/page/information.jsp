@@ -18,15 +18,12 @@
 
 	
 	#info_inner{
-
 		height : 80vh;
 		display :flex;
 		justify-content: center;
 		align-items: center;
-		
 	}
 	#inner_map{
-		
 		width: 700px;
 		height : 600px;
 	}
@@ -132,6 +129,8 @@
 
 
 	<script>
+		let diction = { test : 10};
+		
 	    document.getElementById('openModal').addEventListener('click', function () {
             fetch('resources/html/kakao.html')
                 .then(response => response.text())

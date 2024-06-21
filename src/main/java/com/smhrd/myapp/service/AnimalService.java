@@ -31,5 +31,10 @@ public class AnimalService {
 		return mapper.animalPreup(animal);
 	}
 	
+	// 동물 정보 가져오기
+	public Animal animalRoad(String a_u_id) {
+		return mapper.animalRoad(a_u_id);
+	}
+	
 }
 
