@@ -21,9 +21,11 @@
 
 .list-container {
 	display: flex;
-	justify-content: space-between;
-	border-top: 1px solid black;
-	border-bottom: 1px solid black;
+	justify-content: space-around;
+	border-top: 1.2px solid #b5b5b5;
+	border-bottom: 1.2px solid #b5b5b5;
+	padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 .imgcontainer {
@@ -31,15 +33,25 @@
 	height: 50px;
 	border-radius: 150px;
 	background-color: skyblue;
-}
+}p
 .list-content{
 	display: flex;
 	align-items: center;
 }
 
 .noread{
-	margin-left : 20px;
+    margin-top: 0.6em;
+	margin-left : 3.2em;
 }
+
+#chat_text{
+	text-decoration : none;
+	color:#3c40c6;
+	font-weight: bold;
+}
+
+
+
 </style>
 </head>
 <body>
@@ -113,28 +125,28 @@ function load(chatList){
 			$('#chatModal').append(
 				'<div class="list-container">' +
 					'<img src="#" class="image-container">' +
-					'<div class="list-content">' +
+					'<div class="list-content" style="display: flex;">' +
 						'<div>' +
 							'<a href="/aniting/chatting/' + chat.c_id + '"><div>' + chat.c_recid + '님과의 채팅방</div></a>' +
 							'<div id="lastLog'+chat.c_id+'">' + (chat.lastChatLog ? chat.lastChatLog.cl_log : '최근 대화가 없습니다.') + '</div>' +
 						'</div>' +
 						'<div id="noread'+chat.c_id+'" class="noread"></div>'+
 					'</div>'+
-					'<img src="resources/img/deleteBox.png" style="width: 40px;" alt="휴지통" />' +
+					'<img src="resources/img/deleteBox1.png" style="width: 40px;height: 40px;" alt="휴지통" />' +
 				'</div>'
 			);
 		} else if (chat.c_accept === 1 && chat.c_recid === userid) { // 조건 4: 내가 보낸 요청이 수락된 경우
 			$('#chatModal').append(
 				'<div class="list-container">' +
 					'<img src="#" class="image-container">' +
-					'<div class="list-content">' +
+					'<div class="list-content" style="display: flex;">' +
 						'<div>' +
-							'<a href="/aniting/chatting/' + chat.c_id + '"><div>' + chat.c_senid + '님과의 채팅방</div></a>' +
+							'<a href="/aniting/chatting/' + chat.c_id + '" id="chat_text"><div>' + chat.c_senid + '님과의 채팅방</div></a>' +
 							'<div id="lastLog'+chat.c_id+'">' + (chat.lastChatLog ? chat.lastChatLog.cl_log : '최근 대화가 없습니다.') + '</div>' +
 						'</div>' +
 						'<div id="noread'+chat.c_id+'" class="noread"></div>'+
 					'</div>'+
-					'<img src="resources/img/deleteBox.png" style="width: 40px;" alt="휴지통" />' +
+					'<img src="resources/img/deleteBox1.png" style="width: 40px;height: 40px;" alt="휴지통" />' +
 				'</div>'
 			);
 		}
