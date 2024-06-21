@@ -117,7 +117,7 @@
 /* 본문 */
 .m_menu {
 	margin-bottom: 8px;
-	margin-left: 50px;
+	margin-left: 8em;
 }
 
 .m_u_text {
@@ -142,7 +142,7 @@
 	border-radius: 17px;
 	background-color: #3c40c6;
 	margin-top: 10px;
-	margin-left: 50px;
+	margin-left: 8em;
 }
 
 .m_import_btn:active {
@@ -178,6 +178,7 @@
 			<nav id="m_nav">
 				<ul>
 					<li><a href="update" id="user_info">회원정보수정</a></li>
+					<li><a href="#">동물정보 수정</a></li>
 					<li><a href="#" id="user_zzim">찜 목록</a></li>
 					<li><a href="#">선호도 변경</a></li>
 				</ul>
@@ -186,7 +187,7 @@
 
 			<h2 id="m_u_title">My Info</h2>
 			<br>
-
+			<div>
 			<p class="m_menu">아이디</p>
 			<p class="m_menu">
 				<input type="text" class="m_u_text" name="u_id"
@@ -259,7 +260,7 @@
 			</p>
 
 			<input type="submit" value="수정 완료" class="m_import_btn">
-
+			
 		</form>
 	</div>
 
