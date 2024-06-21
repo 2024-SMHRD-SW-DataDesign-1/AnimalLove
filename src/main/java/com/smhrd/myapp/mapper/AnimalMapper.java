@@ -16,7 +16,7 @@ public interface AnimalMapper {
 	public int animalJoin(Animal animal);
 	
 	// 동물정보수정 처리
-	@Update("UPDATE ANIMAL SET a_name=#{a_name}, a_age=#{a_age}, a_weight=#{a_weight}, a_gender=#{a_gender}, a_breed=#{a_breed}")
+	@Update("UPDATE ANIMAL SET a_name=#{a_name}, a_breed=#{a_breed}, a_gender=#{a_gender}, a_age=#{a_age}, a_weight=#{a_weight}, a_intro=#{a_intro}, a_path1=#{a_path1}, a_path2=#{a_path2}, a_path3=#{a_path3},a_filterage=#{a_filterage}, a_filterweight=#{a_filterweight}")
 	public int animalUpdate(Animal animal);
 	
 	// 동물 선호도등록 처리

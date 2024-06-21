@@ -32,6 +32,7 @@ public class AnimalController {
 	@Autowired
 	ResourceLoader resourceLoader;
 
+	// 동물 정보 저장
 	@RequestMapping(value = "/animal_info/save", method = RequestMethod.POST)
 	public String animalJoin(@ModelAttribute Animal animal, HttpSession session,
 			@RequestPart("photo") List<MultipartFile> file) throws IOException {
@@ -63,8 +64,6 @@ public class AnimalController {
 		}else {
 			animal.setA_filterweight("21~");
 		}
-		
-		
 		
 		// 파일 경로 설정
 		String path1 = session.getServletContext().getRealPath("resources/img/animalImg/");
@@ -103,51 +102,99 @@ public class AnimalController {
 		}
 	}
 	
+	// 동물 정보 수정
+	@RequestMapping(value = "/animal_info/update", method = RequestMethod.POST)
+	public String animalUpdate(@ModelAttribute Animal animal, @RequestPart("photo") List<MultipartFile> file) throws IOException{
+		
+		// 파일 경로 설정
+				String path = "C:\\Users\\smhrd\\git\\AnimalLove\\src\\main\\webapp\\resources\\img\\animalImg\\";
+				
+				for (int i = 0; i < file.size(); i++) {
+					// 파일 이름설정
+					String fileName = UUID.randomUUID().toString() + file.get(i).getOriginalFilename();
+					try {
+						// uploadFolder 파일 업로드
+						file.get(i).transferTo(new File(path, fileName));
+						switch(i)
+						{
+						case 0:
+							animal.setA_path1(path+fileName);
+							break;
+						case 1:
+							animal.setA_path2(path+fileName);
+							break;
+						case 2:
+							animal.setA_path3(path+fileName);
+							break;
+						}
+					} catch (IllegalStateException | IOException e) {
+						e.printStackTrace();
+					}
+				};
+				if(animal.getA_age()<4) {
+					animal.setA_filterage("1~3");
+				}else if (animal.getA_age()<7) {
+					animal.setA_filterage("4~6");
+				}else if (animal.getA_age()<10) {
+					animal.setA_filterage("7~9");
+				}else {
+					animal.setA_filterage("10~");
+				}
+				
+				if(animal.getA_weight()<11) {
+					animal.setA_filterweight("~10");
+				}else if (animal.getA_weight()<21) {
+					animal.setA_filterweight("11~20");
+				}else {
+					animal.setA_filterweight("21~");
+				}
+				int res = service.animalUpdate(animal);
+				
+				if(res>0) {
+					return "redirect:/update";
+				}else {
+					return "redirect:/animalupdate";
+				}
+	}
+
 	// 동물정보 출력
 	@RequestMapping(value = "/animalte", method = RequestMethod.POST)
 	public String animalRoad(String a_u_id, HttpSession session, Model model) throws IOException {
-		
+
 		Animal animal = service.animalRoad(a_u_id);
-		
-		
-		
+
 		File imgFile = new File(animal.getA_path1());
-		
-		ImageToBase64 converter=new ImageToBase64();
+
+		ImageToBase64 converter = new ImageToBase64();
 		String imgBase64String = converter.convert(imgFile);
-		
-		//System.out.println(imgBase64String);
+
+		// System.out.println(imgBase64String);
 		animal.setA_path1(imgBase64String);
 		model.addAttribute("animal", animal);
-		
+
 		return "animaltest";
 	}
-	
-	// 동물정보저장
-	@RequestMapping(value = "/prfinforsave", method = RequestMethod.POST)
+
+	// 동물선호도 저장
+	@RequestMapping(value = "/prfinfosave", method = RequestMethod.POST)
 	public String animalPrefer(@ModelAttribute Animal animal) {
 		int res = service.animalPrefer(animal);
-		
-		
-		if(res>0) {
+
+		if (res > 0) {
 			return "page/matProfile";
-		}else {
+		} else {
 			return "page/prfinfo";
 		}
 	}
-	
+
 	// 매칭해줄 프로필 3개 선택
 	@RequestMapping(value = "#", method = RequestMethod.POST)
 	public String matching(HttpServletRequest request, Model model) throws IOException {
 		HttpSession session = request.getSession();
 		MavenMember member = (MavenMember) session.getAttribute("member");
 		List<Animal> result = service.matching(member.getU_id());
-		
-		
-		
-		
-		
+
 		return "";
 	}
-	
+
 }
