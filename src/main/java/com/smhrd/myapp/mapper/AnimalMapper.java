@@ -1,5 +1,7 @@
 package com.smhrd.myapp.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -10,7 +12,7 @@ import com.smhrd.myapp.model.Animal;
 public interface AnimalMapper {
 	
 	// 동물등록 처리
-	@Insert("INSERT INTO ANIMAL (a_u_id,a_name,a_breed,a_gender,a_age,a_weight,a_intro,a_path1,a_path2,a_path3) VALUES (#{a_u_id}, #{a_name}, #{a_breed}, #{a_gender}, #{a_age}, #{a_weight}, #{a_intro}, #{a_path1}, #{a_path2}, #{a_path3})")
+	@Insert("INSERT INTO ANIMAL (a_u_id,a_name,a_breed,a_gender,a_age,a_weight,a_intro,a_path1,a_path2,a_path3,a_filterage,a_filterweight) VALUES (#{a_u_id}, #{a_name}, #{a_breed}, #{a_gender}, #{a_age}, #{a_weight}, #{a_intro}, #{a_path1}, #{a_path2}, #{a_path3}, #{a_filterage}, #{a_filterweight})")
 	public int animalJoin(Animal animal);
 	
 	// 동물정보수정 처리
@@ -31,4 +33,8 @@ public interface AnimalMapper {
 	
 	@Select("select a_prfbreed,a_prfage,a_prfweight from ANIMAL where a_u_id=#{a_u_id}")
 	public Animal prfload(String a_u_id);
+	
+	// 매칭
+	@Select("select * from ANIMAL where a_breed=#{a_prfbreed} and a_filterage=#{a_prfage} and a_filterweight = #{a_prfweight} ORDER BY RAND() LIMIT 3")
+	public List<Animal> matching(Animal animal);
 }
