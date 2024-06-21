@@ -154,5 +154,16 @@ public class PageController {
 		// view resolver : /WEB-INF/views/index.jsp
 		return "page/matProfile";
 	}
+	
+	// 동물정보 업데이트 페이지 이동
+	@RequestMapping(value =  "/animalupdate", method = RequestMethod.GET)
+	public String animalpage(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		MavenMember member = (MavenMember) session.getAttribute("member");
+		Animal animal = service.animalinfo(member.getU_id());
+		model.addAttribute("animal", animal);
+		
+		return "page/animalInfoUpdate";
+	}
 
 }

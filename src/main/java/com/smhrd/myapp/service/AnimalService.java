@@ -57,6 +57,11 @@ public class AnimalService {
 		}
 	}
 	
+	// 내 동물 정보 가져오기
+	public Animal animalinfo(String a_u_id) {
+		return mapper.animalRoad(a_u_id);
+	}
+	
 	
 }
 
