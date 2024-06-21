@@ -34,7 +34,7 @@ public class AnimalController {
 	public String animalJoin(@ModelAttribute Animal animal, HttpSession session,
 			@RequestPart("photo") List<MultipartFile> file) throws IOException {
 
-		// 세션에서 저장된 데이터 가져오기
+		// �꽭�뀡�뿉�꽌 ���옣�맂 �뜲�씠�꽣 媛��졇�삤湲�
 		Animal tem = (Animal) session.getAttribute("animal");
 		animal.setA_u_id(tem.getA_u_id());
 		animal.setA_name(tem.getA_name());
@@ -43,16 +43,16 @@ public class AnimalController {
 		animal.setA_breed(tem.getA_breed());
 		animal.setA_intro(tem.getA_intro());
 		
-		// 다운 위치 지정
-		//String path = session.getServletContext().getRealPath("resources/img/animalImg/");
-		String path = "C:\\Users\\smhrd\\Desktop\\Spring\\Anything\\src\\main\\webapp\\resources\\img\\animalImg\\";
+		// �떎�슫 �쐞移� 吏��젙
+		String path1 = session.getServletContext().getRealPath("resources/img/animalImg/");
+		String path = "C:\\Users\\smhrd\\git\\AnimalLove\\src\\main\\webapp\\resources\\img\\";
 		
-		
+		System.out.println(path1);
 		for (int i = 0; i < file.size(); i++) {
-			// 중복파이명 감지를 위해 고유문자를 삽입하는 코드
+			// 以묐났�뙆�씠紐� 媛먯�瑜� �쐞�빐 怨좎쑀臾몄옄瑜� �궫�엯�븯�뒗 肄붾뱶
 			String fileName = UUID.randomUUID().toString() + file.get(i).getOriginalFilename();
 			try {
-				// uploadFolder 경로에 이미지 복사
+				// uploadFolder 寃쎈줈�뿉 �씠誘몄� 蹂듭궗
 				file.get(i).transferTo(new File(path, fileName));
 				switch(i)
 				{
@@ -80,7 +80,7 @@ public class AnimalController {
 		}
 	}
 	
-	// 동물정보 가져오기
+	// �룞臾쇱젙蹂� 媛��졇�삤湲�
 	@RequestMapping(value = "/animalte", method = RequestMethod.POST)
 	public String animalRoad(String a_u_id, HttpSession session, Model model) throws IOException {
 		
@@ -98,7 +98,7 @@ public class AnimalController {
 		return "animaltest";
 	}
 	
-	// 선호도 저장
+	// �꽑�샇�룄 ���옣
 	@RequestMapping(value = "/prfinforsave", method = RequestMethod.POST)
 	public String animalPrefer(@ModelAttribute Animal animal) {
 		int res = service.animalPrefer(animal);
