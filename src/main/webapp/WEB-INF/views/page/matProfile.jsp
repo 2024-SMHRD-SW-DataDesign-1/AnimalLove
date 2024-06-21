@@ -220,7 +220,7 @@
 			  background: "#fff url(resources/img/cutecat.gif)",
 			  backdrop: `
 			    rgba(0,0,123,0.4)
-			    url(resources/img/cutecat.gif")
+			    url(resources/img/cutecat.gif)
 			    left top
 			    no-repeat
 			  `
