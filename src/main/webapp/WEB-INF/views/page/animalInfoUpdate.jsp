@@ -144,7 +144,7 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 
 	<div class="animal_form">
 
-		<form action="/animal_info/update" id="infoadd" method="POST">
+		<form action="animal_info/update" id="infoadd" method="POST" enctype="multipart/form-data">
 			<h2 id="ani_title">My Animal Info Update</h2>
 			<input type="hidden" name = "a_u_id" value="<%=member.getU_id()%>">
 			<br>

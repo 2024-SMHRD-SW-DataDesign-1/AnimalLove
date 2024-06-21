@@ -36,7 +36,7 @@ public class AnimalController {
 	@RequestMapping(value = "/animal_info/save", method = RequestMethod.POST)
 	public String animalJoin(@ModelAttribute Animal animal, HttpSession session,
 			@RequestPart("photo") List<MultipartFile> file) throws IOException {
-
+		
 		// 페이지1에서 받은 정보 animal 에 취합
 		Animal tem = (Animal) session.getAttribute("animal");
 		animal.setA_u_id(tem.getA_u_id());
@@ -69,7 +69,7 @@ public class AnimalController {
 		String path1 = session.getServletContext().getRealPath("resources/img/animalImg/");
 		String path = "C:\\Users\\smhrd\\git\\AnimalLove\\src\\main\\webapp\\resources\\img\\animalImg\\";
 		
-		System.out.println(path1);
+		
 		for (int i = 0; i < file.size(); i++) {
 			// 파일 이름설정
 			String fileName = UUID.randomUUID().toString() + file.get(i).getOriginalFilename();
@@ -149,7 +149,7 @@ public class AnimalController {
 					animal.setA_filterweight("21~");
 				}
 				int res = service.animalUpdate(animal);
-				
+				System.out.println(res);
 				if(res>0) {
 					return "redirect:/update";
 				}else {
