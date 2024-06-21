@@ -28,4 +28,7 @@ public interface AnimalMapper {
 	// 동물 프로필 가져오기
 	@Select("select * from ANIMAL where a_u_id=#{a_u_id}")
 	public Animal animalRoad(String a_u_id);
+	
+	@Select("select a_prfbreed,a_prfage,a_prfweight from ANIMAL where a_u_id=#{a_u_id}")
+	public Animal prfload(String a_u_id);
 }

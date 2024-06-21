@@ -36,5 +36,27 @@ public class AnimalService {
 		return mapper.animalRoad(a_u_id);
 	}
 	
+	// 입력된 동물정보 있는지 조회
+	public int selectanimal(String a_u_id) {
+		Animal animal = mapper.animalRoad(a_u_id);
+		if(animal == null) {
+			return 0;
+		}else {
+			return 1;
+		}
+	}
+	
+	// 입력된 선호도 있는지 조회
+	public int prfSelect(String a_u_id) {
+		Animal animal = mapper.prfload(a_u_id);
+		System.out.println(animal);
+		if(animal == null) {
+			return 0;
+		}else {
+			return 1;
+		}
+	}
+	
+	
 }
 

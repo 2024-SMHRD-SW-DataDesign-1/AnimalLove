@@ -132,7 +132,7 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 
 	<div class="animal_form">
 
-		<form action="matching_pic" id="infoadd">
+		<form action="matching_pic" id="infoadd" method="post">
 			<h2 id="ani_title">My Animal Info</h2>
 			<input type="hidden" name = "a_u_id" value="<%=member.getU_id()%>">
 			<br>
