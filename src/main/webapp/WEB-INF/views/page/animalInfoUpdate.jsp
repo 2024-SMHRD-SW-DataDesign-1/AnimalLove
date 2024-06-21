@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.myapp.model.Animal"%>
 <%@page import="com.smhrd.myapp.model.MavenMember"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -14,12 +15,22 @@
 	
 }
 
+.profil_img {
+	width: 200px;
+	height: 300px;
+}
+
+#profil_imgs {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	pointer-events: none;
+}
 .animal_form {
 	max-width: 800px;
 	margin: 0 auto;
 	box-sizing: border-box;
 	flex-direction: column;
-	height: 60vh;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -129,35 +140,36 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 <%
 	MavenMember member = (MavenMember) session.getAttribute("member");
 	%>
+	<%Animal animal = (Animal) request.getAttribute("animal"); %>
 
 	<div class="animal_form">
 
-		<form action="matching_pic" id="infoadd" method="post">
-			<h2 id="ani_title">My Animal Info</h2>
+		<form action="/animal_info/update" id="infoadd" method="POST">
+			<h2 id="ani_title">My Animal Info Update</h2>
 			<input type="hidden" name = "a_u_id" value="<%=member.getU_id()%>">
 			<br>
-			<p>동물 이름</p>
+			<p>동물 이름 </p>
 			<p>
-				<input type="text" class="ani_text" name="a_name" required id="u_id">
+				<input type="text" class="ani_text" name="a_name" value="<%=animal.getA_name()%>" required id="u_id">
 			</p>
 
 			<p>나이</p>
 			<p>
-				<input type="number" class="ani_text" name="a_age">
+				<input type="number" class="ani_text" name="a_age" value="<%=animal.getA_age()%>">
 			</p>
 
 
 			<p>몸무게</p>
 			<p>
-				<input type="number" class="ani_text" name="a_weight"
+				<input type="number" class="ani_text" name="a_weight" value="<%=animal.getA_weight()%>"
 					placeholder="kg" min="1">
 			</p>
 
 
 			<p>동물 성별</p>
 			<p>
-				<input type="radio" name="a_gender" value="male"> Male <input
-					type="radio" name="a_gender" value="female"> Female
+				<input type="radio" name="a_gender" id="male" value="male"> Male 
+				<input	type="radio" name="a_gender" id="female" value="female"> Female
 			</p>
 
 			<p>품종</p>
@@ -171,15 +183,22 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 
 			<p>상세품종</p>
 			<p>
-				<select name="a_breed" id="a_breed">
-
-				</select>
+				<select name="a_breed" id="a_breed"></select>
 			</p>
-			
-			<p>소개글</p>
-			<textarea class="center" name="a_intro" id="" cols="40" rows="8" ></textarea><br>
 
-			<button  class="btn" >다음 화면</button>
+			<p>소개글</p>
+			<textarea class="center" name="a_intro" id="" cols="40" rows="8" ><%=animal.getA_intro()%></textarea><br>
+			
+			<input type="file" id="photo" multiple name="photo">
+			<div id=profil_imgs>
+			<input type="image" name="photo1" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
+			<input type="image"	name="photo2" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
+			<input type="image" name="photo3" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
+			<input type="hidden" name="a_path1" class="imageSrc" value="">
+			<input type="hidden" name="a_path2" class="imageSrc" value=""> 
+			<input type="hidden" name="a_path3" class="imageSrc" value="">
+			</div>
+			<button type="submit" class="btn" >수정 완료</button>
 		</form>
 	</div>
 
@@ -189,6 +208,7 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 
 	<script type="text/javascript">
 		
+	
 		let dogs = ["몰티즈", "푸들", "포메라니안", "치와와","스피츠" , "시바이누", "웰시코기", "닥스훈트", "비숑프리제","골든 리트리버","사모예드","허스키", "믹스견", "그 외"];
 		let cats = ["코리안숏헤어", "먼치킨", "페르시안", "뱅갈", "러시안블루", "아비시니안", "샴", "터키시앙고라", "스코티시폴드", "스핑크스", "믹스묘", "그 외"];
 		
@@ -218,7 +238,9 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 				var optionElement = document.createElement('option');
 				optionElement.value = list[i]; // option 요소의 값
 				optionElement.textContent = list[i]; // option 요소의 텍스트 내용
-			
+			if("<%=animal.getA_breed()%>"== list[i]){
+				optionElement.selected = true;
+			}
 				// 생성한 option 요소를 select 요소에 추가합니다.
 				selectElement.appendChild(optionElement);
 			}
@@ -244,8 +266,97 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 
 		
 		// 헤더에 매칭 강조
-		let login = document.getElementById("h_mat");
+		let login = document.getElementById("h_my");
 	    login.style = "border-bottom : 2px solid #3c40c6; border-radius: 2px; color : #3c40c6;";
 		
+	</script>
+	
+	
+	<script>
+	// 암컷 수컷 불러오기
+			<%-- <%=animal.getA_gender()%>
+			<%=animal.getA_breed()%> --%>
+				if("<%=animal.getA_gender()%>" == "male"){
+					$("#male").prop("checked", true);
+				}else{
+					console.log("<%=animal.getA_gender()%>" );
+					$("#female").prop("checked", true);
+				}
+				
+	</script>
+	
+	<script>
+	// 강아지 고양이 불러오기
+	
+				for(let i=0; i<dogs.length; i++)
+				{
+					if("<%=animal.getA_breed()%>" === dogs[i]){
+						console.log("<%=animal.getA_breed()%>");
+						console.log(dogs[i]);
+						$("#dog").prop("checked", true);
+						break;
+					}else if("<%=animal.getA_breed()%>" === cats[i]){
+						$("#cat").prop("checked", true);
+						break;
+					}
+				}
+	
+				onClickEvent();
+	</script>
+	
+	<script type="text/javascript">
+	function getValue() {
+		const storedList = sessionStorage.getItem('key');
+		return storedList;
+	}
+	let defaultImg = "nullPic.png";
+	let dic = getValue();
+	//
+	const imageUpload = document.getElementById('photo');
+	let imgs = document.getElementsByClassName("profil_img");
+	let list2 = document.getElementsByClassName("imageSrc");
+	
+	let imgIdx = 0;
+
+	imageUpload.addEventListener('change', function(event) {
+		const file = event.target.files[0];
+		
+		console.log(file);
+		if (imgIdx == 3) {
+			return;
+		}
+		if (file) {
+			const reader = new FileReader();
+			reader.onload = function(e) {
+				//imgs[i].src = "resources/img/" + file.name;
+				imgs[imgIdx].src = e.target.result;
+				list2[imgIdx].value = file.name;
+				imgIdx++;
+				
+			};
+			reader.readAsDataURL(file);
+		}
+	});
+
+	function toSend() {
+		let dataList = {
+			a_path1 : imgs[0].value,
+			a_path2 : imgs[1].value,
+			a_path3 : imgs[2].value
+		}
+ 		 $.ajax({
+			url : "animal_info/update",// 요청경로
+			type : "post",
+			data : dataList,
+			success : function(res) {
+
+			},
+			error : function(error) {
+
+			}
+
+		}) 
+
+	}
 	</script>
 </html>

@@ -12,8 +12,18 @@
 
 
 <style type="text/css">
+
+
+@font-face {
+    font-family: 'NanumSquareRound';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
-	font-family: 나눔고딕;
+	text-align: center;
+	font-family: 'NanumSquareRound';
 }
 
 #messageWindow {
@@ -22,25 +32,29 @@
 }
 
 #inputMessage {
-	width: 500px;
-	height: 20px
+	width: 480px;
+	height: 30px
 }
 
 #btn-submit {
-	background: white;
-	background: #F7E600;
-	width: 60px;
-	height: 30px;
-	color: #607080;
+	background: #ff7878;
+	width: 76px;
+	height: 40px;
+	font-size: 17px;
+	border-radius: 22px;
+	color: #fff;
+	font-weight: bold;
 	border: none;
 }
 
 #main-container {
 	width: 600px;
 	height: 680px;
-	border: 1px solid black;
+	border: 1px solid #666666;
+	border-radius: 10px;
 	margin: 10px;
 	display: inline-block;
+	background-color: #ffebeb;
 }
 
 #chat-container {
@@ -51,7 +65,7 @@
 	max-height: 600px;
 	overflow: scroll;
 	overflow-x: hidden;
-	background: #9bbbd4;
+	background: #fff;
 }
 
 .chat {
@@ -64,10 +78,10 @@
 	text-align: left;
 	height: auto;
 	word-break: break-all;
-	background: #ffffff;
+	background: #ebebeb;
 	width: auto;
 	display: inline-block;
-	border-radius: 10px 10px 10px 10px;
+	border-radius: 20px;
 }
 
 .notice {
@@ -81,8 +95,9 @@
 
 .my-chat {
 	text-align: right;
-	background: #F7E600;
-	border-radius: 10px 10px 10px 10px;
+	background: #ff7878;
+	border-radius: 20px;
+	color:#fff;
 }
 
 #bottom-container {

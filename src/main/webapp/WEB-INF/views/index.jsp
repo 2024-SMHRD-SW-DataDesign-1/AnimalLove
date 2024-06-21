@@ -17,7 +17,11 @@
 	<%} else{%>
 	<form action="animalte" method="post">
 		<input type="hidden" name="a_u_id" value="<%=member.getU_id()%>">
-		<input type="submit" value="동물 확인 테스트">
+		<input type="submit" value="동물 등록 테스트">
+	</form>
+	<form action = "animalupte" method = "post">
+	<input type="hidden" name="a_u_id" value="<%=member.getU_id()%>">
+		<input type="submit" value="동물 정보 수정 테스트">
 	</form>
 	<a href="update"> <button>회원정보수정</button></a>
 	<a href="delete?u_id=<%=member.getU_id()%>"><button>회원탈퇴</button></a>

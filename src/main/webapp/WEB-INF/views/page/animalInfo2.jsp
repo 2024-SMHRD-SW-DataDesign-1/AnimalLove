@@ -67,7 +67,7 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
 
-	<form action="animal_info/save" id="profil_body" method=POST enctype="multipart/form-data"> 
+	<form action="animal_info/save" id="profil_body" method="POST" enctype="multipart/form-data"> 
 		<h2 id="ani_title">
 			My Animal<br>photo
 		</h2>

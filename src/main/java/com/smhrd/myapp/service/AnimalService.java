@@ -1,5 +1,7 @@
 package com.smhrd.myapp.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,5 +38,36 @@ public class AnimalService {
 		return mapper.animalRoad(a_u_id);
 	}
 	
+	// 입력된 동물정보 있는지 조회
+	public int selectanimal(String a_u_id) {
+		Animal animal = mapper.animalRoad(a_u_id);
+		if(animal == null) {
+			return 0;
+		}else {
+			return 1;
+		}
+	}
+	
+	// 입력된 선호도 있는지 조회
+	public int prfSelect(String a_u_id) {
+		Animal animal = mapper.prfload(a_u_id);
+		System.out.println(animal);
+		if(animal == null) {
+			return 0;
+		}else {
+			return 1;
+		}
+	}
+	
+	// 내 동물 정보 가져오기
+	public Animal animalinfo(String a_u_id) {
+		return mapper.animalRoad(a_u_id);
+	}
+	
+	// 선호도에 따라서 3마리 동물 정보 가져오기 
+	public List<Animal> matching(String a_u_id){
+		Animal animal = animalinfo(a_u_id);
+		return mapper.matching(animal);
+	}
 }
 

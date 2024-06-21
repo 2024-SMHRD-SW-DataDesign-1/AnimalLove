@@ -129,6 +129,7 @@
 
 
 	<script>
+	
 		let diction = { test : 10};
 		
 	    document.getElementById('openModal').addEventListener('click', function () {
@@ -192,5 +193,12 @@
 		}
     </script>
 </body>
+<script>
+
+	//헤더에 위치 강조
+	let login = document.getElementById("h_laca");
+	login.style = "border-bottom : 2px solid #3c40c6; border-radius: 2px; color : #3c40c6;";
+
+</script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </html>
