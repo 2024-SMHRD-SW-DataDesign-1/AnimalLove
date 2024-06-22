@@ -144,7 +144,7 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 
 	<div class="animal_form">
 
-		<form action="#" id="infoadd">
+		<form action="animal_info/update" id="infoadd" method="POST" enctype="multipart/form-data">
 			<h2 id="ani_title">My Animal Info Update</h2>
 			<input type="hidden" name = "a_u_id" value="<%=member.getU_id()%>">
 			<br>
@@ -168,8 +168,8 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 
 			<p>동물 성별</p>
 			<p>
-				<input type="radio" name="a_gender" id="male" value="male"> Male <input
-					type="radio" name="a_gender" id="female" value="female"> Female
+				<input type="radio" name="a_gender" id="male" value="male"> Male 
+				<input	type="radio" name="a_gender" id="female" value="female"> Female
 			</p>
 
 			<p>품종</p>
@@ -183,23 +183,22 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 
 			<p>상세품종</p>
 			<p>
-				<select name="a_breed" id="a_breed" value="<%=animal.getA_breed()%>">
-
-				</select>
+				<select name="a_breed" id="a_breed"></select>
 			</p>
-			
+
 			<p>소개글</p>
 			<textarea class="center" name="a_intro" id="" cols="40" rows="8" ><%=animal.getA_intro()%></textarea><br>
+			
 			<input type="file" id="photo" multiple name="photo">
-		<div id=profil_imgs>
+			<div id=profil_imgs>
 			<input type="image" name="photo1" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
 			<input type="image"	name="photo2" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
 			<input type="image" name="photo3" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
 			<input type="hidden" name="a_path1" class="imageSrc" value="">
 			<input type="hidden" name="a_path2" class="imageSrc" value=""> 
 			<input type="hidden" name="a_path3" class="imageSrc" value="">
-		</div>
-			<button  class="btn" >수정 완료</button>
+			</div>
+			<button type="submit" class="btn" >수정 완료</button>
 		</form>
 	</div>
 
@@ -239,7 +238,9 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 				var optionElement = document.createElement('option');
 				optionElement.value = list[i]; // option 요소의 값
 				optionElement.textContent = list[i]; // option 요소의 텍스트 내용
-			
+			if("<%=animal.getA_breed()%>"== list[i]){
+				optionElement.selected = true;
+			}
 				// 생성한 option 요소를 select 요소에 추가합니다.
 				selectElement.appendChild(optionElement);
 			}
@@ -273,9 +274,12 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 	
 	<script>
 	// 암컷 수컷 불러오기
-				if($("animal.getA_gender")==="male"){
+			<%-- <%=animal.getA_gender()%>
+			<%=animal.getA_breed()%> --%>
+				if("<%=animal.getA_gender()%>" == "male"){
 					$("#male").prop("checked", true);
 				}else{
+					console.log("<%=animal.getA_gender()%>" );
 					$("#female").prop("checked", true);
 				}
 				
@@ -283,11 +287,20 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 	
 	<script>
 	// 강아지 고양이 불러오기
-				if($("animal.getA_breed")=== dogs){
-					$("#dog").prop("checked", true);
-				}else{
-					$("#cat").prop("checked", true);
+	
+				for(let i=0; i<dogs.length; i++)
+				{
+					if("<%=animal.getA_breed()%>" === dogs[i]){
+						console.log("<%=animal.getA_breed()%>");
+						console.log(dogs[i]);
+						$("#dog").prop("checked", true);
+						break;
+					}else if("<%=animal.getA_breed()%>" === cats[i]){
+						$("#cat").prop("checked", true);
+						break;
+					}
 				}
+	
 				onClickEvent();
 	</script>
 	
@@ -332,7 +345,7 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 			a_path3 : imgs[2].value
 		}
  		 $.ajax({
-			url : "#",// 요청경로
+			url : "animal_info/update",// 요청경로
 			type : "post",
 			data : dataList,
 			success : function(res) {
