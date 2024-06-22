@@ -29,12 +29,7 @@
 		padding: 20px;
 	}
 	
-	#big_like{
-		position : fixed;
-		left : 70%;
-		top : 60%;
-		z-index: 999;
-	}
+
 	
 	#big_intro{
 		border : none;
@@ -50,6 +45,11 @@
 		font-family: 'BMJUA';
 	}
 	
+	#big_like{
+		position : right;
+	}
+	
+
 </style>
 
 </head>
@@ -71,7 +71,14 @@
 		</section>
 		
 		<div id="textBox">
-			<p><span id="big_name" class="big_bold big_text"></span> <span id="big_gender" class="big_text"></span></p>
+			<div >
+			</div>
+				
+			<p>
+				<span id="big_name" class="big_bold big_text"></span>
+				<span id="big_gender" class="big_text"></span>
+				<i id="big_like" class="fa-regular fa-heart fa-2xl"></i>
+			</p>
 			<p><span id="big_age" class="big_text"></span> <span id="big_breed" class="big_text"></span> <span id="big_weight" class="big_text"></span></p>
 			<br/>
 			<div style="width:500px; margin:auto;">
@@ -82,9 +89,7 @@
 			                  
 
 	</div>
-		<div id="big_like">
-			<i class="fa-regular fa-heart fa-2xl"></i>
-		</div>
+
 
 </body>
 </html>
