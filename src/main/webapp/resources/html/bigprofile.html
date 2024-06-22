@@ -46,14 +46,17 @@
 	}
 	
 	#big_like{
-		position : right;
+		float:right;
+		font-size: 25px;
 	}
+
 	
 
 </style>
 
 </head>
 <body>
+
 	<div id="big_inner">
 
 		<section>
@@ -71,13 +74,13 @@
 		</section>
 		
 		<div id="textBox">
-			<div >
+			<div id="big_like" onclick="toSendHeart()" >
+				<i id="heartIcon" class="fa-regular fa-heart fa-2xl"  ></i>
 			</div>
 				
 			<p>
 				<span id="big_name" class="big_bold big_text"></span>
 				<span id="big_gender" class="big_text"></span>
-				<i id="big_like" class="fa-regular fa-heart fa-2xl"></i>
 			</p>
 			<p><span id="big_age" class="big_text"></span> <span id="big_breed" class="big_text"></span> <span id="big_weight" class="big_text"></span></p>
 			<br/>

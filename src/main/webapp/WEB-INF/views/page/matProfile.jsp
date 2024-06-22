@@ -176,7 +176,10 @@
 	let login = document.getElementById("h_mat");
 	login.style = "border-bottom : 2px solid #3c40c6; border-radius: 2px; color : #3c40c6;";
 	
-
+	// 빈 하트
+	let nullHeart = "fa-2xl fa-regular fa-heart";
+	// 꽉찬 하트
+	let pullHeart = "fa-2xl fa-solid fa-heart";
 	
 	// 추천된 카드의 정보를 받아와서 담을 변수
 	let opponentInfo = null;
@@ -193,6 +196,7 @@
 				
 				// 비동기라서 아래 넣으면 데이터 불러오기 전에 for문 돔
 				// 여기 넣어야 데이터 다 불러온 후 동작함
+				
 				for(let i = 0; i< opponentInfo.length; i++)
 				{
 					// 프로필 카드 등록하는 함수 각자리에 맞는 변수를 설정해야됨
@@ -230,61 +234,6 @@
 		let container = document.getElementById("p_c_container");
 		container.innerHTML = "";
 		// 밑 변수들 재관이형님 수정시에 지우세요!!!! 테스트용변수
-		/* let name = "상현1";
-		let age = "상현2";
-		let breed = "상현3";
-		opponentInfo = [
-		{
-			name : "이름1",
-			age : "나이1",
-			breed : "품종1",
-			gender : "성별1",
-			weight : "몸무게111",
-			intro : "소개글111111111111111111111111111111111111111",
-			img1 : "resources/img/img_pro1.jpg",
-			img2 : "resources/img/img_pro2.jpg",
-			img3 : "",
-			
-			
-		},
-		{
-			name : "이름2",
-			age : "나이2",
-			breed : "품종2",
-			gender : "성별2",
-			weight : "몸무게112",
-			intro : "소개글22222222222222222222222222222222222222",
-			img1 : "resources/img/img_pro1.jpg",
-			img2 : "resources/img/img_pro2.jpg",
-			img3 : "resources/img/img_pro3.jpg",
-		}
-		] */
-			
-		/* for(let i = 0; i< opponentInfo.length; i++)
-		{
-			// 프로필 카드 등록하는 함수 각자리에 맞는 변수를 설정해야됨
-			// 이미지 경로도 수정해야됨!!!!
-			let tag = 
-		        '<div class="p_card">' +
-		        	'<div class="p_like">' +
-		        		'<i class="fa-regular fa-heart fa-2xl"></i>' +
-		        	'</div>' +
-		        	'<img src="resources/img/img_pro1.jpg" alt="" class="p_img">' +
-		        	'<div class="p_body">' +
-		        	'<h1 class="t_name">'+ opponentInfo[i].a_name +'</h1>' +
-		        	'<p class="t_age">' + opponentInfo[i].a_age + '살</p>' +
-		        	'<p class="t_text">' + opponentInfo[i].a_breed + '</p>' +
-		        	'</div>' + 
-		        	'<button class="m_p_btn" onclick="showModal('+ i +')">Pick Me</button>' +
-		     	'</div>';
-		     	
-			container.innerHTML += tag;     
-		} */
-	
-	
-	
-	
-	
 
 	});
 </script>
@@ -333,7 +282,18 @@
 	                  bigswiper = "";
 
 
-	  					
+	  				  // 좋아요 여부에 따라 하트 아이콘 변환 시키는 코드
+	  				  let heart = document.getElementById("heartIcon");
+	  				  if(true)
+	  				  {
+	  					  // 좋아요 비활성화
+	  					  heart.className = nullHeart;  
+	  				  }
+	  				  else
+	  				  {
+	  					  // 좋아요 활성화
+	  					  heart.className = pullHeart;
+	  				  }
 					
 	                  
 	          		  let swiper1 = document.getElementById("bigSlide");
@@ -378,7 +338,9 @@
 
 		        		});
 	              }		
-	            });
+	            }).then((result) => {
+	            		console.log(result);
+	            	})
 	        })
 	        .catch(error => {
 	            console.error('Error fetching the HTML file:', error);
@@ -421,10 +383,41 @@
 	
 	function toSendHeart()
 	{
+
+		let heart = document.getElementById("heartIcon");
 		
-	}
+		if(heart.className == nullHeart)
+		{
+			heart.className = pullHeart;	
+		}
+		else
+		{
+			heart.className = nullHeart;	
+		}
+		
+		
+		
+		
 	
+		
+		
+/*		$.ajax({
+			url:"요청경로",// 요청경로
+			type : "post",
+			dataType : "json",// 서버에서 반환받는 데이터 형식
+			success : function (data) {
+
+				
+			},
+			error :function(){
+				alert("통신실패");
+			}
+		
+		})
+		*/
+	}
 </script>
+	
 
 
 </body>

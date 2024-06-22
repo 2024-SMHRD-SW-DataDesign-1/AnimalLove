@@ -163,7 +163,7 @@
 						"<div class='prf_aradio' onclick='change_btn2(event)'>" + menu1 + "</div>" +
 						"<div class='prf_aradio' onclick='change_btn2(event)'>" + menu2 + "</div>" +
 						"<div class='prf_aradio' onclick='change_btn2(event)'>" + menu3 + "</div>" +
-						"<div class='prf_aradio' onclick='change_btn2(event)'> 10 ~</div>"  ;
+						"<div class='prf_aradio' onclick='change_btn2(event)'>10~</div>"  ;
 						
 			container.innerHTML += value;
 		}	
@@ -172,11 +172,11 @@
 			let dogs = ["몰티즈", "푸들", "포메라니안", "치와와","스피츠" , "시바이누", "웰시코기", "닥스훈트", "비숑프리제","골든 리트리버","사모예드","허스키", "믹스견", "그 외"];
 			let cats = ["코리안숏헤어", "먼치킨", "페르시안", "뱅갈", "러시안블루", "아비시니안", "샴", "터키시앙고라", "스코티시폴드", "스핑크스", "믹스묘", "그 외"];
 			
-			setWRadio(" ~ 10", "11 ~ 20", "21 ~");								
-			setARadio("1 ~ 3", "4 ~ 6", "7 ~ 9");
+			setWRadio("~10", "11~20", "21~");								
+			setARadio("1~3", "4~6", "7~9");
 			
 			// 여기에 강아지인지 고양이인지 체크하는 로직 넣어야됨
-			console.log("<%=animal.getA_breed()%>");
+			
 			let list = null;
 			for(let i=0; i<dogs.length; i++)
 			{

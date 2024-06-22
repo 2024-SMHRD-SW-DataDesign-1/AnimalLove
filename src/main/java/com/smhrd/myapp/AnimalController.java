@@ -69,7 +69,7 @@ public class AnimalController {
 
 		// 파일 경로 설정
 		String path1 = session.getServletContext().getRealPath("resources/img/animalImg/");
-		String path = "C:\\Users\\jk\\git\\AnimalLove\\src\\main\\webapp\\resources\\img\\animalImg\\";
+		String path = "C:\\Users\\smhrd\\git\\AnimalLove\\src\\main\\webapp\\resources\\img\\animalImg\\";
 
 		for (int i = 0; i < file.size(); i++) {
 			// 파일 이름설정
