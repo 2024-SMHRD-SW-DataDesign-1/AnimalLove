@@ -9,7 +9,7 @@
 <title>DevEric Chatting</title>
 <script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-
+<script src="https://kit.fontawesome.com/b145cfedc2.js" crossorigin="anonymous"></script>
 
 <style type="text/css">
 
@@ -26,6 +26,20 @@
 	font-family: 'NanumSquareRound';
 }
 
+/*뒤로가기*/
+#c_icon_back{
+	text-align: start;
+	margin: 8px;
+	padding-left: 10px;
+}
+
+#chat_back {
+	text-decoration : none;
+	color: #383838;
+	text-align: left;
+}
+
+
 #messageWindow {
 	background: black;
 	color: greenyellow;
@@ -36,6 +50,8 @@
 	height: 30px
 }
 
+
+/*전송 버튼*/
 #btn-submit {
 	background: #ff7878;
 	width: 76px;
@@ -47,6 +63,8 @@
 	border: none;
 }
 
+
+/*채팅 컨테이너*/
 #main-container {
 	width: 600px;
 	height: 680px;
@@ -61,8 +79,8 @@
 	vertical-align: bottom;
 	border: 1px solid black;
 	margin: 10px;
-	min-height: 600px;
-	max-height: 600px;
+	min-height: 500px;
+	max-height: 580px;
 	overflow: scroll;
 	overflow-x: hidden;
 	background: #fff;
@@ -70,12 +88,10 @@
 
 .chat {
 	font-size: 20px;
-	color: black;
 	margin: 5px;
 	min-height: 20px;
 	padding: 5px;
 	min-width: 50px;
-	text-align: left;
 	height: auto;
 	word-break: break-all;
 	background: #ebebeb;
@@ -94,7 +110,6 @@
 }
 
 .my-chat {
-	text-align: right;
 	background: #ff7878;
 	border-radius: 20px;
 	color:#fff;
@@ -119,13 +134,20 @@
 .my-chat-box {
 	text-align: right;
 }
+
+
+
 </style>
 </head>
 <body>
 	<div id="main-container">
+		<div id="c_icon_back">
+			<a href="/aniting" id="chat_back"><i class="fa-solid fa-arrow-left fa-lg"></i></a>
+		</div>
 		<div id="chat-container"></div>
 		<div id="bottom-container">
-			<input id="inputMessage" type="text" name="log"> 
+			<input id="inputMessage" type="text" name="log" style="
+    text-align: left;"> 
 			<input id="btn-submit" type="submit" value="전송">
 		</div>
 	</div>
