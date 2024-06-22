@@ -13,6 +13,7 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -22,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.smhrd.board.converter.ImageToBase64;
 import com.smhrd.myapp.model.Animal;
+import com.smhrd.myapp.model.Likelist;
 import com.smhrd.myapp.model.MavenMember;
 import com.smhrd.myapp.service.AnimalService;
 
@@ -196,50 +198,84 @@ public class AnimalController {
 		HttpSession session = request.getSession();
 		MavenMember member = (MavenMember) session.getAttribute("member");
 		List<Animal> result = service.matching(member.getU_id());
-		
+
 		ImageToBase64 converter = new ImageToBase64();
-		
+
 		for (Animal animal : result) {
 			for (int i = 1; i <= 3; i++) {
 				try {
 					File imgFile;
-		            String imgBase64String;
-					switch(i)
-					{
+					String imgBase64String;
+					switch (i) {
 					case 1:
-						if(!animal.getA_path1().equals("")) { 
+						if (!animal.getA_path1().equals("")) {
 							imgFile = new File(animal.getA_path1());
 							imgBase64String = converter.convert(imgFile);
 							animal.setA_path1(imgBase64String);
 						}
 						break;
 					case 2:
-						if(!animal.getA_path2().equals("")) {
+						if (!animal.getA_path2().equals("")) {
 							imgFile = new File(animal.getA_path2());
 							imgBase64String = converter.convert(imgFile);
 							animal.setA_path2(imgBase64String);
 						}
 						break;
 					case 3:
-						if(!animal.getA_path3().equals("")) {
+						if (!animal.getA_path3().equals("")) {
 							imgFile = new File(animal.getA_path3());
 							imgBase64String = converter.convert(imgFile);
 							animal.setA_path3(imgBase64String);
 						}
 						break;
 					}
-				}
-				catch (IllegalStateException | IOException e) {
-				e.printStackTrace();
+				} catch (IllegalStateException | IOException e) {
+					e.printStackTrace();
 				}
 			}
 		}
-		
-		
+
 		ObjectMapper om = new ObjectMapper();
 		String jsonString = om.writeValueAsString(result);
-		
+
 		return jsonString;
+	}
+
+	// 좋아요 목록 조회
+	@ResponseBody
+	@RequestMapping(value = "/likelistinquiry", method = RequestMethod.POST)
+	public String liklistinquiry(Likelist likelist, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MavenMember member = (MavenMember) session.getAttribute("member");
+		likelist.setLk_senid(member.getU_id());
+		Likelist result = service.likelistinquiry(likelist);
+		if (result != null) {
+			return "1";
+		} else {
+			return "0";
+		}
+	}
+
+	// 좋아요목록 등록
+	@ResponseBody
+	@RequestMapping(value = "/likelistinsert", method = RequestMethod.POST)
+	public void liklistinsert(Likelist likelist, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MavenMember member = (MavenMember) session.getAttribute("member");
+		likelist.setLk_senid(member.getU_id());
+		service.likelistinsert(likelist);
+
+	}
+
+	// 좋아요목록 삭제
+	@ResponseBody
+	@RequestMapping(value = "/liklistdelete", method = RequestMethod.POST)
+	public void liklistdelete(Likelist likelist, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MavenMember member = (MavenMember) session.getAttribute("member");
+		likelist.setLk_senid(member.getU_id());
+		service.likelistdelete(likelist);
+
 	}
 
 }

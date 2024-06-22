@@ -163,7 +163,8 @@
         <h2 id="p_title">Profile</h2>
             <div id="p_c_container">
             </div>
-        <button class="m_btn">Reset</button>
+        <button class="m_btn" onclick="resetFunction()">Reset</button>
+        <p id="clock">현재 시간: <span id="time"></span></p>
     </div>
 
 
@@ -183,6 +184,7 @@
 	
 	// 추천된 카드의 정보를 받아와서 담을 변수
 	let opponentInfo = null;
+	let a_u_id = null;
 	
 	// 화면이 시작될때 필요한 사진정보들을 구함
 	$( document ).ready(function() {	
@@ -204,7 +206,7 @@
 					let tag = 
 				        '<div class="p_card">' +
 				        	'<div class="p_like">' +
-				        		'<i class="fa-regular fa-heart fa-2xl"></i>' +
+				        		'<i class="fa-2xl fa-regular fa-heart heartIcon"></i>' +
 				        	'</div>' +
 				        	'<img src="data:image/jpg;base64,'+ opponentInfo[i].a_path1 +'" alt="" class="p_img">' +
 				        	'<div class="p_body">' +
@@ -215,7 +217,24 @@
 				        	'<button class="m_p_btn" onclick="showModal('+ i +')">Pick Me</button>' +
 				     	'</div>';
 				     	
-					container.innerHTML += tag;     
+					container.innerHTML += tag;
+					
+					$.ajax({
+	          			url: "likelistinquiry",
+	          			type: "post",
+	          			data: { lk_recid : opponentInfo[i].a_u_id },
+	          			success: function(response) {
+          					let heartIcons = document.querySelectorAll(".heartIcon");
+                       		let heartIcon = heartIcons[i];
+	          				if(response=="1"){
+	          					// 좋아요 활성화
+                        		heartIcon.className = pullHeart;
+	          				}  
+	          			},
+	          			error: function() {
+	          				console.log("좋아요목록 조회 오류");
+	          			}
+					});
 				}
 				
 			},
@@ -224,16 +243,9 @@
 			}
 		
 		}) 
-		
-		/* if(data == null)
-		{
-			return;
-		} */
-		
 			
-		let container = document.getElementById("p_c_container");
-		container.innerHTML = "";
-		// 밑 변수들 재관이형님 수정시에 지우세요!!!! 테스트용변수
+	let container = document.getElementById("p_c_container");
+	container.innerHTML = "";
 
 	});
 </script>
@@ -248,7 +260,7 @@
 	        .then(data => {
 	    		Swal.fire({
 	  			  width : 1000,
-	  			  html : data,
+	  			  html : data + '<button id="chatRequestBtn" class="m_p_btn">채팅요청</button>',
 	  			  padding: "3em",
 	  			  color: "#000",
 	  			  background: "#fff",
@@ -281,20 +293,27 @@
 	                  let bigswiper = document.getElementById("bigswiper");
 	                  bigswiper = "";
 
-
-	  				  // 좋아요 여부에 따라 하트 아이콘 변환 시키는 코드
-	  				  let heart = document.getElementById("heartIcon");
-	  				  if(true)
-	  				  {
-	  					  // 좋아요 비활성화
-	  					  heart.className = nullHeart;  
-	  				  }
-	  				  else
-	  				  {
-	  					  // 좋아요 활성화
-	  					  heart.className = pullHeart;
-	  				  }
-					
+	                  let heart = document.getElementById("heartIcon");
+	                  
+	                  $.ajax({
+	          			url: "likelistinquiry",
+	          			type: "post",
+	          			data: { lk_recid : opponentInfo[idx].a_u_id },
+	          			success: function(response) {
+	          				if(response=="1"){
+	          					// 좋아요 활성화
+	          					heart.className = pullHeart;
+	          				}else{       	  				  
+	          					// 좋아요 활성화
+	          					heart.className = nullHeart;
+	          				}   
+	          			},
+	          			error: function() {
+	          				console.log("좋아요목록 조회 오류");
+	          			}
+	          		});
+	  				
+					a_u_id = opponentInfo[idx].a_u_id
 	                  
 	          		  let swiper1 = document.getElementById("bigSlide");
 						console.log(swiper1)	          		
@@ -319,7 +338,6 @@
 		        	  bigswiper += '<div class="swiper-pagination"></div>'; 
 		        	  */
 			
-		        	  
 
 		        		const swiper2 = new Swiper('.swiper', {
 		        			// Optional parameters
@@ -337,16 +355,22 @@
 		        			}
 
 		        		});
+		        	  
+		        		// 채팅 요청 버튼 이벤트 핸들러 추가
+		                document.getElementById("chatRequestBtn").addEventListener("click", function() {
+		                	chatRequest(opponentInfo[idx].a_u_id);
+		                });
+		        	  
+		        	  
 	              }		
 	            }).then((result) => {
-	            		console.log(result);
-	            	})
+	            	
+	            })
 	        })
 	        .catch(error => {
 	            console.error('Error fetching the HTML file:', error);
 	        });
 	    
-
 	
 	}
 	
@@ -381,41 +405,110 @@
 	});
 	
 	
-	function toSendHeart()
-	{
-
+	function toSendHeart(a_u_id){
 		let heart = document.getElementById("heartIcon");
-		
-		if(heart.className == nullHeart)
-		{
-			heart.className = pullHeart;	
+		if(heart.className == nullHeart){
+			$.ajax({
+      			url: "likelistinsert",
+      			type: "post",
+      			data: { lk_recid : a_u_id },
+      			success: function() {
+      					heart.className = pullHeart;
+      			},
+      			error: function() {
+      				console.log("좋아요목록 등록 실패");
+      			}
+      		});
+		}else{
+			$.ajax({
+      			url: "liklistdelete",
+      			type: "post",
+      			data: { lk_recid : a_u_id },
+      			success: function(response) {
+      					heart.className = nullHeart;
+      			},
+      			error: function() {
+      				console.log("좋아요목록 삭제 실패");
+      			}
+      		});
 		}
-		else
-		{
-			heart.className = nullHeart;	
-		}
-		
-		
-		
-		
-	
-		
-		
-/*		$.ajax({
-			url:"요청경로",// 요청경로
-			type : "post",
-			dataType : "json",// 서버에서 반환받는 데이터 형식
-			success : function (data) {
-
-				
-			},
-			error :function(){
-				alert("통신실패");
-			}
-		
-		})
-		*/
 	}
+	// 채팅 요청 함수
+	function chatRequest(userId) {
+	    $.ajax({
+			url: "member/call",
+			type: "post",
+			data: { c_recid : userId },
+			success: function(response) {
+				if(response=="1"){
+					Swal.fire({
+						title: '채팅 요청 완료',
+						text: '채팅 요청이 성공적으로 전송되었습니다.',
+						icon: 'success'
+					});
+				}else{
+					Swal.fire({
+						title: '이미 요청중입니다.',
+						text: '채팅 목록을 확인해주세요',
+						icon: 'error'
+					});
+				}
+			},
+			error: function() {
+				Swal.fire({
+					title: '오류',
+					text: '채팅 요청을 전송하는 동안 오류가 발생했습니다.',
+					icon: 'error'
+				});
+			}
+		});
+	}
+	
+	// 시간 및 날짜 표시 함수
+    function displayDateTime() {
+        let currentTimeElement = document.getElementById('time');
+        let currentDateElement = document.getElementById('currentDate');
+        
+        let currentTime = new Date();
+        let hours = currentTime.getHours();
+        let minutes = currentTime.getMinutes();
+        let seconds = currentTime.getSeconds();
+        let year = currentTime.getFullYear();
+        let month = currentTime.getMonth() + 1; // getMonth()는 0부터 시작하므로 1을 더해줍니다.
+        let day = currentTime.getDate();
+        
+        // 시, 분, 초가 한 자리 수인 경우 앞에 0을 붙여 두 자리로 표시
+        hours = (hours < 10 ? "0" : "") + hours;
+        minutes = (minutes < 10 ? "0" : "") + minutes;
+        seconds = (seconds < 10 ? "0" : "") + seconds;
+        
+        // 날짜를 yyyy-mm-dd 형식으로 표시
+        let formattedDate = year + "-" + (month < 10 ? "0" : "") + month + "-" + (day < 10 ? "0" : "") + day;
+        
+        // 현재 시간 및 날짜 표시
+        currentTimeElement.textContent = formattedDate + " " + hours + ":" + minutes + ":" + seconds;
+        
+    }
+    
+    // 페이지 로드 시간 간격(1초)마다 시간 및 날짜 업데이트
+    setInterval(displayDateTime, 1000);
+    
+    // Reset 함수 정의
+    function resetFunction() {
+        let currentTime = new Date();
+        let hours = currentTime.getHours();
+        
+        // 현재 시간이 3시인지 확인
+        if (hours === 3) {
+            // Reset 동작 수행
+            alert('Reset 동작을 수행합니다.');
+            // 여기에 Reset에 해당하는 기능을 추가할 수 있습니다.
+        } else {
+            alert('리셋 가능한 시간이 아닙니다.');
+        }
+    }
+    
+	
 </script>
 	
 

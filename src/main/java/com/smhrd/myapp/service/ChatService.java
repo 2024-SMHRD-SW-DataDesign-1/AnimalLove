@@ -47,4 +47,13 @@ public class ChatService {
 	public int noread(Map<String, String> data) {
 		return mapper.noread(data);
 	}
+	
+	public int chatinquiry(Chat chat) {
+		Chat result = mapper.chatinquiry(chat);
+		if(result!=null) {
+			return 1;
+		}else {
+			return 0;
+		}
+	}
 }

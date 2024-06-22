@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.smhrd.myapp.mapper.AnimalMapper;
 import com.smhrd.myapp.model.Animal;
+import com.smhrd.myapp.model.Likelist;
 
 @Service
 public class AnimalService {
@@ -68,6 +69,21 @@ public class AnimalService {
 	public List<Animal> matching(String a_u_id){
 		Animal animal = animalinfo(a_u_id);
 		return mapper.matching(animal);
+	}
+	
+	// 좋아요리스트 조회
+	public Likelist likelistinquiry(Likelist likelist) {
+		return mapper.likelistinquiry(likelist);
+	}
+	
+	// 좋아요리스트 등록
+	public int likelistinsert(Likelist likelist) {
+		return mapper.likelistinsert(likelist);
+	}
+	
+	// 좋아요 리스트 삭제 
+	public int likelistdelete(Likelist likelist) {
+		return mapper.likelistdelete(likelist);
 	}
 }
 
