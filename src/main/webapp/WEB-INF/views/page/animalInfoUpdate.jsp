@@ -12,7 +12,39 @@
 * {
 	margin: 0px;
 	padding: 0px;
-	
+}
+
+/*네비게이션*/
+#m_nav {
+	margin: -1em 0 4em 0;
+}
+
+#m_nav>ul>li {
+	display: inline-block;
+	margin: 0 0.35em 0 0.35em;
+}
+
+#m_nav>ul>li>ul {
+	display: none;
+}
+
+#m_nav>ul>li>a {
+	border-radius: 5px;
+	color: #5d5d5d;
+	text-decoration: none;
+	padding: 0.6em 1.2em 0.6em 1.2em;
+	transition: background-color .25s ease-in-out;
+	outline: 0;
+}
+
+#m_nav>ul>li:hover>a, #nav>ul>li.active>a {
+	background: #f3f3f3;
+}
+
+#m_nav>ul>li #ani_info {
+	background: #ebecff;
+	color: #5d5d5d !important;
+	font-weight: 460;
 }
 
 .profil_img {
@@ -26,6 +58,7 @@
 	align-items: center;
 	pointer-events: none;
 }
+
 .animal_form {
 	max-width: 800px;
 	margin: 0 auto;
@@ -34,7 +67,6 @@
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	overflow-y:auto
 }
 
 @font-face {
@@ -53,11 +85,9 @@
 	text-align: center;
 }
 
-
-
-p {
+.ani_menu {
 	margin-bottom: 8px;
-	margin-left: 50px;
+	margin-left: 8em;
 	font-family: 'pretendard';
 }
 
@@ -81,7 +111,8 @@ p {
 	border-radius: 17px;
 	background-color: #3c40c6;
 	margin-top: 10px;
-	margin-left: 50px;
+	margin-left: 8em;
+	margin-bottom: 3em;
 }
 
 .btn:active {
@@ -126,79 +157,96 @@ input[type='radio']:checked {
 input[type="text"], input[type="number"], input[placeholder="kg"] {
 	font-size: 14px;
 }
-
-.center{
-	margin-left: 50px;
-}
-
 </style>
 </head>
 <body>
 
 	<!-- 헤더 -->
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
-<%
+	<%
 	MavenMember member = (MavenMember) session.getAttribute("member");
 	%>
 	<%Animal animal = (Animal) request.getAttribute("animal"); %>
 
 	<div class="animal_form">
 
-		<form action="animal_info/update" id="infoadd" method="POST" enctype="multipart/form-data">
+		<nav id="m_nav">
+			<ul>
+				<li><a href="update" id="user_info">회원정보수정</a></li>
+				<li><a href="animalupdate" id="ani_info">동물정보 수정</a></li>
+				<li><a href="#" id="user_zzim">찜 목록</a></li>
+				<li><a href="#">선호도 변경</a></li>
+			</ul>
+		</nav>
+
+
+		<form action="animal_info/update" id="infoadd" method="POST"
+			enctype="multipart/form-data">
+
+
 			<h2 id="ani_title">My Animal Info Update</h2>
-			<input type="hidden" name = "a_u_id" value="<%=member.getU_id()%>">
+			<input type="hidden" name="a_u_id" value="<%=member.getU_id()%>">
 			<br>
-			<p>동물 이름 </p>
-			<p>
-				<input type="text" class="ani_text" name="a_name" value="<%=animal.getA_name()%>" required id="u_id">
-			</p>
 
-			<p>나이</p>
-			<p>
-				<input type="number" class="ani_text" name="a_age" value="<%=animal.getA_age()%>">
-			</p>
+			<div>
+				<p class="ani_menu">동물 이름</p>
+				<p class="ani_menu">
+					<input type="text" class="ani_text" name="a_name"
+						value="<%=animal.getA_name()%>" required id="u_id">
+				</p>
 
-
-			<p>몸무게</p>
-			<p>
-				<input type="number" class="ani_text" name="a_weight" value="<%=animal.getA_weight()%>"
-					placeholder="kg" min="1">
-			</p>
+				<p class="ani_menu">나이</p>
+				<p class="ani_menu">
+					<input type="number" class="ani_text" name="a_age"
+						value="<%=animal.getA_age()%>">
+				</p>
 
 
-			<p>동물 성별</p>
-			<p>
-				<input type="radio" name="a_gender" id="male" value="male"> Male 
-				<input	type="radio" name="a_gender" id="female" value="female"> Female
-			</p>
-
-			<p>품종</p>
-			<p>
-				<input onclick="onClickEvent()" name="a_animal" id="dog"
-					type="radio" value="dog"> Dog <input
-					onclick="onClickEvent()" name="a_animal" id="cat" type="radio"
-					value="cat"> Cat
-			</p>
+				<p class="ani_menu">몸무게</p>
+				<p class="ani_menu">
+					<input type="number" class="ani_text" name="a_weight"
+						value="<%=animal.getA_weight()%>" placeholder="kg" min="1">
+				</p>
 
 
-			<p>상세품종</p>
-			<p>
-				<select name="a_breed" id="a_breed"></select>
-			</p>
+				<p class="ani_menu">동물 성별</p>
+				<p class="ani_menu">
+					<input type="radio" name="a_gender" id="male" value="male">
+					Male <input type="radio" name="a_gender" id="female" value="female">
+					Female
+				</p>
 
-			<p>소개글</p>
-			<textarea class="center" name="a_intro" id="" cols="40" rows="8" ><%=animal.getA_intro()%></textarea><br>
-			
-			<input type="file" id="photo" multiple name="photo">
-			<div id=profil_imgs>
-			<input type="image" name="photo1" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
-			<input type="image"	name="photo2" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
-			<input type="image" name="photo3" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
-			<input type="hidden" name="a_path1" class="imageSrc" value="">
-			<input type="hidden" name="a_path2" class="imageSrc" value=""> 
-			<input type="hidden" name="a_path3" class="imageSrc" value="">
+				<p class="ani_menu">품종</p>
+				<p class="ani_menu">
+					<input onclick="onClickEvent()" name="a_animal" id="dog"
+						type="radio" value="dog"> Dog <input
+						onclick="onClickEvent()" name="a_animal" id="cat" type="radio"
+						value="cat"> Cat
+				</p>
+
+
+				<p class="ani_menu">상세품종</p>
+				<p class="ani_menu">
+					<select name="a_breed" id="a_breed"></select>
+				</p>
+
+				<p class="ani_menu">소개글</p>
+				<textarea class="ani_menu" name="a_intro" id="" cols="40" rows="8"><%=animal.getA_intro()%></textarea>
+				<br> <input type="file" id="photo" multiple name="photo">
+				<div id=profil_imgs>
+					<input type="image" name="photo1" class='profil_img' alt='빈사진'
+						src="resources/img/nullPic.png" /> <input type="image"
+						name="photo2" class='profil_img' alt='빈사진'
+						src="resources/img/nullPic.png" /> <input type="image"
+						name="photo3" class='profil_img' alt='빈사진'
+						src="resources/img/nullPic.png" /> <input type="hidden"
+						name="a_path1" class="imageSrc" value=""> <input
+						type="hidden" name="a_path2" class="imageSrc" value=""> <input
+						type="hidden" name="a_path3" class="imageSrc" value="">
+				</div>
+				<button type="submit" class="btn">수정 완료</button>
+
 			</div>
-			<button type="submit" class="btn" >수정 완료</button>
 		</form>
 	</div>
 
@@ -206,7 +254,7 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </body>
 
-	<script type="text/javascript">
+<script type="text/javascript">
 		
 	
 		let dogs = ["몰티즈", "푸들", "포메라니안", "치와와","스피츠" , "시바이누", "웰시코기", "닥스훈트", "비숑프리제","골든 리트리버","사모예드","허스키", "믹스견", "그 외"];
@@ -270,9 +318,9 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 	    login.style = "border-bottom : 2px solid #3c40c6; border-radius: 2px; color : #3c40c6;";
 		
 	</script>
-	
-	
-	<script>
+
+
+<script>
 	// 암컷 수컷 불러오기
 			<%-- <%=animal.getA_gender()%>
 			<%=animal.getA_breed()%> --%>
@@ -284,8 +332,8 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 				}
 				
 	</script>
-	
-	<script>
+
+<script>
 	// 강아지 고양이 불러오기
 	
 				for(let i=0; i<dogs.length; i++)
@@ -303,8 +351,8 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 	
 				onClickEvent();
 	</script>
-	
-	<script type="text/javascript">
+
+<script type="text/javascript">
 	function getValue() {
 		const storedList = sessionStorage.getItem('key');
 		return storedList;
