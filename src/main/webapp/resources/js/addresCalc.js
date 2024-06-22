@@ -36,7 +36,7 @@ wtmX = 160082.538257218, // 변환할 WTM X 좌표 입니다
 wtmY = -4680.975749087054; // 변환할 WTM Y 좌표 입니다
 
 let value=null;
-function WtoWGS84(list,func) {
+function WtoWGS84(list, func) {
     return new Promise((resolve, reject) => {
     	
         var geocoder = new kakao.maps.services.Geocoder();
@@ -50,7 +50,7 @@ function WtoWGS84(list,func) {
                 
                 //dataList.push({x : result[0].x, y : result[0].y})
                 
-                func(result);
+                func(result, list[i].l_name);
                 
             } else {
                 reject(new Error('Failed to convert coordinates'));

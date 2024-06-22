@@ -26,6 +26,7 @@
 	#inner_map{
 		width: 700px;
 		height : 600px;
+		
 	}
 	
 	.i_menu {
@@ -98,8 +99,7 @@
 		
 		$(document).ready(function(){
 			loadList().then((result)=> {
-				
-				 WtoWGS84(result,MarkerView).then(async (result)=>{
+				 WtoWGS84(result, MarkerView).then(async (result)=>{
 					await getData(result);
 					
 				})	
