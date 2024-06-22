@@ -28,8 +28,8 @@ public class ChatService {
 		return mapper.receivelist(u_id);
 	}
 	
-	public int accept(String c_recid) {
-		return mapper.accept(c_recid);
+	public int accept(String c_id) {
+		return mapper.accept(c_id);
 	}
 	
 	public int saveLog(Log save) {

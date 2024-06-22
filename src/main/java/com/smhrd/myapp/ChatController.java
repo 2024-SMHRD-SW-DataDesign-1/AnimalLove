@@ -61,10 +61,10 @@ public class ChatController {
 	}
 
 	// 채팅 요청 수락
-	@RequestMapping(value = "/member/accept/{c_recid}", method = RequestMethod.GET)
-	public String chatlist(@PathVariable("c_recid") String c_recid) {
-		service.accept(c_recid);
-		return "redirect:/member/chatlist/" + c_recid;
+	@RequestMapping(value = "/accept/{c_id}", method = RequestMethod.GET)
+	public String chatlist(@PathVariable("c_id") String c_id) {
+		service.accept(c_id);
+		return "redirect:/";
 	}
 
 	// 로그 저장
