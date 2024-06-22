@@ -183,13 +183,37 @@
 	
 	// 화면이 시작될때 필요한 사진정보들을 구함
 	$( document ).ready(function() {	
-/* 		$.ajax({
-			url:"animalte",// 요청경로
+ 		$.ajax({
+			url:"opponentinfo",// 요청경로
 			type : "post",
 			dataType : "json",// 서버에서 반환받는 데이터 형식
 			success : function (data) {
 				// data가 넘오는 타입확인해야됨 promise로 넘어오면 변경되야됨
 				opponentInfo = data;
+				
+				// 비동기라서 아래 넣으면 데이터 불러오기 전에 for문 돔
+				// 여기 넣어야 데이터 다 불러온 후 동작함
+				for(let i = 0; i< opponentInfo.length; i++)
+				{
+					// 프로필 카드 등록하는 함수 각자리에 맞는 변수를 설정해야됨
+					// 이미지 경로도 수정해야됨!!!!
+					let tag = 
+				        '<div class="p_card">' +
+				        	'<div class="p_like">' +
+				        		'<i class="fa-regular fa-heart fa-2xl"></i>' +
+				        	'</div>' +
+				        	'<img src="data:image/jpg;base64,'+ opponentInfo[i].a_path1 +'" alt="" class="p_img">' +
+				        	'<div class="p_body">' +
+				        	'<h1 class="t_name">'+ opponentInfo[i].a_name +'</h1>' +
+				        	'<p class="t_age">' + opponentInfo[i].a_age + '살</p>' +
+				        	'<p class="t_text">' + opponentInfo[i].a_breed + '</p>' +
+				        	'</div>' + 
+				        	'<button class="m_p_btn" onclick="showModal('+ i +')">Pick Me</button>' +
+				     	'</div>';
+				     	
+					container.innerHTML += tag;     
+				}
+				
 			},
 			error :function(){
 				alert("통신실패");
@@ -197,16 +221,16 @@
 		
 		}) 
 		
-		if(data == 0)
+		/* if(data == null)
 		{
 			return;
-		}
-	*/	
+		} */
+		
 			
 		let container = document.getElementById("p_c_container");
 		container.innerHTML = "";
 		// 밑 변수들 재관이형님 수정시에 지우세요!!!! 테스트용변수
-		let name = "상현1";
+		/* let name = "상현1";
 		let age = "상현2";
 		let breed = "상현3";
 		opponentInfo = [
@@ -234,9 +258,9 @@
 			img2 : "resources/img/img_pro2.jpg",
 			img3 : "resources/img/img_pro3.jpg",
 		}
-		]
+		] */
 			
-		for(let i = 0; i< opponentInfo.length; i++)
+		/* for(let i = 0; i< opponentInfo.length; i++)
 		{
 			// 프로필 카드 등록하는 함수 각자리에 맞는 변수를 설정해야됨
 			// 이미지 경로도 수정해야됨!!!!
@@ -247,15 +271,15 @@
 		        	'</div>' +
 		        	'<img src="resources/img/img_pro1.jpg" alt="" class="p_img">' +
 		        	'<div class="p_body">' +
-		        	'<h1 class="t_name">'+ name +'</h1>' +
-		        	'<p class="t_age">' + age + '살</p>' +
-		        	'<p class="t_text">' + breed + '</p>' +
+		        	'<h1 class="t_name">'+ opponentInfo[i].a_name +'</h1>' +
+		        	'<p class="t_age">' + opponentInfo[i].a_age + '살</p>' +
+		        	'<p class="t_text">' + opponentInfo[i].a_breed + '</p>' +
 		        	'</div>' + 
 		        	'<button class="m_p_btn" onclick="showModal('+ i +')">Pick Me</button>' +
 		     	'</div>';
 		     	
 			container.innerHTML += tag;     
-		}
+		} */
 	
 	
 	
@@ -298,12 +322,12 @@
 	                  let bigimg = document.getElementById("big_img");	                  
 
 	                  
-	                  bigname.innerText = opponentInfo[idx].name;
-	                  biggender.innerText = opponentInfo[idx].gender;
-	                  bigage.innerText = opponentInfo[idx].age;
-	                  bigbreed.innerText = opponentInfo[idx].breed;
-	                  bigweight.innerText = opponentInfo[idx].weight;
-	                  bigintro.innerText = opponentInfo[idx].intro;
+	                  bigname.innerText = opponentInfo[idx].a_name;
+	                  biggender.innerText = opponentInfo[idx].a_gender;
+	                  bigage.innerText = opponentInfo[idx].a_age;
+	                  bigbreed.innerText = opponentInfo[idx].a_breed;
+	                  bigweight.innerText = opponentInfo[idx].a_weight;
+	                  bigintro.innerText = opponentInfo[idx].a_intro;
 						
 	                  let bigswiper = document.getElementById("bigswiper");
 	                  bigswiper = "";
@@ -317,17 +341,17 @@
 	                  swiper1.innerHTML = ""; 
 		          	  if(opponentInfo[idx].img1 != "")
 		        	  {
-		          		  setImgs(swiper1, opponentInfo[idx].img1); 	
+		          		  setImgs(swiper1, opponentInfo[idx].a_path1); 	
 		        	  }
 		        		
 		        	  if(opponentInfo[idx].img2 != "")
 		        	  {
-		        		  setImgs(swiper1, opponentInfo[idx].img2);	
+		        		  setImgs(swiper1, opponentInfo[idx].a_path2);	
 		        	  }
 		        		
 		        	  if(opponentInfo[idx].img3 != "")
 		        	  {
-		        		  setImgs(swiper1, opponentInfo[idx].img3);	
+		        		  setImgs(swiper1, opponentInfo[idx].a_path3);	
 		        	  }
 	                  
 /* 		        	  bigswiper += '<div class="swiper-button-next"></div>';
@@ -369,7 +393,7 @@
 	{
 		let img =
 			'<div class="swiper-slide">' +
-				'<img src="'+ str +'" class="big_img" style="width :800px; height : 500px; ">' +
+				'<img src="data:image/jpg;base64,'+ str +'" class="big_img" style="width :800px; height : 500px; ">' +
 			'</div>';
 
 		tag.innerHTML += img;

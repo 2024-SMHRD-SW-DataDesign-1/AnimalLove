@@ -138,7 +138,7 @@ function load(chatList){
 			$('#chatReady').append(
 				'<div class="request-container">' +
 					'<div style="margin-bottom: 5px; margin-left: 5px;" >' + chat.c_senid + '님 온 요청</div>' +
-					'<a href="../accept/' + chat.c_recid + '"><button class="ch_r_btn">수락</button></a>' +
+					'<a href="/aniting/accept/' + chat.c_id + '"><button class="ch_r_btn">수락</button></a>' +
 					'<button class="ch_r_btn">거부</button>' +
 					'<button class="ch_r_btn">정보확인</button>' +
 				'</div>'
