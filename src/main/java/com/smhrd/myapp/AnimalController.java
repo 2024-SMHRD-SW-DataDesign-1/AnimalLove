@@ -2,6 +2,9 @@ package com.smhrd.myapp;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.UUID;
 
@@ -196,10 +199,27 @@ public class AnimalController {
 	@RequestMapping(value = "opponentinfo", method = RequestMethod.POST, produces = "application/text; charset=UTF-8")
 	public String matching(HttpServletRequest request, Model model) throws IOException {
 		HttpSession session = request.getSession();
-		MavenMember member = (MavenMember) session.getAttribute("member");
-		List<Animal> result = service.matching(member.getU_id());
-
 		ImageToBase64 converter = new ImageToBase64();
+		MavenMember member = (MavenMember) session.getAttribute("member");
+		MavenMember save = service.matchingsave(member.getU_id());
+		List<Animal> result;
+		if(save != null) {
+			// 저장됬던 3명의 프로필 가져오기
+			result = service.savedmatching(save);
+		}else {
+			// 사용자 선호도에 부합된 랜덤한 3명 프로필 가져오기
+			result = service.matching(member.getU_id());
+			MavenMember mid = new MavenMember();
+			mid.setU_id(member.getU_id());
+			if (result.size() > 0) mid.setU_mid1(result.get(0).getA_u_id());
+			if (result.size() > 1) mid.setU_mid2(result.get(1).getA_u_id());
+			if (result.size() > 2) mid.setU_mid3(result.get(2).getA_u_id());
+			LocalDateTime now = LocalDateTime.now(ZoneId.of("Asia/Seoul"));
+			Timestamp timestamp = Timestamp.valueOf(now);
+			mid.setU_mtime(timestamp);
+			System.out.println(mid.getU_mtime());
+			service.midsave(mid);
+		}
 
 		for (Animal animal : result) {
 			for (int i = 1; i <= 3; i++) {
@@ -276,6 +296,25 @@ public class AnimalController {
 		likelist.setLk_senid(member.getU_id());
 		service.likelistdelete(likelist);
 
+	}
+	
+	// USER 테이블에 있는 u_mtime 값 가져오기
+	@ResponseBody
+	@RequestMapping(value = "mtimeload", method = RequestMethod.POST, produces = "application/text; charset=UTF-8")
+	public String mtimeload(HttpServletRequest request) throws IOException {
+		HttpSession session = request.getSession();
+		MavenMember member = (MavenMember) session.getAttribute("member");
+		Timestamp u_mtime =service.mtimeload(member.getU_id());
+		return u_mtime+"";
+	}
+	
+	// USER 테이블에서 u_mid, time 에 있는 값 지우고 페이지 재 진입
+	@RequestMapping(value = "matreset", method = RequestMethod.GET)
+	public String matreset(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MavenMember member = (MavenMember) session.getAttribute("member");
+		service.matreset(member.getU_id());
+		return "redirect:/matching";
 	}
 
 }

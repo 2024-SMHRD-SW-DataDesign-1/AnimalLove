@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.myapp.model.MavenMember"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -164,7 +165,7 @@
             <div id="p_c_container">
             </div>
         <button class="m_btn" onclick="resetFunction()">Reset</button>
-        <p id="clock">현재 시간: <span id="time"></span></p>
+        <p id="clock"><span id="time"></span></p>
     </div>
 
 
@@ -185,6 +186,8 @@
 	// 추천된 카드의 정보를 받아와서 담을 변수
 	let opponentInfo = null;
 	let a_u_id = null;
+	
+	let timeDiff; // 남은 시간을 저장할 변수
 	
 	// 화면이 시작될때 필요한 사진정보들을 구함
 	$( document ).ready(function() {	
@@ -237,12 +240,36 @@
 					});
 				}
 				
+				$.ajax({
+			        url: "mtimeload",
+			        type: "POST",
+			        success: function(response) {
+			            // 성공적으로 u_mtime 값을 받아왔을 때 처리
+			            let u_mtime = new Date(response); // Timestamp 값을 JavaScript Date 객체로 변환
+			            console.log("u_mtime:", u_mtime);
+			            
+			            setInterval(function() {
+			                displayDateTime(u_mtime);
+			            }, 1000);
+			        },
+			        error: function(xhr, status, error) {
+			            // 에러 발생 시 처리
+			            console.error("mtimeloda 오류:", status, error);
+			        }
+			    });
+				
+				
+				
 			},
 			error :function(){
 				alert("통신실패");
 			}
 		
-		}) 
+		})
+		
+		
+		
+ 	//setInterval(displayDateTime, 1000);
 			
 	let container = document.getElementById("p_c_container");
 	container.innerHTML = "";
@@ -465,33 +492,28 @@
 	}
 	
 	// 시간 및 날짜 표시 함수
-    function displayDateTime() {
+    function displayDateTime(u_mtime) {
         let currentTimeElement = document.getElementById('time');
-        let currentDateElement = document.getElementById('currentDate');
         
-        let currentTime = new Date();
-        let hours = currentTime.getHours();
-        let minutes = currentTime.getMinutes();
-        let seconds = currentTime.getSeconds();
-        let year = currentTime.getFullYear();
-        let month = currentTime.getMonth() + 1; // getMonth()는 0부터 시작하므로 1을 더해줍니다.
-        let day = currentTime.getDate();
+        let currentTime = new Date(); // 현재 시간 가져오기
+        timeDiff = u_mtime.getTime() + 3 * 60 * 60 * 1000 - currentTime.getTime(); // 3시간 뒤까지 남은 시간 계산
+        console.log(timeDiff);
+        let hoursLeft = Math.floor(timeDiff / (1000 * 60 * 60));
+        let minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+        let secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
         
-        // 시, 분, 초가 한 자리 수인 경우 앞에 0을 붙여 두 자리로 표시
-        hours = (hours < 10 ? "0" : "") + hours;
-        minutes = (minutes < 10 ? "0" : "") + minutes;
-        seconds = (seconds < 10 ? "0" : "") + seconds;
-        
-        // 날짜를 yyyy-mm-dd 형식으로 표시
-        let formattedDate = year + "-" + (month < 10 ? "0" : "") + month + "-" + (day < 10 ? "0" : "") + day;
-        
-        // 현재 시간 및 날짜 표시
-        currentTimeElement.textContent = formattedDate + " " + hours + ":" + minutes + ":" + seconds;
-        
+        // 남은 시간을 "hh:mm:ss" 형식으로 표시
+        let timeLeftFormatted = (hoursLeft < 10 ? "0" : "") + hoursLeft + ":" + (minutesLeft < 10 ? "0" : "") + minutesLeft + ":" + (secondsLeft < 10 ? "0" : "") + secondsLeft;
+        if(timeDiff>=0){
+        	currentTimeElement.textContent = "남은시간 : "+timeLeftFormatted;
+        }else{
+        	currentTimeElement.textContent = "리셋버튼 사용가능";
+        }
+       	
     }
     
     // 페이지 로드 시간 간격(1초)마다 시간 및 날짜 업데이트
-    setInterval(displayDateTime, 1000);
+    //setInterval(displayDateTime, 1000);
     
     // Reset 함수 정의
     function resetFunction() {
@@ -499,10 +521,9 @@
         let hours = currentTime.getHours();
         
         // 현재 시간이 3시인지 확인
-        if (hours === 3) {
+        if (timeDiff < 0) {
             // Reset 동작 수행
-            alert('Reset 동작을 수행합니다.');
-            // 여기에 Reset에 해당하는 기능을 추가할 수 있습니다.
+        	document.location.href = 'matreset'
         } else {
             alert('리셋 가능한 시간이 아닙니다.');
         }
