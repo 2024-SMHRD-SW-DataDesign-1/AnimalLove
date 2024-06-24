@@ -172,6 +172,15 @@
 		</div>
 
 	</section>
+	
+	<% String id = (String)session.getAttribute("id");%>
+	<%if(id!=null){ %>
+	<script>
+        // URL 파라미터로부터 가져온 ID를 사용하여 알림창으로 표시
+        alert('인증에 성공했습니다. ID는 <%= id %>입니다.');
+        <% session.removeAttribute("id");%>
+    </script>
+	<%} %>
 
 <!-- 푸터 -->
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
@@ -197,5 +206,6 @@
 
 	});
 </script>
+
 
 </html>

@@ -38,7 +38,7 @@
 	<a href="logout"> <button>로그아웃</button></a>
 	<%} %>
 	
-	<% String id = (String)request.getAttribute("id");%>
+	<% String id = (String)session.getAttribute("id");%>
 	<%if(id!=null){ %>
 	<script>
         // URL 파라미터로부터 가져온 ID를 사용하여 알림창으로 표시
