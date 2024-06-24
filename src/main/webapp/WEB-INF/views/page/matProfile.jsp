@@ -179,9 +179,9 @@
 	login.style = "border-bottom : 2px solid #3c40c6; border-radius: 2px; color : #3c40c6;";
 	
 	// 빈 하트
-	let nullHeart = "fa-2xl fa-regular fa-heart";
+	let nullHeart = "fa-2xl fa-regular fa-heart heartIcon";
 	// 꽉찬 하트
-	let pullHeart = "fa-2xl fa-solid fa-heart";
+	let pullHeart = "fa-2xl fa-solid fa-heart heartIcon";
 	
 	// 추천된 카드의 정보를 받아와서 담을 변수
 	let opponentInfo = null;
@@ -209,7 +209,7 @@
 					let tag = 
 				        '<div class="p_card">' +
 				        	'<div class="p_like">' +
-				        		'<i class="fa-2xl fa-regular fa-heart heartIcon"></i>' +
+				        		'<i id="matHeart' + i + '"class="fa-2xl fa-regular fa-heart heartIcon"></i>' +
 				        	'</div>' +
 				        	'<img src="data:image/jpg;base64,'+ opponentInfo[i].a_path1 +'" alt="" class="p_img">' +
 				        	'<div class="p_body">' +
@@ -228,6 +228,7 @@
 	          			data: { lk_recid : opponentInfo[i].a_u_id },
 	          			success: function(response) {
           					let heartIcons = document.querySelectorAll(".heartIcon");
+          					console.log("리스트 개수 : " + heartIcons.length)
                        		let heartIcon = heartIcons[i];
 	          				if(response=="1"){
 	          					// 좋아요 활성화
@@ -246,7 +247,6 @@
 			        success: function(response) {
 			            // 성공적으로 u_mtime 값을 받아왔을 때 처리
 			            let u_mtime = new Date(response); // Timestamp 값을 JavaScript Date 객체로 변환
-			            console.log("u_mtime:", u_mtime);
 			            
 			            setInterval(function() {
 			                displayDateTime(u_mtime);
@@ -433,7 +433,20 @@
 	
 	
 	function toSendHeart(a_u_id){
+		let idx = 0;
+		
+		for(let i = 0; i< opponentInfo.length; i++)
+		{
+			if(opponentInfo[i].a_u_id == a_u_id)
+			{
+				idx = i;
+				break;
+			}
+		}
+		
 		let heart = document.getElementById("heartIcon");
+		let matHeart = document.getElementById("matHeart"+idx);
+		
 		if(heart.className == nullHeart){
 			$.ajax({
       			url: "likelistinsert",
@@ -441,6 +454,7 @@
       			data: { lk_recid : a_u_id },
       			success: function() {
       					heart.className = pullHeart;
+      					matHeart.className = pullHeart;
       			},
       			error: function() {
       				console.log("좋아요목록 등록 실패");
@@ -453,6 +467,7 @@
       			data: { lk_recid : a_u_id },
       			success: function(response) {
       					heart.className = nullHeart;
+      					matHeart.className = nullHeart;
       			},
       			error: function() {
       				console.log("좋아요목록 삭제 실패");
