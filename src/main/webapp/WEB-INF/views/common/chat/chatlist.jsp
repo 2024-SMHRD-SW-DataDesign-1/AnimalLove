@@ -64,7 +64,7 @@
     border: 0;
     outline: 1.2px solid #3c40c6;
     border-radius: 3px;
-    width: 50px;
+    width: 64px;
     height: 20px;
     margin-left: 8px;
 }

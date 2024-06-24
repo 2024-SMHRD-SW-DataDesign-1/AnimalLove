@@ -19,7 +19,6 @@
 	margin: 0 auto;
 	box-sizing: border-box;
 	flex-direction: column;
-	height: 60vh;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -71,6 +70,7 @@ p {
 	background-color: #3c40c6;
 	margin-top: 10px;
 	margin-left: 50px;
+	margin-bottom: 3em;
 }
 
 .btn:active {

@@ -209,7 +209,7 @@
 					let tag = 
 				        '<div class="p_card">' +
 				        	'<div class="p_like">' +
-				        		'<i class="fa-2xl fa-regular fa-heart heartIcon"></i>' +
+				        		'<i id="matHeart' + i + '"class="fa-2xl fa-regular fa-heart heartIcon"></i>' +
 				        	'</div>' +
 				        	'<img src="data:image/jpg;base64,'+ opponentInfo[i].a_path1 +'" alt="" class="p_img">' +
 				        	'<div class="p_body">' +
@@ -433,7 +433,20 @@
 	
 	
 	function toSendHeart(a_u_id){
+		let idx = 0;
+		
+		for(let i = 0; i< opponentInfo.length; i++)
+		{
+			if(opponentInfo[i].a_u_id == a_u_id)
+			{
+				idx = i;
+				break;
+			}
+		}
+		
 		let heart = document.getElementById("heartIcon");
+		let matHeart = document.getElementById("matHeart"+idx);
+		console.log(matHeart);
 		if(heart.className == nullHeart){
 			$.ajax({
       			url: "likelistinsert",
@@ -441,6 +454,7 @@
       			data: { lk_recid : a_u_id },
       			success: function() {
       					heart.className = pullHeart;
+      					matHeart.className = pullHeart;
       			},
       			error: function() {
       				console.log("좋아요목록 등록 실패");
@@ -453,6 +467,7 @@
       			data: { lk_recid : a_u_id },
       			success: function(response) {
       					heart.className = nullHeart;
+      					matHeart.className = nullHeart;
       			},
       			error: function() {
       				console.log("좋아요목록 삭제 실패");
