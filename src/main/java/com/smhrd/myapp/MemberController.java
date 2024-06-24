@@ -47,7 +47,7 @@ public class MemberController {
 		} catch (Exception e) {
 			throw new RuntimeException();
 		}
-		return "redirect:/index";
+		return "redirect:/";
 
 	}
 
