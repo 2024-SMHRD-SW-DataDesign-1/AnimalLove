@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.myapp.model.MavenMember"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -163,7 +164,8 @@
         <h2 id="p_title">Profile</h2>
             <div id="p_c_container">
             </div>
-        <button class="m_btn">Reset</button>
+        <button class="m_btn" onclick="resetFunction()">Reset</button>
+        <p id="clock"><span id="time"></span></p>
     </div>
 
 
@@ -183,6 +185,9 @@
 	
 	// 추천된 카드의 정보를 받아와서 담을 변수
 	let opponentInfo = null;
+	let a_u_id = null;
+	
+	let timeDiff; // 남은 시간을 저장할 변수
 	
 	// 화면이 시작될때 필요한 사진정보들을 구함
 	$( document ).ready(function() {	
@@ -204,7 +209,7 @@
 					let tag = 
 				        '<div class="p_card">' +
 				        	'<div class="p_like">' +
-				        		'<i class="fa-regular fa-heart fa-2xl"></i>' +
+				        		'<i id="matHeart' + i + '"class="fa-2xl fa-regular fa-heart heartIcon"></i>' +
 				        	'</div>' +
 				        	'<img src="data:image/jpg;base64,'+ opponentInfo[i].a_path1 +'" alt="" class="p_img">' +
 				        	'<div class="p_body">' +
@@ -215,25 +220,59 @@
 				        	'<button class="m_p_btn" onclick="showModal('+ i +')">Pick Me</button>' +
 				     	'</div>';
 				     	
-					container.innerHTML += tag;     
+					container.innerHTML += tag;
+					
+					$.ajax({
+	          			url: "likelistinquiry",
+	          			type: "post",
+	          			data: { lk_recid : opponentInfo[i].a_u_id },
+	          			success: function(response) {
+          					let heartIcons = document.querySelectorAll(".heartIcon");
+                       		let heartIcon = heartIcons[i];
+	          				if(response=="1"){
+	          					// 좋아요 활성화
+                        		heartIcon.className = pullHeart;
+	          				}  
+	          			},
+	          			error: function() {
+	          				console.log("좋아요목록 조회 오류");
+	          			}
+					});
 				}
+				
+				$.ajax({
+			        url: "mtimeload",
+			        type: "POST",
+			        success: function(response) {
+			            // 성공적으로 u_mtime 값을 받아왔을 때 처리
+			            let u_mtime = new Date(response); // Timestamp 값을 JavaScript Date 객체로 변환
+			            console.log("u_mtime:", u_mtime);
+			            
+			            setInterval(function() {
+			                displayDateTime(u_mtime);
+			            }, 1000);
+			        },
+			        error: function(xhr, status, error) {
+			            // 에러 발생 시 처리
+			            console.error("mtimeloda 오류:", status, error);
+			        }
+			    });
+				
+				
 				
 			},
 			error :function(){
 				alert("통신실패");
 			}
 		
-		}) 
+		})
 		
-		/* if(data == null)
-		{
-			return;
-		} */
 		
+		
+ 	//setInterval(displayDateTime, 1000);
 			
-		let container = document.getElementById("p_c_container");
-		container.innerHTML = "";
-		// 밑 변수들 재관이형님 수정시에 지우세요!!!! 테스트용변수
+	let container = document.getElementById("p_c_container");
+	container.innerHTML = "";
 
 	});
 </script>
@@ -248,7 +287,7 @@
 	        .then(data => {
 	    		Swal.fire({
 	  			  width : 1000,
-	  			  html : data,
+	  			  html : data + '<button id="chatRequestBtn" class="m_p_btn">채팅요청</button>',
 	  			  padding: "3em",
 	  			  color: "#000",
 	  			  background: "#fff",
@@ -281,20 +320,27 @@
 	                  let bigswiper = document.getElementById("bigswiper");
 	                  bigswiper = "";
 
-
-	  				  // 좋아요 여부에 따라 하트 아이콘 변환 시키는 코드
-	  				  let heart = document.getElementById("heartIcon");
-	  				  if(true)
-	  				  {
-	  					  // 좋아요 비활성화
-	  					  heart.className = nullHeart;  
-	  				  }
-	  				  else
-	  				  {
-	  					  // 좋아요 활성화
-	  					  heart.className = pullHeart;
-	  				  }
-					
+	                  let heart = document.getElementById("heartIcon");
+	                  
+	                  $.ajax({
+	          			url: "likelistinquiry",
+	          			type: "post",
+	          			data: { lk_recid : opponentInfo[idx].a_u_id },
+	          			success: function(response) {
+	          				if(response=="1"){
+	          					// 좋아요 활성화
+	          					heart.className = pullHeart;
+	          				}else{       	  				  
+	          					// 좋아요 활성화
+	          					heart.className = nullHeart;
+	          				}   
+	          			},
+	          			error: function() {
+	          				console.log("좋아요목록 조회 오류");
+	          			}
+	          		});
+	  				
+					a_u_id = opponentInfo[idx].a_u_id
 	                  
 	          		  let swiper1 = document.getElementById("bigSlide");
 						console.log(swiper1)	          		
@@ -319,7 +365,6 @@
 		        	  bigswiper += '<div class="swiper-pagination"></div>'; 
 		        	  */
 			
-		        	  
 
 		        		const swiper2 = new Swiper('.swiper', {
 		        			// Optional parameters
@@ -337,16 +382,22 @@
 		        			}
 
 		        		});
+		        	  
+		        		// 채팅 요청 버튼 이벤트 핸들러 추가
+		                document.getElementById("chatRequestBtn").addEventListener("click", function() {
+		                	chatRequest(opponentInfo[idx].a_u_id);
+		                });
+		        	  
+		        	  
 	              }		
 	            }).then((result) => {
-	            		console.log(result);
-	            	})
+	            	
+	            })
 	        })
 	        .catch(error => {
 	            console.error('Error fetching the HTML file:', error);
 	        });
 	    
-
 	
 	}
 	
@@ -381,41 +432,119 @@
 	});
 	
 	
-	function toSendHeart()
-	{
-
-		let heart = document.getElementById("heartIcon");
+	function toSendHeart(a_u_id){
+		let idx = 0;
 		
-		if(heart.className == nullHeart)
+		for(let i = 0; i< opponentInfo.length; i++)
 		{
-			heart.className = pullHeart;	
-		}
-		else
-		{
-			heart.className = nullHeart;	
-		}
-		
-		
-		
-		
-	
-		
-		
-/*		$.ajax({
-			url:"요청경로",// 요청경로
-			type : "post",
-			dataType : "json",// 서버에서 반환받는 데이터 형식
-			success : function (data) {
-
-				
-			},
-			error :function(){
-				alert("통신실패");
+			if(opponentInfo[i].a_u_id == a_u_id)
+			{
+				idx = i;
+				break;
 			}
+		}
 		
-		})
-		*/
+		let heart = document.getElementById("heartIcon");
+		let matHeart = document.getElementById("matHeart"+idx);
+		console.log(matHeart);
+		if(heart.className == nullHeart){
+			$.ajax({
+      			url: "likelistinsert",
+      			type: "post",
+      			data: { lk_recid : a_u_id },
+      			success: function() {
+      					heart.className = pullHeart;
+      					matHeart.className = pullHeart;
+      			},
+      			error: function() {
+      				console.log("좋아요목록 등록 실패");
+      			}
+      		});
+		}else{
+			$.ajax({
+      			url: "liklistdelete",
+      			type: "post",
+      			data: { lk_recid : a_u_id },
+      			success: function(response) {
+      					heart.className = nullHeart;
+      					matHeart.className = nullHeart;
+      			},
+      			error: function() {
+      				console.log("좋아요목록 삭제 실패");
+      			}
+      		});
+		}
 	}
+	// 채팅 요청 함수
+	function chatRequest(userId) {
+	    $.ajax({
+			url: "member/call",
+			type: "post",
+			data: { c_recid : userId },
+			success: function(response) {
+				if(response=="1"){
+					Swal.fire({
+						title: '채팅 요청 완료',
+						text: '채팅 요청이 성공적으로 전송되었습니다.',
+						icon: 'success'
+					});
+				}else{
+					Swal.fire({
+						title: '이미 요청중입니다.',
+						text: '채팅 목록을 확인해주세요',
+						icon: 'error'
+					});
+				}
+			},
+			error: function() {
+				Swal.fire({
+					title: '오류',
+					text: '채팅 요청을 전송하는 동안 오류가 발생했습니다.',
+					icon: 'error'
+				});
+			}
+		});
+	}
+	
+	// 시간 및 날짜 표시 함수
+    function displayDateTime(u_mtime) {
+        let currentTimeElement = document.getElementById('time');
+        
+        let currentTime = new Date(); // 현재 시간 가져오기
+        timeDiff = u_mtime.getTime() + 3 * 60 * 60 * 1000 - currentTime.getTime(); // 3시간 뒤까지 남은 시간 계산
+        console.log(timeDiff);
+        let hoursLeft = Math.floor(timeDiff / (1000 * 60 * 60));
+        let minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+        let secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
+        
+        // 남은 시간을 "hh:mm:ss" 형식으로 표시
+        let timeLeftFormatted = (hoursLeft < 10 ? "0" : "") + hoursLeft + ":" + (minutesLeft < 10 ? "0" : "") + minutesLeft + ":" + (secondsLeft < 10 ? "0" : "") + secondsLeft;
+        if(timeDiff>=0){
+        	currentTimeElement.textContent = "남은시간 : "+timeLeftFormatted;
+        }else{
+        	currentTimeElement.textContent = "리셋버튼 사용가능";
+        }
+       	
+    }
+    
+    // 페이지 로드 시간 간격(1초)마다 시간 및 날짜 업데이트
+    //setInterval(displayDateTime, 1000);
+    
+    // Reset 함수 정의
+    function resetFunction() {
+        let currentTime = new Date();
+        let hours = currentTime.getHours();
+        
+        // 현재 시간이 3시인지 확인
+        if (timeDiff < 0) {
+            // Reset 동작 수행
+        	document.location.href = 'matreset'
+        } else {
+            alert('리셋 가능한 시간이 아닙니다.');
+        }
+    }
+    
+	
 </script>
 	
 

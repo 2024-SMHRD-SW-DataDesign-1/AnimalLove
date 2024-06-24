@@ -35,4 +35,8 @@ public interface ChatMapper {
 	
 	@Select("select count(*) from CHATLOG where cl_c_id=#{c_id} and cl_senid !=#{u_id} and cl_ruread=0")
 	public int noread(Map<String, String> data);
+	
+	@Select("select * from CHAT where (c_senid=#{c_senid} and c_recid=#{c_recid}) or (c_senid=#{c_recid} and c_recid=#{c_senid})")
+	public Chat chatinquiry(Chat chat);
+	
 }

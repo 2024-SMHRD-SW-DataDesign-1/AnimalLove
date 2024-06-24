@@ -1,5 +1,7 @@
 package com.smhrd.myapp.model;
 
+import java.sql.Timestamp;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +22,6 @@ public class MavenMember {
 	private String u_mid1;
 	private String u_mid2;
 	private String u_mid3;
-	
+	private Timestamp u_mtime;
 	
 }

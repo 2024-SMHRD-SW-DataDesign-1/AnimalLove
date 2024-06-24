@@ -11,7 +11,7 @@
 	   <!-- hikariConfig.setUsername("root") -->
  <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
          <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-         <property name="jdbcUrl" value="jdbc:mysql://project-db-cgi.smhrd.com:3307/campus_24SW_DD_p2_3?serverTimezone=UTC"/>
+         <property name="jdbcUrl" value="jdbc:mysql://project-db-cgi.smhrd.com:3307/campus_24SW_DD_p2_3?serverTimezone=Asia/Seoul"/>
          <property name="username" value="campus_24SW_DD_p2_3"/>
          <property name="password" value="smhrd3"/>
       </bean>     

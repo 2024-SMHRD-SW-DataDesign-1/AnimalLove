@@ -30,7 +30,7 @@
 	max-width: 800px;
 	margin: 0 auto;
 	box-sizing: border-box;
-	height: 60vh;
+	height: 70vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
