@@ -34,7 +34,7 @@
 
 #profil_body {
 	width: 800px;
-	height: 65vh;
+	height: 70vh;
 	display: flex;
 	align-content: space-between;
 	flex-direction: column;
