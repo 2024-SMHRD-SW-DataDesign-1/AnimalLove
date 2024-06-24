@@ -179,9 +179,9 @@
 	login.style = "border-bottom : 2px solid #3c40c6; border-radius: 2px; color : #3c40c6;";
 	
 	// 빈 하트
-	let nullHeart = "fa-2xl fa-regular fa-heart";
+	let nullHeart = "fa-2xl fa-regular fa-heart heartIcon";
 	// 꽉찬 하트
-	let pullHeart = "fa-2xl fa-solid fa-heart";
+	let pullHeart = "fa-2xl fa-solid fa-heart heartIcon";
 	
 	// 추천된 카드의 정보를 받아와서 담을 변수
 	let opponentInfo = null;
@@ -228,6 +228,7 @@
 	          			data: { lk_recid : opponentInfo[i].a_u_id },
 	          			success: function(response) {
           					let heartIcons = document.querySelectorAll(".heartIcon");
+          					console.log("리스트 개수 : " + heartIcons.length)
                        		let heartIcon = heartIcons[i];
 	          				if(response=="1"){
 	          					// 좋아요 활성화
@@ -445,7 +446,7 @@
 		
 		let heart = document.getElementById("heartIcon");
 		let matHeart = document.getElementById("matHeart"+idx);
-		console.log(matHeart);
+		
 		if(heart.className == nullHeart){
 			$.ajax({
       			url: "likelistinsert",
@@ -453,7 +454,7 @@
       			data: { lk_recid : a_u_id },
       			success: function() {
       					heart.className = pullHeart;
-      					matHeart.className = pullHeart + " heartIcon";
+      					matHeart.className = pullHeart;
       			},
       			error: function() {
       				console.log("좋아요목록 등록 실패");
@@ -466,7 +467,7 @@
       			data: { lk_recid : a_u_id },
       			success: function(response) {
       					heart.className = nullHeart;
-      					matHeart.className = nullHeart + " heartIcon";
+      					matHeart.className = nullHeart;
       			},
       			error: function() {
       				console.log("좋아요목록 삭제 실패");
