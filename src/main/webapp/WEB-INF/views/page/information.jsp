@@ -138,20 +138,13 @@
                         focusConfirm: false,
                         confirmButtonText: '확인',
                         cancelButtonText: '취소',
-                        width : 1000,
-                        
+                        width : 1000,     
                         didOpen: () => {
-
-                            // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
-                            
-
                             var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
                                 mapOption = {
                                     center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
                                     level: 3 // 지도의 확대 레벨
                                 };  
-
-
                             // 지도를 생성합니다    
                             var map = new kakao.maps.Map(mapContainer, mapOption); 
 
@@ -159,12 +152,10 @@
                         },
                     })
                     .then((result) => {
-                    	
                         if(result.isConfirmed)
                         {
                         	let input = document.getElementById("i_address");
                         	let value = document.getElementById("mapValue");
-                        	
                             input.value = value.value;
 							moveMap(value.value);
                         }
@@ -179,12 +170,9 @@
 		{
 			// string to wgs84
 		    let info = StoWGS84(str, map1);
-		   
 		    let moveLatLon = new kakao.maps.LatLng(33, 126.574942);
-		    // 지도 중심을 부드럽게 이동시킵니다
 		    // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
 		    map1.panTo(moveLatLon); 
-
 		}
     </script>
 </body>
