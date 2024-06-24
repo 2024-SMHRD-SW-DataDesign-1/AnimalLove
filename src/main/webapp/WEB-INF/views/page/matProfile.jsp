@@ -246,7 +246,6 @@
 			        success: function(response) {
 			            // 성공적으로 u_mtime 값을 받아왔을 때 처리
 			            let u_mtime = new Date(response); // Timestamp 값을 JavaScript Date 객체로 변환
-			            console.log("u_mtime:", u_mtime);
 			            
 			            setInterval(function() {
 			                displayDateTime(u_mtime);
@@ -454,7 +453,7 @@
       			data: { lk_recid : a_u_id },
       			success: function() {
       					heart.className = pullHeart;
-      					matHeart.className = pullHeart;
+      					matHeart.className = pullHeart + " heartIcon";
       			},
       			error: function() {
       				console.log("좋아요목록 등록 실패");
@@ -467,7 +466,7 @@
       			data: { lk_recid : a_u_id },
       			success: function(response) {
       					heart.className = nullHeart;
-      					matHeart.className = nullHeart;
+      					matHeart.className = nullHeart + " heartIcon";
       			},
       			error: function() {
       				console.log("좋아요목록 삭제 실패");
