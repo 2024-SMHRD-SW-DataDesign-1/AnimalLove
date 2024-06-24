@@ -106,16 +106,10 @@
 			});
 
 		})
-		
 
-		
-		
-		 function getData(result){
+		function getData(result){
 			array = result;
 		}
-		
-
-
 	</script>
 	<script>
 		function SendData(e)
@@ -183,6 +177,7 @@
 
 		function moveMap(str)
 		{
+			// string to wgs84
 		    let info = StoWGS84(str, map1);
 		   
 		    let moveLatLon = new kakao.maps.LatLng(33, 126.574942);
