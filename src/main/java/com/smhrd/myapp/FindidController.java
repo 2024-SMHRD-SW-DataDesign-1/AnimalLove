@@ -37,13 +37,13 @@ public class FindidController {
 //	}
 	
 	@RequestMapping(value="/finddbid", method=RequestMethod.GET)
-	public String recieveid(@RequestParam("code") String code,Model model) {
+	public String recieveid(@RequestParam("code") String code,HttpSession session) {
 		
 //    String code = request.getParameter("code");
 //    avenMemberDAO dao = new MavenMemberDAO();
 //    String id = dao.getId(code);
 //    response.sendRedirect("index.jsp?id=" + id);
-		model.addAttribute("id",service.getid(code));
+		session.setAttribute("id",service.getid(code));
 		return "redirect:/";
 		
 	}
