@@ -1,13 +1,17 @@
 package com.smhrd.myapp.mapper;
 
+import java.sql.Timestamp;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.smhrd.myapp.model.Animal;
+import com.smhrd.myapp.model.Likelist;
+import com.smhrd.myapp.model.MavenMember;
 @Mapper
 public interface AnimalMapper {
 	
@@ -35,6 +39,37 @@ public interface AnimalMapper {
 	public Animal prfload(String a_u_id);
 	
 	// 매칭
-	@Select("select * from ANIMAL where a_breed=#{a_prfbreed} and a_filterage=#{a_prfage} and a_filterweight = #{a_prfweight} ORDER BY RAND() LIMIT 3")
+	@Select("select * from ANIMAL where a_u_id != #{a_u_id} and a_gender !=#{a_gender} and a_breed=#{a_prfbreed} and a_filterage=#{a_prfage} and a_filterweight = #{a_prfweight} ORDER BY RAND() LIMIT 3")
 	public List<Animal> matching(Animal animal);
+	
+	// 좋아요리스트 조회
+	@Select("select * from LIKELIST where lk_senid = #{lk_senid} and lk_recid = #{lk_recid}")
+	public Likelist likelistinquiry(Likelist likelist);
+	
+	// 좋아요리스트 등록
+	@Insert("insert into LIKELIST (lk_senid,lk_recid) values (#{lk_senid},#{lk_recid})")
+	public int likelistinsert(Likelist likelist);
+
+	// 좋아요리스트 삭제
+	@Delete("delete from LIKELIST where lk_senid = #{lk_senid} and lk_recid = #{lk_recid}")
+	public int likelistdelete(Likelist likelist);
+	
+	// 저장된 매칭데이터 조회
+	@Select("select u_mid1, u_mid2, u_mid3 from USERS where u_id = #{u_id}")
+	public MavenMember matchingsave(String u_id);
+	
+	// 저장된 3개의 동물정보 가져오기
+	@Select("select * from ANIMAL where a_u_id in (#{u_mid1}, #{u_mid2}, #{u_mid3})")
+	public List<Animal> savedmatching(MavenMember save);
+	
+	// // 유저에 매칭됬던 사용자 아이디,시간 저장하기
+	@Update("update USERS SET u_mid1=#{u_mid1}, u_mid2=#{u_mid2}, u_mid3=#{u_mid3}, u_mtime=#{u_mtime} where u_id=#{u_id}")
+	public void midsave(MavenMember mid);
+	
+	// 유저에 저장됐던 시간 가져오기
+	@Select("select u_mtime from USERS where u_id = #{u_id}")
+	public Timestamp mtimeload(String u_id);
+	
+	@Update("update USERS set u_mid1=null, u_mid2=null, u_mid3=null, u_mtime=null where u_id=#{u_id}")
+	public void matreset(String u_id);
 }

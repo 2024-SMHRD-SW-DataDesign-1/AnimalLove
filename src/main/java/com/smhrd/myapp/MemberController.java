@@ -120,7 +120,7 @@ public class MemberController {
 		} catch (Exception e) {
 			throw new RuntimeException();
 		}
-		return "redirect:/index";
+		return "redirect:/";
 	}
 
 	// 로그아웃 요청 처리 : localhost:8089/aniting/logout

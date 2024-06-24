@@ -38,16 +38,21 @@ public class ChatController {
 	}
 
 	// 채팅요청
+	@ResponseBody
 	@RequestMapping(value = "/member/call", method = RequestMethod.POST)
-	public String call(@RequestParam("c_recid") String c_recid, HttpSession session) {
+	public String call(String c_recid, HttpSession session) {
 		MavenMember member = (MavenMember) session.getAttribute("member");
 		Chat chat = new Chat();
 		chat.setC_senid(member.getU_id());
 		chat.setC_recid(c_recid);
-//		System.out.println(chat.getC_senid());
-//		System.out.println(chat.getC_recid());
-		int res = service.chat(chat);
-		return "redirect:/index";
+		
+		int res = service.chatinquiry(chat);
+		if (res==1) {
+			return "0";
+		}else {
+			int result = service.chat(chat);
+			return "1";
+		}
 	}
 
 	// 채팅목록 출력
@@ -61,10 +66,10 @@ public class ChatController {
 	}
 
 	// 채팅 요청 수락
-	@RequestMapping(value = "/member/accept/{c_recid}", method = RequestMethod.GET)
-	public String chatlist(@PathVariable("c_recid") String c_recid) {
-		service.accept(c_recid);
-		return "redirect:/member/chatlist/" + c_recid;
+	@RequestMapping(value = "/accept/{c_id}", method = RequestMethod.GET)
+	public String chatlist(@PathVariable("c_id") String c_id) {
+		service.accept(c_id);
+		return "redirect:/";
 	}
 
 	// 로그 저장
@@ -110,17 +115,11 @@ public class ChatController {
 	@ResponseBody
 	@RequestMapping(value = "/noread", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
 	public String noread(String c_id,String u_id) throws JsonProcessingException {
-//		System.out.println(c_id);
-//		System.out.println(u_id);
 		Map<String, String> data = new HashMap<>();
 	    data.put("c_id", c_id);
 	    data.put("u_id", u_id);
 		
 		int nocount = service.noread(data);
-//		System.out.println(nocount);
-		
-//		ObjectMapper om = new ObjectMapper();
-//		String jsonString = om.writeValueAsString();
 		
 		return nocount+"";
 	}
