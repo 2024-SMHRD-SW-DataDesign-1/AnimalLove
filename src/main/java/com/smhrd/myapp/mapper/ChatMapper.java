@@ -21,8 +21,8 @@ public interface ChatMapper {
 	
 	public List<Chat> receivelist(String u_id);
 	
-	@Update("update CHAT set c_accept=1 where c_recid=#{c_recid}")
-	public int accept(String c_recid);
+	@Update("update CHAT set c_accept=1 where c_id=#{c_id}")
+	public int accept(String c_id);
 	
 	@Insert("insert into CHATLOG (cl_c_id,cl_senid,cl_log) value (#{cl_c_id},#{cl_senid},#{cl_log})")
 	public int saveLog(Log save);
@@ -35,4 +35,8 @@ public interface ChatMapper {
 	
 	@Select("select count(*) from CHATLOG where cl_c_id=#{c_id} and cl_senid !=#{u_id} and cl_ruread=0")
 	public int noread(Map<String, String> data);
+	
+	@Select("select * from CHAT where (c_senid=#{c_senid} and c_recid=#{c_recid}) or (c_senid=#{c_recid} and c_recid=#{c_senid})")
+	public Chat chatinquiry(Chat chat);
+	
 }

@@ -76,9 +76,6 @@
 			<input type="image" name="photo1" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
 			<input type="image"	name="photo2" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
 			<input type="image" name="photo3" class='profil_img' alt='빈사진' src="resources/img/nullPic.png" /> 
-			<input type="hidden" name="a_path1" class="imageSrc" value="">
-			<input type="hidden" name="a_path2" class="imageSrc" value=""> 
-			<input type="hidden" name="a_path3" class="imageSrc" value="">
 		</div>
 		<input class="btn" type="submit" value="프로필 등록">
 	</form>
@@ -101,51 +98,32 @@
 	//
 	const imageUpload = document.getElementById('photo');
 	let imgs = document.getElementsByClassName("profil_img");
-	let list = document.getElementsByClassName("imageSrc");
+	
 	
 	let imgIdx = 0;
 
 	imageUpload.addEventListener('change', function(event) {
-		const file = event.target.files[0];
+		const file = event.target.files;
 		
-		console.log(file);
-		if (imgIdx == 3) {
-			return;
-		}
-		if (file) {
-			const reader = new FileReader();
-			reader.onload = function(e) {
-				//imgs[i].src = "resources/img/" + file.name;
-				imgs[imgIdx].src = e.target.result;
-				list[imgIdx].value = file.name;
-				imgIdx++;
-				
-			};
-			reader.readAsDataURL(file);
-		}
-	});
-
-	function toSend() {
-		let dataList = {
-			a_path1 : imgs[0].value,
-			a_path2 : imgs[1].value,
-			a_path3 : imgs[2].value
-		}
- 		 $.ajax({
-			url : "animal_info/save",// 요청경로
-			type : "post",
-			data : dataList,
-			success : function(res) {
-
-			},
-			error : function(error) {
-
+		
+		for(let i = 0; i< file.length; i++)
+		{	
+			if (file[i]) {
+				const reader = new FileReader();
+				reader.onload = function(e) {
+					if (imgIdx == 3) {
+						imgIdx = 0;
+					}
+					imgs[imgIdx].src = e.target.result;
+					imgIdx++;				
+				};
+				reader.readAsDataURL(file[i]);
 			}
+		}
+		
+		
 
-		}) 
-
-	}
-	
+	});
 
 	// 헤더에 매칭 강조
 	let login = document.getElementById("h_mat");
