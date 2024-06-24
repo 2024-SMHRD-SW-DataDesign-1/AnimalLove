@@ -288,7 +288,6 @@
 	    		Swal.fire({
 	  			  width : 1000,
 	  			  html : data,
-	  			  padding: "3em",
 	  			  color: "#000",
 	  			  background: "#fff",
 	  			  backdrop: `
@@ -298,6 +297,11 @@
 	  			    no-repeat
 	  			  `,
 	              didOpen: () => {
+	            	  let box = document.getElementsByClassName("swal2-popup");
+	            	  let container = document.getElementsByClassName("swal2-html-container");
+	            	  box[0].style.padding = 0;
+	            	  container[0].style.padding = 0;
+	            	  console.log(box[0].style.padding)
 	                  // 텍스트 태그
 	                  let bigname = document.getElementById("big_name");
 	                  let biggender = document.getElementById("big_gender");
@@ -383,10 +387,10 @@
 
 		        		});
 		        	  
-		        		// 채팅 요청 버튼 이벤트 핸들러 추가
+/* 		        		// 채팅 요청 버튼 이벤트 핸들러 추가
 		                document.getElementById("chatRequestBtn").addEventListener("click", function() {
 		                	chatRequest(opponentInfo[idx].a_u_id);
-		                });
+		                }); */
 		        	  
 		        	  
 	              },
@@ -420,7 +424,7 @@
 	{
 		let img =
 			'<div class="swiper-slide">' +
-				'<img src="data:image/jpg;base64,'+ str +'" class="big_img" style="width :800px; height : 500px; ">' +
+				'<img src="data:image/jpg;base64,'+ str +'" class="big_img" style="width :500px; height : 500px; ">' +
 			'</div>';
 
 		tag.innerHTML += img;
