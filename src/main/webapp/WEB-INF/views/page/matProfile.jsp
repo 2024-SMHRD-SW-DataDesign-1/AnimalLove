@@ -287,7 +287,7 @@
 	        .then(data => {
 	    		Swal.fire({
 	  			  width : 1000,
-	  			  html : data + '<button id="chatRequestBtn" class="m_p_btn">채팅요청</button>',
+	  			  html : data,
 	  			  padding: "3em",
 	  			  color: "#000",
 	  			  background: "#fff",
@@ -312,9 +312,9 @@
 	                  
 	                  bigname.innerText = opponentInfo[idx].a_name;
 	                  biggender.innerText = opponentInfo[idx].a_gender;
-	                  bigage.innerText = opponentInfo[idx].a_age;
+	                  bigage.innerText = opponentInfo[idx].a_age + "살";
 	                  bigbreed.innerText = opponentInfo[idx].a_breed;
-	                  bigweight.innerText = opponentInfo[idx].a_weight;
+	                  bigweight.innerText = opponentInfo[idx].a_weight + "kg";
 	                  bigintro.innerText = opponentInfo[idx].a_intro;
 						
 	                  let bigswiper = document.getElementById("bigswiper");
@@ -389,7 +389,21 @@
 		                });
 		        	  
 		        	  
-	              }		
+	              },
+	              showCancelButton: true,
+	              cancelButtonText: "닫기",
+	              confirmButtonText: "채팅요청",
+	              showLoaderOnConfirm: true,
+	              preConfirm: async (login) => {
+	            	    try {
+	            	    	chatRequest(opponentInfo[idx].a_u_id);
+							
+							return false;
+	    
+	            	    } catch (error) {
+	            	    	
+	            	    }
+	            	  }
 	            }).then((result) => {
 	            	
 	            })
