@@ -54,8 +54,8 @@
 }
 
 #chatReady {
-	display: flex;
-	justify-content: space-between;
+	
+	
 	margin: 14px 16px;
 }
 
@@ -66,7 +66,7 @@
     border-radius: 3px;
     width: 64px;
     height: 20px;
-    margin-left: 8px;
+
 }
 
 .ch_r_btn:hover{
@@ -75,14 +75,21 @@
     cursor: pointer;
 }
 
-
+#btnContainer{
+	width :100%;
+	display : flex;
+	justify-content: space-around;
+	
+}
 </style>
 </head>
 <body>
 
 
 	<div id="chatReady">
-		<span class="ch_text">알림</span>
+
+	</div>
+	<div id="btnContainer">
 	</div>
 	<div id="chatModal">
 		
@@ -134,14 +141,20 @@ function load(chatList){
 					'<div>' + chat.c_recid + '님께 요청중입니다.</div>' +
 				'</div>'
 			);
+		
+
+		
 		} else if (chat.c_accept === 0 && chat.c_recid === userid) { // 조건 2: 내가 받은 요청
 			$('#chatReady').append(
 				'<div class="request-container">' +
 					'<div style="margin-bottom: 5px; margin-left: 5px;" >' + chat.c_senid + '님 온 요청</div>' +
+
+				'</div>'
+			);
+			$('#btnContainer').append(
 					'<a href="/aniting/accept/' + chat.c_id + '"><button class="ch_r_btn">수락</button></a>' +
 					'<button class="ch_r_btn">거부</button>' +
-					'<button class="ch_r_btn">정보확인</button>' +
-				'</div>'
+					'<button class="ch_r_btn">정보확인</button>'	
 			);
 		} else if (chat.c_accept === 1 && chat.c_senid === userid) { // 조건 3: 다른사람이 보낸 요청을 수락한 채팅방
 			$('#chatModal').append(
