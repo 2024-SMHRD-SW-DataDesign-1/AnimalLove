@@ -161,8 +161,8 @@ header>ul {
 #chatList_box {
 	display: none;
 	position: fixed;
-	left: 73.5%;
-	top: 54%;
+	left: 75%;
+	top: 57%;
 	border: 2px solid #3c40c6;
 	border-radius: 20px;
 	background-color:#fff;
