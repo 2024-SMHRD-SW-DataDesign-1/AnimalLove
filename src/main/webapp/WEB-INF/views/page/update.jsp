@@ -15,11 +15,14 @@
 <title>Update here</title>
 
 <style>
+
+
 * {
 	margin: 0px;
 	padding: 0px;
 	font-family: 'pretendard';
 }
+
 
 /*타이틀 폰트*/
 @font-face {
@@ -39,6 +42,7 @@
 	justify-content: space-around;
 	align-items: center;
 }
+
 
 /*네비게이션*/
 #m_nav {
@@ -168,9 +172,12 @@
 <!-- 헤더 -->
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
+	
 	<%
 	MavenMember member = (MavenMember) session.getAttribute("member");
 	%>
+	
+	
 	<div class="m_u_container">
 		<form action="member/update" method="POST" id="myinfo">
 
@@ -188,87 +195,90 @@
 			<h2 id="m_u_title">My Info</h2>
 			<br>
 			<div>
-			<p class="m_menu">아이디</p>
-			<p class="m_menu">
-				<input type="text" class="m_u_text" name="u_id"
-					value="<%=member.getU_id()%>" readonly>
-			</p>
+				<p class="m_menu">아이디</p>
+				<p class="m_menu">
+					<input type="text" class="m_u_text" name="u_id"
+						value="<%=member.getU_id()%>" readonly>
+				</p>
 
 
-			<p class="m_menu">비밀번호</p>
-			<p class="m_menu">
-				<input type="password" class="m_u_text" name="u_pw" maxlength="20"
-					minlength="6" id="pw1" oninput="pwCheck()" required>
-			</p>
+				<p class="m_menu">비밀번호</p>
+				<p class="m_menu">
+					<input type="password" class="m_u_text" name="u_pw" maxlength="20"
+						minlength="6" id="pw1" oninput="pwCheck()" required>
+				</p>
 
 
-			<p class="m_menu">비밀번호 확인</p>
-			<p class="m_menu">
-				<input type="password" class="m_u_text" name="u_pwcheck"
-					maxlength="20" minlength="6" id="pw2" oninput="pwCheck()" required><br>
-				<sapn id="pwCheck"> </span>
-			</p>
+				<p class="m_menu">비밀번호 확인</p>
+				<p class="m_menu">
+					<input type="password" class="m_u_text" name="u_pwcheck"
+						maxlength="20" minlength="6" id="pw2" oninput="pwCheck()" required><br>
+					<sapn id="pwCheck"> </span>
+				</p>
 
 
-			<p class="m_menu">이름</p>
-			<p class="m_menu">
-				<input type="text" class="m_u_text" name="u_name"
-					value="<%=member.getU_name()%>" readonly>
-			</p>
+				<p class="m_menu">이름</p>
+				<p class="m_menu">
+					<input type="text" class="m_u_text" name="u_name"
+						value="<%=member.getU_name()%>" readonly>
+				</p>
 
-			<p class="m_menu">닉네임</p>
-			<p class="m_menu">
-				<input type="text" class="m_u_text" name="u_nickname"
-					value="<%=member.getU_nickname()%>" id="u_nickname" required>
-				<button class="m_u_btn" id="nickChk" onclick="fn_nickChk();"
-					value="N">중복확인</button>
-			</p>
+				<p class="m_menu">닉네임</p>
+				<p class="m_menu">
+					<input type="text" class="m_u_text" name="u_nickname"
+						value="<%=member.getU_nickname()%>" id="u_nickname" required>
+					<button class="m_u_btn" id="nickChk" onclick="fn_nickChk();"
+						value="N">중복확인</button>
+				</p>
 
-
-			<p class="m_menu">이메일</p>
-			<p class="m_menu">
-				<input type="email" id="u_email" class="m_u_text"
-					placeholder="animal@aniting.com" value="<%=member.getU_email()%>"
-					name="u_email" required>
-				<button class="m_u_btn" id="emailChk" onclick="fn_emailChk();"
-					value="N">중복확인</button>
-			</p>
-
-
-			<!-- 주소, 상세주소 분리 로직 -->
-			<%
-			String address = member.getU_address();
-			String[] parts = address.split(",");
-
-			String part1 = parts[0]; // , 기준 앞 주소, 주소
-			String part2 = parts[1]; // , 기준 뒤 주소, 상세주소
-			%>
+	
+				<p class="m_menu">이메일</p>
+				<p class="m_menu">
+					<input type="email" id="u_email" class="m_u_text"
+						placeholder="animal@aniting.com" value="<%=member.getU_email()%>"
+						name="u_email" required>
+					<button class="m_u_btn" id="emailChk" onclick="fn_emailChk();"
+						value="N">중복확인</button>
+				</p>
 
 
-			<p class="m_menu">주소</p>
-			<p class="m_menu">
-				<input type="text" class="m_u_text" name="u_address"
-					value="<%=parts[0]%>" id="u_address"> <input type="button"
-					value="찾기" class="m_u_btn" id="openModal">
-			</p>
+				<!-- 주소, 상세주소 분리 로직 -->
+				<%
+				String address = member.getU_address();
+				String[] parts = address.split(",");
+	
+				String part1 = parts[0]; // , 기준 앞 주소, 주소
+				String part2 = parts[1]; // , 기준 뒤 주소, 상세주소
+				%>
+	
+	
+				<p class="m_menu">주소</p>
+				<p class="m_menu">
+					<input type="text" class="m_u_text" name="u_address"
+						value="<%=parts[0]%>" id="u_address"> <input type="button"
+						value="찾기" class="m_u_btn" id="openModal">
+				</p>
 
-
-			<p class="m_menu">상세주소</p>
-			<p class="m_menu">
-				<input type="text" class="m_u_text" name="u_address"
-					value="<%=parts[1]%>">
-			</p>
-
-			<input type="submit" value="수정 완료" class="m_import_btn">
+	
+				<p class="m_menu">상세주소</p>
+				<p class="m_menu">
+					<input type="text" class="m_u_text" name="u_address"
+						value="<%=parts[1]%>">
+				</p>
 			
+				<input type="submit" value="수정 완료" class="m_import_btn">
+			</div>
 		</form>
 	</div>
 
 
 
 </body>
+
+
 <!-- 푸터 -->
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
 
 <!-- 모달 스크립트 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

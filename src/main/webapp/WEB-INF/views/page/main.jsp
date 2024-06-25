@@ -12,6 +12,7 @@
 
 <style>
 
+
 /*배너 스타일*/
 .swiper {
 	max-width: 1000px;
@@ -35,6 +36,7 @@
 	height: 600px;
 	width: 1000px;
 }
+
 
 /*서비스 소개 스타일*/
 .m_service .m_container {
@@ -75,6 +77,7 @@
 	font-size: 15px;
 }
 
+
 /*인트로 스타일*/
 .m_intro {
 	display: flex;
@@ -102,11 +105,14 @@
 	height: 150px;
 	margin-bottom: 30px;
 }
+
+
 </style>
 
 
 </head>
 <body>
+
 
 <!-- 헤더 -->
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
@@ -135,6 +141,7 @@
 
 		</div>
 	</section>
+
 
 	<!-- 서비스 소개 영역 -->
 	<section class="m_service">
@@ -173,6 +180,8 @@
 
 	</section>
 	
+	
+	<!-- ID찾기 했을 시 뜨는 알림창 -->
 	<% String id = (String)session.getAttribute("id");%>
 	<%if(id!=null){ %>
 	<script>
@@ -182,10 +191,12 @@
     </script>
 	<%} %>
 
+
 <!-- 푸터 -->
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 </body>
+
 
 <!-- 배너 슬라이드 스크립트 -->
 <script>

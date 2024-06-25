@@ -18,6 +18,8 @@
 
 
 <style>
+
+
 * {
 	margin: 0px;
 	padding: 0px;
@@ -124,10 +126,14 @@
 	outline-width: 1px;
 	background-color: #fff;
 }
+
+
 </style>
 
 </head>
 <body>
+
+
 <!-- 헤더 -->
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
