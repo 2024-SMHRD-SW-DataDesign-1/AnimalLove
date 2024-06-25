@@ -39,7 +39,7 @@ public interface AnimalMapper {
 	public Animal prfload(String a_u_id);
 	
 	// 매칭
-	@Select("select * from ANIMAL where a_u_id != #{a_u_id} and a_gender !=#{a_gender} and a_breed=#{a_prfbreed} and a_filterage=#{a_prfage} and a_filterweight = #{a_prfweight} ORDER BY RAND() LIMIT 3")
+	@Select("SELECT * FROM (select * from ANIMAL where a_u_id != #{a_u_id} and a_gender !=#{a_gender} and a_breed=#{a_prfbreed} and a_filterage=#{a_prfage} and a_filterweight = #{a_prfweight} ORDER BY RAND() LIMIT 3) AS temp_table ORDER BY a_regdate ASC")
 	public List<Animal> matching(Animal animal);
 	
 	// 좋아요리스트 조회
