@@ -45,8 +45,10 @@
 		letter-spacing: 0.1em;
 	}
 	
-	.i_text {
-		width: 250px;
+
+	
+	#i_address{
+		width: 80%;
 		height: 36px;
 		font-size: 15px;
 		border: 0;
