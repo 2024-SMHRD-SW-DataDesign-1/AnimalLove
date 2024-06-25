@@ -10,6 +10,7 @@
 <title>Login here</title>
 <style>
 
+
 * {
 
 	padding: 0px;
@@ -24,6 +25,7 @@
 	font-weight: normal;
 	font-style: normal;
 }
+
 
 /* 타이틀 */
 .l_container {
@@ -50,6 +52,7 @@
 	font-size: 15px;
 	padding: 14px;
 }
+
 
 /* ID, PW */
 input[type="text"], input[type="password"] {
@@ -113,6 +116,7 @@ input[placeholder="ID"], input[placeholder="PW"] {
 
 <body>
 
+
 <!-- 헤더 -->
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
@@ -141,7 +145,9 @@ input[placeholder="ID"], input[placeholder="PW"] {
 <!-- 푸터 -->
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />	
     
+    
 </body>
+
 
 <!-- 헤더에 로그인 강조 -->
     <script type="text/javascript">
@@ -150,5 +156,6 @@ input[placeholder="ID"], input[placeholder="PW"] {
         login.style = "border-bottom : 2px solid #3c40c6; border-radius: 2px; color : #3c40c6;";
        
     </script>
+    
     
 </html>

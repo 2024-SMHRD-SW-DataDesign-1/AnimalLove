@@ -42,7 +42,7 @@
 	font-style: normal;
 }
 
-
+/* ID찾기 타이틀 */
 #id_title {
 	font-family: 'Cafe24Meongi-W-v1.0';
 	color: #333333;
@@ -56,7 +56,8 @@
 	padding: 14px;
 }
 
-/* ID, PW */
+
+/* ID, PW 입력란 */
 input[type="text"], input[type="email"] {
 	width: 220px;
 	height: 36px;
@@ -73,6 +74,13 @@ input[placeholder="이름"], input[placeholder="이메일"] {
 	font-family: 'pretendard';
 }
 
+
+/* 버튼 속성 */
+.id_btn_container {
+	display: flex;
+	justify-content: space-around;
+}
+
 .id_btn {
 	width: 100px;
 	height: 36px;
@@ -82,11 +90,6 @@ input[placeholder="이름"], input[placeholder="이메일"] {
 	border-radius: 17px;
 	background-color: #3c40c6;
 	margin-bottom: 14px;
-}
-
-.id_btn_container {
-	display: flex;
-	justify-content: space-around;
 }
 
 .id_btn:active {
@@ -102,16 +105,20 @@ input[placeholder="이름"], input[placeholder="이메일"] {
 	background-color: #fff;
 }
 
+
 </style>
 
 <!-- 모달 스크립트 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+
+<!-- 헤더 -->
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 </head>
 
 <body>
+
 
 <div class="id_container">
 	
@@ -127,13 +134,12 @@ input[placeholder="이름"], input[placeholder="이메일"] {
 				<input type="submit" value="id찾기" class="id_btn">
 			</div>
 
-
 		</form>
 
 	</div>
 
 	
-
+<!-- 모달 알림창 스크립트 -->
 <script>
 	function showmodal(dic){
 		Swal.fire(
@@ -143,11 +149,11 @@ input[placeholder="이름"], input[placeholder="이메일"] {
 
 
 	<% if (message != null) { %>
-    	<% if ("success".equals(message)) { %>
+    	<% if ("success".equals(message)) { %>   //전송완료
         showmodal({title: "전송 완료! 😄",
         	text: "메일함을 확인해주세요.",
         			icon: "success"   });
-    <% } else if ("fail".equals(message)) { %>
+    <% } else if ("fail".equals(message)) { %>   //전송실패
            showmodal({title: "전송 실패 😥",
    			text: "이름과 이메일을 다시 확인해주세요.",
    			icon: "error"   });
@@ -155,8 +161,12 @@ input[placeholder="이름"], input[placeholder="이메일"] {
 		<% } %>
 
 </script>
+
+
 </body>
 
+
+<!-- 푸터 -->
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 </html>
