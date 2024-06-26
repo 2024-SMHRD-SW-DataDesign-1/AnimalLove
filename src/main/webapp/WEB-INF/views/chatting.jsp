@@ -157,9 +157,6 @@
 		var chatId = "${c_id}";
 		var userIdFromJSP = "<%= member.getU_id() %>";
 		
-		console.log(chatId);
-		console.log(userIdFromJSP);
-
 		$(document).ready(function(){
 			readLog();
 		});
@@ -170,8 +167,8 @@
 		webSocket.onerror = function(e) {
 			onError(e);
 		};
+		
 		webSocket.onopen = function(e) {
-			console.log("WebSocket 연결이 열렸습니다.");
 			 $.ajax({
 				type: "POST",
 				url: "/aniting/chat/ruread",
@@ -184,6 +181,7 @@
 				}
 			}); 
 		};
+		
 		webSocket.onmessage = function(e) {
 			onMessage(e);
 		};

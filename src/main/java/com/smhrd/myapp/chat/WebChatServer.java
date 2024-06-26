@@ -32,29 +32,23 @@ import com.smhrd.myapp.model.MavenMember;
 
 @ServerEndpoint(value = "/chat/{chatId}", configurator = WebSocketFilter.WebSocketConfigurator.class)
 public class WebChatServer extends HttpServlet {
-	// 스레드 안정성을 위해 사용하는 함수
+	// 유저정보와 채팅방 정보로를 담아줄 해쉬맵 객체 생성
 	private static Map<Session,String> users = Collections.synchronizedMap(new HashMap<Session, String>());
 	private static Map<Session, String> sessionChatIdMap = Collections.synchronizedMap(new HashMap<>());
 	
-	// 클라이언트가 웹 소켓 서버에 연결될 때 호출됩니다.
+	// 클라이언트가 웹 소켓 서버에 연결될 때 호출
 	@OnOpen
 	public void onOpen(Session session, @PathParam("chatId") String chatId) throws IOException{
 
 		HttpSession httpSession = (HttpSession) session.getUserProperties().get("httpSession");
 		MavenMember member = (MavenMember) httpSession.getAttribute("member");
 		String userId = member.getU_id();
-		
-//		System.out.println(chatId);
-		
+		// 유저아이디와 채팅방아이디를 생생해둔 해쉬맵 객체에 담아줌
 		users.put(session, userId);
 		sessionChatIdMap.put(session, chatId);
-		//sendNotice(chatId,userId+"이 입장하셨습니다.");
-		
-		
-		
 	}
 	
-	// 클라이언트로부터 메시지를 수신할떄
+	// 클라이언트로부터 메시지를 수신할떄 호출
 	@OnMessage
 	public void onMsg(String message, Session session) throws IOException{
 		String userName = users.get(session);
@@ -73,22 +67,18 @@ public class WebChatServer extends HttpServlet {
 	            if (!currentSession.equals(session)) {
 	            	if (sessionChatId != null && sessionChatId.equals(chatId)) {
 	            		currentSession.getBasicRemote().sendText(jsonMessage);
-	            		
 	            	}
 	            }
 	        }
 		}
-		
 	}
 
-	// 클라이언트와의 연결이 종료될 때 호출됩니다.
+	// 클라이언트와의 연결이 종료될 때 호출
 	@OnClose
 	public void onClose(Session session) throws IOException{
-		String userName = users.get(session);
-		String chatId = sessionChatIdMap.get(session);
+		// 해쉬맵 객체에서 유저아이디와 채팅방아이디 삭제
 		users.remove(session);
 		sessionChatIdMap.remove(session);
-		//sendNotice(chatId, userName + "님이 퇴장하셨습니다. 현재 사용자 " + users.size() + "명");
 	}
 	
 	public void sendNotice(String chatId, String message) throws IOException{

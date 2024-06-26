@@ -75,17 +75,15 @@ public class ChatController {
 	// 로그 저장
 	@RequestMapping(value = "/chat/send", method = RequestMethod.POST, consumes = "application/json;")
 	public @ResponseBody void saveLog(@RequestBody String cl_log) throws JsonMappingException, JsonProcessingException {
+		// String 타입 Json 형태에서 Value 값 Log VO에 저장
 		ObjectMapper mapper = new ObjectMapper();
 		Log log = mapper.readValue(cl_log, Log.class);
-
-		int res = service.saveLog(log);
-		System.out.println(res);
+		service.saveLog(log);
 	}
 
 	// 로그 가져오기
 	@RequestMapping(value = "/chat/roadLog", method = RequestMethod.POST, consumes = "application/json;", produces = "application/text; charset=UTF-8")
-	public @ResponseBody String loadLog(@RequestBody String cl_c_id)
-			throws JsonMappingException, JsonProcessingException {
+	public @ResponseBody String loadLog(@RequestBody String cl_c_id) throws JsonMappingException, JsonProcessingException {
 		ObjectMapper mapper = new ObjectMapper();
 		Log log = mapper.readValue(cl_c_id, Log.class);
 
@@ -101,8 +99,6 @@ public class ChatController {
 	@ResponseBody
 	@RequestMapping(value = "/chat/ruread", method = RequestMethod.POST)
 	public String ruread(Chat chat) {
-		System.out.println(chat.getC_id() + chat.getC_senid());
-
 		int res = service.ruread(chat);
 		if (res > 0) {
 			return "success";
