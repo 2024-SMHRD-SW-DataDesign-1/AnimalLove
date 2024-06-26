@@ -45,8 +45,10 @@
 		letter-spacing: 0.1em;
 	}
 	
-	.i_text {
-		width: 250px;
+
+	
+	#i_address{
+		width: 80%;
 		height: 36px;
 		font-size: 15px;
 		border: 0;
@@ -59,7 +61,10 @@
 </style>
 </head>
 <body>
+
+<!-- 헤더 -->
 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
+	
 	
 	<div id=info_inner>
 		<div>
@@ -76,6 +81,8 @@
 			</div>
 		</div>
 	</div>
+	
+	
 	<script type="text/javascript" src="resources/js/kakao.js"></script>
 
 	<script type="text/javascript">
@@ -86,15 +93,18 @@
 	            level: 8 // 지도의 확대 레벨
 	        };  
 	
-	
 	    // 지도를 생성합니다    
 	    var map1 = new kakao.maps.Map(mapContainer, mapOption); 		 	
 	    
 		//map1.setLevel(7);
 		setMap(map1);
 	</script>
+	
+	
 	<script type="text/javascript" src="resources/js/ajaxInfo.js"></script>
 	<script type="text/javascript" src="resources/js/addresCalc.js"></script>
+	
+	
 	<script type="text/javascript">
 		
 		$(document).ready(function(){
@@ -110,8 +120,13 @@
 		function getData(result){
 			array = result;
 		}
+		
+		
 	</script>
+	
+	
 	<script>
+	
 		function SendData(e)
 		{
 			if(e.keyCode ==13)
@@ -119,10 +134,7 @@
 				search();
 			}
 		}
-	</script>
 
-
-	<script>
 	
 		let diction = { test : 10};
 		
@@ -174,8 +186,15 @@
 		    // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
 		    map1.panTo(moveLatLon); 
 		}
+		
+		
     </script>
+    
+    
 </body>
+
+
+<!-- 헤더 네비게이션 스크립트 -->
 <script>
 
 	//헤더에 위치 강조
@@ -183,5 +202,8 @@
 	login.style = "border-bottom : 2px solid #3c40c6; border-radius: 2px; color : #3c40c6;";
 
 </script>
+
+<!-- 푸터 -->
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+
 </html>
