@@ -1,9 +1,8 @@
-/**
- * 
- */
+
  
- let data = null;
+let data = null;
 // 
+
 function loadList() {
     return new Promise((resolve, reject) => {
         $.ajax({

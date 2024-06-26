@@ -29,21 +29,19 @@
 		<!--<c:import url="../map/map.jsp"></c:import>-->
 	</div>
 	
-		<script type="text/javascript">
-	// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
-    
+	<script type="text/javascript">
+		// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
+	    var mapContainer = document.getElementById('map'); // 지도를 표시할 div 
+	    var mapOption = {
+	            center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+	            level: 3 // 지도의 확대 레벨
+	        };  
 	
-    var mapContainer = document.getElementById('map'); // 지도를 표시할 div 
-    var mapOption = {
-            center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-            level: 3 // 지도의 확대 레벨
-        };  
-
-
-    // 지도를 생성합니다    
-    var map = new kakao.maps.Map(mapContainer, mapOption); 
-
-    //setMap(map);
+	
+	    // 지도를 생성합니다    
+	    var map = new kakao.maps.Map(mapContainer, mapOption); 
+	
+	    //setMap(map);
 	</script>
 </body>
 </html>
