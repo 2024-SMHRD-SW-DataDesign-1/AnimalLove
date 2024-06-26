@@ -21,7 +21,6 @@ let ps = new kakao.maps.services.Places();
 // 키워드로 장소를 검색합니다
 function search()
 {
-    
     let value = document.getElementById("mapValue").value;
     if(value==="")
     {
@@ -143,165 +142,160 @@ function checkMarker(x, y)
 		});
 	}
 
-    // 검색 결과 목록과 마커를 표출하는 함수입니다
-    function displayPlaces(idx,places) {
-
-        let listEl = document.getElementById('placesList'), 
+// 검색 결과 목록과 마커를 표출하는 함수입니다
+function displayPlaces(idx,places) {
+    let listEl = document.getElementById('placesList'), 
         menuEl = document.getElementById('menu_wrap'),
         fragment = document.createDocumentFragment(), 
         bounds = new kakao.maps.LatLngBounds(), 
         listStr = '';
 
 		
-        // 마커를 생성하고 지도에 표시합니다
-        let placePosition = new kakao.maps.LatLng(places.y, places.x),
-            marker = displayMarker(places);
-            itemEl = getListItem(idx, places); // 검색 결과 항목 Element를 생성합니다
-            // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-            // LatLngBounds 객체에 좌표를 추가합니다
-            bounds.extend(placePosition);
+    // 마커를 생성하고 지도에 표시합니다
+     let placePosition = new kakao.maps.LatLng(places.y, places.x),
+        marker = displayMarker(places);
+        itemEl = getListItem(idx, places); // 검색 결과 항목 Element를 생성합니다
+        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+        // LatLngBounds 객체에 좌표를 추가합니다
+        bounds.extend(placePosition);
 
-            // 마커와 검색결과 항목에 mouseover 했을때
-            // 해당 장소에 인포윈도우에 장소명을 표시합니다
-            // mouseout 했을 때는 인포윈도우를 닫습니다
-            (function(marker, title) {
+        // 마커와 검색결과 항목에 mouseover 했을때
+        // 해당 장소에 인포윈도우에 장소명을 표시합니다
+        // mouseout 했을 때는 인포윈도우를 닫습니다
+        (function(marker, title) {
 
-                itemEl.onmouseover =  function () {
-                    displayInfowindow(marker, title);
-                };
+            itemEl.onmouseover =  function () {
+                displayInfowindow(marker, title);
+            };
 
-                itemEl.onmouseout =  function () {
-                    infowindow.close();
-                };
+            itemEl.onmouseout =  function () {
+                infowindow.close();
+            }; 
+        })(marker, places.place_name);
 
- 
-				//change_btn(event); 
-            })(marker, places.place_name);
-
-            fragment.appendChild(itemEl);
+        fragment.appendChild(itemEl);
         
 
-        // 검색결과 항목들을 검색결과 목록 Element에 추가합니다
-        listEl.appendChild(fragment);
-        menuEl.scrollTop = 0;
+    // 검색결과 항목들을 검색결과 목록 Element에 추가합니다
+    listEl.appendChild(fragment);
+    menuEl.scrollTop = 0;
 
-        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-        map.setBounds(bounds);
+    // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+    map.setBounds(bounds);
 
-        setListEvent();
+    setListEvent();
+ 	}
+
+function removeAllChildNods(el) {   
+    while (el.hasChildNodes()) {
+        el.removeChild (el.lastChild);
     }
+}
 
-    function removeAllChildNods(el) {   
-        while (el.hasChildNodes()) {
-            el.removeChild (el.lastChild);
+function removeMarker() {
+    for ( let i = 0; i < markers.length; i++ ) {
+        markers[i].setMap(null);
+    }   
+    markers = [];
+}
+
+function addMarker(position, idx, title) {
+
+    let imageSrc = 'resources/img/animalmarker.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+        imageSize = new kakao.maps.Size(36, 37),  // 마커 이미지의 크기
+        imgOptions =  {
+            spriteSize : new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
+            spriteOrigin : new kakao.maps.Point(0, (idx*46)+10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+            offset: new kakao.maps.Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
         }
+    let markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions);	
+
+    
+    let marker = new kakao.maps.Marker({
+		position: position, 
+		image: markerImage // 마커이미지 설정 
+	});    
+	
+    marker.setMap(map); // 지도 위에 마커를 표출합니다
+    markers.push(marker);  // 배열에 생성된 마커를 추가합니다
+
+    return marker;
+}
+    
+function change_btn(e) {
+	
+	let btns = document.querySelectorAll(".info");
+	
+	let input = document.getElementById("mapValue");
+  	btns.forEach(function (btn, i) {
+  		
+	    if (e.currentTarget == btn) {
+	      
+	      btn.className += " select";
+	      input.value = btn.children[1].innerText;
+	      
+	    } else {
+	      btn.classList.remove("select");
+	    }
+  	});
+  	
+}
+
+function getListItem(index, places) {
+			
+    let el = document.createElement('li'),
+    itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
+                '<div class="info" onclick="change_btn(event)">' +
+                '   <h5>' + places.place_name + '</h5>';
+
+    if (places.road_address_name) {
+        itemStr += '    <span>' + places.road_address_name + '</span>' +
+                    '   <span class="jibun gray">' +  places.address_name  + '</span>';
+    } else {
+        itemStr += '    <span>' +  places.address_name  + '</span>'; 
     }
+                 
+      itemStr += '  <span class="tel">' + places.phone  + '</span>' +
+                '</div>';           
 
-    function removeMarker() {
-        for ( let i = 0; i < markers.length; i++ ) {
-            markers[i].setMap(null);
-        }   
-        markers = [];
-    }
+    el.innerHTML = itemStr;
+    el.className = 'item';
 
-    function addMarker(position, idx, title) {
+    return el;
+}
+
+function displayInfowindow(marker, title) {
+    let content = '<div style="z-index:1; width:200px; height: 50px; text-align: center; align-content:center; word-break:break-all;">' + title + '</div>';
+
+    infowindow.setContent(content);
+    infowindow.open(map, marker);
+}
+
+function setListEvent(){
+    // 클릭했을때 주소값 저장
+    let divList = document.querySelectorAll(".info");
     
-        let imageSrc = 'resources/img/animalmarker.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
-            imageSize = new kakao.maps.Size(36, 37),  // 마커 이미지의 크기
-            imgOptions =  {
-                spriteSize : new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
-                spriteOrigin : new kakao.maps.Point(0, (idx*46)+10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
-                offset: new kakao.maps.Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
-            }
-        let markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions);	
-
-        
-        let marker = new kakao.maps.Marker({
-    		position: position, 
-    		image: markerImage // 마커이미지 설정 
-		});    
-    	
-        marker.setMap(map); // 지도 위에 마커를 표출합니다
-        markers.push(marker);  // 배열에 생성된 마커를 추가합니다
+    let idx = divList.length;
     
-        return marker;
-    }
-    
-	function change_btn(e) {
-		
-		let btns = document.querySelectorAll(".info");
-		
-		let input = document.getElementById("mapValue");
-	  	btns.forEach(function (btn, i) {
-	  		
-		    if (e.currentTarget == btn) {
-		      
-		      btn.className += " select";
-		      input.value = btn.children[1].innerText;
-		      
-		    } else {
-		      btn.classList.remove("select");
-		    }
-	  	});
-	  	
-	}
-
-    function getListItem(index, places) {
-				
-        let el = document.createElement('li'),
-        itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
-                    '<div class="info" onclick="change_btn(event)">' +
-                    '   <h5>' + places.place_name + '</h5>';
-    
-        if (places.road_address_name) {
-            itemStr += '    <span>' + places.road_address_name + '</span>' +
-                        '   <span class="jibun gray">' +  places.address_name  + '</span>';
-        } else {
-            itemStr += '    <span>' +  places.address_name  + '</span>'; 
-        }
-                     
-          itemStr += '  <span class="tel">' + places.phone  + '</span>' +
-                    '</div>';           
-    
-        el.innerHTML = itemStr;
-        el.className = 'item';
-    
-        return el;
-    }
-
-    function displayInfowindow(marker, title) {
-        let content = '<div style="z-index:1; width:200px; height: 50px; text-align: center; align-content:center; word-break:break-all;">' + title + '</div>';
-    
-        infowindow.setContent(content);
-        infowindow.open(map, marker);
-    }
-
-    function setListEvent(){
-        // 클릭했을때 주소값 저장
-        let divList = document.querySelectorAll(".info");
-        
-        let idx = divList.length;
-        
-        if(idx <= 0)
-        {
-            return;   
-        }
-
-        for(let i = 0; i< idx; i++)
-        {
-            divList[i].addEventListener("click", function(){
-
-                let list = divList[i].children;
-                
-                curAdress = list[1].innerText;
-                
-            })
-        }
-        
-    }
-
-    function getValue()
+    if(idx <= 0)
     {
-
-        return curAdress;
+        return;   
     }
+
+    for(let i = 0; i< idx; i++)
+    {
+        divList[i].addEventListener("click", function(){
+
+            let list = divList[i].children;
+            
+            curAdress = list[1].innerText;
+            
+        })
+    }
+    
+}
+
+function getValue()
+{
+    return curAdress;
+}
