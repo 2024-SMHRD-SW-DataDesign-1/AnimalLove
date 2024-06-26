@@ -101,8 +101,6 @@ public class MemberController {
 		MavenMember member2 = (MavenMember) session.getAttribute("member");
 		int nickChkResult = service.nickChk(member.getU_nickname());
 		int emailChkResult = service.emailChk(member.getU_email());
-		System.out.println(member.getU_email());
-		System.out.println(member2.getU_email());
 		try {
 			// (성공)
 			if ((emailChkResult == 0 || member.getU_email().equals(member2.getU_email()))
