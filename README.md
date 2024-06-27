@@ -164,7 +164,8 @@
 ***
 
 ## 🚨트러블슈팅
-<p>1번 문제 </p>
+<p>💘1번 문제 </p>
+
 ![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/62660a90-45c0-4322-8b9a-03aafc44d6d0)
 <p>: 세션을 가져와 중복확인 조건 사용 시 기존 정보를 사용하지 못하는 오류 발생</p>
 
@@ -173,7 +174,7 @@
 
 ***
 
-<p>2번 문제</p>
+<p>💘2번 문제</p>
 
 ![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/f604566c-6d24-471b-9b2a-68b8132421ce)
 <p>: 채팅이 들어왔을 때 알림이 실시간으로 갱신이 되지 않는 오류 </p>
