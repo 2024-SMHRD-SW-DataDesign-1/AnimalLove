@@ -118,11 +118,20 @@
 
 ## 🎈화면 구성
 ### 🖱메인
+![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/00147afd-afb3-43d4-95a9-b9959f470bb3)
 ### 🖱회원가입
+![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/df14218d-317e-4caf-801b-d7c74e9f25e5)
 ### 🖱로그인
+![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/55652598-71a8-4344-b508-5a77a7763896)
 ### 🖱매칭
+- 프로필 약식
+![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/b31b998e-8990-49b0-af68-2da929be5b49)
+- 프로필 상세
+![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/392f26a7-642e-44e4-a089-6a9ebb734302)
 ### 🖱채팅
+![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/f7c6851b-7f72-421a-9020-5610bff1de32)
 ### 🖱마이페이지
+![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/a3d3ef9c-602a-4126-8db8-cc25906e9c5b)
 
 
 
@@ -144,6 +153,8 @@
 
 ![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/79236ae0-9dcf-45ef-bff2-23ea250ce6b4)
 <p>: ChkResult 조건을 로그인 세션에서 가져온 정보와 같을 때도 정보 수정이 가능하도록 조건을 변경하여 해결</p>
+
+***
 
 <p>2번 문제</p>
 
