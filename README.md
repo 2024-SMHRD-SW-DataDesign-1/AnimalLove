@@ -144,7 +144,7 @@
 ![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/79236ae0-9dcf-45ef-bff2-23ea250ce6b4)
 <p>: ChkResult 조건을 로그인 세션에서 가져온 정보와 같을 때도 정보 수정이 가능하도록 조건을 변경하여 해결</p>
 
-<p2번 문제
+<p>2번 문제</p>
 ![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/f604566c-6d24-471b-9b2a-68b8132421ce)
 <p>: 채팅이 들어왔을 때 알림이 실시간으로 갱신이 되지 않는 오류 </p>
 
