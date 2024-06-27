@@ -41,6 +41,4 @@
 
 <span style="color:#fff5b1"> 5. 교배 업체 정보 제공</span>    
 
-<mark>강조할 텍tmtmtmtm</mark>
-<div style="background-color:purple">보라 글씨</div> 
 
