@@ -42,3 +42,60 @@
 <span style="color:#fff5b1"> 5. 교배 업체 정보 제공</span>    
 
 
+## 🔨기술스택
+<table>
+  <tr>
+    <th>구분</th>
+    <th>내용</th>
+  </tr>
+  <tr>
+    <td>Front-End</td>
+    <td>
+      <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+      <img src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+      <img src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+      <img src="https://img.shields.io/badge/VSCode-007ACC?style=for-the-badge&logo=VisualStudioCode&logoColor=white"/>   
+      <img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white"/> 
+      <img src="https://img.shields.io/badge/JSP-EE4353?style=for-the-badge&logo=JSP&logoColor=white"/> 
+    </td>
+  </tr>
+  <tr>
+    <td>Back-End</td>
+    <td>
+      <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=Spring&logoColor=white"/>
+      <img src="https://img.shields.io/badge/MyBatis-FF4000?style=for-the-badge&logo=MyBatis&logoColor=white"/>
+      <img src="https://img.shields.io/badge/apachetomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=black">
+      <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+      <img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white"/>
+      <img src="https://img.shields.io/badge/JSP-EE4353?style=for-the-badge&logo=JSP&logoColor=white"/>      
+    </td>
+  </tr>
+  <tr>
+    <td>Data & Server</td>
+    <td>
+      <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white"/> 
+      <img src="https://img.shields.io/badge/Apache Tomcat 9.0-D22128?style=for-the-badge&logo=Apache Tomcat&logoColor=white"/>
+      <img src="https://img.shields.io/badge/MyBatis-FF4000?style=for-the-badge&logo=MyBatis&logoColor=white"/>
+    </td>
+  </tr>
+  <tr>
+    <td>Library & API</td>
+    <td>
+        <img src="https://img.shields.io/badge/Kakao Map Api-007CE2?style=for-the-badge&logo=KaKao Map Api&logoColor=white">
+        <img src="https://img.shields.io/badge/Socket.io-010101?style=for-the-badge&logo=Socket.io&logoColor=white"> 
+    </td>
+  <tr>
+    <td>IDE</td>
+    <td>
+      <img src="https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=Eclipse&logoColor=white"/>
+      <img src="https://img.shields.io/badge/VSCode-007ACC?style=for-the-badge&logo=VisualStudioCode&logoColor=white"/> 
+    </td>
+  </tr>
+  <tr>
+    <td>Etc.</td>
+    <td>
+      <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white"/>
+    </td>
+  </tr>
+</table>
+
