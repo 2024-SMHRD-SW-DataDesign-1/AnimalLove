@@ -32,12 +32,6 @@
 <span style="color:#fff5b1"> 4. 마이페이지 </span>
   - 회원 정보 변경
   - 신고 내역 확인
-<style>
-  mark {
-    background-color: blue; /* 원하는 배경색으로 변경 */
-    color: black; /* 텍스트 색상도 변경할 수 있음 */
-  }
-</style>
 
 <span style="color:#fff5b1"> 5. 교배 업체 정보 제공</span>    
 
