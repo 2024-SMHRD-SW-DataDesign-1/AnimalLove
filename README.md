@@ -101,27 +101,27 @@
 
 
 ## ⚙시스템 아키텍처
-
-
+![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/705dad54-47b8-43fa-bed8-d3436eee84cc)
 
 ## ✏유스케이스
+![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/e6306ab4-a93f-4924-ab47-94c19eb1171f)
 
 ***
 
 ## ✏서비스 흐름도
+![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/afe5681f-b352-42a8-b3b2-a65072cd2187)
 
 ***
 
 ## ✏ER-다이어그램
-![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/a1d65c68-67bd-4085-b2d1-986450aced9a)
+![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/a47b714c-f7d8-4fb6-aeb0-d4da6b023756)
 
 ***
 
 ## 🎈화면 구성
 ### 🖱메인
-<div style="width:200px;">
-  ![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/00147afd-afb3-43d4-95a9-b9959f470bb3)
-</div>
+![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/00147afd-afb3-43d4-95a9-b9959f470bb3)
+
 ***
 
 ### 🖱회원가입
