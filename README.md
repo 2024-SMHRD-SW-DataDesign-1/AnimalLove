@@ -1,10 +1,3 @@
-<style>
-  img{
-    pointer-events: none; 
-    width : 200px;
-  }
-</style>
-
 # 🐶🐱애니팅 (팀명 : DEVS)
 
 ## 👀프로젝트 개요 
@@ -126,8 +119,9 @@
 
 ## 🎈화면 구성
 ### 🖱메인
-![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/00147afd-afb3-43d4-95a9-b9959f470bb3)
-
+<div style="width:200px;">
+  ![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/00147afd-afb3-43d4-95a9-b9959f470bb3)
+</div>
 ***
 
 ### 🖱회원가입
@@ -177,7 +171,6 @@
 
 ## 🚨트러블슈팅
 <p>1번 문제 </p>
-
 ![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/62660a90-45c0-4322-8b9a-03aafc44d6d0)
 <p>: 세션을 가져와 중복확인 조건 사용 시 기존 정보를 사용하지 못하는 오류 발생</p>
 
