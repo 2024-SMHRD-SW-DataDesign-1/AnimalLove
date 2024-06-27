@@ -13,6 +13,8 @@
 <script src="https://kit.fontawesome.com/b145cfedc2.js" crossorigin="anonymous"></script>
 
 <style>
+
+
 @media screen and (max-width:640px) {
 	header {
 		flex-direction: column;
@@ -21,6 +23,7 @@
 		left: 50%;
 	}
 }
+
 
 @font-face {
 	font-family: 'BMJUA';
@@ -31,6 +34,7 @@
 	font-style: normal;
 }
 
+/* 전체 코드 속성*/
 * {
 	padding: 0;
 	margin: 0;
@@ -55,11 +59,13 @@ header {
 	text-decoration: none;
 }
 
+
 /*애니팅, 로고 이미지*/
 header .h_title {
 	display: flex;
 	align-items: center;
 }
+
 
 /*애니팅 속성*/
 #h_name {
@@ -75,16 +81,19 @@ header>div>ul>li {
 	list-style-type: none;
 }
 
+
 /*로고이미지 속성*/
 #h_logo {
 	width: 70px;
 	height: 70px;
 }
 
+
 /*카테고리 속성*/
 header>ul {
 	display: flex;
 }
+
 
 /*매칭,위치,마이 속성*/
 .h_list {
@@ -93,6 +102,7 @@ header>ul {
 	padding-bottom: 10px;
 	text-decoration: none;
 }
+
 
 /*매칭,위치,마이,로그인 속성*/
 .h_category {
@@ -103,12 +113,14 @@ header>ul {
 	font-family: 'pretendard';
 }
 
+
 /*매칭,위치,마이,로그인 hover 속성*/
 .h_category:hover {
 	border-bottom: 2px solid #3c40c6;
 	border-radius: 2px;
 	color: #3c40c6;
 }
+
 
 /*아이콘 속성*/
 #h_angle {
@@ -161,8 +173,8 @@ header>ul {
 #chatList_box {
 	display: none;
 	position: fixed;
-	left: 73.5%;
-	top: 54%;
+	left: 75%;
+	top: 57%;
 	border: 2px solid #3c40c6;
 	border-radius: 20px;
 	background-color:#fff;
@@ -197,6 +209,7 @@ header>ul {
 
 			<% MavenMember member = (MavenMember)session.getAttribute("member");%>
 			<% if (member == null) {%>
+			
 			<!-- 비로그인 시 -->
 			<ul>	
 				<li class="h_list"><a href="login" class="h_category"
@@ -205,6 +218,7 @@ header>ul {
 					id="h_angle"></a>
 			</ul>
 			<%} else{%> 
+			
 			<!-- 로그인 시 -->
 			<ul>
 				<li class="h_list"><a href="update" class="h_category" id="h_login"><%=member.getU_nickname()%>님</a></li>
@@ -215,8 +229,9 @@ header>ul {
 			<%} %>
 		</header>
 
-
 	</div>
+	
+	
 	<%if(member!=null){ %>
 	<div id="chatList_box">
 		<jsp:include page="/WEB-INF/views/common/chat/chatlist.jsp"></jsp:include>
@@ -242,5 +257,7 @@ header>ul {
 		
 	</script>
 	<%} %>
+	
+	
 </body>
 </html>

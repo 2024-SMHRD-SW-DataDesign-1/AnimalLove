@@ -21,13 +21,6 @@ public class PageController {
 	@Autowired
 	AnimalService service;
 	
-
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index() {
-		// view resolver : /WEB-INF/views/index.jsp
-		return "index";
-	}
-
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String join() {
 		return "page/join";
@@ -78,11 +71,6 @@ public class PageController {
 		return "chatting";
 	}
 
-//	@RequestMapping(value = "/chatList", method = RequestMethod.GET)
-//	public String chatList() {
-//		return "chatList";
-//	}
-
 	// 채팅방리스트 화면
 	@RequestMapping(value = "/mainchatList", method = RequestMethod.GET)
 	public String mainchatList() {
@@ -114,8 +102,6 @@ public class PageController {
 				return "page/animalInfo";				
 			}
 		} 
-		// view resolver : /WEB-INF/views/index.jsp
-
 	}
 
 	// 매칭화면2

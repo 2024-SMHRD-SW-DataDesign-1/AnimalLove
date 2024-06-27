@@ -19,7 +19,8 @@
             <result property="cl_ruread" column="cl_ruread"/>
         </association>
     </resultMap>
-  
+  	
+  	<!-- 채팅방에서 마지막 로그를 보여주기 위해 채팅방테이블과 로그테이블을 서브쿼리와 조인  -->
   	<select id="chatlist" resultMap="ChatResultMap">
   			SELECT 
 			c.c_id, c.c_senid, c.c_recid, c.c_accept,

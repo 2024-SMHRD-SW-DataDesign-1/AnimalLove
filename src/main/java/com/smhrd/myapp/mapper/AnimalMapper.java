@@ -39,7 +39,7 @@ public interface AnimalMapper {
 	public Animal prfload(String a_u_id);
 	
 	// 매칭
-	@Select("select * from ANIMAL where a_u_id != #{a_u_id} and a_gender !=#{a_gender} and a_breed=#{a_prfbreed} and a_filterage=#{a_prfage} and a_filterweight = #{a_prfweight} ORDER BY RAND() LIMIT 3")
+	@Select("SELECT * FROM (select * from ANIMAL where a_u_id != #{a_u_id} and a_gender !=#{a_gender} and a_breed=#{a_prfbreed} and a_filterage=#{a_prfage} and a_filterweight = #{a_prfweight} ORDER BY RAND() LIMIT 3) AS temp_table ORDER BY a_regdate ASC")
 	public List<Animal> matching(Animal animal);
 	
 	// 좋아요리스트 조회
@@ -69,7 +69,7 @@ public interface AnimalMapper {
 	// 유저에 저장됐던 시간 가져오기
 	@Select("select u_mtime from USERS where u_id = #{u_id}")
 	public Timestamp mtimeload(String u_id);
-	
+	// 리셋버튼 눌렀을때 프로필과 시간 데이터 삭제
 	@Update("update USERS set u_mid1=null, u_mid2=null, u_mid3=null, u_mtime=null where u_id=#{u_id}")
 	public void matreset(String u_id);
 }

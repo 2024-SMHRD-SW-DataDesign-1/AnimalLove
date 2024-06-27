@@ -157,21 +157,21 @@
 		var chatId = "${c_id}";
 		var userIdFromJSP = "<%= member.getU_id() %>";
 		
-		console.log(chatId);
-		console.log(userIdFromJSP);
-
+		// 화면이 준비될때 지난로그 불러옴
 		$(document).ready(function(){
 			readLog();
 		});
 
 		var inputMessage = document.getElementById('inputMessage');
+		// 채팅방 아이디를 url에 담아 소켓 객체생성
 		var webSocket = new WebSocket("ws://" + document.location.host + "/aniting/chat/" + chatId);
 
 		webSocket.onerror = function(e) {
 			onError(e);
 		};
+		
+		// 채팅방생성될때 메세지 읽음유무 변경하는 메서드 비동기통신
 		webSocket.onopen = function(e) {
-			console.log("WebSocket 연결이 열렸습니다.");
 			 $.ajax({
 				type: "POST",
 				url: "/aniting/chat/ruread",
@@ -184,10 +184,13 @@
 				}
 			}); 
 		};
+		
+		// 메세지 수신될때 onMessage(e)함수 사용
 		webSocket.onmessage = function(e) {
 			onMessage(e);
 		};
 
+		// 메세지 수신될때 쓰는 함수
 		function onMessage(e) {
 			var chatM = e.data;
 			var json = JSON.parse(chatM);
@@ -195,6 +198,7 @@
 			var date = new Date();
 			var dateInfo = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
 			
+			// 메세지 수신될때도 읽음유무 변경하는 메서드 비동기통신
 			$.ajax({
 				type: "POST",
 				url: "/aniting/chat/ruread",
@@ -207,6 +211,7 @@
 				}
 			});			
 			
+			// 서버에서 보내는 메세지와 유저가 보낸 메세지 구분해서 표시
 			if (chatMsg.substring(0, 6) == 'server') {
 				var $chat = $("<div class='chat notice'>" + chatMsg + "</div>");
 				$('#chat-container').append($chat);
@@ -218,6 +223,7 @@
 			$('#chat-container').scrollTop($('#chat-container')[0].scrollHeight + 20);
 		}
 
+		// DB에 저장된 지난로그 불러오는 함수
 		function readLog() {
 			var importLog = { cl_c_id: chatId };
 
@@ -232,6 +238,7 @@
 						console.log(vo.cl_senid);
 						console.log(userIdFromJSP);
 
+						// 상대가 보낸 메세지와 내가보낸 메세지 좌우구분
 						if (vo.cl_senid === userIdFromJSP) {
 							var $chat = $("<div class='my-chat-box'><div class='chat my-chat'>" + vo.cl_log + "</div></div>");
 							$('#chat-container').append($chat);
@@ -250,6 +257,7 @@
 			});
 		}
 
+		// 메세지 보낼때 
 		function send() {
 			var chatMsg = inputMessage.value;
 
@@ -263,12 +271,15 @@
 				cl_log: chatMsg
 			};
 
+			// 메세지 보낼때 컨트롤러로 비동기 통신해 DB저장
 			$.ajax({
 				type: "POST",
 				url: "/aniting/chat/send",
 				data: JSON.stringify(chatLog),
 				contentType: "application/json; charset=utf-8",
 				success: function(response) {
+					
+					// DB저장 성공하면 화면에 출력
 					var $chat = $("<div class='my-chat-box'><div class='chat my-chat'>" + chatMsg + "</div></div>");
 					$('#chat-container').append($chat);
 					webSocket.send(chatMsg);

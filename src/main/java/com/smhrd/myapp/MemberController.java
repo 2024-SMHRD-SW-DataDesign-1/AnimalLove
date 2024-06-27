@@ -28,8 +28,8 @@ public class MemberController {
 
 	@Autowired
 	MemberService service;
-	// 회원가입 요청 처리 : localhost:8089/aniting/join
-
+	
+	// 회원가입 요청 처리
 	@RequestMapping(value = "/member/join", method = RequestMethod.POST)
 	public String memberJoin(@ModelAttribute MavenMember member) {
 
@@ -47,7 +47,7 @@ public class MemberController {
 		} catch (Exception e) {
 			throw new RuntimeException();
 		}
-		return "redirect:/index";
+		return "redirect:/";
 
 	}
 
@@ -76,6 +76,7 @@ public class MemberController {
 		return service.emailChk(member.getU_email()) + "";
 	}
 
+	// 로그인 요청 처리
 	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
 	public String memberLogin(@ModelAttribute MavenMember member, HttpSession session) {
 		System.out.println(member.getU_id());
@@ -90,7 +91,7 @@ public class MemberController {
 		}
 	}
 
-	// 업데이트 요청 처리 : localhost:8089/aniting/update
+	// 업데이트 요청 처리
 	@RequestMapping(value = "/member/update", method = RequestMethod.POST)
 	public String memberUpdate(@ModelAttribute MavenMember member, HttpServletRequest request) {
 		
@@ -101,8 +102,6 @@ public class MemberController {
 		MavenMember member2 = (MavenMember) session.getAttribute("member");
 		int nickChkResult = service.nickChk(member.getU_nickname());
 		int emailChkResult = service.emailChk(member.getU_email());
-		System.out.println(member.getU_email());
-		System.out.println(member2.getU_email());
 		try {
 			// (성공)
 			if ((emailChkResult == 0 || member.getU_email().equals(member2.getU_email()))
@@ -120,7 +119,7 @@ public class MemberController {
 		} catch (Exception e) {
 			throw new RuntimeException();
 		}
-		return "redirect:/index";
+		return "redirect:/";
 	}
 
 	// 로그아웃 요청 처리 : localhost:8089/aniting/logout
@@ -129,34 +128,4 @@ public class MemberController {
 		session.removeAttribute("member");
 		return "redirect:/";
 	}
-
-	// 탈퇴 처리
-	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public String memberDelete(@RequestParam("u_id") String id, HttpSession session) {
-		System.out.println(id);
-		int res = service.memberDelete(id);
-		if (res > 0) {
-			// 성공 - 로그인이 풀리게
-			session.removeAttribute("member");
-		}
-		return "redirect:/index";
-	}
-
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String memberList(Model model) {
-		List<MavenMember> list = service.memberList();
-		// 리스트 저장 -> 세션(서버 용량 차지) => 불필요하게 용량을 많이 차지
-		// forwarding (현재 사용하는 request, response를 다음페이지에서도 사용할 수 있도록 해줌)
-		// 세션 / request 영역
-		// 스프링 에서 데이터를 임시적으로 저장할 때 사용하는 객체
-		// request와 같은 역할을 하는 객체(Model)
-		// Model : 임시적으로 다음 페이지에서만 사용할 데이터를 넘기고(저장하고)싶을 때
-		model.addAttribute("list", list);
-		return "list";
-
-		// return "redirect:/list";
-
-	}
-
-
 }

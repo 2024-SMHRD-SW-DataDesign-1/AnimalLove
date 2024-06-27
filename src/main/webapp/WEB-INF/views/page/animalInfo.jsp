@@ -197,6 +197,7 @@ input[type="text"], input[type="number"], input[placeholder="kg"] {
 		
 		let list = null;
 		
+		// 클릭시 들어오는 이벤트
 		function onClickEvent()
 		{
 		    if (dogTag.checked) {

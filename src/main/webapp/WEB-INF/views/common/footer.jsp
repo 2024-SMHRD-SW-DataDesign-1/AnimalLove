@@ -9,14 +9,17 @@
 
 
 <style>
-* {
-	font-family: 'pretendard';
-}
 
 @media screen and (max-width:640px) {
 	footer {
 		flex-direction: column;
 	}
+}
+
+
+/* 푸터 전체 속성 */
+* {
+	font-family: 'pretendard';
 }
 
 footer {
@@ -35,6 +38,7 @@ footer {
 	align-items: center;
 }
 
+
 /* 타이틀 문구 */
 .f_left h2 {
 	margin: 0;
@@ -44,6 +48,7 @@ footer {
 	margin: 0;
 	font-size: 12px;
 }
+
 
 /* sns 표기 */
 .f_left .f_sns {
@@ -55,6 +60,7 @@ footer {
 	height: 24px;
 	margin-right: 20px;
 }
+
 
 /* 오른쪽 리스트 */
 .f_right {
@@ -94,6 +100,7 @@ footer {
 	background: #b2b2b2;
 }
 
+
 /* 저작권 표기 */
 footer .f_copy_right {
 	text-align: center;
@@ -103,6 +110,8 @@ footer .f_copy_right p {
 	font-size: 12px;
 	margin: 0;
 }
+
+
 </style>
 </head>
 <body>
