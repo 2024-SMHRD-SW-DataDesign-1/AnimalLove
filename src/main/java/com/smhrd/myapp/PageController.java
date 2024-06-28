@@ -126,6 +126,7 @@ public class PageController {
 		HttpSession session = request.getSession();
 		MavenMember member = (MavenMember) session.getAttribute("member");
 		int res = service.prfSelect(member.getU_id());
+		session.setAttribute("animal", service.animalRoad(member.getU_id()));
 		System.out.println(res);
 		if (res == 0){
 			return "page/prfInfo";			
