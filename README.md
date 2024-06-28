@@ -1,16 +1,20 @@
 # 🐶🐱애니팅 (팀명 : DEVS)
+![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=Animal%20Matching%20Service&fontSize=40)
 
 ## 👀프로젝트 개요 
 주제 : 반려동물 교배 매칭 서비스
 - 나의 반려동물 정보 등록 -> 선호하는 교배 파트너 조건을 선택하여 부합하는 프로필 카드를 보여주는 기능
 - 마음에 드는 프로필 카드를 선택해서 채팅을 요청 -> 상대방이 요청 수락시 1:1 채팅 가능
 - 내가 설정한 주소 주변의 교배업체 정보를 보여주는 기능
+- 
 ## 📅프로젝트 기간
 2024.06.12 - 2024.06.25
 
 ## 🦴주요기능
 <ins>개발 목표</ins>
-  - 교배를 원하는 반려동물 소유자를 대상으로 보호자에게 매칭, 채팅, 업체 위치 정보를 제공함으로써 커뮤니케이션을 통해 보호자의 교배 파트너에 대한 신뢰성을 향상 시키고 파트너 선택 이후 전문성이 필요한 부분은 전문 업체에 대한 정보를 제공하는 플랫폼
+  - 교배를 원하는 반려동물 보호자를 대상으로 매칭하기, 실시간 채팅, 업체 위치 정보를 제공한다.
+  - 빠른 소통으로 보호자간 신뢰도를 향상시킨다.
+  - 교배 파트너 매칭 이후 업체선정이 필요한 부분은 지도를 통해 업체에 대한 정보를 제공한다.
 
 <ins>개발 내용</ins>
 
@@ -114,7 +118,7 @@
 
 ## 🎈화면 구성
 ### 🖱메인
-![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/00147afd-afb3-43d4-95a9-b9959f470bb3)
+<img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/00147afd-afb3-43d4-95a9-b9959f470bb3">
 
 ***
 
@@ -149,10 +153,14 @@
 
 ***
 
-
-
 ## 💗팀원 역할
 <table>
+  <tr>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/1a41be0f-15d2-430d-b153-79728540f49e"></td>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/19324b05-f1d6-4aad-ae2c-62f327c5d591"></td>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/dcaca84a-3570-4fa7-9977-8631272dbd50"></td>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/fb84db0b-ae22-42fa-8189-05ded1fafd47"></td>
+  </tr>
   <tr>
     <td ><center>이상현</center></td>
     <td>이재관</td>
@@ -228,7 +236,7 @@
 ***
 
 ## 🚨트러블슈팅
-<h4>💘1번 문제</h4>
+<h4>1번 문제</h4>
 
 ![Frame 3](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/3123dbd8-17f3-4d48-aa92-81a7d2e3df25) <br>
 ![Frame 4](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/355b8d19-5493-4c86-b342-17165cd3f862)
@@ -237,7 +245,7 @@
 
 ***
 
-<h4>💘2번 문제</h4>
+<h4>2번 문제</h4>
 
 ![Frame 5](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/659bba96-b032-4d0b-82e1-a9c811db7bcf)
 ![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/7e4713c1-33a8-41fb-97ab-3f8a19d33445)
