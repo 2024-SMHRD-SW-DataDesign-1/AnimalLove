@@ -3,7 +3,7 @@
 <%
     String message = (String) session.getAttribute("message");
     if (message != null) {
-        session.removeAttribute("message"); // 메시지를 세션에서 제거하여 페이지 새로고침 시 알림이 다시 표시되지 않도록 합니다.
+        session.removeAttribute("message"); // 메시지를 세션에서 제거하여 페이지 새로고침 시 알림이 다시 표시X
     }
 %>
 

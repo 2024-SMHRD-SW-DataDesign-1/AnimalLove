@@ -47,6 +47,7 @@ public class ChatController {
 		chat.setC_recid(c_recid);
 		
 		int res = service.chatinquiry(chat);
+		// DB에 이미 저장된 채팅요청이 있으면 0 없으면 저장하고 1반환
 		if (res==1) {
 			return "0";
 		}else {

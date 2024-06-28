@@ -32,12 +32,6 @@
 <span style="color:#fff5b1"> 4. 마이페이지 </span>
   - 회원 정보 변경
   - 신고 내역 확인
-<style>
-  mark {
-    background-color: blue; /* 원하는 배경색으로 변경 */
-    color: black; /* 텍스트 색상도 변경할 수 있음 */
-  }
-</style>
 
 <span style="color:#fff5b1"> 5. 교배 업체 정보 제공</span>    
 
@@ -101,22 +95,60 @@
 
 
 ## ⚙시스템 아키텍처
-
-
+![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/705dad54-47b8-43fa-bed8-d3436eee84cc)
 
 ## ✏유스케이스
+![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/e6306ab4-a93f-4924-ab47-94c19eb1171f)
+
+***
 
 ## ✏서비스 흐름도
+![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/afe5681f-b352-42a8-b3b2-a65072cd2187)
+
+***
 
 ## ✏ER-다이어그램
+![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/a47b714c-f7d8-4fb6-aeb0-d4da6b023756)
+
+***
 
 ## 🎈화면 구성
 ### 🖱메인
+![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/00147afd-afb3-43d4-95a9-b9959f470bb3)
+
+***
+
 ### 🖱회원가입
+![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/df14218d-317e-4caf-801b-d7c74e9f25e5)
+
+***
+
 ### 🖱로그인
+![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/55652598-71a8-4344-b508-5a77a7763896)
+
+***
+
 ### 🖱매칭
+- 프로필 약식
+![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/b31b998e-8990-49b0-af68-2da929be5b49)
+
+***
+
+- 프로필 상세
+![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/392f26a7-642e-44e4-a089-6a9ebb734302)
+
+***
+
 ### 🖱채팅
+![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/f7c6851b-7f72-421a-9020-5610bff1de32)
+
+***
+
 ### 🖱마이페이지
+![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/a3d3ef9c-602a-4126-8db8-cc25906e9c5b)
+
+***
+
 
 
 ## 💗팀원 역할
@@ -129,4 +161,25 @@
   </tr>
 </table>
 
+***
+
 ## 🚨트러블슈팅
+<p>💘1번 문제 </p>
+
+![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/62660a90-45c0-4322-8b9a-03aafc44d6d0)
+<p>: 세션을 가져와 중복확인 조건 사용 시 기존 정보를 사용하지 못하는 오류 발생</p>
+
+![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/79236ae0-9dcf-45ef-bff2-23ea250ce6b4)
+<p>: ChkResult 조건을 로그인 세션에서 가져온 정보와 같을 때도 정보 수정이 가능하도록 조건을 변경하여 해결</p>
+
+***
+
+<p>💘2번 문제</p>
+
+![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/f604566c-6d24-471b-9b2a-68b8132421ce)
+<p>: 채팅이 들어왔을 때 알림이 실시간으로 갱신이 되지 않는 오류 </p>
+
+![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/7e4713c1-33a8-41fb-97ab-3f8a19d33445)
+<p>: 채팅 리스트가 생성될 때 소켓을 한번 더 열어줌 으로써 오류 해결</p>
+
+

@@ -69,7 +69,7 @@ public interface AnimalMapper {
 	// 유저에 저장됐던 시간 가져오기
 	@Select("select u_mtime from USERS where u_id = #{u_id}")
 	public Timestamp mtimeload(String u_id);
-	
+	// 리셋버튼 눌렀을때 프로필과 시간 데이터 삭제
 	@Update("update USERS set u_mid1=null, u_mid2=null, u_mid3=null, u_mtime=null where u_id=#{u_id}")
 	public void matreset(String u_id);
 }

@@ -61,6 +61,7 @@ public class WebChatServer extends HttpServlet {
 	    ObjectMapper objectMapper = new ObjectMapper();
 	    String jsonMessage = objectMapper.writeValueAsString(data);
 		
+	    // 받는사람이 내가아니고 같은 채팅방 아이디일때 채팅방 아이디와 메세지를 담아서 보냄
 		synchronized (users) {
 			for (Session currentSession : users.keySet()) {
 	            String sessionChatId = sessionChatIdMap.get(currentSession);
@@ -80,23 +81,6 @@ public class WebChatServer extends HttpServlet {
 		users.remove(session);
 		sessionChatIdMap.remove(session);
 	}
-	
-	public void sendNotice(String chatId, String message) throws IOException{
-		String userName = "server";
-		System.out.println(userName + " : " + message);
-		
-		synchronized (users) {
-			for (Session session : users.keySet()) {
-	            String sessionChatId = sessionChatIdMap.get(session);
-	            if (sessionChatId != null && sessionChatId.equals(chatId)) {
-	                session.getBasicRemote().sendText(userName + " : " + message);
-	            }
-	        }
-		}
-	}
-	
-	
-
 }
 
 

@@ -44,7 +44,7 @@ public class AnimalController {
 	public String animalJoin(@ModelAttribute Animal animal, HttpSession session,
 			@RequestPart("photo") List<MultipartFile> file) throws IOException {
 
-		// 페이지1에서 받은 정보 animal 에 취합
+		// 페이지1에서 받은 정보 animal 객체에 취합
 		Animal tem = (Animal) session.getAttribute("animal");
 		animal.setA_u_id(tem.getA_u_id());
 		animal.setA_name(tem.getA_name());
@@ -54,6 +54,7 @@ public class AnimalController {
 		animal.setA_breed(tem.getA_breed());
 		animal.setA_intro(tem.getA_intro());
 
+		// 입력한 나이에 따라 나이필터 저장 (매칭 비교용)
 		if (tem.getA_age() < 4) {
 			animal.setA_filterage("1~3");
 		} else if (tem.getA_age() < 7) {
@@ -64,6 +65,7 @@ public class AnimalController {
 			animal.setA_filterage("10~");
 		}
 
+		// 입력한 무게에 따라 무게필터 저장 (매칭 비교용)
 		if (tem.getA_weight() < 11) {
 			animal.setA_filterweight("~10");
 		} else if (tem.getA_weight() < 21) {
@@ -73,9 +75,11 @@ public class AnimalController {
 		}
 
 		// 파일 경로 설정
-		String path1 = session.getServletContext().getRealPath("resources/img/animalImg/");
+		// String path1 = session.getServletContext().getRealPath("resources/img/animalImg/");
+		// 깃허브로 프로젝트 공유시 워크스페이스 폴더가 아닌 깃허브 로컬 레파지토리 폴더에 저장해야 사진까지 공유 가능
 		String path = "C:\\Users\\smhrd\\git\\AnimalLove\\src\\main\\webapp\\resources\\img\\animalImg\\";
 
+		// 파일 최대 3장까지 저장가능
 		for (int i = 0; i < file.size(); i++) {
 			// 파일 이름설정
 			String fileName = UUID.randomUUID().toString() + file.get(i).getOriginalFilename();
@@ -175,7 +179,6 @@ public class AnimalController {
 		ImageToBase64 converter = new ImageToBase64();
 		String imgBase64String = converter.convert(imgFile);
 
-		// System.out.println(imgBase64String);
 		animal.setA_path1(imgBase64String);
 		model.addAttribute("animal", animal);
 
@@ -203,12 +206,16 @@ public class AnimalController {
 		MavenMember member = (MavenMember) session.getAttribute("member");
 		MavenMember save = service.matchingsave(member.getU_id());
 		List<Animal> result;
+		
+		// DB에 저장된 프로필이 있으면
 		if(save != null) {
 			// 저장됬던 3명의 프로필 가져오기
 			result = service.savedmatching(save);
 		}else {
 			// 사용자 선호도에 부합된 랜덤한 3명 프로필 가져오기
 			result = service.matching(member.getU_id());
+			
+			// 가저온 3명의 프로필아이디와 시간을 DB에 저장
 			MavenMember mid = new MavenMember();
 			mid.setU_id(member.getU_id());
 			if (result.size() > 0) mid.setU_mid1(result.get(0).getA_u_id());
@@ -217,10 +224,10 @@ public class AnimalController {
 			LocalDateTime now = LocalDateTime.now(ZoneId.of("Asia/Seoul"));
 			Timestamp timestamp = Timestamp.valueOf(now);
 			mid.setU_mtime(timestamp);
-			System.out.println(mid.getU_mtime());
 			service.midsave(mid);
 		}
 
+		// DB에서 가져온 사진 경로로 서버폴더에서 사진을 가져와 imgBase64String 형태로 변환해 반환
 		for (Animal animal : result) {
 			for (int i = 1; i <= 3; i++) {
 				try {

@@ -106,6 +106,7 @@
 	let session = [];
 	let sum =0; 
 	
+	// 화면이 준비될때 DB에서 채팅리스트 불러옴
 	$(document).ready(function(){
 		$.ajax({
 			url: "roadchatlist",
@@ -114,9 +115,9 @@
 			dataType:"json",
 			success: function(chatList){
 				load(chatList);
-				
 				noread(chatList);
 				
+				// 채팅방별로 소켓 열어줌 (메세지 수신될 때 알림표시 하기위해)
 				for(let i = 0; i < chatList.length; i++){
 					var url = "ws://" + document.location.host + "/aniting/chat/" + chatList[i].c_id;
 		            var ws =  new WebSocket(url);
@@ -132,6 +133,7 @@
 		});
 	});
 	
+	// 채팅리스트 조건별로 구성
 	function load(chatList){
 		$.each(chatList, (index,chat)=> {
 			console.log(chat)
@@ -141,14 +143,10 @@
 						'<div>' + chat.c_recid + '님께 요청중입니다.</div>' +
 					'</div>'
 				);
-			
-	
-			
 			} else if (chat.c_accept === 0 && chat.c_recid === userid) { // 조건 2: 내가 받은 요청
 				$('#chatReady').append(
 					'<div class="request-container">' +
 						'<div style="margin-bottom: 5px; margin-left: 5px;" >' + chat.c_senid + '님 온 요청</div>' +
-	
 					'</div>'
 				);
 				$('#btnContainer').append(
@@ -186,6 +184,7 @@
 		});	
 	}
 	
+	// DB에 저장된 안읽었던 메세지 숫자 더해서 채팅방옆에 출력
 	function noread(chatList){
 		
 		$.each(chatList, (index,chat)=> {
@@ -205,15 +204,16 @@
 					
 				},
 				error: function(err) {
-					console.error("Error:", err); // 에러 핸들링
+					console.error("Error:", err);
 				} 
 			});
 			
 		});	
 	} 
 	
+	// 메세지가 수신될 때
 	function onMessage(event){
-		var msg = event.data; // WebSocket으로부터 받은 원시 데이터
+		var msg = event.data; 
 		var json = JSON.parse(msg); // 수신된 메시지를 JSON 객체로 파싱
 	    var chatId = json.chatId;
 	    var message = json.message;
@@ -228,18 +228,19 @@
 	    var noreadElement = $('#noread'+ chatId);
 	    if (noreadElement.text() === "") {
 	        // 요소가 존재하지 않을 때
-	        $('#noread' + chatId).text("1");
+	        $('#noread' + chatId).text("1"); // 안읽은메세지 숫자 1로 표시
 	    } else {
 	        // 요소가 존재할 때
-	        var currentCount = parseInt(noreadElement.text(), 10); // 문자열을 정수로 변환
-	        $('#noread' + chatId).text(currentCount + 1);
+	        var currentCount = parseInt(noreadElement.text(), 10);
+	        $('#noread' + chatId).text(currentCount + 1); // 안읽은 메세지 숫자 1더함
 	    }
 	    
+	    // 메인화면 우측하단 채팅 아이콘
 	    if ($('#mainnoread').text() ===""){
-	    	$('#mainnoread').text("1");
+	    	$('#mainnoread').text("1"); //안읽은 메세지 숫자 1로 표시
 	    }else{
-	    	var currentCount = parseInt($('#mainnoread').text(), 10); // 문자열을 정수로 변환
-	    	$('#mainnoread').text(currentCount + 1);
+	    	var currentCount = parseInt($('#mainnoread').text(), 10);
+	    	$('#mainnoread').text(currentCount + 1); // 안읽은 메세지 숫자 1더함
 	    }
 	
 	    

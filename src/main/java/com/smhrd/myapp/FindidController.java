@@ -31,31 +31,17 @@ public class FindidController {
 	@Autowired
 	FindidService service;
 	
-//	@RequestMapping(value="/findid", method=RequestMethod.GET)
-//	public String findid() {
-//		return "findid";
-//	}
-	
+	// 메일에서 인증확인 하이퍼링크 눌렀을때 세션에 id담아서 메인페이지 이동
 	@RequestMapping(value="/finddbid", method=RequestMethod.GET)
 	public String recieveid(@RequestParam("code") String code,HttpSession session) {
-		
-//    String code = request.getParameter("code");
-//    avenMemberDAO dao = new MavenMemberDAO();
-//    String id = dao.getId(code);
-//    response.sendRedirect("index.jsp?id=" + id);
 		session.setAttribute("id",service.getid(code));
 		return "redirect:/";
-		
 	}
 	
-	// id 찾기는 일반으로 111**@ㅁㅁㅁ
-	// id 보다는 비밀번호 찾기에 쓰고
-	// 사용자가 url 클릭시 비밀번호를 수정하는 페이지로 이동시키기
-	// 사용자가 비밀번호 찾기 눌렀을 때, cookie 형식으로 랜덤 문자열을 주면된다 $12314@$!@$!%!#%!!
+	// 메일 보내주는 메서드
 	@RequestMapping(value="/findidcon", method=RequestMethod.POST)
 	public String findid(@ModelAttribute MavenMember member, HttpSession session) {
 		int res = service.findid(member);
-		System.out.println(res);
 
 		if (res == 1) {
 			String host = "http://localhost:8089/aniting/finddbid";
@@ -74,6 +60,7 @@ public class FindidController {
 			p.put("mail.smtp.ssl.protocols", "TLSv1.2");
 			p.put("mail.smtp.debug", "true");
 
+			// 관리자 메일 (비밀번호는 구글에서 토큰 발행)
 			final String username = "worhks0413@gmail.com";
             final String password = "wosf tshq fhma jaof";
 			

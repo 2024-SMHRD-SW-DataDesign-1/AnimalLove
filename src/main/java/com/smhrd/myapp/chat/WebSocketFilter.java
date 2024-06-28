@@ -15,6 +15,7 @@ import javax.websocket.HandshakeResponse;
 import javax.websocket.server.HandshakeRequest;
 import javax.websocket.server.ServerEndpointConfig;
 
+// WebChatServer에서 httpSession을 사용하기위해 필터 생성
 @WebFilter("/*")
 public class WebSocketFilter implements Filter {
 
