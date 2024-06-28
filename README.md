@@ -25,16 +25,17 @@
 <span style="color:#fff5b1"> 2. 매칭 서비스 </span>
   - 반려동물 프로필 카드 확인
   - 선호 프로필 저장(좋아요)
-  - 보호자간 대화(채팅 신청)
+  - 상대 보호자에게 대화신청(채팅 신청)
     
 <span style="color:#fff5b1"> 3. 채팅 기능 </span>
+  - 채팅 요청 확인
   - 채팅 로그 보관
-  - 실시간 의사소통
-  - 신고, 나가기
+  - 실시간 채팅
+  - 메인으로 나가기
 
 <span style="color:#fff5b1"> 4. 마이페이지 </span>
   - 회원 정보 변경
-  - 신고 내역 확인
+  - 동물 정보 변경
 
 <span style="color:#fff5b1"> 5. 교배 업체 정보 제공</span>    
 
@@ -118,30 +119,68 @@
 
 ## 🎈화면 구성
 ### 🖱메인
-<img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/00147afd-afb3-43d4-95a9-b9959f470bb3">
+<table>
+  <tr>
+    <td>메인</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/00147afd-afb3-43d4-95a9-b9959f470bb3" width="700px" height="700px"></td>
+  </tr>
+</table>
 
-***
 
 ### 🖱회원가입
-![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/df14218d-317e-4caf-801b-d7c74e9f25e5)
+<table>
+  <tr>
+    <td>회원가입</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/df14218d-317e-4caf-801b-d7c74e9f25e5" width="700px" height="700px"></td>
+  </tr>
+</table>
 
-***
 
 ### 🖱로그인
-![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/55652598-71a8-4344-b508-5a77a7763896)
+<table>
+  <tr>
+    <td>로그인</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/55652598-71a8-4344-b508-5a77a7763896" width="700px" height="700px"></td>
+  </tr>
+</table>
 
-***
 
 ### 🖱매칭
-- 프로필 약식
-![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/b31b998e-8990-49b0-af68-2da929be5b49)
+<table>
+  <tr>
+    <td>매칭</td>
+    <td>설명</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/cb4f0f60-4d29-45aa-9b7a-7a94e575a265" width="700px" height="700px"></td>
+    <td>동물정보 등록 1단계</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/da454f48-1623-43cd-add9-9217ceb6c4d4" width="700px" height="700px"></td>
+    <td>동물정보 등록 2단계</td>
+  </tr>
+   <tr>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/8dcc7522-47a4-4408-b879-7b34f50f2f1e" width="700px" height="700px"></td>
+    <td>선호하는 동물 선택</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/b31b998e-8990-49b0-af68-2da929be5b49" width="700px" height="700px"></td>
+    <td>프로필 약식</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/392f26a7-642e-44e4-a089-6a9ebb734302" width="700px" height="700px"></td>
+    <td>프로필 상세</td>
+  </tr>
+  
+</table>
 
-***
 
-- 프로필 상세
-![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/392f26a7-642e-44e4-a089-6a9ebb734302)
-
-***
 
 ### 🖱채팅
 ![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/f7c6851b-7f72-421a-9020-5610bff1de32)
@@ -156,10 +195,10 @@
 ## 💗팀원 역할
 <table>
   <tr>
-    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/1a41be0f-15d2-430d-b153-79728540f49e"></td>
-    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/19324b05-f1d6-4aad-ae2c-62f327c5d591"></td>
-    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/dcaca84a-3570-4fa7-9977-8631272dbd50"></td>
-    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/fb84db0b-ae22-42fa-8189-05ded1fafd47"></td>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/1a41be0f-15d2-430d-b153-79728540f49e" width="200px" height="200px"></td>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/19324b05-f1d6-4aad-ae2c-62f327c5d591" width="200px" height="200px"></td>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/dcaca84a-3570-4fa7-9977-8631272dbd50" width="200px" height="200px"></td>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/fb84db0b-ae22-42fa-8189-05ded1fafd47" width="200px" height="200px"></td>
   </tr>
   <tr>
     <td ><center>이상현</center></td>
