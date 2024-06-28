@@ -99,85 +99,86 @@
 
 
 ## ⚙시스템 아키텍처
-<img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/80981c94-e58d-4d10-b9bf-c979a7d237a2" height="540px">
+<p align="center"><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/80981c94-e58d-4d10-b9bf-c979a7d237a2" height="540px"></p>
 
 
 ## ✏유스케이스
-![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/e6306ab4-a93f-4924-ab47-94c19eb1171f)
+<p align="center"><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/e6306ab4-a93f-4924-ab47-94c19eb1171f"></p>
 
 ***
 
 ## ✏서비스 흐름도
-<img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/825dbcf4-de7a-477b-9257-e8184ca0b242" weight="450px">
+<p align="center"><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/825dbcf4-de7a-477b-9257-e8184ca0b242" weight="450px"></p>
 
 
 ***
 
 ## ✏ER-다이어그램
-<img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/a47b714c-f7d8-4fb6-aeb0-d4da6b023756">
+<p align="center"><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/a47b714c-f7d8-4fb6-aeb0-d4da6b023756"></p>
 
 
 ***
 
 ## 🎈화면 구성
 ### 🖱메인
-<img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/00147afd-afb3-43d4-95a9-b9959f470bb3" width="750px" height="540px">
+<p align="center"><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/00147afd-afb3-43d4-95a9-b9959f470bb3" width="750px" height="540px"></p>
 
 ***
 
 ### 🖱회원가입
-<img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/df14218d-317e-4caf-801b-d7c74e9f25e5" width="750px" height="600px">
+<p align="center"><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/df14218d-317e-4caf-801b-d7c74e9f25e5" width="750px" height="600px"></p>
 
 ***
 
 ### 🖱로그인
-<img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/55652598-71a8-4344-b508-5a77a7763896" width="750px" height="600px">
+<p align="center"><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/55652598-71a8-4344-b508-5a77a7763896" width="750px" height="600px"></p>
 
 ***
 
 ### 🖱매칭
-<table>
-  <tr>
-    <td>회원가입 후 처음 매칭 화면 진입시 동물정보를 등록하는 화면</td>
-  </tr>
-  <tr>
-    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/cb4f0f60-4d29-45aa-9b7a-7a94e575a265" width="800px" height="560px"></td>
-  </tr>
-  <tr>
-    <td>동물정보 등록 시 사진첨부를 하는 화면</td>
-  </tr>
-  <tr>
-    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/da454f48-1623-43cd-add9-9217ceb6c4d4" width="800px" height="560px"></td>
-  </tr>
-  <tr>
-    <td>프로필 카드를 보여주기 위한 보호자가 선호하는 동물 조건 선택</td>
-  </tr>
-   <tr>
-    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/6d4ba2a2-426b-4983-b153-878da5eac43e"width="800px" height="560px"></td>
-  </tr>
-  <tr>
-    <td>조건을 통한 필터링 후 보여지는 3개의 약식 프로필 화면</td>
-  </tr>
-  <tr>
-    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/b31b998e-8990-49b0-af68-2da929be5b49" width="800px" height="560px"></td>
-  </tr>
-  <tr>
-    <td>프로필 상세정보 화면</td>
-  </tr>
-  <tr>
-    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/392f26a7-642e-44e4-a089-6a9ebb734302" width="800px" height="560px"></td>
-  </tr>
-  
-</table>
-
+<div align="center">
+  <table>
+    <tr>
+      <td>회원가입 후 처음 매칭 화면 진입시 동물정보를 등록하는 화면</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/cb4f0f60-4d29-45aa-9b7a-7a94e575a265" width="800px" height="560px"></td>
+    </tr>
+    <tr>
+      <td>동물정보 등록 시 사진첨부를 하는 화면</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/da454f48-1623-43cd-add9-9217ceb6c4d4" width="800px" height="560px"></td>
+    </tr>
+    <tr>
+      <td>프로필 카드를 보여주기 위한 보호자가 선호하는 동물 조건 선택</td>
+    </tr>
+     <tr>
+      <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/6d4ba2a2-426b-4983-b153-878da5eac43e"width="800px" height="560px"></td>
+    </tr>
+    <tr>
+      <td>조건을 통한 필터링 후 보여지는 3개의 약식 프로필 화면</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/b31b998e-8990-49b0-af68-2da929be5b49" width="800px" height="560px"></td>
+    </tr>
+    <tr>
+      <td>프로필 상세정보 화면</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/392f26a7-642e-44e4-a089-6a9ebb734302" width="800px" height="560px"></td>
+    </tr>
+    
+  </table>
+</div>
 
 
 ### 🖱채팅
-<img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/f7c6851b-7f72-421a-9020-5610bff1de32" width="750px" height="540px">
+<p align="center"><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/f7c6851b-7f72-421a-9020-5610bff1de32" width="750px" height="540px"></p>
 
 
 ### 🖱마이페이지
-<img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/a3d3ef9c-602a-4126-8db8-cc25906e9c5b" width="750px" height="540px">
+<p align="center"><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/a3d3ef9c-602a-4126-8db8-cc25906e9c5b" width="750px" height="540px"></p>
 <br>
 <br>
 <br>
@@ -185,84 +186,85 @@
 ***
 
 ## 💗팀원 역할
-<table align-item="center">
-  <tr>
-    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/1a41be0f-15d2-430d-b153-79728540f49e" width="200px" height="200px"></td>
-    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/19324b05-f1d6-4aad-ae2c-62f327c5d591" width="200px" height="200px"></td>
-    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/dcaca84a-3570-4fa7-9977-8631272dbd50" width="200px" height="200px"></td>
-    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/fb84db0b-ae22-42fa-8189-05ded1fafd47" width="200px" height="200px"></td>
-  </tr>
-  <tr>
-    <td ><center>이상현</center></td>
-    <td>이재관</td>
-    <td>박성범</td>
-    <td>문수현</td>
-  </tr>
-  <tr>
-    <td>Main</td>
-    <td>Main</td>
-    <td>Main</td>
-    <td>Main</td>
-  </tr>
-  <tr>
-    <td>팀장, Front-End</td>
-    <td>Back-End</td>
-    <td>Back-End</td>
-    <td>Front-End</td>
-  </tr>
-  <tr>
-    <td>
-      - 카카오 지도 api를 활용한 검색 기능 구현 <br>
-      - 문자데이터, WTM좌표, WGS84좌표 변환 기능 구현 <br>
-      - sweetalert2 라이브러리를 활용한 모달창 구현 <br>
-      - 상세프로필, 채팅방리스트 기능 구현 <br>
-      - 동물정보등록 화면 데이터를 데이터베이스에 저장하는 기능구현
-    </td>
-    <td>
-      - WebSocket을 활용한 실시간 채팅 및 알림 기능 구현 <br>
-      - 입력한 선호도 기반으로 추천해주는 매칭 시스템 구현 <br>
-      - 매칭 후 3시간 이후에 사용할 수 있는 리셋 시스템 구현
-    </td>
-    <td>
-      - 데이터베이스 연결하여 회원가입 및 로그인 기능 구현 <br>
-      - 회원정보수정, 동물정보수정 기능 구현 후 데이터베이스에 연결 <br>
-      - 공공데이터를 Python을 활용하여 데이터 베이스 연결
-    </td>
-    <td>
-      - 메인, 회원가입, 로그인, 마이페이지 화면 구현 <br>
-      - 회원가입 시 유효성 검사 기능 구현 <br>
-      - sweetalert2 라이브러리를 활용한 모달창 구현 <br>
-      - 프로필 약식, 채팅 화면 구현
-    </td>
-  </tr>
-  <tr>
-    <td>Sub</td>
-    <td>Sub</td>
-    <td>Sub</td>
-    <td>Sub</td>
-  </tr>
-  <tr>
-    <td>
-      - 프로젝트 기획서, 요구사항 정의서, WBS 작성 <br>
-      - 와이어프레임 제작, 화면설계서 작성
-    </td>
-    <td>
-       - 프로젝트 기획서, 요구사항 정의서, 테이블 명세서, WBS, ERD, 테이블 정의서 작성
-    </td>
-    <td>
-      - 프로젝트 기획서, 요구사항 정의서, WBS 작성 <br>
-      - 유스케이스, ERD, 테이블 정의서, 테이블 명세서 작성
-    </td>
-    <td>
-      - 프로젝트 기획서, 요구사항 정의서, WBS 작성 <br>
-      - 와이어프레임 제작, 화면설계서 작성 <br>
-      - header, footer 구현 <br>
-      - 서비스에 필요한 이미지 제작, 업로드 <br>
-      - 기획, 최종 발표 PPT 제작
-    </td>
-  </tr>
-  
-</table>
+
+  <table>
+    <tr>
+      <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/1a41be0f-15d2-430d-b153-79728540f49e" width="200px" height="200px"></td>
+      <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/19324b05-f1d6-4aad-ae2c-62f327c5d591" width="200px" height="200px"></td>
+      <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/dcaca84a-3570-4fa7-9977-8631272dbd50" width="200px" height="200px"></td>
+      <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/fb84db0b-ae22-42fa-8189-05ded1fafd47" width="200px" height="200px"></td>
+    </tr>
+    <tr>
+      <td ><center>이상현</center></td>
+      <td>이재관</td>
+      <td>박성범</td>
+      <td>문수현</td>
+    </tr>
+    <tr>
+      <td>Main</td>
+      <td>Main</td>
+      <td>Main</td>
+      <td>Main</td>
+    </tr>
+    <tr>
+      <td>팀장, Front-End</td>
+      <td>Back-End</td>
+      <td>Back-End</td>
+      <td>Front-End</td>
+    </tr>
+    <tr>
+      <td>
+        - 카카오 지도 api를 활용한 검색 기능 구현 <br>
+        - 문자데이터, WTM좌표, WGS84좌표 변환 기능 구현 <br>
+        - sweetalert2 라이브러리를 활용한 모달창 구현 <br>
+        - 상세프로필, 채팅방리스트 기능 구현 <br>
+        - 동물정보등록 화면 데이터를 데이터베이스에 저장하는 기능구현
+      </td>
+      <td>
+        - WebSocket을 활용한 실시간 채팅 및 알림 기능 구현 <br>
+        - 입력한 선호도 기반으로 추천해주는 매칭 시스템 구현 <br>
+        - 매칭 후 3시간 이후에 사용할 수 있는 리셋 시스템 구현
+      </td>
+      <td>
+        - 데이터베이스 연결하여 회원가입 및 로그인 기능 구현 <br>
+        - 회원정보수정, 동물정보수정 기능 구현 후 데이터베이스에 연결 <br>
+        - 공공데이터를 Python을 활용하여 데이터 베이스 연결
+      </td>
+      <td>
+        - 메인, 회원가입, 로그인, 마이페이지 화면 구현 <br>
+        - 회원가입 시 유효성 검사 기능 구현 <br>
+        - sweetalert2 라이브러리를 활용한 모달창 구현 <br>
+        - 프로필 약식, 채팅 화면 구현
+      </td>
+    </tr>
+    <tr>
+      <td>Sub</td>
+      <td>Sub</td>
+      <td>Sub</td>
+      <td>Sub</td>
+    </tr>
+    <tr>
+      <td>
+        - 프로젝트 기획서, 요구사항 정의서, WBS 작성 <br>
+        - 와이어프레임 제작, 화면설계서 작성
+      </td>
+      <td>
+         - 프로젝트 기획서, 요구사항 정의서, 테이블 명세서, WBS, ERD, 테이블 정의서 작성
+      </td>
+      <td>
+        - 프로젝트 기획서, 요구사항 정의서, WBS 작성 <br>
+        - 유스케이스, ERD, 테이블 정의서, 테이블 명세서 작성
+      </td>
+      <td>
+        - 프로젝트 기획서, 요구사항 정의서, WBS 작성 <br>
+        - 와이어프레임 제작, 화면설계서 작성 <br>
+        - header, footer 구현 <br>
+        - 서비스에 필요한 이미지 제작, 업로드 <br>
+        - 기획, 최종 발표 PPT 제작
+      </td>
+    </tr>
+    
+  </table>
 
 ***
 
