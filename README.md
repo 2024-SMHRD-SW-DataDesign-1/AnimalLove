@@ -95,7 +95,7 @@
 
 
 ## ⚙시스템 아키텍처
-![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/705dad54-47b8-43fa-bed8-d3436eee84cc)
+![시스템아키텍처](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/80981c94-e58d-4d10-b9bf-c979a7d237a2)
 
 ## ✏유스케이스
 ![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/e6306ab4-a93f-4924-ab47-94c19eb1171f)
@@ -103,7 +103,8 @@
 ***
 
 ## ✏서비스 흐름도
-![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/afe5681f-b352-42a8-b3b2-a65072cd2187)
+![서비스흐름도](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/825dbcf4-de7a-477b-9257-e8184ca0b242)
+
 
 ***
 
@@ -159,6 +160,70 @@
     <td>박성범</td>
     <td>문수현</td>
   </tr>
+  <tr>
+    <td>Main</td>
+    <td>Main</td>
+    <td>Main</td>
+    <td>Main</td>
+  </tr>
+  <tr>
+    <td>팀장, Front-End</td>
+    <td>Back-End</td>
+    <td>Back-End</td>
+    <td>Front-End</td>
+  </tr>
+  <tr>
+    <td>
+      - 카카오 지도 api를 활용한 검색 기능 구현 <br>
+      - 문자데이터, WTM좌표, WGS84좌표 변환 기능 구현 <br>
+      - sweetalert2 라이브러리를 활용한 모달창 구현 <br>
+      - 상세프로필, 채팅방리스트 기능 구현 <br>
+      - 동물정보등록 화면 데이터를 데이터베이스에 저장하는 기능구현
+    </td>
+    <td>
+      - WebSocket을 활용한 실시간 채팅 및 알림 기능 구현 <br>
+      - 입력한 선호도 기반으로 추천해주는 매칭 시스템 구현 <br>
+      - 매칭 후 3시간 이후에 사용할 수 있는 리셋 시스템 구현
+    </td>
+    <td>
+      - 데이터베이스 연결하여 회원가입 및 로그인 기능 구현 <br>
+      - 회원정보수정, 동물정보수정 기능 구현 후 데이터베이스에 연결 <br>
+      - 공공데이터를 Python을 활용하여 데이터 베이스 연결
+    </td>
+    <td>
+      - 메인, 회원가입, 로그인, 마이페이지 화면 구현 <br>
+      - 회원가입 시 유효성 검사 기능 구현 <br>
+      - sweetalert2 라이브러리를 활용한 모달창 구현 <br>
+      - 프로필 약식, 채팅 화면 구현
+    </td>
+  </tr>
+  <tr>
+    <td>Sub</td>
+    <td>Sub</td>
+    <td>Sub</td>
+    <td>Sub</td>
+  </tr>
+  <tr>
+    <td>
+      - 프로젝트 기획서, 요구사항 정의서, WBS 작성 <br>
+      - 와이어프레임 제작, 화면설계서 작성
+    </td>
+    <td>
+       - 프로젝트 기획서, 요구사항 정의서, WBS 작성
+    </td>
+    <td>
+      - 프로젝트 기획서, 요구사항 정의서, WBS 작성
+      - 유스케이스 작성
+    </td>
+    <td>
+      - 프로젝트 기획서, 요구사항 정의서, WBS 작성 <br>
+      - 와이어프레임 제작, 화면설계서 작성 <br>
+      - header, footer 구현 <br>
+      - 서비스에 필요한 이미지 제작, 업로드 <br>
+      - 기획, 최종 발표 PPT 제작
+    </td>
+  </tr>
+  
 </table>
 
 ***
