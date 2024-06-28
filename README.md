@@ -119,64 +119,43 @@
 
 ## 🎈화면 구성
 ### 🖱메인
-<table>
-  <tr>
-    <td>메인</td>
-  </tr>
-  <tr>
-    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/00147afd-afb3-43d4-95a9-b9959f470bb3" width="700px" height="700px"></td>
-  </tr>
-</table>
+<img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/00147afd-afb3-43d4-95a9-b9959f470bb3" width="750px" height="540px">
+
 
 
 ### 🖱회원가입
-<table>
-  <tr>
-    <td>회원가입</td>
-  </tr>
-  <tr>
-    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/df14218d-317e-4caf-801b-d7c74e9f25e5" width="700px" height="700px"></td>
-  </tr>
-</table>
+<img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/df14218d-317e-4caf-801b-d7c74e9f25e5" width="750px" height="540px">
 
 
 ### 🖱로그인
-<table>
-  <tr>
-    <td>로그인</td>
-  </tr>
-  <tr>
-    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/55652598-71a8-4344-b508-5a77a7763896" width="700px" height="700px"></td>
-  </tr>
-</table>
-
+<img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/55652598-71a8-4344-b508-5a77a7763896" width="750px" height="540px">
 
 ### 🖱매칭
 <table>
   <tr>
-    <td>매칭</td>
     <td>설명</td>
+    <td>매칭</td>
   </tr>
   <tr>
-    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/cb4f0f60-4d29-45aa-9b7a-7a94e575a265" width="700px" height="700px"></td>
     <td>동물정보 등록 1단계</td>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/cb4f0f60-4d29-45aa-9b7a-7a94e575a265" width="750px" height="540px"></td>
   </tr>
   <tr>
-    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/da454f48-1623-43cd-add9-9217ceb6c4d4" width="700px" height="700px"></td>
     <td>동물정보 등록 2단계</td>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/da454f48-1623-43cd-add9-9217ceb6c4d4" width="750px" height="540px"></td>
   </tr>
    <tr>
-    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/6d4ba2a2-426b-4983-b153-878da5eac43e" width="700px" height="700px"></td>
     <td>선호하는 동물 선택</td>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/6d4ba2a2-426b-4983-b153-878da5eac43e"width="750px" height="540px"></td>
 
   </tr>
   <tr>
-    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/b31b998e-8990-49b0-af68-2da929be5b49" width="700px" height="700px"></td>
     <td>프로필 약식</td>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/b31b998e-8990-49b0-af68-2da929be5b49" width="750px" height="540px"></td>
   </tr>
   <tr>
-    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/392f26a7-642e-44e4-a089-6a9ebb734302" width="700px" height="700px"></td>
     <td>프로필 상세</td>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/392f26a7-642e-44e4-a089-6a9ebb734302" width="750px" height="540px"></td>
   </tr>
   
 </table>
@@ -184,17 +163,19 @@
 
 
 ### 🖱채팅
-![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/f7c6851b-7f72-421a-9020-5610bff1de32)
+<img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/f7c6851b-7f72-421a-9020-5610bff1de32" width="750px" height="540px">
 
-***
 
 ### 🖱마이페이지
-![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/a3d3ef9c-602a-4126-8db8-cc25906e9c5b)
+<img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/a3d3ef9c-602a-4126-8db8-cc25906e9c5b" width="750px" height="540px">
+<br>
+<br>
+<br>
 
 ***
 
 ## 💗팀원 역할
-<table>
+<table align-item="center">
   <tr>
     <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/1a41be0f-15d2-430d-b153-79728540f49e" width="200px" height="200px"></td>
     <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/19324b05-f1d6-4aad-ae2c-62f327c5d591" width="200px" height="200px"></td>
@@ -259,7 +240,7 @@
        - 프로젝트 기획서, 요구사항 정의서, 테이블 명세서, WBS 작성, ERD 작성, 테이블 정의서
     </td>
     <td>
-      - 프로젝트 기획서, 요구사항 정의서, 테이블 명세서, WBS 작성
+      - 프로젝트 기획서, 요구사항 정의서, 테이블 명세서, WBS 작성 <br>
       - 유스케이스 작성, ERD 작성, 테이블 정의서
     </td>
     <td>
