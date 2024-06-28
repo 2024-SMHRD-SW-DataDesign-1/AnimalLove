@@ -228,22 +228,18 @@
 ***
 
 ## 🚨트러블슈팅
-<p>💘1번 문제 </p>
+<h4>💘1번 문제</h4>
 
-![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/62660a90-45c0-4322-8b9a-03aafc44d6d0)
-<p>: 세션을 가져와 중복확인 조건 사용 시 기존 정보를 사용하지 못하는 오류 발생</p>
-
-![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/79236ae0-9dcf-45ef-bff2-23ea250ce6b4)
-<p>: ChkResult 조건을 로그인 세션에서 가져온 정보와 같을 때도 정보 수정이 가능하도록 조건을 변경하여 해결</p>
+![Frame 3](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/3123dbd8-17f3-4d48-aa92-81a7d2e3df25) <br>
+![Frame 4](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/355b8d19-5493-4c86-b342-17165cd3f862)
+<p>• 1번 오류 : 세션을 가져와 중복확인 조건 사용 시 기존 정보를 사용하지 못하는 오류 발생</p>
+<p>• 2번 해결방안 : ChkResult 조건을 로그인 세션에서 가져온 정보와 같을 때도 정보 수정이 가능하도록 조건을 변경하여 해결</p>
 
 ***
 
-<p>💘2번 문제</p>
+<h4>💘2번 문제</h4>
 
-![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/f604566c-6d24-471b-9b2a-68b8132421ce)
-<p>: 채팅이 들어왔을 때 알림이 실시간으로 갱신이 되지 않는 오류 </p>
-
+![Frame 5](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/659bba96-b032-4d0b-82e1-a9c811db7bcf)
 ![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/7e4713c1-33a8-41fb-97ab-3f8a19d33445)
-<p>: 채팅 리스트가 생성될 때 소켓을 한번 더 열어줌 으로써 오류 해결</p>
-
-
+<p>• 오류 : 채팅이 들어왔을 때 알림이 실시간으로 갱신이 되지 않는 오류 </p>
+<p>• 해결방안 : 채팅 리스트가 생성될 때 소켓을 한번 더 열어줌 으로써 오류 해결</p>
