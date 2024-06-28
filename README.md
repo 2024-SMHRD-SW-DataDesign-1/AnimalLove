@@ -99,7 +99,8 @@
 
 
 ## ⚙시스템 아키텍처
-![시스템아키텍처](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/80981c94-e58d-4d10-b9bf-c979a7d237a2)
+<img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/80981c94-e58d-4d10-b9bf-c979a7d237a2" height="540px">
+
 
 ## ✏유스케이스
 ![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/e6306ab4-a93f-4924-ab47-94c19eb1171f)
@@ -107,13 +108,14 @@
 ***
 
 ## ✏서비스 흐름도
-![서비스흐름도](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/825dbcf4-de7a-477b-9257-e8184ca0b242)
+<img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/825dbcf4-de7a-477b-9257-e8184ca0b242" weight="450px">
 
 
 ***
 
 ## ✏ER-다이어그램
-![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/a47b714c-f7d8-4fb6-aeb0-d4da6b023756)
+<img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/a47b714c-f7d8-4fb6-aeb0-d4da6b023756">
+
 
 ***
 
@@ -121,41 +123,49 @@
 ### 🖱메인
 <img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/00147afd-afb3-43d4-95a9-b9959f470bb3" width="750px" height="540px">
 
-
+***
 
 ### 🖱회원가입
-<img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/df14218d-317e-4caf-801b-d7c74e9f25e5" width="750px" height="540px">
+<img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/df14218d-317e-4caf-801b-d7c74e9f25e5" width="750px" height="600px">
 
+***
 
 ### 🖱로그인
-<img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/55652598-71a8-4344-b508-5a77a7763896" width="750px" height="540px">
+<img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/55652598-71a8-4344-b508-5a77a7763896" width="750px" height="600px">
+
+***
 
 ### 🖱매칭
 <table>
   <tr>
-    <td>설명</td>
-    <td>매칭</td>
+    <td>회원가입 후 처음 매칭 화면 진입시 동물정보를 등록하는 화면</td>
   </tr>
   <tr>
-    <td>동물정보 등록 1단계</td>
-    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/cb4f0f60-4d29-45aa-9b7a-7a94e575a265" width="750px" height="540px"></td>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/cb4f0f60-4d29-45aa-9b7a-7a94e575a265" width="800px" height="560px"></td>
   </tr>
   <tr>
-    <td>동물정보 등록 2단계</td>
-    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/da454f48-1623-43cd-add9-9217ceb6c4d4" width="750px" height="540px"></td>
+    <td>동물정보 등록 시 사진첨부를 하는 화면</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/da454f48-1623-43cd-add9-9217ceb6c4d4" width="800px" height="560px"></td>
+  </tr>
+  <tr>
+    <td>프로필 카드를 보여주기 위한 보호자가 선호하는 동물 조건 선택</td>
   </tr>
    <tr>
-    <td>선호하는 동물 선택</td>
-    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/6d4ba2a2-426b-4983-b153-878da5eac43e"width="750px" height="540px"></td>
-
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/6d4ba2a2-426b-4983-b153-878da5eac43e"width="800px" height="560px"></td>
   </tr>
   <tr>
-    <td>프로필 약식</td>
-    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/b31b998e-8990-49b0-af68-2da929be5b49" width="750px" height="540px"></td>
+    <td>조건을 통한 필터링 후 보여지는 3개의 약식 프로필 화면</td>
   </tr>
   <tr>
-    <td>프로필 상세</td>
-    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/392f26a7-642e-44e4-a089-6a9ebb734302" width="750px" height="540px"></td>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/b31b998e-8990-49b0-af68-2da929be5b49" width="800px" height="560px"></td>
+  </tr>
+  <tr>
+    <td>프로필 상세정보 화면</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/392f26a7-642e-44e4-a089-6a9ebb734302" width="800px" height="560px"></td>
   </tr>
   
 </table>
