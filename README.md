@@ -155,7 +155,7 @@
 ## 💗팀원 역할
 <table>
   <tr>
-    <center><td >이상현</td></center>
+    <td ><center>이상현</center></td>
     <td>이재관</td>
     <td>박성범</td>
     <td>문수현</td>
