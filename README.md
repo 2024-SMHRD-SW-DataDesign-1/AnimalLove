@@ -166,8 +166,9 @@
     <td>동물정보 등록 2단계</td>
   </tr>
    <tr>
-    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/8dcc7522-47a4-4408-b879-7b34f50f2f1e" width="700px" height="700px"></td>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/6d4ba2a2-426b-4983-b153-878da5eac43e" width="700px" height="700px"></td>
     <td>선호하는 동물 선택</td>
+
   </tr>
   <tr>
     <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/b31b998e-8990-49b0-af68-2da929be5b49" width="700px" height="700px"></td>
