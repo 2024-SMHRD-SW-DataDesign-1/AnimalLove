@@ -1,17 +1,20 @@
 # 🐶🐱애니팅 (팀명 : DEVS)
+![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=Animal%20Matching%20Service&fontSize=40)
 
 ## 👀프로젝트 개요 
 주제 : 반려동물 교배 매칭 서비스
 - 나의 반려동물 정보 등록 -> 선호하는 교배 파트너 조건을 선택하여 부합하는 프로필 카드를 보여주는 기능
 - 마음에 드는 프로필 카드를 선택해서 채팅을 요청 -> 상대방이 요청 수락시 1:1 채팅 가능
 - 내가 설정한 주소 주변의 교배업체 정보를 보여주는 기능
-
+- 
 ## 📅프로젝트 기간
 2024.06.12 - 2024.06.25
 
 ## 🦴주요기능
 <ins>개발 목표</ins>
-  - 교배를 원하는 반려동물 소유자를 대상으로 보호자에게 매칭, 채팅, 업체 위치 정보를 제공함으로써 커뮤니케이션을 통해 보호자의 교배 파트너에 대한 신뢰성을 향상 시키고 파트너 선택 이후 전문성이 필요한 부분은 전문 업체에 대한 정보를 제공하는 플랫폼
+  - 교배를 원하는 반려동물 보호자를 대상으로 매칭하기, 실시간 채팅, 업체 위치 정보를 제공한다.
+  - 빠른 소통으로 보호자간 신뢰도를 향상시킨다.
+  - 교배 파트너 매칭 이후 업체선정이 필요한 부분은 지도를 통해 업체에 대한 정보를 제공한다.
 
 <ins>개발 내용</ins>
 
@@ -95,7 +98,7 @@
 
 
 ## ⚙시스템 아키텍처
-![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/705dad54-47b8-43fa-bed8-d3436eee84cc)
+![시스템아키텍처](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/80981c94-e58d-4d10-b9bf-c979a7d237a2)
 
 ## ✏유스케이스
 ![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/e6306ab4-a93f-4924-ab47-94c19eb1171f)
@@ -103,7 +106,8 @@
 ***
 
 ## ✏서비스 흐름도
-![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/afe5681f-b352-42a8-b3b2-a65072cd2187)
+![서비스흐름도](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/825dbcf4-de7a-477b-9257-e8184ca0b242)
+
 
 ***
 
@@ -114,7 +118,7 @@
 
 ## 🎈화면 구성
 ### 🖱메인
-![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/00147afd-afb3-43d4-95a9-b9959f470bb3)
+<img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/00147afd-afb3-43d4-95a9-b9959f470bb3">
 
 ***
 
@@ -149,37 +153,101 @@
 
 ***
 
-
-
 ## 💗팀원 역할
 <table>
   <tr>
-    <td>이상현</td>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/1a41be0f-15d2-430d-b153-79728540f49e"></td>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/19324b05-f1d6-4aad-ae2c-62f327c5d591"></td>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/dcaca84a-3570-4fa7-9977-8631272dbd50"></td>
+    <td><img src="https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/fb84db0b-ae22-42fa-8189-05ded1fafd47"></td>
+  </tr>
+  <tr>
+    <td ><center>이상현</center></td>
     <td>이재관</td>
     <td>박성범</td>
     <td>문수현</td>
   </tr>
+  <tr>
+    <td>Main</td>
+    <td>Main</td>
+    <td>Main</td>
+    <td>Main</td>
+  </tr>
+  <tr>
+    <td>팀장, Front-End</td>
+    <td>Back-End</td>
+    <td>Back-End</td>
+    <td>Front-End</td>
+  </tr>
+  <tr>
+    <td>
+      - 카카오 지도 api를 활용한 검색 기능 구현 <br>
+      - 문자데이터, WTM좌표, WGS84좌표 변환 기능 구현 <br>
+      - sweetalert2 라이브러리를 활용한 모달창 구현 <br>
+      - 상세프로필, 채팅방리스트 기능 구현 <br>
+      - 동물정보등록 화면 데이터를 데이터베이스에 저장하는 기능구현
+    </td>
+    <td>
+      - WebSocket을 활용한 실시간 채팅 및 알림 기능 구현 <br>
+      - 입력한 선호도 기반으로 추천해주는 매칭 시스템 구현 <br>
+      - 매칭 후 3시간 이후에 사용할 수 있는 리셋 시스템 구현
+    </td>
+    <td>
+      - 데이터베이스 연결하여 회원가입 및 로그인 기능 구현 <br>
+      - 회원정보수정, 동물정보수정 기능 구현 후 데이터베이스에 연결 <br>
+      - 공공데이터를 Python을 활용하여 데이터 베이스 연결
+    </td>
+    <td>
+      - 메인, 회원가입, 로그인, 마이페이지 화면 구현 <br>
+      - 회원가입 시 유효성 검사 기능 구현 <br>
+      - sweetalert2 라이브러리를 활용한 모달창 구현 <br>
+      - 프로필 약식, 채팅 화면 구현
+    </td>
+  </tr>
+  <tr>
+    <td>Sub</td>
+    <td>Sub</td>
+    <td>Sub</td>
+    <td>Sub</td>
+  </tr>
+  <tr>
+    <td>
+      - 프로젝트 기획서, 요구사항 정의서, WBS 작성 <br>
+      - 와이어프레임 제작, 화면설계서 작성
+    </td>
+    <td>
+       - 프로젝트 기획서, 요구사항 정의서, 테이블 명세서, WBS 작성, ERD 작성, 테이블 정의서
+    </td>
+    <td>
+      - 프로젝트 기획서, 요구사항 정의서, 테이블 명세서, WBS 작성
+      - 유스케이스 작성, ERD 작성, 테이블 정의서
+    </td>
+    <td>
+      - 프로젝트 기획서, 요구사항 정의서, WBS 작성 <br>
+      - 와이어프레임 제작, 화면설계서 작성 <br>
+      - header, footer 구현 <br>
+      - 서비스에 필요한 이미지 제작, 업로드 <br>
+      - 기획, 최종 발표 PPT 제작
+    </td>
+  </tr>
+  
 </table>
 
 ***
 
 ## 🚨트러블슈팅
-<p>💘1번 문제 </p>
+<h4>1번 문제</h4>
 
-![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/62660a90-45c0-4322-8b9a-03aafc44d6d0)
-<p>: 세션을 가져와 중복확인 조건 사용 시 기존 정보를 사용하지 못하는 오류 발생</p>
-
-![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/79236ae0-9dcf-45ef-bff2-23ea250ce6b4)
-<p>: ChkResult 조건을 로그인 세션에서 가져온 정보와 같을 때도 정보 수정이 가능하도록 조건을 변경하여 해결</p>
+![Frame 3](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/3123dbd8-17f3-4d48-aa92-81a7d2e3df25) <br>
+![Frame 4](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/355b8d19-5493-4c86-b342-17165cd3f862)
+<p>• 1번 오류 : 세션을 가져와 중복확인 조건 사용 시 기존 정보를 사용하지 못하는 오류 발생</p>
+<p>• 2번 해결방안 : ChkResult 조건을 로그인 세션에서 가져온 정보와 같을 때도 정보 수정이 가능하도록 조건을 변경하여 해결</p>
 
 ***
 
-<p>💘2번 문제</p>
+<h4>2번 문제</h4>
 
-![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/f604566c-6d24-471b-9b2a-68b8132421ce)
-<p>: 채팅이 들어왔을 때 알림이 실시간으로 갱신이 되지 않는 오류 </p>
-
+![Frame 5](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/167040672/659bba96-b032-4d0b-82e1-a9c811db7bcf)
 ![image](https://github.com/2024-SMHRD-SW-DataDesign-1/AnimalLove/assets/109319988/7e4713c1-33a8-41fb-97ab-3f8a19d33445)
-<p>: 채팅 리스트가 생성될 때 소켓을 한번 더 열어줌 으로써 오류 해결</p>
-
-
+<p>• 오류 : 채팅이 들어왔을 때 알림이 실시간으로 갱신이 되지 않는 오류 </p>
+<p>• 해결방안 : 채팅 리스트가 생성될 때 소켓을 한번 더 열어줌 으로써 오류 해결</p>
